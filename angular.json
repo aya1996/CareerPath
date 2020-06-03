@@ -24,9 +24,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/bootstrap/dist/css/bootstrap-grid.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js",
+              
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -89,14 +96,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootsrap.css",
-              "node_modules/bootstrap/dist/css/bootsrap-grid.css"
+              "src/styles.css"
+             
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootsrap.js",
-              "node_modules/bootstrap/dist/js/bootsrap.bundle.js"
-            ]
+            "scripts": []
           }
         },
         "lint": {
