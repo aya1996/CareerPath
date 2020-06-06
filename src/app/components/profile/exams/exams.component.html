@@ -1,1 +1,13 @@
-<p>exams works!</p>
+<div class="main">
+    <div class="exam-container" *ngFor="let item of items">
+        <div class="header row">
+            <h4 class="col-7">{{ courseName }} Quiz</h4>
+            <h5 class="col-4"> {{ testDate }}</h5>
+        </div>
+        <div class="body">
+            <p>Duration: {{ testDuration }} minutes</p>
+            <p>Score: {{ grade }}</p>
+        </div>
+        <input type="hidden" name="" [value]= item>
+    </div>
+</div>
