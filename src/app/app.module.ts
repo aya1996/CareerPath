@@ -13,6 +13,7 @@ import { ExamsComponent } from './components/profile/exams/exams.component';
 import { DoughnuComponent } from './components/profile/charts/doughnu/doughnu.component';
 
 import { ChartsModule } from 'ng2-charts';
+import { CourseModalComponent } from './components/profile/course-modal/course-modal.component';
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
 
@@ -39,7 +40,8 @@ const routes:Routes =
     DashboardComponent,
     CoursesComponent,
     ExamsComponent,
-    DoughnuComponent
+    DoughnuComponent,
+    CourseModalComponent
   ],
   imports: [
     BrowserModule,

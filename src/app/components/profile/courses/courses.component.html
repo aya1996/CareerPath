@@ -1,1 +1,64 @@
-<p>courses works!</p>
+<div class="container-fluid temp">
+    <div class="row main">
+        <div class="col-4 courses-border">
+            <h3>Wishlisted Courses</h3>
+            <h5 (click)="openModal(wishlist, 'JQuery')">JQuery</h5>
+            <h5 (click)="openModal(wishlist, 'Javascript')">Javascript</h5>
+        </div>
+        <div class="col-4 courses-border">
+            <h3>Ongoing Courses</h3>
+            <h5 (click)="openModal(ongoing, 'JQuery')">JQuery</h5>
+            <h5 (click)="openModal(ongoing, 'Javascript')">Javascript</h5>
+        </div>
+        <div class="col-4 completed">
+            <h3>Completed Courses</h3>
+            <h5>JQuery</h5>
+            <h5>Javascript</h5>
+        </div>
+    </div>
+</div>
+
+<ng-template #wishlist let-modal>
+    <div class="dark-modal">
+        <div class="modal-header">
+            <h4 class="modal-title"> {{ courseTitle}} </h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p> CourseLink:  {{courseInfo.courseLink}} </p>
+            <p> Course Duration:  {{courseInfo.courseDuration}} </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Remove from wishlist</button>
+            <button type="button" class="btn btn-custom">Start Course</button>
+          </div>
+    </div>
+</ng-template>
+
+<ng-template #ongoing let-modal>
+    <div class="dark-modal">
+        <div class="modal-header">
+            <div class="head-right col-6">
+                <h4 class="modal-title"> {{ courseTitle}} </h4>
+                <h6>www.youtube.com/saogpsal</h6>
+            </div>
+            <div class="head-left col-6">
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+          </div>
+          <div class="modal-body">
+            <p> Course Duration : 30 hours </p>
+            <p> Start date : 15/5/2020 </p>
+            <p> Expected end date : 15/6/2020 </p>
+            <p> Remaining days: 28 days </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Take Shortcut</button>
+            <button type="button" class="btn btn-custom">Finish Course</button>
+          </div>
+    </div>
+</ng-template>
