@@ -1,0 +1,24 @@
+<div>
+    <div class="username">
+        <p>{{ username }}</p>
+    </div>
+    <div class="profile-items">
+        <ul>
+            <li>
+                <a (click)="getValue('courses')">Courses</a>
+            </li>
+            <li>
+                <a (click)="getValue('exams')">Exams</a>
+                <!-- <a [routerLink]="[ '/' ,{ outlet: { 'profileItems': ['dashboard'] } }]">Exams</a> -->
+            </li>
+            <li>
+                <a routerLink="/profile" (click)="getValue('dashboard')">Dashboard</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<app-dashboard *ngIf="clickedTab==='dashboard' || clickedTab===''"></app-dashboard>
+<app-courses *ngIf="clickedTab==='courses'"></app-courses>
+<app-exams *ngIf="clickedTab==='exams'"></app-exams>
+

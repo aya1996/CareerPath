@@ -1,0 +1,38 @@
+<div class="main">
+    <div class="data">
+        <img src="../../../../assets/images/user.png" alt="Profile Picture">
+        <label> <span> 4 </span> days of continuous learning</label>
+        <div class="contactInfo">
+            <h4>Contact Information</h4>
+            <h5>Email: test@test.com</h5>
+        </div>
+        <div class="careerInfo">
+            <h4>Career Information</h4>
+            <h5>Career Path: Frontend</h5>
+            <h5>Current Level: Intermediate</h5>
+            <h5>Current Courses: Angular2</h5>
+        </div>
+    </div>
+
+    <div class="board">
+        <div class="courseStreak">
+            <h4>Angular Streak</h4>
+  
+        </div>
+        <div class="careerProgress">
+            <h4>Career Progress</h4>
+            <app-doughnu></app-doughnu>
+        </div>
+        <div class="onGoingCourses">
+            <h4>Ongoing Courses</h4>
+            <p>
+                Angular
+                <ngb-progressbar [showValue]="true" type="danger" [value]="35" [max]="70" height="1.75rem"></ngb-progressbar>
+            </p>
+            <p>
+                Typescript
+                <ngb-progressbar [showValue]="true" type="warning" [value]="37.5" [max]="50" height="1.75rem"></ngb-progressbar>
+            </p>
+        </div>
+    </div>
+</div>

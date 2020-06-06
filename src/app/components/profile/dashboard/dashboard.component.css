@@ -1,0 +1,45 @@
+.main{
+    background-color: #0D0F12;
+    color: #F3F3F3;
+    width: 100%;
+    display: flex;
+    padding: 1rem;
+    padding-top: 2em;
+}
+.data{
+    width: 25%;
+    margin-left: 5em;
+    display: flex;
+    flex-direction: column;
+}
+.data img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color:#F3F3F3;
+}
+.careerInfo, .contactInfo{
+    margin-top: 1.5em;
+}
+h5{
+    margin-left: 1.5em;
+}
+label span{
+    color: #E43F5A;
+    margin-bottom: 1.5rem;
+}
+span{
+    font-size: 20px;
+}
+.board{
+    width: 65%;
+    margin-left: 10em;
+    display: flex;
+    flex-direction: column;
+}
+.courseStreak, .careerProgress, .onGoingCourses{
+    width: 70%;
+    margin: .5em 2em;
+    padding: 1.5em;
+    background-color: #181C20;
+}
