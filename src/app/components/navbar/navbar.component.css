@@ -1,0 +1,27 @@
+.custom-register{
+    color: #E43F5A;
+    border-color: #E43F5A;
+}
+.custom-register:hover{
+    color: #fff;
+    border-color: #E43F5A;
+    background-color: #E43F5A;
+}
+.custom-login{
+    color: #fff;
+    background-color: #E43F5A;
+}
+.custom-login:hover{
+    color: #E43F5A;
+    border-color: #E43F5A;
+    background-color: transparent;
+}
+.custom-search{
+    color: #fff;
+    border-color: rgb(26, 24, 24);
+}
+.custom-search:hover{
+    color: rgb(26, 24, 24);
+    border-color: #fff;
+    background-color: transparent;
+}
