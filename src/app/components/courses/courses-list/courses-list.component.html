@@ -1,0 +1,109 @@
+<div class="container-fluid main">
+    <h2 class="title">How to become {{ careerTitle }} </h2>
+    <div class="container course-list">
+        <h5>FREE Courses to Start with:- </h5>
+        <div class="course-data">
+            <div class="row">
+                <div class="col-5">
+                    <p class="course-title" (click)="openModal(content,'HTML')">HTML</p>
+                    <p>W3Schools tuts</p>
+                </div>
+                <div class="col-3">
+                    <p class="test-link">Test yourself now!</p>
+                </div>
+                <div class="col-2">
+                    <fa class="star-class" [name]=starName size="lg" (click)="changeStarState()"></fa>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <p class="course-title" (click)="openModal(content,'CSS')">CSS</p>
+                    <p>W3Schools tuts</p>
+                </div>
+                <div class="col-3">
+                    <p class="test-link">Test yourself now!</p>
+                </div>
+                <div class="col-2">
+                    <fa class="star-class" [name]=starName size="lg" (click)="changeStarState()"></fa>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <p class="course-title" (click)="openModal(content,'JS')">JS</p>
+                    <p>W3Schools tuts</p>
+                </div>
+                <div class="col-3">
+                    <p class="test-link">Test yourself now!</p>
+                </div>
+                <div class="col-2">
+                    <fa class="star-class" [name]=starName size="lg" (click)="changeStarState()"></fa>
+                </div>
+            </div>
+        </div>
+        <h5 class="paid">PAID Courses to Start with:- </h5>
+        <div class="course-data">
+            <div class="row">
+                <div class="col-5">
+                    <p class="course-title" (click)="openModal(content,'HTML')">HTML</p>
+                    <p>W3Schools tuts</p>
+                </div>
+                <div class="col-3">
+                    <p class="test-link">Test yourself now!</p>
+                </div>
+                <div class="col-2">
+                    <fa class="star-class" [name]=starName size="lg" (click)="changeStarState()"></fa>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <p class="course-title" (click)="openModal(content,'CSS')">CSS</p>
+                    <p>W3Schools tuts</p>
+                </div>
+                <div class="col-3">
+                    <p class="test-link">Test yourself now!</p>
+                </div>
+                <div class="col-2">
+                    <fa class="star-class" [name]=starName size="lg" (click)="changeStarState()"></fa>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <p class="course-title" (click)="openModal(content,'JS')">JS</p>
+                    <p>W3Schools tuts</p>
+                </div>
+                <div class="col-3">
+                    <p class="test-link">Test yourself now!</p>
+                </div>
+                <div class="col-2">
+                    <fa class="star-class" [name]=starName size="lg" (click)="changeStarState()"></fa>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #content let-modal>
+    <div class="dark-modal">
+        <div class="modal-header">
+            <div class="head-right col-6">
+                <h4 class="modal-title"> {{courseTitle}} </h4>
+                <h6>www.youtube.com/saogpsal</h6>
+            </div>
+            <div class="head-left col-6">
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+          </div>
+          <div class="modal-body">
+            <p>
+                Free tutorial about {{courseTitle}} from W3Schools.
+                Basically for beginners with amazing illustration and explanation
+                Good to start your journey with if you are totally beginner.
+            </p>
+            <h6>-Course duration: 7 Days</h6>
+            <p>* You can challenge yourself and complete the course in less than 7 days</p>
+          </div>
+    </div>
+</ng-template>
