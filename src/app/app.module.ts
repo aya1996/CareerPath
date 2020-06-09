@@ -16,15 +16,11 @@ import { ExamsComponent } from './components/profile/exams/exams.component';
 import { DoughnuComponent } from './components/profile/charts/doughnu/doughnu.component';
 
 import { ChartsModule } from 'ng2-charts';
-import { CourseModalComponent } from './components/profile/course-modal/course-modal.component';
-<<<<<<< HEAD
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-=======
 import { CoursesListComponent } from './components/courses/courses-list/courses-list.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material';
 
->>>>>>> b08da560f594ec9c35b6a9a65321647974ab546d
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
 
@@ -44,15 +40,7 @@ const routes:Routes =
   // {  path:'**',  component : HomeComponent }
 ]
 @NgModule({
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes),
-    NgbModule,
-    ChartsModule,
-    AngularFontAwesomeModule,
-    NoopAnimationsModule,
-    MatSnackBarModule
-  ],
+ 
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -63,19 +51,21 @@ const routes:Routes =
     CoursesComponent,
     ExamsComponent,
     DoughnuComponent,
-<<<<<<< HEAD
-    CourseModalComponent
+ 
+    
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     NgbModule,
     ChartsModule,
-    BrowserAnimationsModule
-=======
-    CourseModalComponent,
-    CoursesListComponent
->>>>>>> b08da560f594ec9c35b6a9a65321647974ab546d
+    BrowserAnimationsModule,
+  
+    CoursesListComponent,
+    AngularFontAwesomeModule,
+    NoopAnimationsModule,
+    MatSnackBarModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
