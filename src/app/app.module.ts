@@ -14,6 +14,7 @@ import { DoughnuComponent } from './components/profile/charts/doughnu/doughnu.co
 
 import { ChartsModule } from 'ng2-charts';
 import { CourseModalComponent } from './components/profile/course-modal/course-modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
 
@@ -47,7 +48,8 @@ const routes:Routes =
     BrowserModule,
     RouterModule.forRoot(routes),
     NgbModule,
-    ChartsModule
+    ChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

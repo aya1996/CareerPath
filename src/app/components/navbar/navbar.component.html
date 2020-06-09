@@ -1,5 +1,11 @@
+<link rel="stylesheet" href="https://rawgit.com/angular/bower-material/v1.0.7/angular-material.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular-animate.js"></script>
+<script src="https://rawgit.com/angular/bower-material/v1.0.7/angular-material.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular-aria.js"></script>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-  <a class="navbar-brand" [routerLink]="'.'">CareerPath</a>
+  <a class="navbar-brand" [routerLink]="'.'"><img src="../../../assets/images/logo.png" style="width:50px;height:50px;"></a>
 
   <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->
   <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
@@ -27,21 +33,51 @@
           </div>
         
     </li>
-    <!-- <li class="dropdown">
-        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Services</span> <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            
-            <li class="dropdown-submenu">
-                <a href="#" class="dropdown-item dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="nav-label">Service C</span><span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Service C1</a></li>
-                    <li><a class="dropdown-item" href="#">Service C2</a></li>
-                    <li><a class="dropdown-item" href="#">Service C3</a></li>
-                    
-                </ul>
-            </li>
-        </ul>
-    </li> -->
+    <div ng-app="myApp" ng-cloak>
+      <md-menu-bar>
+               <md-menu>
+                 <button class="md-button md-raised md-default" ng-click="$mdOpenMenu()">
+                   Menu
+                 </button>
+                 <md-menu-content>           
+                   <md-menu-item>
+                     <md-menu>
+                       <md-button ng-click="$mdOpenMenu()">Link1</md-button>
+                       <md-menu-content>
+                         <md-menu-item><md-button>Document</md-button></md-menu-item>
+                         <md-menu-item><md-button>File</md-button></md-menu-item>
+                       </md-menu-content>
+                     </md-menu>
+                   </md-menu-item>
+                   <md-menu-item>
+                     <md-menu>
+                       <md-button ng-click="$mdOpenMenu()">Link2</md-button>
+                       <md-menu-content>
+                         <md-menu-item><md-button>Document</md-button></md-menu-item>
+                         <md-menu-item><md-button>File</md-button></md-menu-item>
+                       </md-menu-content>
+                     </md-menu>
+                   </md-menu-item>
+                   <md-menu-item>
+                     <md-menu>
+                       <md-button ng-click="$mdOpenMenu()">Link3</md-button>
+                       <md-menu-content>
+                         <md-menu-item><md-button>Document</md-button></md-menu-item>
+                       </md-menu-content>
+                     </md-menu>
+                   </md-menu-item>
+                   <md-menu-item>
+                     <md-menu>
+                       <md-button ng-click="$mdOpenMenu()">Link4</md-button>
+                       <md-menu-content>
+                         <md-menu-item><md-button>Document</md-button></md-menu-item>
+                       </md-menu-content>
+                     </md-menu>
+                   </md-menu-item>             
+                 </md-menu-content>
+               </md-menu>   
+             </md-menu-bar>
+     </div>
      
       <li class="nav-item">
         <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">About</a>

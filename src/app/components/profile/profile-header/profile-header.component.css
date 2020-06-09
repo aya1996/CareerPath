@@ -34,6 +34,9 @@
 .profile-items ul li a:hover{
     color: #E43F5A;
 }
+.profile-items ul li a:active{
+    color: #E43F5A;
+}
 *{
     margin-bottom: 0;
 }

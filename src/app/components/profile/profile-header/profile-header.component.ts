@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProfileHeaderComponent implements OnInit {
 
   username = "Kholoud Essam";
-  clickedTab:String = '';
+  clickedTab = '';
 
   constructor() {
 } 
