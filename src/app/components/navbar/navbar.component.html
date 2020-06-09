@@ -19,19 +19,19 @@
         <!-- Step 4: Close the menu when a link is clicked. -->
         <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">Home</a>
       </li>
-      
+
     <li class="dropdown show">
         <div ngbDropdown class="d-inline-block">
             <a class="nav-link dropdown-toggle"  id="dropdownBasic1" ngbDropdownToggle>Career Paths</a>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                 <a class="dropdown-item dropdown-toggle"  id="dropdownBasic1" ngbDropdownToggle routerLink="/">Web Development </a>
-                
+
                 <a class="dropdown-item "   routerLink="/">Mobile Development </a>
                 <a class="dropdown-item"  routerLink="/">Data Science </a>
-               
+
             </div>
           </div>
-        
+
     </li>
     <div ng-app="myApp" ng-cloak>
       <md-menu-bar>
@@ -39,7 +39,7 @@
                  <button class="md-button md-raised md-default" ng-click="$mdOpenMenu()">
                    Menu
                  </button>
-                 <md-menu-content>           
+                 <md-menu-content>
                    <md-menu-item>
                      <md-menu>
                        <md-button ng-click="$mdOpenMenu()">Link1</md-button>
@@ -73,12 +73,12 @@
                          <md-menu-item><md-button>Document</md-button></md-menu-item>
                        </md-menu-content>
                      </md-menu>
-                   </md-menu-item>             
+                   </md-menu-item>
                  </md-menu-content>
-               </md-menu>   
+               </md-menu>
              </md-menu-bar>
      </div>
-     
+
       <li class="nav-item">
         <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">About</a>
       </li>
@@ -112,9 +112,9 @@
       <button class="btn my-2 my-sm-0 m-1 custom-search" type="submit">Search</button>
       <button class="btn btnlogin my-2 my-sm-0 m-1 custom-register" routerLink="/signup" type="button">Register</button>
         <button class="btn btnlogin my-2 my-sm-0 m-1 custom-login"  routerLink="/login"> Login</button>
-    
-       
+
+
       </form>
   </div>
- 
+
 </nav>

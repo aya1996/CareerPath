@@ -18,7 +18,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoursesListComponent } from './components/courses/courses-list/courses-list.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material';
-
 import { RegisterComponent } from './pages/register/register.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -64,6 +63,9 @@ const routes: Routes =
     RegisterComponent,
     WebDevelopmentComponent,
     CourseComponent,
+    CoursesListComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -71,13 +73,13 @@ const routes: Routes =
     NgbModule,
     ChartsModule,
     BrowserAnimationsModule,
-    CoursesListComponent,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     MatSnackBarModule,
     NoopAnimationsModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+
 
   ],
   providers: [],
