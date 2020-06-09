@@ -1,0 +1,63 @@
+.card {
+  padding: 40px;
+  background-color: #222222;
+  margin-bottom: 70px;
+  margin-top: 30px;
+}
+h3,
+h2,
+p {
+  color: white;
+}
+.web {
+  width: 100%;
+  margin: 50px !important;
+  margin-right: 30px;
+  margin-bottom: 50px;
+  margin-top: 4px;
+}
+.name {
+  font-size: larger;
+  font-weight: bold;
+  padding: 3px;
+  color: white;
+}
+.discr {
+  color: #e03e59;
+  font-size: larger;
+  font-weight: bold;
+}
+
+@media (max-width: 350px) {
+  .web {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .name {
+    font-size: medium;
+    padding: 1px;
+    color: white;
+  }
+  .discr {
+    font-size: medium;
+    padding: 1 !important;
+    cursor: pointer;
+  }
+}
+
+.leftMain {
+  color: #e03e59;
+  font-weight: bold;
+  font-size: larger;
+  float: right;
+  padding: 25px;
+  clear: both;
+  cursor: pointer;
+}
+.leftMain:hover {
+  color: #e65e74;
+}
+.title{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
