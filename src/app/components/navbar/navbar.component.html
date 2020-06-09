@@ -110,8 +110,9 @@
     <form class="form-inline my-2 my-lg-0 ">
         <input class="form-control mr-sm-2" type="search" placeholder="Search">
       <button class="btn my-2 my-sm-0 m-1 custom-search" type="submit">Search</button>
-      <button class="btn btnlogin my-2 my-sm-0 m-1 custom-register" routerLink="/signup" type="button">Register</button>
-        <button class="btn btnlogin my-2 my-sm-0 m-1 custom-login"  routerLink="/login"> Login</button>
+
+      <button class="btn btnlogin my-2 my-sm-0 m-1 custom-register" (click)="register()" type="button">Register</button>
+        <button class="btn btnlogin my-2 my-sm-0 m-1 custom-login"  (click)="open()"> Login</button>
 
 
       </form>

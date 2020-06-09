@@ -24,7 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { WebDevelopmentComponent } from './pages/web-development/web-development.component';
 import { CourseComponent } from './pages/course/course.component';
 import { LoginComponent } from './pages/login/login.component';
-
+import {MdMenuModule} from 'md-menu/menu';
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
 
@@ -40,6 +40,7 @@ const routes: Routes =
     { path: 'profile/courses', component: CoursesComponent },
 
     { path: 'courses-list', component: CoursesListComponent },
+    { path: 'courses-modal', component: CourseModalComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'web', component: WebDevelopmentComponent },
     { path: 'login', component: LoginComponent },
@@ -79,7 +80,7 @@ const routes: Routes =
     MatSnackBarModule,
     NoopAnimationsModule,
     AngularFontAwesomeModule,
-
+    MdMenuModule
 
   ],
   providers: [],
