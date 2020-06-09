@@ -1,0 +1,51 @@
+.main{
+    background-color: #181818;
+    color: #fff;
+}
+.title{
+    text-align: center;
+    padding: 1em;
+}
+.course-list{
+    background-color: #222222;
+    padding: 1em;
+    width: 60%;
+}
+.course-data,
+h5{
+    margin: 1em;
+}
+h5.paid{
+    margin-top: 2em;
+}
+.course-title{
+    cursor: pointer;
+}
+.course-data{
+    margin-left: 2.5em;
+}
+.course-data .row{
+    margin-bottom: 1.5em;
+}
+.star-class{
+    color: #EA9010;
+    cursor: pointer;
+}
+.test-link{
+    color: #EE3C48;
+    cursor: pointer;
+}
+p{
+    margin-bottom: 0;
+}
+
+.dark-modal {
+    background-color: #292b2c;
+    color: white;
+  }
+.dark-modal span {
+color: #E43F5A;
+}
+.modal-body h6{
+    margin-top: 1em;
+}
