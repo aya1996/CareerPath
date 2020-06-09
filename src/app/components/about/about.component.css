@@ -1,0 +1,25 @@
+.main {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: #363636;
+  color: #fff;
+}
+
+mat-card {
+  background-color: #222222;
+  color: #fff;
+}
+
+.fa {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding:15px;
+  font-size: 20px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  background-color: #EE3550;
+  margin: 10px;
+}
