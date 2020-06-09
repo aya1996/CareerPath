@@ -1,4 +1,53 @@
+.main{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #363636;
+    color: #fff;
+}
+mat-card{
+    background-color: #222222;
+    color: #fff;
+}
+
 .slider-img img{
     width: 100%;
     height: 580px !important;
+}
+.home-img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.controls-top{
+    padding: 20px;
+    margin: 20px;
+    
+}
+.btn-floating{
+    width:80px;
+    height: 50px;
+    color: white;
+    padding: 20px;
+    margin: 20px;
+    background-color:#EE3550;
+   
+}
+
+.card-body{
+  
+    color: black;
+}
+.card-body a{
+    color: white;
+}
+.carouselImg .carousel-indicators li {
+     width: 1.25rem;
+    max-width: 1.25rem;
+    height: 1.25rem;
+    margin-bottom: -2.75rem;
+    background-color: #EE3550;
 }
