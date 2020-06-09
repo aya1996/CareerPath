@@ -1,0 +1,115 @@
+<!-- <section id="page">
+  <section class="public"> -->
+    <div class="register">
+    <h2 > Register</h2>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+
+        <div class="row content-page">
+          <!-- First Name -->
+          <div class="form-group col-md-6 col-xm-12">
+            <input formControlName="firstName" type="text" class=" form-control" placeholder="First Name">
+          </div>
+
+          <!-- Last Name -->
+          <div class="form-group col-md-6 col-xm-12">
+            <input formControlName="lastName" type="text" class=" form-control" placeholder="Last Name">
+          </div>
+
+          <!-- Birthdate -->
+          <div class="form-group col-md-6 col-xm-12">
+            <input formControlName="birthdate" type="text" class=" form-control" placeholder="Birthdate">
+          </div>
+
+
+
+          <!-- Contry -->
+          <div class="form-group col-md-6 col-xm-12">
+            <select class="form-control">
+              <option style="color: rgb(143, 143, 143);">Contry</option>
+              <option *ngFor="let item of countries" [value]="item.id">
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+          <!-- Username -->
+          <div class="form-group col-md-6 col-xm-12">
+            <input  formControlName="userName"  class="form-control" type="text" placeholder="Username">
+          </div>
+          <!-- Email-->
+          <div class="form-group col-md-6 col-xm-12">
+            <input formControlName="email"  class="form-control" type="email" placeholder="Email">
+          </div>
+          <!-- Password -->
+          <div class="form-group col-md-6 col-xm-12">
+            <input formControlName="password"  class="form-control" type="password" placeholder="Password">
+          </div>
+
+          <!-- Confirm password -->
+          <div class="form-group col-md-6 col-xm-12">
+            <input formControlName="confirmPassword"  class="form-control" type="password" placeholder="Confirm password">
+          </div>
+
+          <!-- Choose Your Path -->
+          <div class="form-group col-md-6 col-xm-12">
+            <select class="form-control">
+              <option style="color: rgb(143, 143, 143);">Choose Your Path</option>
+              <option *ngFor="let item of countries" [value]="item.id">
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+
+          <!-- Choose Your Leval -->
+          <div class="form-group col-md-6 col-xm-12">
+            <select class="form-control">
+              <option style="color: rgb(143, 143, 143);">Choose Your Leval</option>
+              <option *ngFor="let item of countries" [value]="item.id">
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+
+          <!-- Confirm password -->
+          <div class="form-group col-md-12">
+            <textarea class="form-control" type="password" placeholder="Why would you choose this Path?"></textarea>
+          </div>
+
+
+          <!-- Images -->
+          <div class="form-group col-md-12">
+
+            <span style="color:red;" *ngIf="message">{{message}}</span>
+            <input
+            style="display: none"
+            #file type="file" accept='image/*' class="btn btn-danger" (change)="preview(file.files)">
+          <button  class="btn btn-danger" (click)="file.click()">UPLOAD IMAGE</button>
+          </div>
+          <div class="form-group col-md-5">
+            <div class="img">
+              <img  [src]="imgURL" width="200" *ngIf="!defaultImage" alt="">
+              <img  src="../../../assets/images/notfound_0.png"  *ngIf="defaultImage" width="200" alt="">
+            </div>
+
+          </div>
+
+
+        <!-- Register -->
+
+
+          <div class="form-group col-md-12">
+              <button type="submit" [disabled]="registerForm.invalid"
+                class="btn btn-danger">Register</button>
+
+          </div>
+
+        </div>
+
+
+
+      </form>
+
+   </div>
+
+   <!-- </section>
+</section> -->

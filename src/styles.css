@@ -6,3 +6,12 @@
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+body{
+  background-color: #161616 !important;
+  height: 100vh !important;
+ }
+ .modal-content {
+   margin-top: 150px;
+ }

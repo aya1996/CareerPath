@@ -1,4 +1,7 @@
+import { LoginComponent } from './../../pages/login/login.component';
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   public isMenuCollapsed = true;
-  constructor() { }
+  constructor(
+    private modalService: NgbModal,
+    private router: Router
+    ) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  open() {
+    const modelRef = this.modalService.open(LoginComponent);
+    modelRef.componentInstance.name = 'Maher';
   }
-
+  register() {
+    this.router.navigate(['/register']);
+  }
 }
