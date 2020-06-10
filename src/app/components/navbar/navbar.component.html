@@ -1,4 +1,4 @@
-
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
   <a class="navbar-brand" [routerLink]="'.'"><img src="../../../assets/images/logo.png" style="width:50px;height:50px;"></a>
 
@@ -19,7 +19,7 @@
     <a class="nav-link dropdown-toggle" (click)="isMenuCollapsed = true"  mat-button [matMenuTriggerFor]="careers" >Career Path</a>
 
     <mat-menu #careers="matMenu">
-      <button routerLink="/" mat-menu-item [matMenuTriggerFor]="web">Web Development</button>
+      <button routerLink="/web" mat-menu-item [matMenuTriggerFor]="web">Web Development</button>
       <button routerLink="/" mat-menu-item [matMenuTriggerFor]="mobile">Mobile Development </button>
       <button routerLink="/" mat-menu-item [matMenuTriggerFor]="data">Data Science </button>
     </mat-menu>
@@ -75,15 +75,17 @@
 
 
     </ul>
+    <div class="search-container">
     <form class="form-inline my-2 my-lg-0 ">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search">
-      <button class="btn my-2 my-sm-0 m-1 custom-search" type="submit">Search</button>
-
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn custom-search" type="submit"> <i class="fa fa-fw fa-search"></i></button>
+    </form>
+    </div>
       <button class="btn btnlogin my-2 my-sm-0 m-1 custom-register" (click)="register()" type="button">Register</button>
         <button class="btn btnlogin my-2 my-sm-0 m-1 custom-login"  (click)="open()"> Login</button>
 
 
-      </form>
+     
   </div>
 
 </nav>

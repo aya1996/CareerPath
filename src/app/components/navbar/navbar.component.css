@@ -34,3 +34,29 @@
     left: 100%;
     margin-top: -1px;
   }
+
+   input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+  }
+  
+  /* .search-container .button {
+ 
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  } */
+  .search-container input[type=text] {
+  
+    display: inline-block;
+    text-align: left;
+   
+    margin: 0;
+    padding: 14px;
+  }
