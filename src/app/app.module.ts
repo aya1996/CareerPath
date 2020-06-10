@@ -70,6 +70,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { AboutComponent } from './components/about/about.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -81,7 +82,7 @@ const routes: Routes =
 
     { path: 'profile', component: ProfileHeaderComponent },
     { path: 'about', component: AboutComponent },
-
+    { path: 'quiz', component: QuizComponent },
 
     { path: 'profile/dashboard', component: DashboardComponent },
 
@@ -113,6 +114,7 @@ const routes: Routes =
     CourseComponent,
     CoursesListComponent,
     AboutComponent,
+    QuizComponent,
 
 
   ],
