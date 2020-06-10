@@ -10,6 +10,7 @@
     background-color: #222222;
     padding: 1em;
     width: 60%;
+    margin-bottom: 5em;
 }
 .course-data,
 h5{
@@ -30,6 +31,7 @@ h5.paid{
 .star-class{
     color: #EA9010;
     cursor: pointer;
+    font-size: 30px;
 }
 .test-link{
     color: #EE3C48;
