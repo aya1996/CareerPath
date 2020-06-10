@@ -26,7 +26,7 @@
           <!-- Contry -->
           <div class="form-group col-md-6 col-xm-12">
             <select class="form-control">
-              <option style="color: rgb(143, 143, 143);">Contry</option>
+              <option style="color: rgb(143, 143, 143);">Country</option>
               <option *ngFor="let item of countries" [value]="item.id">
                 {{ item.name }}
               </option>
@@ -97,7 +97,7 @@
         <!-- Register -->
 
 
-          <div class="form-group col-md-12">
+          <div class="form-group col-md-12" id="registerId">
               <button type="submit" [disabled]="registerForm.invalid"
                 class="btn btn-danger">Register</button>
 
