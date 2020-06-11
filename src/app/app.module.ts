@@ -18,12 +18,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoursesListComponent } from './components/courses/courses-list/courses-list.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material';
-import { RegisterComponent } from './pages/register/register.component';
+import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { WebDevelopmentComponent } from './pages/web-development/web-development.component';
-import { CourseComponent } from './pages/course/course.component';
-import { LoginComponent } from './pages/login/login.component';
+import { WebDevelopmentComponent } from './components/web-development/web-development.component';
+import { CourseComponent } from './components/course/course.component';
+import { LoginComponent } from './components/login/login.component';
 import {MdMenuModule} from 'md-menu/menu';
 
 ////////////////////////////////
