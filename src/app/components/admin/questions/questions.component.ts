@@ -3,22 +3,58 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
+interface Questions {
+  id: number;
+  title: string;
+  choice1: string;
+  choice2: string;
+  choice3: string;
 }
+const QUESTIONS: Questions[] = [
+  {
+    id: 1,
+    title:'What is HTML stands for?',
+    choice1:'hijkl,',
+    choice2:'hijkl,',
+    choice3:'hijkl,'
+  },
+  {
+    id: 2,
+    title:'sample questionfks ?',
+    choice1:'hijkl,',
+    choice2:'hijkl,',
+    choice3:'hijkl,'
+  },
+  {
+    id: 3,
+    title:'Wfgfdslm omes?',
+    choice1:'hijkl,',
+    choice2:'hijkl,',
+    choice3:'hijkl,'
+  },
+  {
+    id: 4,
+    title:'What is HTML stands for?',
+    choice1:'hijkl,',
+    choice2:'hijkl,',
+    choice3:'hijkl,'
+  },
+  {
+    id: 5,
+    title:'Whjao ojtlasa ?',
+    choice1:'hijkl,',
+    choice2:'hijkl,',
+    choice3:'hijkl,'
+  },
+  {
+    id: 6,
+    title:'What is HTML stands for?',
+    choice1:'hijkl,',
+    choice2:'hijkl,',
+    choice3:'hijkl,'
+  }
+];
 
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
 
 @Component({
   selector: 'app-questions',
@@ -27,18 +63,16 @@ const NAMES: string[] = [
 })
 export class QuestionsComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
-  dataSource: MatTableDataSource<UserData>;
+  displayedColumns: string[] = ['title', 'choice1', 'choice2', 'choice3','edit'];
+  dataSource: MatTableDataSource<Questions>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor() {
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+    this.dataSource = new MatTableDataSource(QUESTIONS);
   }
 
   ngOnInit() {
@@ -55,19 +89,4 @@ export class QuestionsComponent implements OnInit {
     }
   }
 }
-
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
-
-}
-
 

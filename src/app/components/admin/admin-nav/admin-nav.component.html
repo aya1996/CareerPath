@@ -40,8 +40,8 @@
                   <span class="bgCol-custom">Questions</span>
                 </ng-template>
                 <ng-template ngbPanelContent>
-                  <div><a> View </a></div>
-                  <div><a> Add </a></div>
+                  <div><a (click)="getClicked('QView')"> View </a></div>
+                  <div><a (click)="getClicked('QAdd')"> Add </a></div>
                 </ng-template>
               </ngb-panel>
           </ngb-accordion>
@@ -55,6 +55,7 @@
     <mat-sidenav-content>
       <div class="main-board">
         <app-admin-dashboard></app-admin-dashboard>
+        <app-questions *ngIf="clickedTab==='QView'"></app-questions>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>

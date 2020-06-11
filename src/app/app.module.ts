@@ -74,6 +74,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { AdminNavComponent } from './components/admin/admin-nav/admin-nav.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { QuestionsComponent } from './components/admin/questions/questions.component';
+import { QuestionComponent } from './components/admin/question/question.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -92,6 +93,7 @@ const routes: Routes =
     { path: 'profile/courses', component: CoursesComponent },
 
     { path: 'admin/dashboard', component: AdminNavComponent },
+    { path: 'admin/questions', component: QuestionsComponent },
 
     { path: 'courses-list', component: CoursesListComponent },
     { path: 'courses-modal', component: CourseModalComponent },
@@ -123,6 +125,7 @@ const routes: Routes =
     AdminNavComponent,
     AdminDashboardComponent,
     QuestionsComponent,
+    QuestionComponent,
 
 
   ],

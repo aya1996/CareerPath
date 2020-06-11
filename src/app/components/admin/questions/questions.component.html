@@ -1,40 +1,49 @@
-<mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia">
+<div style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
+  <mat-form-field>
+    <mat-label>Filter Questions</mat-label>
+    <input matInput (keyup)="applyFilter($event)" >
   </mat-form-field>
   
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort>
+  <div class="mat-elevation-z8" style="overflow: hidden;">
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" matSort > 
+    
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="main"> Question </th>
+          <td mat-cell *matCellDef="let row" class="main"> {{row.title}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="choice1">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Choice1 </th>
+          <td mat-cell *matCellDef="let row"> {{row.choice1}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="choice2">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Choice2 </th>
+          <td mat-cell *matCellDef="let row" > {{row.choice2}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="choice3">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Choice2 </th>
+          <td mat-cell *matCellDef="let row"> {{row.choice3}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef class="main">  </th>
+          <td mat-cell *matCellDef="let row" class="main"> 
+            <button class="btn btn-outline-warning">Edit</button> |
+            <button class="btn btn-outline-danger">Delete</button>
+          </td>
+        </ng-container>
   
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-      </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+      </table>
+    </div>
   
-      <!-- Progress Column -->
-      <ng-container matColumnDef="progress">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
-        <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
-      </ng-container>
-  
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-      </ng-container>
-  
-      <!-- Color Column -->
-      <ng-container matColumnDef="color">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Color </th>
-        <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td>
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-      </tr>
-    </table>
-  
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" fixed></mat-paginator>
   </div>
   
+</div>
