@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AdminNavComponent implements OnInit {
 
   clickedTab = '';
+  activeLink = '';
   constructor() { }
 
   ngOnInit() {
@@ -15,6 +16,7 @@ export class AdminNavComponent implements OnInit {
 
   getClicked(_clickedTab){
     this.clickedTab = _clickedTab;
+    this.activeLink = _clickedTab;
   }
 
 }

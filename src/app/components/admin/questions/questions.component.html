@@ -1,4 +1,17 @@
 <div style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
+  <h6>Select Course</h6>
+<mat-form-field>
+  <mat-label>Courses</mat-label>
+  <mat-select [formControl]="pokemonControl">
+    <mat-option>-- None --</mat-option>
+    <mat-optgroup *ngFor="let group of courseGroups" [label]="group.name" >
+      <mat-option *ngFor="let c of group.course" [value]="c.value">
+        {{c.viewValue}}
+      </mat-option>
+    </mat-optgroup>
+  </mat-select>
+</mat-form-field>
+  
   <mat-form-field>
     <mat-label>Filter Questions</mat-label>
     <input matInput (keyup)="applyFilter($event)" >

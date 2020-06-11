@@ -40,7 +40,7 @@
                   <span class="bgCol-custom">Questions</span>
                 </ng-template>
                 <ng-template ngbPanelContent>
-                  <div><a (click)="getClicked('QView')"> View </a></div>
+                  <div><a [ngClass]="{'active-link': activeLink === 'QView'}" (click)="getClicked('QView')"> View </a></div>
                   <div><a (click)="getClicked('QAdd')"> Add </a></div>
                 </ng-template>
               </ngb-panel>

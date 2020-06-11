@@ -36,5 +36,8 @@ a{
     line-height: 2;
 }
 a:hover{
-    color: red;
+    color: #E43F5A;
+}
+.active-link{
+    color: #E43F5A;
 }
