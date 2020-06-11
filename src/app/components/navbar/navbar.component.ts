@@ -1,4 +1,4 @@
-import { LoginComponent } from './../../pages/login/login.component';
+import { LoginComponent } from './../../components/login/login.component';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';

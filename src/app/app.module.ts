@@ -18,12 +18,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoursesListComponent } from './components/courses/courses-list/courses-list.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material';
-import { RegisterComponent } from './pages/register/register.component';
+import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { WebDevelopmentComponent } from './pages/web-development/web-development.component';
-import { CourseComponent } from './pages/course/course.component';
-import { LoginComponent } from './pages/login/login.component';
+import { WebDevelopmentComponent } from './components/web-development/web-development.component';
+import { CourseComponent } from './components/course/course.component';
+import { LoginComponent } from './components/login/login.component';
 import {MdMenuModule} from 'md-menu/menu';
 
 ////////////////////////////////
@@ -71,6 +71,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { AboutComponent } from './components/about/about.component';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { AdminNavComponent } from './components/admin/admin-nav/admin-nav.component';
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -87,6 +89,8 @@ const routes: Routes =
     { path: 'profile/dashboard', component: DashboardComponent },
 
     { path: 'profile/courses', component: CoursesComponent },
+
+    { path: 'admin/dashboard', component: AdminNavComponent },
 
     { path: 'courses-list', component: CoursesListComponent },
     { path: 'courses-modal', component: CourseModalComponent },
@@ -115,6 +119,8 @@ const routes: Routes =
     CoursesListComponent,
     AboutComponent,
     QuizComponent,
+    AdminNavComponent,
+    AdminDashboardComponent,
 
 
   ],

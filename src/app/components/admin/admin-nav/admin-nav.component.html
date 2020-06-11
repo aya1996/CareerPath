@@ -1,0 +1,63 @@
+<mat-sidenav-container class="container-nav" >
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="temp">
+      <div class="side-items">
+          <h4>Admin</h4>
+          <hr>
+        <h5>Dashboard</h5>
+        <hr>
+       <div>
+
+        <ngb-accordion [closeOthers]="true">
+            <ngb-panel id="static-1">
+                <ng-template ngbPanelTitle>
+                    <span class="bgCol-custom">Paths</span>
+                </ng-template>
+              <ng-template ngbPanelContent>
+                <div><a> View </a></div>
+                <div><a> Add </a></div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel id="static-2">
+              <ng-template ngbPanelTitle>
+                <span class="bgCol-custom">Courses</span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                <div><a> View </a></div>
+                <div><a> Add </a></div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel id="static-3">
+                <ng-template ngbPanelTitle>
+                  <span class="bgCol-custom">Users</span>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                  <div><a> View </a></div>
+                  <div><a> Add </a></div>
+                </ng-template>
+              </ngb-panel>
+              <ngb-panel id="static-4">
+                <ng-template ngbPanelTitle>
+                  <span class="bgCol-custom">Questions</span>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                  <div><a> View </a></div>
+                  <div><a> Add </a></div>
+                </ng-template>
+              </ngb-panel>
+          </ngb-accordion>
+       </div>
+        
+          
+      </div>
+      
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+        
+      <mat-checkbox [(ngModel)]="opened"> {{state}} </mat-checkbox>
+      <div class="main-board">
+        <app-admin-dashboard></app-admin-dashboard>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
