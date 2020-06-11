@@ -1,61 +1,118 @@
-<mat-sidenav-container class="container-nav" >
-    <mat-sidenav #sidenav mode="side" opened="opened" class="temp">
-      <div class="side-items">
-          <h4>Admin</h4>
-          <hr>
-        <h5>Dashboard</h5>
-        <hr>
-       <div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+          
+        <a class="nav-link" routerLink="/">
+          <mat-icon>home</mat-icon>Visit Site
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " (click)="isMenuCollapsed = true" mat-button [matMenuTriggerFor]="careers">
+          <mat-icon class="nav-link m-2" matBadge="15" matBadgeColor="warn">notifications</mat-icon>
+        </a>
+
+        <!-- Include text description of the icon's meaning for screen-readers -->
+        <mat-menu #careers="matMenu">
+          <ul>
+            <li class="dropdown-item">someone has exam</li>
+            <li class="dropdown-item">someone has exam</li>
+            <li class="dropdown-item">someone has exam</li>
+          </ul>
+        </mat-menu>
+      </li>
+    </ul>
+    <div class="dropdown dropdown-nav">
+      <a href="#" class="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+        <span class="dropdown-toggle">Admin name <img src="../../../../assets/images/user.png"></span> <span
+          class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item" routerLink="/profile">Profile</a>
+        </li>
+        <li class="dropdown-submenu">
+          <a class="dropdown-item" routerLink="/">Settings</a>
+        </li>
+        <hr />
+        <li class="dropdown-submenu">
+          <a class="dropdown-item" routerLink="/">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<mat-sidenav-container class="container-nav">
+  <mat-sidenav #sidenav mode="side" opened="opened" class="temp">
+    <div class="side-items">
+      <h4><mat-icon>control_camera</mat-icon>Career Path<mat-icon>control_camera</mat-icon> Admin Panel</h4>
+      <hr>
+
+
+      <div>
 
         <ngb-accordion [closeOthers]="true">
-            <ngb-panel id="static-1">
-                <ng-template ngbPanelTitle>
-                    <span class="bgCol-custom">Paths</span>
-                </ng-template>
-              <ng-template ngbPanelContent>
-                <div><a> View </a></div>
-                <div><a> Add </a></div>
-              </ng-template>
-            </ngb-panel>
-            <ngb-panel id="static-2">
-              <ng-template ngbPanelTitle>
-                <span class="bgCol-custom">Courses</span>
-              </ng-template>
-              <ng-template ngbPanelContent>
-                <div><a> View </a></div>
-                <div><a> Add </a></div>
-              </ng-template>
-            </ngb-panel>
-            <ngb-panel id="static-3">
-                <ng-template ngbPanelTitle>
-                  <span class="bgCol-custom">Users</span>
-                </ng-template>
-                <ng-template ngbPanelContent>
-                  <div><a> View </a></div>
-                  <div><a> Add </a></div>
-                </ng-template>
-              </ngb-panel>
-              <ngb-panel id="static-4">
-                <ng-template ngbPanelTitle>
-                  <span class="bgCol-custom">Questions</span>
-                </ng-template>
-                <ng-template ngbPanelContent>
-                  <div><a> View </a></div>
-                  <div><a> Add </a></div>
-                </ng-template>
-              </ngb-panel>
-          </ngb-accordion>
-       </div>
-        
-          
+          <ngb-panel id="static-0">
+            <ng-template ngbPanelTitle>
+              <a class="bgCol-custom " routerLink="/dashboard">
+                <mat-icon>dashboard</mat-icon> Dashboard
+              </a>
+            </ng-template>
+          </ngb-panel>
+          <ngb-panel id="static-1">
+            <ng-template ngbPanelTitle>
+              <span class="bgCol-custom dropdown-toggle">
+                <mat-icon>notes</mat-icon>Paths
+              </span>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              <div><a><mat-icon>pageview</mat-icon> View </a></div>
+              <div><a><mat-icon>note_add</mat-icon> Add </a></div>
+            </ng-template>
+          </ngb-panel>
+          <ngb-panel id="static-2">
+            <ng-template ngbPanelTitle>
+              <span class="bgCol-custom dropdown-toggle">
+                <mat-icon>description</mat-icon>Courses
+              </span>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              <div><a><mat-icon>pageview</mat-icon> View </a></div>
+              <div><a><mat-icon>note_add</mat-icon> Add </a></div>
+            </ng-template>
+          </ngb-panel>
+          <ngb-panel id="static-3">
+            <ng-template ngbPanelTitle>
+              <span class="bgCol-custom dropdown-toggle"><mat-icon>supervisor_account</mat-icon>Users</span>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              <div><a><mat-icon>pageview</mat-icon> View </a></div>
+              <div><a><mat-icon>note_add</mat-icon> Add </a></div>
+            </ng-template>
+          </ngb-panel>
+          <ngb-panel id="static-4">
+            <ng-template ngbPanelTitle>
+              <span class="bgCol-custom dropdown-toggle"><mat-icon>question_answer</mat-icon>Questions</span>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              <div><a><mat-icon>pageview</mat-icon> View </a></div>
+              <div><a><mat-icon>note_add</mat-icon> Add </a></div>
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
       </div>
-      
-    </mat-sidenav>
-  
-    <mat-sidenav-content>
-      <div class="main-board">
-        <app-admin-dashboard></app-admin-dashboard>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
+
+
+    </div>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="main-board">
+      <app-admin-dashboard></app-admin-dashboard>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

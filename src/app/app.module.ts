@@ -92,6 +92,7 @@ const routes: Routes =
     { path: 'profile/courses', component: CoursesComponent },
 
     { path: 'admin/dashboard', component: AdminNavComponent },
+    { path: 'dashboard', component: AdminDashboardComponent },
 
     { path: 'courses-list', component: CoursesListComponent },
     { path: 'courses-modal', component: CourseModalComponent },

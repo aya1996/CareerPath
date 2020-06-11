@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-nav.component.css']
 })
 export class AdminNavComponent implements OnInit {
-
+  public isMenuCollapsed = true;
   constructor() { }
 
   ngOnInit() {
