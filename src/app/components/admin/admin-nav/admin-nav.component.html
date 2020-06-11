@@ -1,5 +1,5 @@
 <mat-sidenav-container class="container-nav" >
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="temp">
+    <mat-sidenav #sidenav mode="side" opened="opened" class="temp">
       <div class="side-items">
           <h4>Admin</h4>
           <hr>
@@ -53,8 +53,6 @@
     </mat-sidenav>
   
     <mat-sidenav-content>
-        
-      <mat-checkbox [(ngModel)]="opened"> {{state}} </mat-checkbox>
       <div class="main-board">
         <app-admin-dashboard></app-admin-dashboard>
       </div>

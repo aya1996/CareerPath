@@ -12,15 +12,5 @@ export class AdminNavComponent implements OnInit {
   ngOnInit() {
   }
 
-  opened: boolean;
-  state = "open";
-
-  getState(){
-    if(this.opened === true)
-      this.state = "close";
-    else
-      this.state = "open";
-  }
-
 
 }
