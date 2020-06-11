@@ -1,4 +1,4 @@
-import { AuthService } from './../../shared/services/auth.service';
+import { RegisterService } from './../../shared/services/register.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   countries: any = [];
   registerForm: FormGroup;
   constructor(
-    private service: AuthService,
+    private service: RegisterService,
     private router: Router,
     private fb: FormBuilder
   ) { }

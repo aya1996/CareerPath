@@ -1,5 +1,6 @@
 table {
     width: 100%;
+    height: auto;
   }
   
   .mat-form-field {
@@ -8,5 +9,12 @@ table {
   }
   
   td, th {
-    width: 25%;
+    width: 15%;
   }
+  .table-container {
+    max-height: calc(100vh - 200px); 
+    overflow: auto;
+}
+.main{
+  width: 25%;
+}

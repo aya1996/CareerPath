@@ -7,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminNavComponent implements OnInit {
   public isMenuCollapsed = true;
+
+  clickedTab = '';
   constructor() { }
 
   ngOnInit() {
   }
 
+  getClicked(_clickedTab){
+    this.clickedTab = _clickedTab;
+  }
 
 }
