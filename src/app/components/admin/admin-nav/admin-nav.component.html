@@ -50,7 +50,7 @@
         <mat-icon>control_camera</mat-icon>Career Path<mat-icon>control_camera</mat-icon> Admin Panel
       </h4>
       <hr>
-      <ngb-accordion>
+      <ngb-accordion [closeOthers]="true">
         <ngb-panel id="static-0">
         <ng-template ngbPanelTitle>
           <a class="bgCol-custom " routerLink="/dashboard">
@@ -125,7 +125,7 @@
 
 <mat-sidenav-content>
   <div class="main-board">
-    <app-admin-dashboard></app-admin-dashboard>
+    <app-admin-dashboard *ngIf="clickedTab===''"></app-admin-dashboard>
     <app-questions *ngIf="clickedTab==='QView'"></app-questions>
     <app-users *ngIf="clickedTab==='UView'"></app-users>
   </div>
