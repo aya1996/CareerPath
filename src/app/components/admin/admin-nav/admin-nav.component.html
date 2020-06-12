@@ -2,7 +2,7 @@
   <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
-          
+
         <a class="nav-link" routerLink="/">
           <mat-icon>home</mat-icon>Visit Site
         </a>
@@ -43,78 +43,91 @@
 </nav>
 
 
-
-
 <mat-sidenav-container class="container-nav">
   <mat-sidenav #sidenav mode="side" opened="opened" class="temp">
     <div class="side-items">
-      <h4><mat-icon>control_camera</mat-icon>Career Path<mat-icon>control_camera</mat-icon> Admin Panel</h4>
+      <h4>
+        <mat-icon>control_camera</mat-icon>Career Path<mat-icon>control_camera</mat-icon> Admin Panel
+      </h4>
       <hr>
 
-
-      <div>
-
-        <ngb-accordion [closeOthers]="true">
-          <ngb-panel id="static-0">
-            <ng-template ngbPanelTitle>
-              <a class="bgCol-custom " routerLink="/dashboard">
-                <mat-icon>dashboard</mat-icon> Dashboard
-              </a>
-            </ng-template>
-          </ngb-panel>
-          <ngb-panel id="static-1">
-            <ng-template ngbPanelTitle>
-              <span class="bgCol-custom dropdown-toggle">
-                <mat-icon>notes</mat-icon>Paths
-              </span>
-            </ng-template>
-            <ng-template ngbPanelContent>
-              <div><a><mat-icon>pageview</mat-icon> View </a></div>
-              <div><a (click)="getClicked('PAdd')"><mat-icon>note_add</mat-icon> Add </a></div>
-            </ng-template>
-          </ngb-panel>
-          <ngb-panel id="static-2">
-            <ng-template ngbPanelTitle>
-              <span class="bgCol-custom dropdown-toggle">
-                <mat-icon>description</mat-icon>Courses
-              </span>
-            </ng-template>
-            <ng-template ngbPanelContent>
-              <div><a><mat-icon>pageview</mat-icon> View </a></div>
-              <div><a><mat-icon>note_add</mat-icon> Add </a></div>
-            </ng-template>
-          </ngb-panel>
-          <ngb-panel id="static-3">
-            <ng-template ngbPanelTitle>
-              <span class="bgCol-custom dropdown-toggle"><mat-icon>supervisor_account</mat-icon>Users</span>
-            </ng-template>
-            <ng-template ngbPanelContent>
-              <div><a><mat-icon>pageview</mat-icon> View </a></div>
-              <div><a><mat-icon>note_add</mat-icon> Add </a></div>
-            </ng-template>
-          </ngb-panel>
-          <ngb-panel id="static-4">
-            <ng-template ngbPanelTitle>
-              <span class="bgCol-custom dropdown-toggle"><mat-icon>question_answer</mat-icon>Questions</span>
-            </ng-template>
-            <ng-template ngbPanelContent>
-              <div><a (click)="getClicked('QView')"><mat-icon>pageview</mat-icon> View </a></div>
-              <div><a (click)="getClicked('QAdd')"><mat-icon>note_add</mat-icon> Add </a></div>
-            </ng-template>
-          </ngb-panel>
-        </ngb-accordion>
-      </div>
-
-
+      <ngb-accordion [closeOthers]="true">
+        <ngb-panel id="static-0">
+          <ng-template ngbPanelTitle>
+            <a class="bgCol-custom " routerLink="/dashboard">
+              <mat-icon>dashboard</mat-icon> Dashboard
+            </a>
+          </ng-template>
+        </ngb-panel>
+        <ngb-panel id="static-1">
+          <ng-template ngbPanelTitle>
+            <span class="bgCol-custom dropdown-toggle">
+              <mat-icon>notes</mat-icon>Paths
+            </span>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <div><a>
+                <mat-icon>pageview</mat-icon> View
+              </a></div>
+            <div><a (click)="getClicked('PAdd')">
+                <mat-icon>note_add</mat-icon> Add
+              </a></div>
+          </ng-template>
+        </ngb-panel>
+        <ngb-panel id="static-2">
+          <ng-template ngbPanelTitle>
+            <span class="bgCol-custom dropdown-toggle">
+              <mat-icon>description</mat-icon>Courses
+            </span>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <div><a>
+                <mat-icon>pageview</mat-icon> View
+              </a></div>
+            <div><a>
+                <mat-icon>note_add</mat-icon> Add
+              </a></div>
+          </ng-template>
+        </ngb-panel>
+        <ngb-panel id="static-3">
+          <ng-template ngbPanelTitle>
+            <span class="bgCol-custom dropdown-toggle">
+              <mat-icon>supervisor_account</mat-icon>Users
+            </span>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <div><a [ngClass]="{'active-link': activeLink === 'UView'}" (click)="getClicked('UView')">
+                <mat-icon>pageview</mat-icon> View
+              </a></div>
+            <div><a>
+                <mat-icon>note_add</mat-icon> Add
+              </a></div>
+          </ng-template>
+        </ngb-panel>
+        <ngb-panel id="static-4">
+          <ng-template ngbPanelTitle>
+            <span class="bgCol-custom dropdown-toggle">
+              <mat-icon>question_answer</mat-icon>Questions
+            </span>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <div><a [ngClass]="{'active-link': activeLink === 'QView'}" (click)="getClicked('QView')">
+                <mat-icon>pageview</mat-icon> View
+              </a></div>
+            <div><a (click)="getClicked('QAdd')">
+                <mat-icon>note_add</mat-icon> Add
+              </a></div>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
     </div>
-
   </mat-sidenav>
 
   <mat-sidenav-content>
     <div class="main-board">
-      <app-admin-dashboard></app-admin-dashboard>
+      <app-admin-dashboard *ngIf="clickedTab===''"></app-admin-dashboard>
       <app-questions *ngIf="clickedTab==='QView'"></app-questions>
-      <app-add-path *ngIf="clickedTab==='PAdd'"></app-add-path>
+      <app-users *ngIf="clickedTab==='UView'"></app-users>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

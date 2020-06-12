@@ -9,6 +9,7 @@ export class AdminNavComponent implements OnInit {
   public isMenuCollapsed = true;
 
   clickedTab = '';
+  activeLink = '';
   constructor() { }
 
   ngOnInit() {
@@ -16,6 +17,7 @@ export class AdminNavComponent implements OnInit {
 
   getClicked(_clickedTab){
     this.clickedTab = _clickedTab;
+    this.activeLink = _clickedTab;
   }
 
 }
