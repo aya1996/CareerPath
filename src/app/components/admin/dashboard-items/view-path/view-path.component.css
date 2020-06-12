@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+    height: auto;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 15%;
+  }
+  .table-container {
+    max-height: calc(100vh - 200px); 
+    overflow: auto;
+}
+.main{
+  width: 25%;
+  padding: 15px 0;
+}

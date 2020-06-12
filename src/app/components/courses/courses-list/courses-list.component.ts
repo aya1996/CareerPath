@@ -9,7 +9,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class CoursesListComponent implements OnInit {
 
-  careerTitle = "FrontEnd Developer";
+  careerTitle = "FrontEnd ";
   starName = "star-o";
 
   constructor(private modalService: NgbModal, private _snackBar: MatSnackBar) { }
