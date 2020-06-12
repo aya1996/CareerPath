@@ -1,41 +1,23 @@
-
-<div class="alert-primary text-center"><h1>Add Career Path</h1></div>
-<mat-card-content >
-    <div class="my-form mat-elevation-z8">
+<mat-card-content>
+  <div class="my-form mat-elevation-z8" style="margin-top: 30px;">
+   <h3 class="title-style">Add Career Path</h3>
     <form>
-       <mat-form-field class="full-width">
-              <mat-label>First Name</mat-label>
-              <input  matInput  placeholder="First name"  name="fname"  required>
-           </mat-form-field>
-           <mat-form-field class="full-width">
-              <mat-label>Last Name</mat-label>
-              <input  matInput  placeholder="Last Name" name="lname"  required>
-           </mat-form-field>
-           <mat-form-field class="full-width">
-              <mat-label>Address</mat-label>
-              <input  matInput  placeholder="Address" name="address"  required>
-           </mat-form-field>
-           <mat-form-field class="full-width">
-              <mat-label>Email</mat-label>
-              <input  matInput  placeholder="Email" name="email">
-           </mat-form-field>
-           <mat-form-field class="full-width">
-              <mat-label>Description</mat-label>
-              <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-           </mat-form-field>
-           <mat-form-field class="full-width">
-            <mat-label>Select an option</mat-label>
-            <mat-select >
-              <mat-option>None</mat-option>
-              <mat-option value="option1">Option 1</mat-option>
-              <mat-option value="option2">Option 2</mat-option>
-              <mat-option value="option3">Option 3</mat-option>
-            </mat-select>
-          </mat-form-field><br>
-           <mat-card-actions>
-            <button mat-raised-button color="primary">ADD</button>
-          </mat-card-actions>
+      <mat-form-field class="full-width">
+        <mat-label>Track</mat-label>
+        <input matInput placeholder="Track Name" name="track" required />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Path</mat-label>
+        <input matInput placeholder="Path Name" name="path" required />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput placeholder="Ex. Front End is focus on UI ..."></textarea>
+      </mat-form-field>
+      <br />
+      <mat-card-actions>
+        <button mat-raised-button color="primary">ADD</button>
+      </mat-card-actions>
     </form>
-</div>
-  </mat-card-content>
- 
+  </div>
+</mat-card-content>
