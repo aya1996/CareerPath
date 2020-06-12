@@ -75,6 +75,7 @@ import { AdminNavComponent } from './components/admin/admin-nav/admin-nav.compon
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { QuestionsComponent } from './components/admin/questions/questions.component';
 import { QuestionComponent } from './components/admin/question/question.component';
+import { AddPathComponent } from './components/admin/add-path/add-path.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -127,6 +128,7 @@ const routes: Routes =
     AdminDashboardComponent,
     QuestionsComponent,
     QuestionComponent,
+    AddPathComponent,
 
 
   ],

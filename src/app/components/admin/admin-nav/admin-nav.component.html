@@ -70,7 +70,7 @@
             </ng-template>
             <ng-template ngbPanelContent>
               <div><a><mat-icon>pageview</mat-icon> View </a></div>
-              <div><a><mat-icon>note_add</mat-icon> Add </a></div>
+              <div><a (click)="getClicked('PAdd')"><mat-icon>note_add</mat-icon> Add </a></div>
             </ng-template>
           </ngb-panel>
           <ngb-panel id="static-2">
@@ -114,6 +114,7 @@
     <div class="main-board">
       <app-admin-dashboard></app-admin-dashboard>
       <app-questions *ngIf="clickedTab==='QView'"></app-questions>
+      <app-add-path *ngIf="clickedTab==='PAdd'"></app-add-path>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
