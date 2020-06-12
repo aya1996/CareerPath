@@ -28,10 +28,10 @@
             </ngb-panel>
             <ngb-panel id="static-3">
                 <ng-template ngbPanelTitle>
-                  <span class="bgCol-custom">Users</span>
+                  <span>Users</span>
                 </ng-template>
                 <ng-template ngbPanelContent>
-                  <div><a> View </a></div>
+                  <div><a [ngClass]="{'active-link': activeLink === 'UView'}" (click)="getClicked('UView')"> View </a></div>
                   <div><a> Add </a></div>
                 </ng-template>
               </ngb-panel>
@@ -56,6 +56,7 @@
       <div class="main-board">
         <app-admin-dashboard></app-admin-dashboard>
         <app-questions *ngIf="clickedTab==='QView'"></app-questions>
+        <app-users *ngIf="clickedTab==='UView'"></app-users>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
