@@ -55,6 +55,9 @@ img{
 a:hover{
     color: #E43F5A;
 }
+span:hover{
+    color: rgb(141, 141, 141);
+}
 .active-link{
     color: #E43F5A;
 }
