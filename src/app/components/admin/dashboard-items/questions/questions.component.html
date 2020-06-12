@@ -2,7 +2,7 @@
   <h6>Select Course</h6>
 <mat-form-field>
   <mat-label>Courses</mat-label>
-  <mat-select [formControl]="pokemonControl">
+  <mat-select [formControl]="QControl">
     <mat-option>-- None --</mat-option>
     <mat-optgroup *ngFor="let group of courseGroups" [label]="group.name" >
       <mat-option *ngFor="let c of group.course" [value]="c.value">
@@ -27,17 +27,17 @@
         </ng-container>
     
         <ng-container matColumnDef="choice1">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Choice1 </th>
+          <th mat-header-cell *matHeaderCellDef> Choice1 </th>
           <td mat-cell *matCellDef="let row"> {{row.choice1}} </td>
         </ng-container>
     
         <ng-container matColumnDef="choice2">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Choice2 </th>
+          <th mat-header-cell *matHeaderCellDef> Choice2 </th>
           <td mat-cell *matCellDef="let row" > {{row.choice2}} </td>
         </ng-container>
 
         <ng-container matColumnDef="choice3">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Choice2 </th>
+          <th mat-header-cell *matHeaderCellDef> Choice2 </th>
           <td mat-cell *matCellDef="let row"> {{row.choice3}} </td>
         </ng-container>
     

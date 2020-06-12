@@ -75,7 +75,7 @@ interface CourseGroup {
 })
 export class QuestionsComponent implements OnInit {
 
-  pokemonControl = new FormControl();
+  QControl = new FormControl();
   courseGroups: CourseGroup[] = [
     {
       name: 'Frontend',
