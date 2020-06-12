@@ -73,10 +73,14 @@ import { AboutComponent } from './components/about/about.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { AdminNavComponent } from './components/admin/admin-nav/admin-nav.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
-import { QuestionsComponent } from './components/admin/questions/questions.component';
-import { QuestionComponent } from './components/admin/question/question.component';
-import { AddPathComponent } from './components/admin/add-path/add-path.component';
-import { UsersComponent } from './components/admin/users/users.component';
+import { QuestionsComponent } from './components/admin/dashboard-items/questions/questions.component';
+import { QuestionComponent } from './components/admin/dashboard-items/question/question.component';
+import { AddPathComponent } from './components/admin/dashboard-items/add-path/add-path.component';
+import { UsersComponent } from './components/admin/dashboard-items/users/users.component';
+import { ViewPathComponent } from './components/admin/dashboard-items/view-path/view-path.component';
+import { ViewCoursesComponent } from './components/admin/dashboard-items/view-courses/view-courses.component';
+import { AddCoursesComponent } from './components/admin/dashboard-items/add-courses/add-courses.component';
+import { AddQuestionsComponent } from './components/admin/dashboard-items/add-questions/add-questions.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -131,6 +135,10 @@ const routes: Routes =
     QuestionComponent,
     AddPathComponent,
     UsersComponent,
+    ViewPathComponent,
+    ViewCoursesComponent,
+    AddCoursesComponent,
+    AddQuestionsComponent,
 
 
   ],

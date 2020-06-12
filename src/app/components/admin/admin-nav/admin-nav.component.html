@@ -50,7 +50,7 @@
         <mat-icon>control_camera</mat-icon>Career Path<mat-icon>control_camera</mat-icon> Admin Panel
       </h4>
       <hr>
-      <a class="bgCol-custom " (click)="getClicked('')">
+      <a class="bgCol-custom " [ngClass]="{'active-link': activeLink === ''}"  (click)="getClicked('')">
         <mat-icon>dashboard</mat-icon> Dashboard
       </a>
       <ngb-accordion [closeOthers]="true">
@@ -62,10 +62,10 @@
             </span>
           </ng-template>
           <ng-template ngbPanelContent>
-            <div><a>
+            <div><a [ngClass]="{'active-link': activeLink === 'PView'}" (click)="getClicked('PView')">
                 <mat-icon>pageview</mat-icon> View
               </a></div>
-            <div><a (click)="getClicked('PAdd')">
+            <div><a [ngClass]="{'active-link': activeLink === 'PAdd'}" (click)="getClicked('PAdd')">
                 <mat-icon>note_add</mat-icon> Add
               </a></div>
           </ng-template>
@@ -77,10 +77,10 @@
             </span>
           </ng-template>
           <ng-template ngbPanelContent>
-            <div><a>
+            <div><a [ngClass]="{'active-link': activeLink === 'CView'}" (click)="getClicked('CView')">
                 <mat-icon>pageview</mat-icon> View
               </a></div>
-            <div><a>
+            <div><a [ngClass]="{'active-link': activeLink === 'CAdd'}" (click)="getClicked('CAdd')">
                 <mat-icon>note_add</mat-icon> Add
               </a></div>
           </ng-template>
@@ -95,9 +95,9 @@
             <div><a [ngClass]="{'active-link': activeLink === 'UView'}" (click)="getClicked('UView')">
                 <mat-icon>pageview</mat-icon> View
               </a></div>
-            <div><a>
+            <!-- <div><a>
                 <mat-icon>note_add</mat-icon> Add
-              </a></div>
+              </a></div> -->
           </ng-template>
         </ngb-panel>
         <ngb-panel id="static-4">
@@ -110,7 +110,7 @@
             <div><a [ngClass]="{'active-link': activeLink === 'QView'}" (click)="getClicked('QView')">
                 <mat-icon>pageview</mat-icon> View
               </a></div>
-            <div><a (click)="getClicked('QAdd')">
+            <div><a [ngClass]="{'active-link': activeLink === 'QAdd'}" (click)="getClicked('QAdd')">
                 <mat-icon>note_add</mat-icon> Add
               </a></div>
           </ng-template>
@@ -122,9 +122,13 @@
   <mat-sidenav-content>
     <div class="main-board">
       <app-admin-dashboard *ngIf="clickedTab===''"></app-admin-dashboard>
-      <app-questions *ngIf="clickedTab==='QView'"></app-questions>
+      <app-view-path *ngIf="clickedTab==='PView'"></app-view-path>
       <app-add-path *ngIf="clickedTab==='PAdd'"></app-add-path>
+      <app-view-courses *ngIf="clickedTab==='CView'"></app-view-courses>
+      <app-add-courses *ngIf="clickedTab==='CAdd'"></app-add-courses>
       <app-users *ngIf="clickedTab==='UView'"></app-users>
+      <app-add-questions *ngIf="clickedTab==='QAdd'"></app-add-questions>
+      <app-questions *ngIf="clickedTab==='QView'"></app-questions>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

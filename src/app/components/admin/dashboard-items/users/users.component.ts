@@ -87,8 +87,49 @@ const EXAMS: Exam[] = [
     score: 15,
     time: 20,
     examDate: '15/5/2020'
+  },
+  {
+    course: 'Javascript',
+    score: 15,
+    time: 20,
+    examDate: '15/5/2020'
+  },
+  {
+    course: 'Javascript',
+    score: 15,
+    time: 20,
+    examDate: '15/5/2020'
+  },
+  {
+    course: 'Javascript',
+    score: 15,
+    time: 20,
+    examDate: '15/5/2020'
+  },
+  {
+    course: 'Javascript',
+    score: 15,
+    time: 20,
+    examDate: '15/5/2020'
+  },
+  {
+    course: 'Javascript',
+    score: 15,
+    time: 20,
+    examDate: '15/5/2020'
+  },
+  {
+    course: 'Javascript',
+    score: 15,
+    time: 20,
+    examDate: '15/5/2020'
+  },
+  {
+    course: 'Javascript',
+    score: 15,
+    time: 20,
+    examDate: '15/5/2020'
   }
-  
   
 ];
 
