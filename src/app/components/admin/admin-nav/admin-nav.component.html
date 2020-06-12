@@ -65,8 +65,11 @@
             <div><a [ngClass]="{'active-link': activeLink === 'PView'}" (click)="getClicked('PView')">
                 <mat-icon>pageview</mat-icon> View
               </a></div>
-            <div><a [ngClass]="{'active-link': activeLink === 'PAdd'}" (click)="getClicked('PAdd')">
-                <mat-icon>note_add</mat-icon> Add
+              <div><a [ngClass]="{'active-link': activeLink === 'TAdd'}" (click)="getClicked('TAdd')">
+                <mat-icon>note_add</mat-icon> Add Track
+              </a></div>
+              <div><a [ngClass]="{'active-link': activeLink === 'PAdd'}" (click)="getClicked('PAdd')">
+                <mat-icon>note_add</mat-icon> Add Path
               </a></div>
           </ng-template>
         </ngb-panel>
@@ -124,6 +127,7 @@
       <app-admin-dashboard *ngIf="clickedTab===''"></app-admin-dashboard>
       <app-view-path *ngIf="clickedTab==='PView'"></app-view-path>
       <app-add-path *ngIf="clickedTab==='PAdd'"></app-add-path>
+      <app-add-track *ngIf="clickedTab==='TAdd'"></app-add-track>
       <app-view-courses *ngIf="clickedTab==='CView'"></app-view-courses>
       <app-add-courses *ngIf="clickedTab==='CAdd'"></app-add-courses>
       <app-users *ngIf="clickedTab==='UView'"></app-users>

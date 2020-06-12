@@ -1,10 +1,14 @@
 <mat-card-content>
   <div class="my-form mat-elevation-z8" style="margin-top: 30px;">
-   <h3 class="title-style">Add Career Path</h3>
+   <h3 class="title-style">Add A Career Path</h3>
     <form>
       <mat-form-field class="full-width">
-        <mat-label>Track</mat-label>
-        <input matInput placeholder="Track Name" name="track" required />
+        <mat-label>Select Track</mat-label>
+        <mat-select>
+          <mat-option value="option1">Web Development</mat-option>
+          <mat-option value="option2">Mobile Development</mat-option>
+          <mat-option value="option3">Data Science</mat-option>
+        </mat-select>
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Path</mat-label>

@@ -81,6 +81,11 @@ import { ViewPathComponent } from './components/admin/dashboard-items/view-path/
 import { ViewCoursesComponent } from './components/admin/dashboard-items/view-courses/view-courses.component';
 import { AddCoursesComponent } from './components/admin/dashboard-items/add-courses/add-courses.component';
 import { AddQuestionsComponent } from './components/admin/dashboard-items/add-questions/add-questions.component';
+import { PieChartComponent } from './components/admin/admin-dashboard/pie-chart/pie-chart.component';
+import { BarChartComponent } from './components/admin/admin-dashboard/bar-chart/bar-chart.component';
+import { BarChartFailSuccessComponent } from './components/admin/admin-dashboard/bar-chart-fail-success/bar-chart-fail-success.component';
+import { LineChartComponent } from './components/admin/admin-dashboard/line-chart/line-chart.component';
+import { AddTrackComponent } from './components/admin/dashboard-items/add-track/add-track.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -139,6 +144,11 @@ const routes: Routes =
     ViewCoursesComponent,
     AddCoursesComponent,
     AddQuestionsComponent,
+    PieChartComponent,
+    BarChartComponent,
+    BarChartFailSuccessComponent,
+    LineChartComponent,
+    AddTrackComponent,
 
 
   ],
