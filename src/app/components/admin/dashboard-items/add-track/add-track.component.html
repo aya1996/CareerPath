@@ -1,18 +1,18 @@
 <mat-card-content>
     <div class="my-form mat-elevation-z8" style="margin-top: 30px;">
      <h3 class="title-style">Add A Track</h3>
-      <form>
+      <form #f="ngForm" (ngSubmit)="saveData(f.value)">
         <mat-form-field class="full-width">
           <mat-label>Track</mat-label>
-          <input matInput placeholder="Add Track Name" name="path" required />
+          <input matInput placeholder="Add Track Name" ngModel #path="ngModel" name="path" required />
         </mat-form-field>
         <mat-form-field class="full-width">
           <mat-label>Description</mat-label>
-          <textarea matInput placeholder="Ex. Web Development ..."></textarea>
+          <textarea matInput placeholder="Ex. Web Development ..." required ngModel #desc="ngModel" name="desc"></textarea>
         </mat-form-field>
         <br />
         <mat-card-actions>
-          <button mat-raised-button color="primary">ADD</button>
+          <button type="submit" mat-raised-button color="primary">ADD</button>
         </mat-card-actions>
       </form>
     </div>
