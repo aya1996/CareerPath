@@ -1,19 +1,17 @@
 <app-navbar></app-navbar>
 <div>
-    <div class="username">
-        <p>{{ username }}</p>
-    </div>
+    
     <div class="profile-items">
         <ul>
             <li>
-                <a (click)="getValue('courses')">Courses</a>
+                <a [ngClass]="{'active-link': activeLink === 'courses'}" (click)="getValue('courses')">Courses</a>
             </li>
             <li>
-                <a (click)="getValue('exams')">Exams</a>
+                <a [ngClass]="{'active-link': activeLink === 'exams'}" (click)="getValue('exams')">Exams</a>
                 <!-- <a [routerLink]="[ '/' ,{ outlet: { 'profileItems': ['dashboard'] } }]">Exams</a> -->
             </li>
             <li>
-                <a class="active" routerLink="/profile" (click)="getValue('dashboard')">Dashboard</a>
+                <a [ngClass]="{'active-link': activeLink === ''}" routerLink="/profile" (click)="getValue('dashboard')">Dashboard</a>
             </li>
         </ul>
     </div>

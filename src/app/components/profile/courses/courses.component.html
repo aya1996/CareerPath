@@ -1,21 +1,131 @@
 <div class="container-fluid temp">
     <div class="row main">
-        <div class="col-4 courses-border">
+        <div class="col-md-12">
             <h3>Wishlisted Courses</h3>
-            <h5 (click)="openModal(wishlist, 'JQuery')">JQuery</h5>
-            <h5 (click)="openModal(wishlist, 'Javascript')">Javascript</h5>
+            <div class="col-md-4 " style="float:left">
+              <div class="card mb-2 bg-danger">
+                 <!-- <img class="card-img-top"
+                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+                 <div class="card-body">
+                   <h4 class="card-title">JQuery</h4>
+                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                     card's content.</p>
+                   <a (click)="openModal(wishlist, 'JQuery')" class="btn btn-dark">View Datails</a>
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-4" style="float:left">
+              <div class="card mb-2 bg-danger">
+                 <!-- <img class="card-img-top"
+                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+                 <div class="card-body">
+                   <h4 class="card-title">Javascript</h4>
+                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                     card's content.</p>
+                   <a (click)="openModal(ongoing, 'Javascript')" class="btn btn-dark">View Details</a>
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-4" style="float:left">
+              <div class="card mb-2 bg-danger">
+                 <!-- <img class="card-img-top"
+                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+                 <div class="card-body">
+                   <h4 class="card-title">Javascript</h4>
+                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                     card's content.</p>
+                   <a (click)="openModal(ongoing, 'Javascript')" class="btn btn-dark">View Details</a>
+                 </div>
+               </div>
+             </div>
+          
         </div>
-        <div class="col-4 courses-border">
+       
+        <div class="col-12 ">
+          <hr class="courses-border">
             <h3>Ongoing Courses</h3>
-            <h5 (click)="openModal(ongoing, 'JQuery')">JQuery</h5>
-            <h5 (click)="openModal(ongoing, 'Javascript')">Javascript</h5>
+            <div class="col-md-4 " style="float:left">
+              <div class="card mb-2 bg-danger">
+                 <!-- <img class="card-img-top"
+                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+                 <div class="card-body">
+                   <h4 class="card-title">JQuery</h4>
+                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                     card's content.</p>
+                   <a (click)="openModal(wishlist, 'JQuery')" class="btn btn-dark">View Datails</a>
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-4" style="float:left">
+              <div class="card mb-2 bg-danger">
+                 <!-- <img class="card-img-top"
+                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+                 <div class="card-body">
+                   <h4 class="card-title">Javascript</h4>
+                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                     card's content.</p>
+                   <a (click)="openModal(ongoing, 'Javascript')" class="btn btn-dark">View Details</a>
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-4" style="float:left">
+              <div class="card mb-2 bg-danger">
+                 <!-- <img class="card-img-top"
+                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+                 <div class="card-body">
+                   <h4 class="card-title">Javascript</h4>
+                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                     card's content.</p>
+                   <a (click)="openModal(ongoing, 'Javascript')" class="btn btn-dark">View Details</a>
+                 </div>
+               </div>
+             </div>
+             <hr>
         </div>
-        <div class="col-4 completed">
+       
+        <div class="col-12 completed">
+          <hr class="courses-border">
             <h3>Completed Courses</h3>
-            <h5>JQuery</h5>
-            <h5>Javascript</h5>
+            <div class="col-md-4 " style="float:left">
+              <div class="card mb-2 bg-danger">
+                 <!-- <img class="card-img-top"
+                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+                 <div class="card-body">
+                   <h4 class="card-title">JQuery</h4>
+                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                     card's content.</p>
+                   <a (click)="openModal(wishlist, 'JQuery')" class="btn btn-dark">View Datails</a>
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-4" style="float:left">
+              <div class="card mb-2 bg-danger">
+                 <!-- <img class="card-img-top"
+                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+                 <div class="card-body">
+                   <h4 class="card-title">Javascript</h4>
+                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                     card's content.</p>
+                   <a (click)="openModal(ongoing, 'Javascript')" class="btn btn-dark">View Details</a>
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-4" style="float:left">
+              <div class="card mb-2 bg-danger">
+                 <!-- <img class="card-img-top"
+                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+                 <div class="card-body">
+                   <h4 class="card-title">Javascript</h4>
+                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                     card's content.</p>
+                   <a (click)="openModal(ongoing, 'Javascript')" class="btn btn-dark">View Details</a>
+                 </div>
+               </div>
+             </div>
         </div>
     </div>
+    
+
 </div>
 
 <ng-template #wishlist let-modal>
@@ -60,6 +170,7 @@
             <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Take Shortcut</button>
             <button type="button" class="btn btn-custom">Finish Course</button>
           </div>
+
     </div>
 </ng-template>
 <app-footer></app-footer>

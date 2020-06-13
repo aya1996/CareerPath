@@ -11,7 +11,7 @@ export class DoughnuComponent{
 
   public doughnutChartLabels: Label[] = ['Total Courses','Completed', 'UnCompleted'];
   public doughnutChartData: MultiDataSet = [
-    [0, 15, 20],
+    [2, 15, 20],
   ];
   public doughnutChartType: ChartType = 'doughnut';
 

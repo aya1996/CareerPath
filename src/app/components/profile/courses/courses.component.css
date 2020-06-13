@@ -1,9 +1,9 @@
 .temp{
-    height: 500px;
-    background-color: #0D0F12;
+    /* height: 500px; */
+    background-color: #161616;
 }
 .main{
-    background-color: #0D0F12;
+    background-color: #161616;
     color: #ffffff;
     padding: 1em 2em;
 }
@@ -17,13 +17,16 @@ div h5{
     cursor: pointer;
 }
 .courses-border{
-    border-right: 2px solid #222222;
+    border: 2px solid #222222;
 }
-.completed h5{
+.completed h4{
     text-decoration: line-through;
 }
 h3{
-    color: #e43f5a;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .dark-modal {
@@ -33,4 +36,7 @@ h3{
   .dark-modal .btn-custom {
     color: white;
     background-color: #E43F5A;
+  }
+  hr{
+      color: gray;
   }

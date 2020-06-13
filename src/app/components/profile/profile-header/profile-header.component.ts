@@ -7,14 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileHeaderComponent implements OnInit {
 
-  username = "Kholoud Essam";
+ 
   clickedTab = '';
-
+  activeLink = '';
   constructor() {
 } 
 
 getValue(x) {
   this.clickedTab = x;
+  this.activeLink = x;
 }
   ngOnInit() {
   }

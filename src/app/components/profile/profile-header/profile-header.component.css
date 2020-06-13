@@ -1,22 +1,12 @@
 *{
     outline: none;
 }
-.username{
-    background-color: #181818;
-    width: 100%;
-    height: 5rem;
-    padding: 1.5rem;
-}
-.username p{
-    color: #fff;
-    margin-left: 2.5rem;
-    font-size: 1.5em;
-}
+
 .profile-items ul{
     list-style: none;
     display: flex;
     flex-direction: row-reverse;
-    background-color: #181818;
+    background-color: #222222;
     color: #fff;
     border-top: 3px solid #313539;
     border-bottom: 3px solid #313539;
@@ -34,8 +24,9 @@
 .profile-items ul li a:hover{
     color: #E43F5A;
 }
-.profile-items ul li a:active{
-    color: #E43F5A;
+.active-link{
+    color: #E43F5A !important;
+    border-bottom: 1px solid #E43F5A ;
 }
 *{
     margin-bottom: 0;
