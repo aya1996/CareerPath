@@ -35,6 +35,7 @@
     "md-menu": "0.0.1-alpha.1",
     "mdbootstrap": "^4.19.0",
     "ng2-charts": "^2.3.2",
+    "ngx-countdown": "^9.0.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

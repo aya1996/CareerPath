@@ -87,6 +87,7 @@ import { BarChartFailSuccessComponent } from './components/admin/admin-dashboard
 import { LineChartComponent } from './components/admin/admin-dashboard/line-chart/line-chart.component';
 import { AddTrackComponent } from './components/admin/dashboard-items/add-track/add-track.component';
 
+import { CountdownModule } from 'ngx-countdown';
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
 
@@ -208,7 +209,7 @@ const routes: Routes =
     MatTreeModule,
     PortalModule,
     ScrollingModule,
-  
+    CountdownModule
 
   ],
   providers: [],
