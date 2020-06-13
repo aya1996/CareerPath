@@ -11,7 +11,7 @@
                 <!-- <a [routerLink]="[ '/' ,{ outlet: { 'profileItems': ['dashboard'] } }]">Exams</a> -->
             </li>
             <li>
-                <a [ngClass]="{'active-link': activeLink === ''}" routerLink="/profile" (click)="getValue('dashboard')">Dashboard</a>
+                <a [ngClass]="{'active-link': activeLink === '' || activeLink === 'dashboard'}" routerLink="/profile" (click)="getValue('dashboard')">Dashboard</a>
             </li>
         </ul>
     </div>

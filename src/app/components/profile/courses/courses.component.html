@@ -22,7 +22,7 @@
                    <h4 class="card-title">Javascript</h4>
                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                      card's content.</p>
-                   <a (click)="openModal(ongoing, 'Javascript')" class="btn btn-dark">View Details</a>
+                   <a (click)="openModal(wishlist, 'Javascript')" class="btn btn-dark">View Details</a>
                  </div>
                </div>
              </div>
@@ -34,7 +34,7 @@
                    <h4 class="card-title">Javascript</h4>
                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                      card's content.</p>
-                   <a (click)="openModal(ongoing, 'Javascript')" class="btn btn-dark">View Details</a>
+                   <a (click)="openModal(wishlist, 'Javascript')" class="btn btn-dark">View Details</a>
                  </div>
                </div>
              </div>
@@ -52,7 +52,7 @@
                    <h4 class="card-title">JQuery</h4>
                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                      card's content.</p>
-                   <a (click)="openModal(wishlist, 'JQuery')" class="btn btn-dark">View Datails</a>
+                   <a (click)="openModal(ongoing, 'JQuery')" class="btn btn-dark">View Datails</a>
                  </div>
                </div>
              </div>
@@ -94,7 +94,7 @@
                    <h4 class="card-title">JQuery</h4>
                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                      card's content.</p>
-                   <a (click)="openModal(wishlist, 'JQuery')" class="btn btn-dark">View Datails</a>
+                   <a (click)="openModal(completed, 'JQuery')" class="btn btn-dark">View Datails</a>
                  </div>
                </div>
              </div>
@@ -106,7 +106,7 @@
                    <h4 class="card-title">Javascript</h4>
                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                      card's content.</p>
-                   <a (click)="openModal(ongoing, 'Javascript')" class="btn btn-dark">View Details</a>
+                   <a (click)="openModal(completed, 'Javascript')" class="btn btn-dark">View Details</a>
                  </div>
                </div>
              </div>
@@ -118,7 +118,7 @@
                    <h4 class="card-title">Javascript</h4>
                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                      card's content.</p>
-                   <a (click)="openModal(ongoing, 'Javascript')" class="btn btn-dark">View Details</a>
+                   <a (click)="openModal(completed, 'Javascript')" class="btn btn-dark">View Details</a>
                  </div>
                </div>
              </div>
@@ -172,5 +172,29 @@
           </div>
 
     </div>
+</ng-template>
+
+<ng-template #completed let-modal>
+  <div class="dark-modal">
+      <div class="modal-header">
+          <div class="head-right col-6">
+              <h4 class="modal-title"> {{ courseTitle}} </h4>
+          </div>
+          <div class="head-left col-6">
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <p> You have successfully completed this coures. </p>
+          <p> Exam date : 15/5/2020 </p>
+          <p> Score : 25 </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-custom" (click)="modal.close('Close click')">Close</button>
+        </div>
+
+  </div>
 </ng-template>
 <app-footer></app-footer>
