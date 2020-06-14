@@ -18,24 +18,24 @@
       <div class="table-container">
         <table mat-table [dataSource]="dataSource" matSort > 
       
-          <ng-container matColumnDef="title">
+          <ng-container matColumnDef="CourseName">
             <th mat-header-cell *matHeaderCellDef > Title </th>
-            <td mat-cell *matCellDef="let row"> {{row.title}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.CourseName}} </td>
           </ng-container>
       
-          <ng-container matColumnDef="link">
+          <ng-container matColumnDef="CourseContent">
             <th mat-header-cell *matHeaderCellDef> Course Link </th>
-            <td mat-cell *matCellDef="let row"> {{row.link}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.CourseContent}} </td>
           </ng-container>
       
           <ng-container matColumnDef="description">
             <th mat-header-cell *matHeaderCellDef class="main"> Description </th>
-            <td mat-cell *matCellDef="let row" class="main" style="padding-top: 10px; padding-bottom: 10px;"> {{row.description}} </td>
+            <td mat-cell *matCellDef="let row" class="main" style="padding-top: 10px; padding-bottom: 10px;"> {{row.Description}} </td>
           </ng-container>
   
           <ng-container matColumnDef="duration">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Duration </th>
-            <td mat-cell *matCellDef="let row"> {{row.duration}} Days</td>
+            <td mat-cell *matCellDef="let row"> {{row.Duration}} Days</td>
           </ng-container>
 
           <ng-container matColumnDef="numOfUsers">
@@ -61,7 +61,7 @@
         </table>
       </div>
     
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" fixed></mat-paginator>
+      <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" fixed></mat-paginator> -->
     </div>
     
   </div>
