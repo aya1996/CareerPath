@@ -10,7 +10,7 @@ export class CareerService {
 
   constructor(private _http:HttpClient) { }
 
-  apiUrl = "https://careerpathweb.azurewebsites.net/api/career";
+  apiUrl = "http://localhost:4000/api/career";
 
   getCareer(){
     return this._http.get<career[]>(this.apiUrl);
