@@ -1,26 +1,33 @@
 <mat-card-content>
   <div class="my-form mat-elevation-z8" style="margin-top: 30px;">
    <h3 class="title-style">Add A Career Path</h3>
-    <form>
+    <form #f="ngForm" (ngSubmit)="saveData(f.value)">
       <mat-form-field class="full-width">
         <mat-label>Select Track</mat-label>
         <mat-select>
-          <mat-option value="option1">Web Development</mat-option>
-          <mat-option value="option2">Mobile Development</mat-option>
-          <mat-option value="option3">Data Science</mat-option>
+          <mat-option *ngFor="let c of careers" 
+          [value]="c.careerId"
+          (click)="getSelected(c.careerId)"
+          >
+            {{c.careerName}}
+          </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Path</mat-label>
-        <input matInput placeholder="Path Name" name="path" required />
+        <input matInput placeholder="Path Name" name="path" required ngModel #path="ngModel" name="path"/>
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Description</mat-label>
-        <textarea matInput placeholder="Ex. Front End is focus on UI ..."></textarea>
+        <textarea matInput placeholder="Ex. Front End is focus on UI ..." required
+        ngModel #desc="ngModel" name="desc"></textarea>
       </mat-form-field>
       <br />
       <mat-card-actions>
-        <button mat-raised-button color="primary">ADD</button>
+        <button type="submit" mat-raised-button 
+        color="primary" 
+        [disabled]="f.invalid || selectedItem==0"
+        (click)="openSnackBar()">ADD</button>
       </mat-card-actions>
     </form>
   </div>

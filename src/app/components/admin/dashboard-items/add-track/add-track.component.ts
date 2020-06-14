@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CareerService } from '../../../../shared/services/career.service';
 import { career } from '../../../../shared/Models/career.model';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-add-track',
@@ -10,18 +11,26 @@ import { career } from '../../../../shared/Models/career.model';
 })
 export class AddTrackComponent implements OnInit {
 
-  constructor(private careerService:CareerService) { }
+  constructor(private careerService:CareerService, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
 
   saveData(data){
     const c = new career;
-    c.CareerName = data.path;
-    c.Description = data.desc
+    c.careerName = data.path;
+    c.description = data.desc;
 
     this.careerService.postCareer(c)
       .subscribe(res => console.log(res));
+  }
+
+  openSnackBar() {
+    this._snackBar.open('Added..', 'X', {
+      duration: 2000,
+      horizontalPosition: "right",
+      verticalPosition: "bottom",
+    });
   }
 
 }
