@@ -7,45 +7,45 @@ import {TooltipPosition} from '@angular/material/tooltip';
 
 interface Paths {
   id: number;
-  title: string;
-  link: string;
-  description: string;
-  duration: number,
+  CourseName : string;
+  CourseContent : string;
+  Description : string;
+  Duration : string;
   numOfUsers: number
 }
 const PATH: Paths[] = [
-  {
-    id: 1,
-    title: 'HTML',
-    link: 'www.youtube.com/hjlk',
-    description: 'Free Mosh Course',
-    duration: 18,
+   {
+     id: 1,
+     CourseName: 'mohamed',
+     CourseContent: 'www.youtube.com/hjlk',
+     Description: 'Free Mosh Course',
+     Duration: "18",
     numOfUsers: 6
   },
-  {
-    id: 1,
-    title: 'HTML',
-    link: 'www.youtube.com/hjlk',
-    description: 'Free Mosh Course',
-    duration: 11,
-    numOfUsers: 6
-  },
-  {
-    id: 1,
-    title: 'CSS',
-    link: 'www.youtube.com/hjlk',
-    description: 'Free Mosh Course',
-    duration: 22,
-    numOfUsers: 6
-  },
-  {
-    id: 1,
-    title: 'JS',
-    link: 'www.youtube.com/hjlk',
-    description: 'Free Mosh Course',
-    duration: 18,
-    numOfUsers: 6
-  }
+  // {
+  //   id: 1,
+  //   title: 'HTML',
+  //   link: 'www.youtube.com/hjlk',
+  //   description: 'Free Mosh Course',
+  //   duration: 11,
+  //   numOfUsers: 6
+  // },
+  // {
+  //   id: 1,
+  //   title: 'CSS',
+  //   link: 'www.youtube.com/hjlk',
+  //   description: 'Free Mosh Course',
+  //   duration: 22,
+  //   numOfUsers: 6
+  // },
+  // {
+  //   id: 1,
+  //   title: 'JS',
+  //   link: 'www.youtube.com/hjlk',
+  //   description: 'Free Mosh Course',
+  //   duration: 18,
+  //   numOfUsers: 6
+  // }
 
 ];
 
@@ -70,7 +70,7 @@ export class ViewCoursesComponent implements OnInit {
     {value: '2', viewValue: 'Fullstack'}
   ];
 
-  displayedColumns: string[] = ['title', 'link', 'description', 'duration', 'numOfUsers','edit'];
+  displayedColumns: string[] = ['CourseName', 'CourseContent', 'description', 'duration', 'numOfUsers','edit'];
   dataSource: MatTableDataSource<Paths>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

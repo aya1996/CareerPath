@@ -1,7 +1,7 @@
 <mat-card-content>
   <div class="my-form mat-elevation-z8" style="margin-top: 30px;">
     <h3 class="title-style">Add Course</h3>
-    <form>
+    <form #c="ngForm" (ngSubmit)="saveData(c.value)">
       <mat-form-field class="full-width">
         <mat-label>Select Path</mat-label>
         <mat-select>
@@ -13,19 +13,19 @@
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Title</mat-label>
-        <input matInput placeholder="Course Title" name="fname" required />
+        <input matInput ngModel #cou="ngModel" placeholder="Course Title" name="cou" required />
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Link</mat-label>
-        <input matInput placeholder="Course Link" name="lname" required />
+        <input matInput ngModel #coun="ngModel" placeholder="Course Link" name="coun" required />
       </mat-form-field>
       <mat-form-field class="full-width">
          <mat-label>Duration</mat-label>
-         <input matInput placeholder="Course Duration In Days" name="lname" required />
+         <input matInput ngModel #dur="ngModel"  placeholder="Course Duration In Days" name="dur" required />
        </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Description</mat-label>
-        <textarea matInput placeholder="Ex. Free Course from Udemy that ..."></textarea>
+        <textarea matInput ngModel  #des="ngModel" name="des" placeholder="Ex. Free Course from Udemy that ..."></textarea>
       </mat-form-field>
       <br />
       <mat-card-actions>
