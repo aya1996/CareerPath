@@ -85,7 +85,7 @@ export class ViewPathComponent implements OnInit {
   }
 
   careerData: subCareer[] = [];
-
+  showSpinner = true;
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -101,6 +101,7 @@ export class ViewPathComponent implements OnInit {
             }
           }
         }
+        this.showSpinner = false
         // console.log(this.careerData);
       });
     })

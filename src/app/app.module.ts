@@ -56,13 +56,13 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+// import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
+import { MatProgressSpinnerModule } from '@angular/material';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -88,6 +88,7 @@ import { LineChartComponent } from './components/admin/admin-dashboard/line-char
 import { AddTrackComponent } from './components/admin/dashboard-items/add-track/add-track.component';
 
 import { CountdownModule } from 'ngx-countdown';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
 
@@ -150,6 +151,7 @@ const routes: Routes =
     BarChartFailSuccessComponent,
     LineChartComponent,
     AddTrackComponent,
+    SpinnerComponent,
 
 
   ],
