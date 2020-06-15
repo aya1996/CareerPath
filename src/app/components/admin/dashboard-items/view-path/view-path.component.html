@@ -11,12 +11,12 @@
       
           <ng-container matColumnDef="Track">
             <th mat-header-cell *matHeaderCellDef > Track </th>
-            <td mat-cell *matCellDef="let row" > {{row.track}} </td>
+            <td mat-cell *matCellDef="let row" > {{row.careerName}} </td>
           </ng-container>
       
           <ng-container matColumnDef="Path">
             <th mat-header-cell *matHeaderCellDef style="padding-left: 20px;"> Path </th>
-            <td mat-cell *matCellDef="let row" style="padding-left: 20px;"> {{row.path}} </td>
+            <td mat-cell *matCellDef="let row" style="padding-left: 20px;"> {{row.subCareerName}} </td>
           </ng-container>
       
           <ng-container matColumnDef="Description">
@@ -26,7 +26,7 @@
   
           <ng-container matColumnDef="NumOfCourses">
             <th mat-header-cell *matHeaderCellDef> Number Of Courses </th>
-            <td mat-cell *matCellDef="let row" style="padding-left: 25px;"> {{row.numOfCourses}} </td>
+            <td mat-cell *matCellDef="let row" style="padding-left: 25px;"> 5 </td>
           </ng-container>
       
           <ng-container matColumnDef="edit">

@@ -13,7 +13,7 @@ export class SubCareerService {
   apiUrl = "http://localhost:4000/api/subcareers";
   
   getSubCareer(){
-    return this._http.get(this.apiUrl);
+    return this._http.get<subCareer[]>(this.apiUrl);
   }
 
   postSubCareer(data:subCareer){
