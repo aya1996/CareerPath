@@ -17,17 +17,14 @@ export class AddPathComponent implements OnInit {
     private careerService:CareerService,
     private _snackBar: MatSnackBar) { }
 
-  careers:career[] = [
-    {careerId:1, careerName:"fdsgds1", description:"gdsgd"},
-    {careerId:2, careerName:"fdsgds2", description:"gdsgd"},
-    {careerId:3, careerName:"fdsgds3", description:"gdsgd"}];
+  careers:career[] = [];
 
   selectedItem=0;
   ngOnInit() {
-    // this.careerService.getCareer()
-    //   .subscribe(res => {
-    //     this.careers = res;
-    //   });
+    this.careerService.getCareer()
+      .subscribe(res => {
+        this.careers = res;
+      });
   }
 
   getSelected(c_id){
@@ -44,11 +41,11 @@ export class AddPathComponent implements OnInit {
 
   saveData(data){
     const c = new subCareer;
-    c.SubCareerName = data.path;
-    c.Description = data.desc;
-    c.CareerId = this.selectedItem;
+    c.subCareerName = data.path;
+    c.description = data.desc;
+    c.careerIdRef = this.selectedItem;
     console.log(c);
-    // this.careerService.postCareer(c)
-    //   .subscribe(res => console.log(res));
+    this.subCareerService.postSubCareer(c)
+    .subscribe(res => console.log(res));
   }
 }

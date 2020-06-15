@@ -5,10 +5,10 @@
       <mat-form-field class="full-width">
         <mat-label>Select Path</mat-label>
         <mat-select>
-          <mat-option>None</mat-option>
-          <mat-option value="option1">Front</mat-option>
-          <mat-option value="option2">Back</mat-option>
-          <mat-option value="option3">Fullstack</mat-option>
+          <mat-option
+          *ngFor="let item of subCareer"
+          [value]="item.subCareerId" 
+          (click)="getSelected(item.subCareerId)"> {{item.subCareerName}} </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="full-width">
@@ -21,15 +21,17 @@
       </mat-form-field>
       <mat-form-field class="full-width">
          <mat-label>Duration</mat-label>
-         <input matInput ngModel #dur="ngModel"  placeholder="Course Duration In Days" name="dur" required />
+         <input matInput ngModel #dur="ngModel"  placeholder="Course Duration In Hours" name="dur" required />
        </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Description</mat-label>
-        <textarea matInput ngModel  #des="ngModel" name="des" placeholder="Ex. Free Course from Udemy that ..."></textarea>
+        <textarea matInput required ngModel  #des="ngModel" name="des" placeholder="Ex. Free Course from Udemy that ..."></textarea>
       </mat-form-field>
       <br />
       <mat-card-actions>
-        <button mat-raised-button color="primary">ADD</button>
+        <button type="submit" 
+        mat-raised-button color="primary"
+        [disabled]="c.invalid || selectedItem==0">ADD</button>
       </mat-card-actions>
     </form>
   </div>

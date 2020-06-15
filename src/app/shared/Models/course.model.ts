@@ -1,7 +1,12 @@
+export class SubCareerCourses {
+    SubCareerId:number;
+    CourseId:number;
+}
+
 export class course{
-    CourseName : string;
-    CourseContent : string;
-    Description : string;
-    Duration : string;
-    
+    courseId: number;
+    courseName : string;
+    courseContent : string;
+    description : string;
+    duration : string;
 }

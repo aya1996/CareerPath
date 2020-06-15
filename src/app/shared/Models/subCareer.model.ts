@@ -1,5 +1,6 @@
 export class subCareer{
-    SubCareerName: string;
-    Description: string;
-    CareerId: number;
+    subCareerId?: number;
+    subCareerName: string;
+    description?: string;
+    careerIdRef: number;
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SubCareerService } from '../../../../shared/services/sub-career.service';
 import { CourseService } from '../../../../shared/services/course.service';
+import { subCareer } from '../../../../shared/Models/subCareer.model';
 import { course } from '../../../../shared/Models/course.model';
 @Component({
   selector: 'app-add-courses',
@@ -8,18 +10,43 @@ import { course } from '../../../../shared/Models/course.model';
 })
 export class AddCoursesComponent implements OnInit {
 
-  constructor(private courseService:CourseService) { }
+  constructor(private courseService:CourseService, 
+    private subCareerService:SubCareerService) { }
 
+  subCareer: subCareer[] = [];
+  selectedItem=0;
+  
   ngOnInit() {
+    this.subCareerService.getSubCareer()
+    .subscribe( res => {
+      for (const key in res) {
+        this.subCareer.push({
+          subCareerId: res[key].subCareerId, 
+          subCareerName:res[key].subCareerName, 
+          careerIdRef:res[key].careerIdRef});
+      }
+      //console.log(this.subCareer)
+    });
   }
+
+  getSelected(c_id){
+    this.selectedItem = c_id;
+  }
+
+
   saveData(data){
     const c = new course;
-    c.CourseName = data.cou;
-    c.CourseContent = data.coun;
-    c.Description =data.des;
-    c.Duration = data.dur;
+    c.courseName = data.cou;
+    c.courseContent = data.coun;
+    c.description =data.des;
+    c.duration = data.dur;
+
     this.courseService.postCourse(c)
-    .subscribe(res => console.log(res));
+    .subscribe(courseObj => {
+      this.courseService.postSubCareerCourses({SubCareerId:this.selectedItem,CourseId: courseObj.courseId})
+      .subscribe(res => console.log(res));
+    });
+    
   }
   
   

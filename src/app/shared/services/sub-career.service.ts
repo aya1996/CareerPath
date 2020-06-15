@@ -10,8 +10,8 @@ export class SubCareerService {
 
   constructor(private _http:HttpClient) { }
 
-  apiUrl = "https://careerpathweb.azurewebsites.net/api/career";
-
+  apiUrl = "http://localhost:4000/api/subcareers";
+  
   getSubCareer(){
     return this._http.get(this.apiUrl);
   }
@@ -19,5 +19,9 @@ export class SubCareerService {
   postSubCareer(data:subCareer){
     return this._http.post(this.apiUrl,data);
   }
+
+  // editSubCareer(id, data){
+  //   return this._http.put(this.apiUrl,data);
+  // }
 
 }
