@@ -1,10 +1,14 @@
-<div style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
+<app-spinner *ngIf="!isLoaded"></app-spinner>
+<div *ngIf="isLoaded" style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
     <h6>Select Path</h6>
     <mat-form-field>
         <mat-label>Path</mat-label>
         <mat-select>
-          <mat-option *ngFor="let p of paths" [value]="p.value">
-            {{p.viewValue}}
+          <mat-option>All</mat-option> 
+          <mat-option *ngFor="let p of paths" 
+          [value]="p.subCareerId"
+          (click)="getSelected(p.subCareerId)">
+            {{p.subCareerName}}
           </mat-option>
         </mat-select>
     </mat-form-field>
@@ -18,24 +22,25 @@
       <div class="table-container">
         <table mat-table [dataSource]="dataSource" matSort > 
       
-          <ng-container matColumnDef="CourseName">
-            <th mat-header-cell *matHeaderCellDef > Title </th>
-            <td mat-cell *matCellDef="let row"> {{row.CourseName}} </td>
+          <ng-container matColumnDef="courseName">
+            <th mat-header-cell *matHeaderCellDef > Course Title </th>
+            <td mat-cell *matCellDef="let row"> {{row.courseName}} </td>
           </ng-container>
       
-          <ng-container matColumnDef="CourseContent">
+          <ng-container matColumnDef="courseContent">
             <th mat-header-cell *matHeaderCellDef> Course Link </th>
-            <td mat-cell *matCellDef="let row"> {{row.CourseContent}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.courseContent}} </td>
           </ng-container>
       
           <ng-container matColumnDef="description">
             <th mat-header-cell *matHeaderCellDef class="main"> Description </th>
-            <td mat-cell *matCellDef="let row" class="main" style="padding-top: 10px; padding-bottom: 10px;"> {{row.Description}} </td>
+            <td mat-cell *matCellDef="let row" class="main" 
+            style="padding-top: 10px; padding-bottom: 10px;"> {{row.description}} </td>
           </ng-container>
   
           <ng-container matColumnDef="duration">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Duration </th>
-            <td mat-cell *matCellDef="let row"> {{row.Duration}} Days</td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> duration </th>
+            <td mat-cell *matCellDef="let row"> {{row.duration}} Hours</td>
           </ng-container>
 
           <ng-container matColumnDef="numOfUsers">
@@ -43,7 +48,7 @@
             mat-sort-header
             matTooltip="Numer of users taking course"
             matTooltipPosition="above" style="padding-left: 15px;" > Users </th>
-            <td mat-cell *matCellDef="let row" style="padding-left: 15px;"> {{row.numOfUsers}} </td>
+            <td mat-cell *matCellDef="let row" style="padding-left: 15px;"> 5 </td>
           </ng-container>
       
           <ng-container matColumnDef="edit">
@@ -61,7 +66,7 @@
         </table>
       </div>
     
-      <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" fixed></mat-paginator> -->
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" fixed></mat-paginator>
     </div>
     
-  </div>
+</div>

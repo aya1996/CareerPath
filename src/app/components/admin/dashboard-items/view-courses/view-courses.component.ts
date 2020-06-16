@@ -3,57 +3,10 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {FormControl} from '@angular/forms';
-import {TooltipPosition} from '@angular/material/tooltip';
-
-interface Paths {
-  id: number;
-  CourseName : string;
-  CourseContent : string;
-  Description : string;
-  Duration : string;
-  numOfUsers: number
-}
-const PATH: Paths[] = [
-   {
-     id: 1,
-     CourseName: 'mohamed',
-     CourseContent: 'www.youtube.com/hjlk',
-     Description: 'Free Mosh Course',
-     Duration: "18",
-    numOfUsers: 6
-  },
-  // {
-  //   id: 1,
-  //   title: 'HTML',
-  //   link: 'www.youtube.com/hjlk',
-  //   description: 'Free Mosh Course',
-  //   duration: 11,
-  //   numOfUsers: 6
-  // },
-  // {
-  //   id: 1,
-  //   title: 'CSS',
-  //   link: 'www.youtube.com/hjlk',
-  //   description: 'Free Mosh Course',
-  //   duration: 22,
-  //   numOfUsers: 6
-  // },
-  // {
-  //   id: 1,
-  //   title: 'JS',
-  //   link: 'www.youtube.com/hjlk',
-  //   description: 'Free Mosh Course',
-  //   duration: 18,
-  //   numOfUsers: 6
-  // }
-
-];
-
-interface Path {
-  value: string;
-  viewValue: string;
-}
-
+import { SubCareerService } from '../../../../shared/services/sub-career.service';
+import { CourseService } from '../../../../shared/services/course.service';
+import { subCareer } from '../../../../shared/Models/subCareer.model';
+import { course } from '../../../../shared/Models/course.model';
 
 @Component({
   selector: 'app-view-courses',
@@ -63,28 +16,70 @@ interface Path {
 export class ViewCoursesComponent implements OnInit {
 
   QControl = new FormControl();
- 
-  paths: Path[] = [
-    {value: '0', viewValue: 'Frontend'},
-    {value: '1', viewValue: 'Backend'},
-    {value: '2', viewValue: 'Fullstack'}
-  ];
 
-  displayedColumns: string[] = ['CourseName', 'CourseContent', 'description', 'duration', 'numOfUsers','edit'];
-  dataSource: MatTableDataSource<Paths>;
+  displayedColumns: string[] = ['courseName', 'courseContent', 'description', 'duration', 'numOfUsers','edit'];
+  dataSource: MatTableDataSource<course>;
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor() {
+  constructor(private subCareerService:SubCareerService, private coursesService:CourseService) {
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(PATH);
+    this.dataSource = new MatTableDataSource(this.courses);
   }
+  
+  paths: subCareer[] = [];
+  courses: course[] = [];
+  isLoaded = false;
+  selectedItem = '';
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    
+    this.subCareerService.getSubCareer().subscribe(res => {
+        this.paths = res;
+        this.coursesService.getCourse().subscribe(cour => {
+          for(let i=0; i<cour.length; i++)
+            this.courses[i] = cour[i];
+    
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+          this.isLoaded = true;
+          
+        });
+      }
+    );
+  }
+
+  getSelected(data){
+    this.isLoaded = false;
+   // this.selectedItem = data;
+    this.courses = []
+    this.coursesService.getSubCareerCourses().subscribe(res => {
+      this.coursesService.getCourse().subscribe(cour => {
+        for(let n=0; n<res.length; n++){
+          if(res[n].SubCareerId==data){
+            for(let i=0; i<cour.length; i++){
+              console.log(cour)
+              if(res[n].CourseId == cour[i].courseId){
+                console.log(cour)
+                this.courses.push(
+                  {courseContent:cour[i].courseContent,
+                    courseId:cour[i].courseId,
+                    courseName:cour[i].courseName,
+                    description:cour[i].description,
+                    duration:cour[i].duration
+                  })
+              }
+            }
+          }
+        } 
+        this.isLoaded = true;
+      });
+      console.log(this.courses)
+    }
+  );
+
   }
 
   applyFilter(event: Event) {

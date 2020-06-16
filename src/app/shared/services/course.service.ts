@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { course, SubCareerCourses } from '../Models/course.model';
+import { subCareer } from '../Models/subCareer.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class CourseService {
     return this._http.get<course[]>(this.apiUrl);
   }
   getSubCareerCourses(){
-    return this._http.get(this.apiSubCareerCourses);
+    return this._http.get<SubCareerCourses[]>(this.apiSubCareerCourses);
   }
 
   postCourse(data:course){

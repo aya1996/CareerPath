@@ -7,60 +7,6 @@ import {FormControl} from '@angular/forms';
 import { CareerService } from '../../../../shared/services/career.service';
 import { SubCareerService } from '../../../../shared/services/sub-career.service';
 import { subCareer } from '../../../../shared/Models/subCareer.model';
-import { career } from '../../../../shared/Models/career.model';
-
-// interface Path {
-//   id: number;
-//   track: string;
-//   path: string;
-//   description: string;
-//   numOfCourses: number;
-// }
-// const PATHS: Path[] = [
-//   {
-//     id: 1,
-//     track: 'Web Development',
-//     path: 'Frontend',
-//     description: 'Design webpages',
-//     numOfCourses: 15
-//   },
-//   {
-//     id: 1,
-//     track: 'Web Development',
-//     path: 'Backend',
-//     description: 'Implement webpages',
-//     numOfCourses: 20
-//   },
-//   {
-//     id: 1,
-//     track: 'Web Development',
-//     path: 'Fullstack',
-//     description: 'Design and Implement webpages',
-//     numOfCourses: 33
-//   },
-//   {
-//     id: 1,
-//     track: 'Mobile Development',
-//     path: 'Android',
-//     description: 'Create Android Mobile Apps',
-//     numOfCourses: 17
-//   },
-//   {
-//     id: 1,
-//     track: 'Mobile Development',
-//     path: 'IOS',
-//     description: 'Create IOS Mobile Apps',
-//     numOfCourses: 10
-//   },
-//   {
-//     id: 1,
-//     track: 'Mobile Development',
-//     path: 'IOS',
-//     description: 'Create IOS Mobile AppsCreate IOS Mobile AppsCreate IOS Mobile AppsCreate IOS Mobile Apps',
-//     numOfCourses: 10
-//   }
-  
-// ];
 
 
 @Component({
@@ -73,7 +19,7 @@ export class ViewPathComponent implements OnInit {
   QControl = new FormControl();
 
 
-  displayedColumns: string[] = ['Track', 'Path', 'Description', 'NumOfCourses','edit'];
+  displayedColumns: string[] = ['Track', 'Path', 'Description', 'NumOfUsers','edit'];
   dataSource: MatTableDataSource<subCareer>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -88,8 +34,6 @@ export class ViewPathComponent implements OnInit {
   showSpinner = true;
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
 
     this.careerService.getCareer().subscribe(careers => {
       this.subCareerService.getSubCareer().subscribe(res => {
@@ -98,13 +42,22 @@ export class ViewPathComponent implements OnInit {
           for(let j=0; j<careers.length; j++){
             if(careers[j].careerId === this.careerData[i].careerIdRef){
               this.careerData[i].careerName = careers[j].careerName;
+              break;
             }
           }
         }
-        this.showSpinner = false
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
         // console.log(this.careerData);
       });
+      this.showSpinner = false
     })
+    
+  }
+
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
     
   }
 
