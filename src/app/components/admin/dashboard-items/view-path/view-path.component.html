@@ -1,6 +1,6 @@
 <!-- <mat-spinner *ngIf="showSpinner"></mat-spinner> -->
 <app-spinner *ngIf="showSpinner"></app-spinner>
-<div *ngIf="!showSpinner" style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
+<div [hidden]="showSpinner" style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
     
     <mat-form-field>
       <mat-label>Filter Paths</mat-label>

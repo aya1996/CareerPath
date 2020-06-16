@@ -1,5 +1,5 @@
 <app-spinner *ngIf="!isLoaded"></app-spinner>
-<div *ngIf="isLoaded" style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
+<div [hidden]="!isLoaded" style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
     <h6>Select Path</h6>
     <mat-form-field>
         <mat-label>Path</mat-label>
