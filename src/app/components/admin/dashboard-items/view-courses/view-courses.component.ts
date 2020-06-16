@@ -7,6 +7,7 @@ import { SubCareerService } from '../../../../shared/services/sub-career.service
 import { CourseService } from '../../../../shared/services/course.service';
 import { subCareer } from '../../../../shared/Models/subCareer.model';
 import { course } from '../../../../shared/Models/course.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-courses',
@@ -23,10 +24,15 @@ export class ViewCoursesComponent implements OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor(private subCareerService:SubCareerService, private coursesService:CourseService) {
+  //mySubscription: any;
+
+  constructor(private subCareerService:SubCareerService, 
+    private coursesService:CourseService,
+    private router:Router) {
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.courses);
+    
   }
   
   paths: subCareer[] = [];
@@ -74,12 +80,27 @@ export class ViewCoursesComponent implements OnInit {
             }
           }
         } 
+      //console.log(this.courses)
+
         this.isLoaded = true;
       });
-      console.log(this.courses)
     }
   );
 
+  }
+
+  deleteItem(id){
+    this.isLoaded = false;
+
+    this.coursesService.deleteCourse(id).subscribe(result => {
+      console.log(result)
+      this.ngOnDestroy()
+      this.ngOnInit()
+
+    })
+    // this.router.navigateByUrl('/admin/dashboard', { skipLocationChange: true }).then(() => {
+    //   this.router.navigate(['view/courses']);
+    // });
   }
 
   applyFilter(event: Event) {
@@ -91,6 +112,11 @@ export class ViewCoursesComponent implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    if (this.courses) {
+      this.courses = [];
+    }
+  }
 }
 
 

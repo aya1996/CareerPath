@@ -27,4 +27,8 @@ export class CourseService {
   postSubCareerCourses(data:SubCareerCourses){
     return this._http.post(this.apiSubCareerCourses,data);
   }
+
+  deleteCourse(id){
+    return this._http.delete(`${this.apiUrl}/${id}`);
+  }
 }

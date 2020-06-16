@@ -9,4 +9,5 @@ export class course{
     courseContent : string;
     description : string;
     duration : string;
+    subCareerName?: string;
 }

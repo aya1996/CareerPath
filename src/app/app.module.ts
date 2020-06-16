@@ -105,8 +105,14 @@ const routes: Routes =
 
     { path: 'profile/courses', component: CoursesComponent },
 
-    { path: 'admin/dashboard', component: AdminNavComponent },
+    { path: 'admin/dashboard', component: AdminNavComponent, children: [
+      { path:'vc', component: ViewCoursesComponent, outlet:'viewCourses'},
+      { path:'ac', component: AddCoursesComponent, outlet:'addCourses'}
+    ] },
+
     { path: 'dashboard', component: AdminDashboardComponent },
+
+
     { path: 'admin/questions', component: QuestionsComponent },
 
     { path: 'courses-list', component: CoursesListComponent },
