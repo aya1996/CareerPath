@@ -1,49 +1,48 @@
 <mat-card-content>
     <div class="my-form mat-elevation-z8" style="margin-top: 30px;">
       <h3 class="title-style">Add Question</h3>
-      <form>
-        <mat-form-field>
+      <form #f="ngForm" (ngSubmit)="saveData(f.value)">
+        <mat-form-field class="full-width">
             <mat-label>Course</mat-label>
             <mat-select >
               <mat-option>Select Course</mat-option>
-              <mat-optgroup *ngFor="let group of courseGroups" [label]="group.name" >
-                <mat-option *ngFor="let c of group.course" [value]="c.value">
-                  {{c.viewValue}}
+                <mat-option *ngFor="let c of courses" 
+                [value]="c.courseId"
+                (click)="getSelected(c.courseId)"
+                >
+                  {{c.courseName}}
                 </mat-option>
-              </mat-optgroup>
+             
             </mat-select>
           </mat-form-field>
         <mat-form-field class="full-width">
           <mat-label>Question</mat-label>
-          <input matInput placeholder="Add Question header" name="QHead" required />
+          <input matInput placeholder="Add Question header" ngModel #title="ngModel" name="title" required />
         </mat-form-field>
         <mat-form-field class="full-width">
           <mat-label>Choice 1</mat-label>
-          <input matInput placeholder="Add Choice 1" name="lname" required />
+          <input matInput placeholder="Add Choice 1" ngModel #ch1="ngModel"  name="ch1" required />
         </mat-form-field>
         <mat-form-field class="full-width">
             <mat-label>Choice 2</mat-label>
-            <input matInput placeholder="Add Choice 2" name="lname" required />
+            <input matInput placeholder="Add Choice 2" ngModel #ch2="ngModel"  name="ch2" required />
           </mat-form-field>
           <mat-form-field class="full-width">
             <mat-label>Choice 3</mat-label>
-            <input matInput placeholder="Add Choice 3" name="lname" required />
+            <input matInput placeholder="Add Choice 3" ngModel #ch3="ngModel" name="ch3" required />
           </mat-form-field>
           <mat-form-field class="full-width">
-            <mat-label>Right Answer Number</mat-label>
-            <mat-select>
-              <mat-option value="option1">1</mat-option>
-              <mat-option value="option2">2</mat-option>
-              <mat-option value="option3">3</mat-option>
-            </mat-select>
+            <mat-label>Right Answer </mat-label>
+            <input matInput placeholder="Add Right Answer" ngModel #right="ngModel" name="right" required />
           </mat-form-field>
         <mat-form-field class="full-width">
            <mat-label>Grade</mat-label>
-           <input matInput placeholder="Question grade" name="lname" required />
+           <input matInput placeholder="Question grade" ngModel #grade="ngModel" name="grade" required />
          </mat-form-field>
         <br />
         <mat-card-actions>
-          <button mat-raised-button color="primary">ADD</button>
+          <button mat-raised-button color="primary" [disabled]="f.invalid || selectedItem==0"
+          (click)="openSnackBar()">ADD</button>
         </mat-card-actions>
       </form>
     </div>
