@@ -107,7 +107,8 @@ const routes: Routes =
 
     { path: 'admin/dashboard', component: AdminNavComponent, children: [
       { path:'vc', component: ViewCoursesComponent, outlet:'viewCourses'},
-      { path:'ac', component: AddCoursesComponent, outlet:'addCourses'}
+      { path:'ac', component: AddCoursesComponent, outlet:'addCourses'},
+      { path:'db', component: AdminDashboardComponent, outlet:'dashboard'}
     ] },
 
     { path: 'dashboard', component: AdminDashboardComponent },

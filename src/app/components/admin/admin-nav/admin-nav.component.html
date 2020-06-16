@@ -52,6 +52,7 @@
       <a class="bgCol-custom " [ngClass]="{'active-link': activeLink === ''}"  (click)="getClicked('')">
         <mat-icon>dashboard</mat-icon> Dashboard
       </a>
+     
       <ngb-accordion [closeOthers]="true">
         
         <ngb-panel id="static-1">
@@ -80,21 +81,16 @@
           </ng-template>
           <ng-template ngbPanelContent>
             <div>
-              <!-- <a [ngClass]="{'active-link': activeLink === 'CView'}" (click)="getClicked('CView')">
-                <mat-icon>pageview</mat-icon> View
-              </a> -->
-              <a (click)="getClicked('CView')" [routerLink]="['/admin/dashboard', { outlets: {'viewCourses':['vc'] }}]">
+              <a [ngClass]="{'active-link': activeLink === 'CView'}" (click)="getClicked('CView')">
                 <mat-icon>pageview</mat-icon> View
               </a>
+           
             </div>
             <div>
-              <!-- <a [ngClass]="{'active-link': activeLink === 'CAdd'}" (click)="getClicked('CAdd')">
-                <mat-icon>note_add</mat-icon> Add
-              </a> -->
-              <a (click)="getClicked('CAdd')" [routerLink]="['/admin/dashboard', { outlets: {'addCourses': ['ac'] }}]">
-  
+              <a [ngClass]="{'active-link': activeLink === 'CAdd'}" (click)="getClicked('CAdd')">
                 <mat-icon>note_add</mat-icon> Add
               </a>
+             
             </div>
           </ng-template>
         </ngb-panel>
@@ -134,9 +130,7 @@
 
   <mat-sidenav-content>
     <div class="main-board">
-      <router-outlet *ngIf="clickedTab===''" name="viewCourses"></router-outlet>
-      <router-outlet *ngIf="clickedTab===''" name="addCourses"></router-outlet>
-
+      
       <app-admin-dashboard *ngIf="clickedTab===''"></app-admin-dashboard>
       <app-view-path *ngIf="clickedTab==='PView'"></app-view-path>
       <app-add-path *ngIf="clickedTab==='PAdd'"></app-add-path>
