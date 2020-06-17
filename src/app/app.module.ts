@@ -93,6 +93,8 @@ import { ViewTrackComponent } from './components/admin/dashboard-items/view-path
 import { EditQuestionComponent } from './components/admin/dashboard-items/add-questions/edit-question/edit-question.component';
 import { EditCourseComponent } from './components/admin/dashboard-items/add-courses/edit-course/edit-course.component';
 import { EditPathComponent } from './components/admin/dashboard-items/add-path/edit-path/edit-path.component';
+import { IndexComponent } from './components/admin/index/index.component';
+
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
 
@@ -116,11 +118,10 @@ const routes: Routes =
       { path:'db', component: AdminDashboardComponent, outlet:'dashboard'}
     ] },
 
-    { path: 'dashboard', component: AdminDashboardComponent },
-
+    { path: 'admin/index', component: IndexComponent },
+    { path: 'admin/exam', component: UsersComponent},
 
     { path: 'admin/questions', component: QuestionsComponent },
-    { path: 'admin/add-path', component: AddPathComponent },
     { path: 'admin/add-path', component: AddPathComponent },
     { path: 'admin/add-track', component: AddTrackComponent },
     { path: 'admin/view-path', component: ViewPathComponent },
@@ -137,7 +138,7 @@ const routes: Routes =
     { path: 'web', component: WebDevelopmentComponent },
     { path: 'login', component: LoginComponent },
     { path: 'course', component: CourseComponent },
-    // {  path:'**',  component : HomeComponent }
+    {  path:'**',  component : HomeComponent }
   ]
 @NgModule({
   declarations: [
@@ -177,7 +178,9 @@ const routes: Routes =
     ViewTrackComponent,
     EditQuestionComponent,
     EditCourseComponent,
-    EditPathComponent
+    EditPathComponent,
+    IndexComponent,
+   
 
   ],
   imports: [
