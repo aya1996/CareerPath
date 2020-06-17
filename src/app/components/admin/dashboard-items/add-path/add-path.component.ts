@@ -5,6 +5,7 @@ import { SubCareerService } from '../../../../shared/services/sub-career.service
 import { career } from '../../../../shared/Models/career.model';
 import { subCareer } from '../../../../shared/Models/subCareer.model';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-path',
@@ -15,7 +16,8 @@ export class AddPathComponent implements OnInit {
 
   constructor(private subCareerService:SubCareerService, 
     private careerService:CareerService,
-    private _snackBar: MatSnackBar) { }
+    private _snackBar: MatSnackBar,
+    private router: Router) { }
 
   careers:career[] = [];
 
@@ -47,5 +49,8 @@ export class AddPathComponent implements OnInit {
     console.log(c);
     this.subCareerService.postSubCareer(c)
     .subscribe(res => console.log(res));
+    this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/admin/path']);
+    });
   }
 }

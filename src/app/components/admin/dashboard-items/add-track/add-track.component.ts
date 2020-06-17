@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CareerService } from '../../../../shared/services/career.service';
 import { career } from '../../../../shared/Models/career.model';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-track',
@@ -11,7 +12,9 @@ import { MatSnackBar } from '@angular/material';
 })
 export class AddTrackComponent implements OnInit {
 
-  constructor(private careerService:CareerService, private _snackBar: MatSnackBar) { }
+  constructor(private careerService:CareerService,
+     private _snackBar: MatSnackBar,
+     private router:Router) { }
 
   ngOnInit() {
   }
@@ -23,6 +26,9 @@ export class AddTrackComponent implements OnInit {
 
     this.careerService.postCareer(c)
       .subscribe(res => console.log(res));
+    this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/admin/path']);
+    });
   }
 
   openSnackBar() {

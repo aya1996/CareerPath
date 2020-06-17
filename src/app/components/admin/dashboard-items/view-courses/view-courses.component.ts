@@ -20,7 +20,8 @@ export class ViewCoursesComponent implements OnInit {
 
   QControl = new FormControl();
 
-  displayedColumns: string[] = ['courseName', 'courseContent', 'description', 'duration', 'numOfUsers','edit'];
+  displayedColumns: string[] = ['courseName', 'courseContent', 'description', 'duration','edit'];
+  // displayedColumns: string[] = ['courseName', 'courseContent', 'description', 'duration', 'numOfUsers','edit'];
   dataSource: MatTableDataSource<course>;
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
@@ -124,9 +125,9 @@ export class ViewCoursesComponent implements OnInit {
     // this.isLoaded = false;
     this.coursesService.deleteCourse(this.getDeletedId).subscribe(res => console.log(res));
     this.modalService.dismissAll();
-    // this.router.navigateByUrl('/admin/dashboard', { skipLocationChange: true }).then(() => {
-    //   this.router.navigate(['view/courses']);
-    // });
+    this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['admin/course']);
+    });
   }
 
 }

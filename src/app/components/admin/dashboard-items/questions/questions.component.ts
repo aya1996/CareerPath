@@ -9,6 +9,7 @@ import { question } from '../../../../shared/Models/question.model';
 import { questionService} from '../../../../shared/services/question.service';
 import { CourseService} from '../../../../shared/services/course.service';
 import { course } from '../../../../shared/Models/course.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -30,7 +31,8 @@ export class QuestionsComponent implements OnInit {
 
   constructor(private questionService:questionService, 
     private CourseService:CourseService,
-    private modalService: NgbModal) {
+    private modalService: NgbModal,
+    private router:Router) {
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.questionData);
@@ -86,9 +88,9 @@ export class QuestionsComponent implements OnInit {
   deleteQuest(){
     this.questionService.deleteQuestion(this.getDeletedId).subscribe(res => console.log(res));
     this.modalService.dismissAll();
-    // this.router.navigateByUrl('/admin/dashboard', { skipLocationChange: true }).then(() => {
-    //   this.router.navigate(['view/courses']);
-    // });
+    this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/admin/question']);
+    });
   }
 }
 

@@ -5,6 +5,7 @@ import { SubCareerService } from '../../../../shared/services/sub-career.service
 import { CourseService } from '../../../../shared/services/course.service';
 import { subCareer } from '../../../../shared/Models/subCareer.model';
 import { course } from '../../../../shared/Models/course.model';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-courses',
   templateUrl: './add-courses.component.html',
@@ -14,7 +15,8 @@ export class AddCoursesComponent implements OnInit {
 
   constructor(private courseService:CourseService, 
     private _snackBar: MatSnackBar,
-    private subCareerService:SubCareerService) { }
+    private subCareerService:SubCareerService,
+    private router:Router) { }
 
   subCareer: subCareer[] = [];
   selectedItem=0;
@@ -49,10 +51,14 @@ export class AddCoursesComponent implements OnInit {
       this.courseService.postSubCareerCourses({SubCareerId:this.selectedItem,CourseId: courseObj.courseId})
       .subscribe(res => console.log(res));
     });
+
+    this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/admin/course']);
+    });
     
   }
   openSnackBar() {
-    this._snackBar.open('Updated..', 'X', {
+    this._snackBar.open('Added..', 'X', {
       duration: 2000,
       horizontalPosition: "right",
       verticalPosition: "bottom",

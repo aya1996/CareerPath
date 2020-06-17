@@ -1,8 +1,10 @@
 .main {
   background-color: white !important;
   
-  height: 100vh;
+  height: 130vh;
   margin-left: 250px;
+  margin-top: -40px;
+
 }
 
 .my-form{

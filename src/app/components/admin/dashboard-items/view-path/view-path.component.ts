@@ -4,6 +4,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {FormControl} from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 import { CareerService } from '../../../../shared/services/career.service';
 import { SubCareerService } from '../../../../shared/services/sub-career.service';
@@ -28,6 +29,7 @@ export class ViewPathComponent implements OnInit {
 
   constructor(private careerService:CareerService, 
     private subCareerService:SubCareerService,
+    private router:Router,
     private modalService: NgbModal) {
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.careerData);
@@ -78,9 +80,9 @@ export class ViewPathComponent implements OnInit {
     this.subCareerService.deleteSubCareer(this.getDeletedId).subscribe(res => console.log(res));
 
     this.modalService.dismissAll();
-    // this.router.navigateByUrl('/admin/dashboard', { skipLocationChange: true }).then(() => {
-    //   this.router.navigate(['view/courses']);
-    // });
+    this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/admin/path']);
+    });
   }
 
 }

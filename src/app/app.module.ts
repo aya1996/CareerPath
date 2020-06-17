@@ -110,29 +110,23 @@ const routes: Routes =
     { path: 'profile/dashboard', component: DashboardComponent },
 
     { path: 'profile/courses', component: CoursesComponent },
-    {path:'admin/dashboard/edit/question/:questId', component:EditQuestionComponent},
-
-    { path: 'admin/dashboard', component: AdminNavComponent, children: [
-      { path:'vc', component: ViewCoursesComponent, outlet:'viewCourses'},
-      { path:'ac', component: AddCoursesComponent, outlet:'addCourses'},
-      { path:'db', component: AdminDashboardComponent, outlet:'dashboard'}
-    ] },
+    {path:'admin/question/edit/:questId', component:EditQuestionComponent},
 
     { path: 'admin/index', component: IndexComponent },
     { path: 'admin/exam', component: UsersComponent},
     { path: 'dashboard', component: AdminDashboardComponent },
-    {path: 'admin/dashboard/edit/path/:id', component:EditPathComponent},
+    {path: 'admin/path/edit/:id', component:EditPathComponent},
 
-    { path: 'admin/questions', component: QuestionsComponent },
+    // { path: 'admin/questions', component: QuestionsComponent },
     { path: 'admin/add-path', component: AddPathComponent },
     { path: 'admin/add-track', component: AddTrackComponent },
-    { path: 'admin/view-path', component: ViewPathComponent },
+    { path: 'admin/path', component: ViewPathComponent },
     { path: 'admin/add-course', component: AddCoursesComponent },
-    { path: 'admin/view-course', component: ViewCoursesComponent},
+    { path: 'admin/course', component: ViewCoursesComponent},
     { path: 'admin/add-question', component: AddQuestionsComponent},
-    { path: 'admin/view-question', component: QuestionsComponent },
+    { path: 'admin/question', component: QuestionsComponent },
     /****************************************************************** */
-    { path:'admin/dashboard/edit/course/:id', component:EditCourseComponent},
+    { path:'admin/course/edit/:id', component:EditCourseComponent},
 
     { path: 'courses-list', component: CoursesListComponent },
     { path: 'courses-modal', component: CourseModalComponent },

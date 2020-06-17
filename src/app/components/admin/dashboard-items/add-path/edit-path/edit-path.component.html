@@ -1,38 +1,44 @@
-<app-spinner *ngIf="showSpinner"></app-spinner>
+<div class="main-div">
 
-<mat-card-content *ngIf="!showSpinner">
-    <div class="my-form mat-elevation-z8" style="margin-top: 30px; background-color: #fff;">
-     <h3 class="title-style">Edit Career Path</h3>
-      <form #f="ngForm" (ngSubmit)="saveData(f.value)">
-        <mat-form-field class="full-width">
-            <input matInput disabled [value]="subcareerName" *ngIf="selectedItem==0">
-          <mat-label>Change Track</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let c of careers" 
-            [value]="c.careerId"
-            (click)="getSelected(c.careerId)"
-            >
-              {{c.careerName}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <mat-label>Path</mat-label>
-          <input matInput placeholder="Path Name" name="path" required [(ngModel)]="subcareer.subCareerName" #path="ngModel" name="path"/>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <mat-label>Description</mat-label>
-          <textarea matInput placeholder="Ex. Front End is focus on UI ..." required
-          [(ngModel)]="subcareer.description" #desc="ngModel" name="desc"></textarea>
-        </mat-form-field>
-        <br />
-        <mat-card-actions>
-          <button type="submit" mat-raised-button 
-          color="primary" 
-          [disabled]="f.invalid"
-          (click)="openSnackBar()">Save</button>
-        </mat-card-actions>
-      </form>
-    </div>
-  </mat-card-content>
+<app-admin-nav></app-admin-nav>
+
+  <app-spinner *ngIf="showSpinner"></app-spinner>
+
+  <mat-card-content *ngIf="!showSpinner">
+      <div class="my-form mat-elevation-z8" style="margin-top: 30px; background-color: #fff;">
+       <h3 class="title-style">Edit Career Path</h3>
+        <form #f="ngForm" (ngSubmit)="saveData(f.value)">
+          <mat-form-field class="full-width">
+              <input matInput disabled [value]="subcareerName" *ngIf="selectedItem==0">
+            <mat-label>Change Track</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let c of careers" 
+              [value]="c.careerId"
+              (click)="getSelected(c.careerId)"
+              >
+                {{c.careerName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Path</mat-label>
+            <input matInput placeholder="Path Name" name="path" required [(ngModel)]="subcareer.subCareerName" #path="ngModel" name="path"/>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Ex. Front End is focus on UI ..." required
+            [(ngModel)]="subcareer.description" #desc="ngModel" name="desc"></textarea>
+          </mat-form-field>
+          <br />
+          <mat-card-actions>
+            <button type="submit" mat-raised-button 
+            color="primary" 
+            [disabled]="f.invalid"
+            (click)="openSnackBar()">Save</button>
+          </mat-card-actions>
+        </form>
+      </div>
+    </mat-card-content>
+</div>
+
   

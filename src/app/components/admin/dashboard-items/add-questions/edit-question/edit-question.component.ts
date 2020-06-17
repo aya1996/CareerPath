@@ -5,7 +5,7 @@ import { CourseService } from '../../../../../shared/services/course.service';
 import { course } from '../../../../../shared/Models/course.model';
 import { MatSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-question',
@@ -19,7 +19,8 @@ export class EditQuestionComponent implements OnInit {
   constructor(private questionService:questionService, 
     private CourseService:CourseService,
     private _snackBar: MatSnackBar,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router:Router) { }
     courses:course[] = [];
     qs:question ;
 
@@ -76,7 +77,12 @@ export class EditQuestionComponent implements OnInit {
     q.rightAns=this.selectedChoice;
     q.courseIdRef = this.qs.courseIdRef;
 
-    this.questionService.updateQuestion(q.questID,q).subscribe(res => console.log(res));
+    this.questionService.updateQuestion(q.questID,q).subscribe(res => {
+      this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/admin/question']);
+      });
+    });
+    
  
   }
 

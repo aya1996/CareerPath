@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { CourseService } from '../../../../../shared/services/course.service';
 import { course } from '../../../../../shared/Models/course.model';
@@ -15,7 +15,8 @@ export class EditCourseComponent implements OnInit {
 
   constructor(private courseService:CourseService,
     private _snackBar: MatSnackBar,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router:Router) { }
 
   showSpinner = true;
   courseItem: course;
@@ -39,6 +40,9 @@ export class EditCourseComponent implements OnInit {
     c.courseId = this.courseItem.courseId;
 
     this.courseService.updateCourse(c.courseId,c).subscribe(res => console.log(res));
+    this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/admin/course']);
+    });
     
   }
   openSnackBar() {

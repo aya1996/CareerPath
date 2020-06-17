@@ -1,3 +1,8 @@
+<div class="main-div">
+
+<app-admin-nav></app-admin-nav>
+
+
 <app-spinner *ngIf="showSpinner"></app-spinner>
 
 <mat-card-content *ngIf="!showSpinner">
@@ -25,9 +30,10 @@
           <button type="submit" 
           mat-raised-button color="primary"
           [disabled]="c.invalid"
-          (click)="openSnackBar()">ADD</button>
+          (click)="openSnackBar()">Save</button>
         </mat-card-actions>
       </form>
     </div>
   </mat-card-content>
   
+</div>

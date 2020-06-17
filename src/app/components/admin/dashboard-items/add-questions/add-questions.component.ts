@@ -4,6 +4,7 @@ import { question } from '../../../../shared/Models/question.model';
 import { CourseService } from '../../../../shared/services/course.service';
 import { course } from '../../../../shared/Models/course.model';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-questions',
@@ -13,7 +14,9 @@ import { MatSnackBar } from '@angular/material';
 export class AddQuestionsComponent implements OnInit {
   
   constructor(private questionService:questionService, 
-    private CourseService:CourseService,private _snackBar: MatSnackBar) { }
+    private CourseService:CourseService,
+    private _snackBar: MatSnackBar,
+    private router:Router) { }
     courses:course[] = [];
 
     selectedItem=0;
@@ -52,7 +55,11 @@ export class AddQuestionsComponent implements OnInit {
     q.courseIdRef = this.selectedItem;
     console.log(q);
     this.questionService.postQuestion(q)
-    .subscribe(res => console.log(res));
+    .subscribe(res => {
+      this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/admin/question']);
+      });
+    });
   }
 
 }
