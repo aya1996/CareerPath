@@ -1,3 +1,6 @@
+
+<div class="main-div">
+<app-admin-nav></app-admin-nav>
 <!-- <mat-spinner *ngIf="showSpinner"></mat-spinner> -->
 <app-spinner *ngIf="showSpinner"></app-spinner>
 <div [hidden]="showSpinner" style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
@@ -49,7 +52,10 @@
     
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" fixed></mat-paginator>
     </div>
+    
   </div>
+</div>
+
 
   <ng-template #content let-modal>
     <div class="modal-header">
