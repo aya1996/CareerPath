@@ -120,6 +120,8 @@ const routes: Routes =
 
     { path: 'admin/index', component: IndexComponent },
     { path: 'admin/exam', component: UsersComponent},
+    { path: 'dashboard', component: AdminDashboardComponent },
+    {path: 'admin/dashboard/edit/path/:id', component:EditPathComponent},
 
     { path: 'admin/questions', component: QuestionsComponent },
     { path: 'admin/add-path', component: AddPathComponent },

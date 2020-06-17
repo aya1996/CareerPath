@@ -15,6 +15,9 @@ export class SubCareerService {
   getSubCareer(){
     return this._http.get<subCareer[]>(this.apiUrl);
   }
+  getSubCareerById(id){
+    return this._http.get<subCareer>(`${this.apiUrl}/${id}`);
+  }
 
   postSubCareer(data:subCareer){
     return this._http.post(this.apiUrl,data);
@@ -23,8 +26,9 @@ export class SubCareerService {
   deleteSubCareer(id){
     return this._http.delete(`${this.apiUrl}/${id}`);
   }
-  // editSubCareer(id, data){
-  //   return this._http.put(this.apiUrl,data);
-  // }
+
+  editSubCareer(id, data:subCareer){
+    return this._http.put(`${this.apiUrl}/${id}`,data);
+  }
 
 }
