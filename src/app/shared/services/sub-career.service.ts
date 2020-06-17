@@ -20,6 +20,9 @@ export class SubCareerService {
     return this._http.post(this.apiUrl,data);
   }
 
+  deleteSubCareer(id){
+    return this._http.delete(`${this.apiUrl}/${id}`);
+  }
   // editSubCareer(id, data){
   //   return this._http.put(this.apiUrl,data);
   // }

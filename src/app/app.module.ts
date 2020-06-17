@@ -89,6 +89,10 @@ import { AddTrackComponent } from './components/admin/dashboard-items/add-track/
 
 import { CountdownModule } from 'ngx-countdown';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ViewTrackComponent } from './components/admin/dashboard-items/view-path/view-track/view-track.component';
+import { EditQuestionComponent } from './components/admin/dashboard-items/add-questions/edit-question/edit-question.component';
+import { EditCourseComponent } from './components/admin/dashboard-items/add-courses/edit-course/edit-course.component';
+import { EditPathComponent } from './components/admin/dashboard-items/add-path/edit-path/edit-path.component';
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
 
@@ -104,6 +108,7 @@ const routes: Routes =
     { path: 'profile/dashboard', component: DashboardComponent },
 
     { path: 'profile/courses', component: CoursesComponent },
+    {path:'admin/dashboard/edit/question/:questId', component:EditQuestionComponent},
 
     { path: 'admin/dashboard', component: AdminNavComponent, children: [
       { path:'vc', component: ViewCoursesComponent, outlet:'viewCourses'},
@@ -115,6 +120,7 @@ const routes: Routes =
 
 
     { path: 'admin/questions', component: QuestionsComponent },
+    { path:'admin/dashboard/edit/course/:id', component:EditCourseComponent},
 
     { path: 'courses-list', component: CoursesListComponent },
     { path: 'courses-modal', component: CourseModalComponent },
@@ -159,7 +165,10 @@ const routes: Routes =
     LineChartComponent,
     AddTrackComponent,
     SpinnerComponent,
-
+    ViewTrackComponent,
+    EditQuestionComponent,
+    EditCourseComponent,
+    EditPathComponent
 
   ],
   imports: [

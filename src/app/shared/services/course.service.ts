@@ -17,6 +17,13 @@ export class CourseService {
   getCourse(){
     return this._http.get<course[]>(this.apiUrl);
   }
+  getAll(){
+    return this._http.get(this.apiUrl);
+  }
+  getById(id){
+    return this._http.get<course>(`${this.apiUrl}/${id}`)
+  }
+
   getSubCareerCourses(){
     return this._http.get<SubCareerCourses[]>(this.apiSubCareerCourses);
   }
@@ -26,6 +33,10 @@ export class CourseService {
   }
   postSubCareerCourses(data:SubCareerCourses){
     return this._http.post(this.apiSubCareerCourses,data);
+  }
+
+  updateCourse(id, data:course){
+    return this._http.put(`${this.apiUrl}/${id}`, data)
   }
 
   deleteCourse(id){

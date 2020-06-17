@@ -3,9 +3,8 @@
       <h3 class="title-style">Add Question</h3>
       <form #f="ngForm" (ngSubmit)="saveData(f.value)">
         <mat-form-field class="full-width">
-            <mat-label>Course</mat-label>
+            <mat-label>Select Course</mat-label>
             <mat-select >
-              <mat-option>Select Course</mat-option>
                 <mat-option *ngFor="let c of courses" 
                 [value]="c.courseId"
                 (click)="getSelected(c.courseId)"
@@ -31,20 +30,28 @@
             <mat-label>Choice 3</mat-label>
             <input matInput placeholder="Add Choice 3" ngModel #ch3="ngModel" name="ch3" required />
           </mat-form-field>
-          <mat-form-field class="full-width">
+          <!-- <mat-form-field class="full-width">
             <mat-label>Right Answer </mat-label>
             <input matInput placeholder="Add Right Answer" ngModel #right="ngModel" name="right" required />
+          </mat-form-field> -->
+          <mat-form-field class="full-width">
+            <mat-label>Select Right Answer Number</mat-label>
+            <mat-select disableRipple>
+              <mat-option (click)="getChoice(ch1)" value="1">Choice 1</mat-option>
+              <mat-option (click)="getChoice(ch2)" value="2">Choice 2</mat-option>
+              <mat-option (click)="getChoice(ch3)" value="3">Choice 3</mat-option>
+            </mat-select>
           </mat-form-field>
+          
         <mat-form-field class="full-width">
            <mat-label>Grade</mat-label>
            <input matInput placeholder="Question grade" ngModel #grade="ngModel" name="grade" required />
          </mat-form-field>
         <br />
         <mat-card-actions>
-          <button mat-raised-button color="primary" [disabled]="f.invalid || selectedItem==0"
+          <button mat-raised-button color="primary" [disabled]="f.invalid || selectedItem==0 || selectedChoice==''"
           (click)="openSnackBar()">ADD</button>
         </mat-card-actions>
       </form>
     </div>
   </mat-card-content>
-  

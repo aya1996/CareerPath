@@ -31,6 +31,7 @@
       <mat-card-actions>
         <button type="submit" 
         mat-raised-button color="primary"
+        (click)="openSnackBar()"
         [disabled]="c.invalid || selectedItem==0">ADD</button>
       </mat-card-actions>
     </form>

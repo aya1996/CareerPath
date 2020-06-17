@@ -15,8 +15,19 @@ export class questionService {
   getQuestion(){
     return this._http.get<question[]>(this.apiUrl);
   }
+  getQuestionById(id){
+    return this._http.get<question>(`${this.apiUrl}/${id}`);
+  }
 
   postQuestion(data:question){
     return this._http.post(this.apiUrl,data);
+  }
+
+  updateQuestion(id, data:question){
+    return this._http.put(`${this.apiUrl}/${id}`,data);
+  }
+
+  deleteQuestion(id){
+    return this._http.delete(`${this.apiUrl}/${id}`);
   }
 }
