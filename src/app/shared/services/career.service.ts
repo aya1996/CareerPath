@@ -16,8 +16,16 @@ export class CareerService {
     return this._http.get<career[]>(this.apiUrl);
   }
 
+  getCareerById(id){
+    return this._http.get<career>(`${this.apiUrl}/${id}`)
+  }
+
   postCareer(data:career){
     return this._http.post(this.apiUrl,data);
+  }
+
+  updateCareer(id, data:career){
+    return this._http.put(`${this.apiUrl}/${id}`,data);
   }
 
   deleteCareer(id){

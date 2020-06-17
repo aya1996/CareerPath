@@ -94,6 +94,7 @@ import { EditQuestionComponent } from './components/admin/dashboard-items/add-qu
 import { EditCourseComponent } from './components/admin/dashboard-items/add-courses/edit-course/edit-course.component';
 import { EditPathComponent } from './components/admin/dashboard-items/add-path/edit-path/edit-path.component';
 import { IndexComponent } from './components/admin/index/index.component';
+import { EditTrackComponent } from './components/admin/dashboard-items/add-track/edit-track/edit-track.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -116,11 +117,14 @@ const routes: Routes =
     { path: 'admin/exam', component: UsersComponent},
     { path: 'dashboard', component: AdminDashboardComponent },
     {path: 'admin/path/edit/:id', component:EditPathComponent},
+    {path: 'admin/track/edit/:id', component:EditTrackComponent},
 
     // { path: 'admin/questions', component: QuestionsComponent },
     { path: 'admin/add-path', component: AddPathComponent },
     { path: 'admin/add-track', component: AddTrackComponent },
     { path: 'admin/path', component: ViewPathComponent },
+    { path:'admin/track', component:ViewTrackComponent},
+
     { path: 'admin/add-course', component: AddCoursesComponent },
     { path: 'admin/course', component: ViewCoursesComponent},
     { path: 'admin/add-question', component: AddQuestionsComponent},
@@ -176,6 +180,7 @@ const routes: Routes =
     EditCourseComponent,
     EditPathComponent,
     IndexComponent,
+    EditTrackComponent,
    
 
   ],

@@ -33,7 +33,9 @@ margin-left: 250px;">
 
           <ng-container matColumnDef="courseContent">
             <th mat-header-cell *matHeaderCellDef> Course Link </th>
-            <td mat-cell *matCellDef="let row"> {{row.courseContent}} </td>
+            <td mat-cell *matCellDef="let row"> 
+              <a [href]="row.courseContent">{{row.courseContent}}</a>
+            </td>
           </ng-container>
 
           <ng-container matColumnDef="description">

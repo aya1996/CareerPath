@@ -47,7 +47,7 @@ export class EditPathComponent implements OnInit {
           this.showSpinner = false;
         });
       });
-     });
+    });
     
   }
 

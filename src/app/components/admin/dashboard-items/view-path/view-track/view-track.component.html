@@ -1,1 +1,66 @@
-<p>view-track works!</p>
+<app-spinner *ngIf="showSpinner"></app-spinner>
+
+
+<div [hidden]="showSpinner" class="main-div">
+    <app-admin-nav></app-admin-nav>
+    <!-- <mat-spinner *ngIf="showSpinner"></mat-spinner> -->
+    <div [hidden]="showSpinner" style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
+        
+        <mat-form-field>
+          <mat-label>Filter Tracks</mat-label>
+          <input matInput (keyup)="applyFilter($event)" >
+        </mat-form-field>
+        
+        <div class="mat-elevation-z8" style="overflow: hidden;">
+          <div class="table-container">
+            <table mat-table [dataSource]="dataSource" matSort > 
+          
+              <ng-container matColumnDef="Track">
+                <th mat-header-cell *matHeaderCellDef > Track </th>
+                <td mat-cell *matCellDef="let row" > {{row.careerName}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="Description">
+                <th mat-header-cell *matHeaderCellDef class="main"> Description </th>
+                <td mat-cell *matCellDef="let row" class="main"> {{row.description}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef >  </th>
+                <td mat-cell *matCellDef="let row" > 
+                  <!-- <button mat-stroked-button color="primary" 
+                  [routerLink]="['edit/',row.careerId]">Edit</button> | -->
+                  <button mat-stroked-button color="warn" 
+                  (click)="openModal(content,row.careerId)">Delete</button>
+                </td>
+              </ng-container>
+        
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+              </tr>
+            </table>
+          </div>
+        
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" fixed></mat-paginator>
+        </div>
+        
+      </div>
+    </div>
+    
+    
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title">DELETE !!</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete this track?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+          <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+        </div>
+      </ng-template>
+    
