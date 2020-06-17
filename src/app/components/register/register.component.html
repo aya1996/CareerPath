@@ -3,40 +3,42 @@
 <!-- <section id="page">
   <section class="public"> -->
     <div class="register">
-    <h2 > Register</h2>
+    <h2> Register</h2>
       <form [formGroup]="registerForm" (ngSubmit)="register()">
-
 
         <div class="row content-page">
           <!-- First Name -->
           <div class="form-group col-md-6 col-xm-12">
-            <input formControlName="firstName" type="text" class=" form-control" placeholder="First Name">
+            <input formControlName="fname" type="text" class=" form-control" placeholder="First Name">
           </div>
 
           <!-- Last Name -->
           <div class="form-group col-md-6 col-xm-12">
-            <input formControlName="lastName" type="text" class=" form-control" placeholder="Last Name">
+            <input formControlName="lname" type="text" class=" form-control" placeholder="Last Name">
           </div>
 
-          <!-- Birthdate -->
+          <!-- phonenumber -->
           <div class="form-group col-md-6 col-xm-12">
-            <input formControlName="birthdate" type="text" class=" form-control" placeholder="Birthdate">
+            <input formControlName="phonenumber" type="text" class=" form-control" placeholder="Phone Number">
           </div>
 
 
 
           <!-- Contry -->
           <div class="form-group col-md-6 col-xm-12">
-            <select class="form-control">
-              <option style="color: rgb(143, 143, 143);">Country</option>
-              <option *ngFor="let item of countries" [value]="item.id">
+            <select class="form-control" formControlName="country"> 
+              <option style="color: rgb(143, 143, 143);" value="" disabled>Country</option>
+              <option *ngFor="let item of countries" [value]="item.name">
                 {{ item.name }}
               </option>
+              <!-- <option *ngFor="let item of countries" [value]="item.id">
+                {{ item.name }}
+              </option> -->
             </select>
           </div>
           <!-- Username -->
           <div class="form-group col-md-6 col-xm-12">
-            <input  formControlName="userName"  class="form-control" type="text" placeholder="Username">
+            <input  formControlName="username"  class="form-control" type="text" placeholder="Username">
           </div>
           <!-- Email-->
           <div class="form-group col-md-6 col-xm-12">
@@ -44,41 +46,41 @@
           </div>
           <!-- Password -->
           <div class="form-group col-md-6 col-xm-12">
-            <input formControlName="password"  class="form-control" type="password" placeholder="Password">
+            <input formControlName="passwordHash"  class="form-control" type="password" placeholder="Password">
           </div>
 
           <!-- Confirm password -->
           <div class="form-group col-md-6 col-xm-12">
             <input formControlName="confirmPassword"  class="form-control" type="password" placeholder="Confirm password">
           </div>
-
+          
           <!-- Choose Your Path -->
           <div class="form-group col-md-6 col-xm-12">
-            <select class="form-control">
-              <option style="color: rgb(143, 143, 143);">Choose Your Path</option>
-              <option *ngFor="let item of countries" [value]="item.id">
-                {{ item.name }}
+            <select class="form-control"  formControlName="subCareerId">
+              <option style="color: rgb(143, 143, 143);"  value="" disabled>Choose Your Path</option>
+              <option *ngFor="let item of paths" [value]="item.subCareerId">
+                {{ item.subCareerName }}
               </option>
             </select>
           </div>
 
           <!-- Choose Your Leval -->
           <div class="form-group col-md-6 col-xm-12">
-            <select class="form-control">
-              <option style="color: rgb(143, 143, 143);">Choose Your Leval</option>
-              <option *ngFor="let item of countries" [value]="item.id">
-                {{ item.name }}
+            <select class="form-control" formControlName="userLevel">
+              <option  value="" disabled style="color: rgb(221, 171, 171);">Choose Your Leval</option>
+              <option *ngFor="let item of levels" [value]="item">
+                {{ item }}
               </option>
             </select>
           </div>
 
-          <!-- Confirm password -->
+          <!-- description -->
           <div class="form-group col-md-12">
-            <textarea class="form-control" type="password" placeholder="Why would you choose this Path?"></textarea>
+            <textarea class="form-control" formControlName="description" type="text" placeholder="Why would you choose this Path?"></textarea>
           </div>
 
 
-          <!-- Images -->
+          Images
           <div class="form-group col-md-12">
 
             <span style="color:red;" *ngIf="message">{{message}}</span>
@@ -106,12 +108,10 @@
           </div>
 
         </div>
-
-
-
       </form>
 
    </div>
+  
 
    <!-- </section>
 </section> -->

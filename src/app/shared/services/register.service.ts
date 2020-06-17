@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class RegisterService {
-  modelName = 'register';
+  modelName = 'user/Register';
   constructor(
     private http: HttpClient,
   ) { }

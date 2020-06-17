@@ -4,20 +4,22 @@
         <img class="login--logo" src="../../../assets/images/logo.png" alt="">
         <h1 class="login--name"> Career Path</h1>
     </div>
-    <div class="login__form">
-        <div class="form--group">
-            <span class="form--icon"><i class="fa fa-user" aria-hidden="true"></i></span>
-            <input class="form--input" type="text" name="" placeholder="username" id="">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="login__form">
+            <div class="form--group">
+                <span class="form--icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                <input class="form--input" type="text" name="" placeholder="username" id="" formControlName="username">
+            </div>
+            <div class="form--group">
+                <span class="form--icon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                <input class="form--input" type="password" password="" placeholder="password" id="" formControlName="password">
+            </div>
+    
+            <button class="form--input--button" type="submit">Login</button>
+            <p class="form-forget">forget password ?</p>
+    
         </div>
-        <div class="form--group">
-            <span class="form--icon"><i class="fa fa-lock" aria-hidden="true"></i></span>
-            <input class="form--input" type="password" password="" placeholder="password" id="">
-        </div>
-
-        <button class="form--input--button">Login</button>
-        <p class="form-forget">forget password ?</p>
-
-    </div>
+    </form>
     <div class="login__footer">
         <a routerLink='/register'>create an account !</a>
     </div>
