@@ -5,50 +5,20 @@ import { CourseService } from '../../../../shared/services/course.service';
 import { course } from '../../../../shared/Models/course.model';
 import { MatSnackBar } from '@angular/material';
 
-// interface Course {
-//   value: string;
-//   viewValue: string;
-// }
-
-// interface CourseGroup {
-//   name: string;
-//   course: Course[];
-// }
-
 @Component({
   selector: 'app-add-questions',
   templateUrl: './add-questions.component.html',
   styleUrls: ['./add-questions.component.css']
 })
 export class AddQuestionsComponent implements OnInit {
-
-  // courseGroups: CourseGroup[] = [
-  //   {
-  //     name: 'Frontend',
-  //     course: [
-  //       {value: 'id1', viewValue: 'HTML'},
-  //       {value: 'id2', viewValue: 'CSS'},
-  //       {value: 'id3', viewValue: 'Javascript'},
-  //       {value: 'id4', viewValue: 'JQuery'},
-  //       {value: 'id5', viewValue: 'Angular'},
-  //     ]
-  //   },
-  //   {
-  //     name: 'Backend',
-  //     course: [
-  //       {value: 'id1', viewValue: 'C#'},
-  //       {value: 'id2', viewValue: 'ASP.Net'},
-  //       {value: 'id3', viewValue: 'MVC'},
-  //       {value: 'id4', viewValue: 'EF'},
-  //       {value: 'id5', viewValue: 'SQL Server'},
-  //     ]
-  //   },
-  // ];
+  
   constructor(private questionService:questionService, 
     private CourseService:CourseService,private _snackBar: MatSnackBar) { }
     courses:course[] = [];
 
     selectedItem=0;
+    selectedChoice = '';
+
   ngOnInit() {
     this.CourseService.getCourse()
     .subscribe(res => {
@@ -66,6 +36,11 @@ export class AddQuestionsComponent implements OnInit {
     });
   }
 
+  getChoice(data){
+    this.selectedChoice = data.viewModel;
+    // console.log(data.viewModel);
+  }
+
   saveData(data){
     const q = new question;
     q.questName=data.title;
@@ -73,7 +48,7 @@ export class AddQuestionsComponent implements OnInit {
     q.a =data.ch1;
     q.b=data.ch2;
     q.c=data.ch3;
-    q.rightAns=data.right;
+    q.rightAns=this.selectedChoice;
     q.courseIdRef = this.selectedItem;
     console.log(q);
     this.questionService.postQuestion(q)

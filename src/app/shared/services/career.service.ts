@@ -19,4 +19,8 @@ export class CareerService {
   postCareer(data:career){
     return this._http.post(this.apiUrl,data);
   }
+
+  deleteCareer(id){
+    return this._http.delete(`${this.apiUrl}/${id}`);
+  }
 }

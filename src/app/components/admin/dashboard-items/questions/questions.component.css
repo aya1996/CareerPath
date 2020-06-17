@@ -13,6 +13,8 @@ table {
   
   td, th {
     width: 15%;
+    padding: 15px;
+    margin: 15px;
   }
   .table-container {
     max-height: calc(100vh - 200px); 

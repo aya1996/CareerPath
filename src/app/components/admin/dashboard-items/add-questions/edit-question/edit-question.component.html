@@ -1,0 +1,56 @@
+<app-spinner *ngIf="showSpinner"></app-spinner>
+
+<mat-card-content *ngIf="!showSpinner">
+    <div class="my-form mat-elevation-z8" style="margin-top: 30px; background-color: #fff;">
+      <h3 class="title-style">Edit Question</h3>
+      <form #f="ngForm" (ngSubmit)="saveData(f.value)">
+
+        <mat-form-field class="full-width">
+          <mat-label>Course Title</mat-label>
+          <input matInput disabled  [value]="courseName" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Question</mat-label>
+          <input matInput placeholder="Add Question header" [(ngModel)]="qs.questName" #title="ngModel"  name="title" required />
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Choice 1</mat-label>
+          <input matInput placeholder="Add Choice 1" [(ngModel)]="qs.a" #ch1="ngModel"  name="ch1"  required />
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Choice 2</mat-label>
+            <input matInput placeholder="Add Choice 2" [(ngModel)]="qs.b" #ch2="ngModel"  name="ch2" required />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Choice 3</mat-label>
+            <input matInput placeholder="Add Choice 3" [(ngModel)]="qs.c" ngModel #ch3="ngModel" name="ch3" required />
+          </mat-form-field>
+          <!-- <mat-form-field class="full-width">
+            <mat-label>Right Answer </mat-label>
+            <input matInput placeholder="Add Right Answer" ngModel #right="ngModel" name="right" required />
+          </mat-form-field> -->
+          <mat-form-field class="full-width">
+            <input matInput disabled [value]="selectedChoice" />
+            <mat-label>Change Right Answer </mat-label>
+            <mat-select>
+              <!-- <mat-option disabled>{{ qs.rightAns}}</mat-option> -->
+              <mat-option (click)="getChoice(qs.a)" value="1"> {{ qs.a }} </mat-option>
+              <mat-option (click)="getChoice(qs.b)" value="2">{{ qs.b }}</mat-option>
+              <mat-option (click)="getChoice(qs.c)" value="3">{{ qs.c }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+        <mat-form-field class="full-width">
+           <mat-label>Grade</mat-label>
+           <input matInput placeholder="Question grade" [(ngModel)]="qs.grade" ngModel #grade="ngModel" name="grade" required />
+         </mat-form-field>
+        <br />
+        <mat-card-actions>
+          <button mat-raised-button color="primary" [disabled]="f.invalid || selectedChoice==''"
+          (click)="openSnackBar()">Save</button>
+        </mat-card-actions>
+      </form>
+    </div>
+  </mat-card-content>
+  

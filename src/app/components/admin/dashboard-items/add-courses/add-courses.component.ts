@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
+
 import { SubCareerService } from '../../../../shared/services/sub-career.service';
 import { CourseService } from '../../../../shared/services/course.service';
 import { subCareer } from '../../../../shared/Models/subCareer.model';
@@ -11,6 +13,7 @@ import { course } from '../../../../shared/Models/course.model';
 export class AddCoursesComponent implements OnInit {
 
   constructor(private courseService:CourseService, 
+    private _snackBar: MatSnackBar,
     private subCareerService:SubCareerService) { }
 
   subCareer: subCareer[] = [];
@@ -48,12 +51,13 @@ export class AddCoursesComponent implements OnInit {
     });
     
   }
-  
-  
-
-
-
-
+  openSnackBar() {
+    this._snackBar.open('Updated..', 'X', {
+      duration: 2000,
+      horizontalPosition: "right",
+      verticalPosition: "bottom",
+    });
+  }
 
  
 }
