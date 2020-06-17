@@ -117,7 +117,7 @@ const routes: Routes =
     ] },
 
     { path: 'dashboard', component: AdminDashboardComponent },
-
+    {path: 'admin/dashboard/edit/path/:id', component:EditPathComponent},
 
     { path: 'admin/questions', component: QuestionsComponent },
     { path:'admin/dashboard/edit/course/:id', component:EditCourseComponent},
