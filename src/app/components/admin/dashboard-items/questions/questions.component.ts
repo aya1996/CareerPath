@@ -3,6 +3,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {FormControl} from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { question } from '../../../../shared/Models/question.model';
 import { questionService} from '../../../../shared/services/question.service';
 import { CourseService} from '../../../../shared/services/course.service';
@@ -26,7 +28,9 @@ export class QuestionsComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor(private questionService:questionService , private CourseService:CourseService) {
+  constructor(private questionService:questionService, 
+    private CourseService:CourseService,
+    private modalService: NgbModal) {
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.questionData);
@@ -34,9 +38,8 @@ export class QuestionsComponent implements OnInit {
   questionData  = [];
   course=[]
   showSpinner = true;
+  
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
 
     this.questionService.getQuestion().subscribe(res => {
     this.CourseService.getCourse().subscribe(courses => {
@@ -49,14 +52,22 @@ export class QuestionsComponent implements OnInit {
             }
           }
         }
-        this.showSpinner = false
-        console.log(this.questionData);
-        console.log(this.course);
+        // console.log(this.questionData)
+        this.showSpinner = false;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        // console.log(this.questionData);
+        // console.log(this.course);
       });
+      this.showSpinner = false
     })
     
   }
-
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    
+  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -64,6 +75,20 @@ export class QuestionsComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  getDeletedId = 0;
+
+  openModal(content,id) {
+    this.getDeletedId = id;
+    this.modalService.open(content);
+  }
+  deleteQuest(){
+    this.questionService.deleteQuestion(this.getDeletedId).subscribe(res => console.log(res));
+    this.modalService.dismissAll();
+    // this.router.navigateByUrl('/admin/dashboard', { skipLocationChange: true }).then(() => {
+    //   this.router.navigate(['view/courses']);
+    // });
   }
 }
 

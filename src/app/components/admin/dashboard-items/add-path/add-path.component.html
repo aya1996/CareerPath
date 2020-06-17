@@ -1,4 +1,7 @@
-<mat-card-content>
+<div class="main">
+<app-admin-nav></app-admin-nav>
+<div class="w-100 h-50 m-auto">
+<mat-card-content >
   <div class="my-form mat-elevation-z8" style="margin-top: 30px;">
    <h3 class="title-style">Add A Career Path</h3>
     <form #f="ngForm" (ngSubmit)="saveData(f.value)">
@@ -32,3 +35,5 @@
     </form>
   </div>
 </mat-card-content>
+</div>
+</div>

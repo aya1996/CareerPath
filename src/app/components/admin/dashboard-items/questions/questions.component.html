@@ -1,17 +1,22 @@
-<app-spinner *ngIf="showSpinner"></app-spinner>
-<div *ngIf="!showSpinner" style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
-  <h6>Select Course</h6>
+<div style=" background-color: white !important;
+padding-left: 50px;
+height: 150vh;
+margin-left: 250px;">
+  <app-admin-nav></app-admin-nav>
+ <app-spinner *ngIf="showSpinner"></app-spinner>
+  <div [hidden]="showSpinner" style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
+  <!-- <h6>Select Course</h6>
 <mat-form-field>
   <mat-label>Courses</mat-label>
   <mat-select [formControl]="QControl">
     <mat-option>-- None --</mat-option>
-    <!-- <mat-optgroup *ngFor="let group of courseGroups" [label]="group.name" > -->
+    <mat-optgroup *ngFor="let group of courseGroups" [label]="group.name" >
       <mat-option *ngFor="let c of course" [value]="c.courseId">
         {{c.courseName}}
       </mat-option>
-    <!-- </mat-optgroup> -->
+    </mat-optgroup>
   </mat-select>
-</mat-form-field>
+</mat-form-field> --> 
   
   <mat-form-field>
     <mat-label>Filter Questions</mat-label>
@@ -23,42 +28,44 @@
       <table mat-table [dataSource]="dataSource" matSort > 
     
         <ng-container matColumnDef="questionName">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header class="main"> Question </th>
-          <td mat-cell *matCellDef="let row" class="main"> {{row.questName}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header > Question </th>
+          <td mat-cell *matCellDef="let row"> {{row.questName}} </td>
         </ng-container>
     
         <ng-container matColumnDef="choiceOne">
-          <th mat-header-cell *matHeaderCellDef> Choice1 </th>
-          <td mat-cell *matCellDef="let row"> {{row.a}} </td>
+          <th mat-header-cell *matHeaderCellDef style="width: 10%;"> Choice1 </th>
+          <td mat-cell *matCellDef="let row" style="width: 10%;"> {{row.a}} </td>
         </ng-container>
     
         <ng-container matColumnDef="choiceTwo">
-          <th mat-header-cell *matHeaderCellDef> Choice2 </th>
-          <td mat-cell *matCellDef="let row" > {{row.b}} </td>
+          <th mat-header-cell *matHeaderCellDef style="width: 10%;"> Choice2 </th>
+          <td mat-cell *matCellDef="let row" style="width: 10%;"> {{row.b}} </td>
         </ng-container>
 
         <ng-container matColumnDef="choiceThree">
-          <th mat-header-cell *matHeaderCellDef> Choice3 </th>
-          <td mat-cell *matCellDef="let row"> {{row.c}} </td>
+          <th mat-header-cell *matHeaderCellDef style="width: 10%;"> Choice3 </th>
+          <td mat-cell *matCellDef="let row" style="width: 10%;"> {{row.c}} </td>
         </ng-container>
         <ng-container matColumnDef="grade">
-          <th mat-header-cell *matHeaderCellDef>Grade </th>
-          <td mat-cell *matCellDef="let row"> {{row.grade}} </td>
+          <th mat-header-cell *matHeaderCellDef style="width: 10%;">Grade </th>
+          <td mat-cell *matCellDef="let row" style="width: 10%;"> {{row.grade}} </td>
         </ng-container>
         <ng-container matColumnDef="rightAnswer">
-          <th mat-header-cell *matHeaderCellDef> Right Answer </th>
-          <td mat-cell *matCellDef="let row"> {{row.rightAns}} </td>
+          <th mat-header-cell *matHeaderCellDef style="width: 10%;"> Right Answer </th>
+          <td mat-cell *matCellDef="let row" style="width: 10%;"> {{row.rightAns}} </td>
         </ng-container>
         <ng-container matColumnDef="courseName">
-          <th mat-header-cell *matHeaderCellDef>Course Name</th>
-          <td mat-cell *matCellDef="let row"> {{row.course.courseName}} </td>
+          <th mat-header-cell *matHeaderCellDef style="width: 10%;">Course Name</th>
+          <td mat-cell *matCellDef="let row" style="width: 10%;"> {{row.course.courseName}} </td>
         </ng-container>
     
-        <ng-container matColumnDef="edit">
+        <ng-container matColumnDef="edit" >
           <th mat-header-cell *matHeaderCellDef class="main2">  </th>
           <td mat-cell *matCellDef="let row" class="main2"> 
-            <button mat-stroked-button color="primary" >Edit</button> |
-            <button mat-stroked-button color="warn">Delete</button>
+            <button mat-stroked-button color="primary" style="width: 30%;" [routerLink]="['edit/question',row.questId]">Edit</button> |
+            <button mat-stroked-button color="warn"
+             style="width: 30%;"
+             (click)="openModal(content,row.questId)">Delete</button>
           </td>
         </ng-container>
   
@@ -73,3 +80,20 @@
   </div>
   
 </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">DELETE !!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to delete question?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="deleteQuest()">Delete</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>

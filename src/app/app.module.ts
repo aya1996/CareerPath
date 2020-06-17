@@ -74,7 +74,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { AdminNavComponent } from './components/admin/admin-nav/admin-nav.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { QuestionsComponent } from './components/admin/dashboard-items/questions/questions.component';
-import { QuestionComponent } from './components/admin/dashboard-items/question/question.component';
+
 import { AddPathComponent } from './components/admin/dashboard-items/add-path/add-path.component';
 import { UsersComponent } from './components/admin/dashboard-items/users/users.component';
 import { ViewPathComponent } from './components/admin/dashboard-items/view-path/view-path.component';
@@ -89,13 +89,19 @@ import { AddTrackComponent } from './components/admin/dashboard-items/add-track/
 
 import { CountdownModule } from 'ngx-countdown';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ViewTrackComponent } from './components/admin/dashboard-items/view-path/view-track/view-track.component';
+import { EditQuestionComponent } from './components/admin/dashboard-items/add-questions/edit-question/edit-question.component';
+import { EditCourseComponent } from './components/admin/dashboard-items/add-courses/edit-course/edit-course.component';
+import { EditPathComponent } from './components/admin/dashboard-items/add-path/edit-path/edit-path.component';
+import { IndexComponent } from './components/admin/index/index.component';
+
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
 
 const routes: Routes =
   [
 
-    { path: '', component: HomeComponent },
+    { path: 'home', component: HomeComponent },
 
     { path: 'profile', component: ProfileHeaderComponent },
     { path: 'about', component: AboutComponent },
@@ -104,6 +110,7 @@ const routes: Routes =
     { path: 'profile/dashboard', component: DashboardComponent },
 
     { path: 'profile/courses', component: CoursesComponent },
+    {path:'admin/dashboard/edit/question/:questId', component:EditQuestionComponent},
 
     { path: 'admin/dashboard', component: AdminNavComponent, children: [
       { path:'vc', component: ViewCoursesComponent, outlet:'viewCourses'},
@@ -111,10 +118,21 @@ const routes: Routes =
       { path:'db', component: AdminDashboardComponent, outlet:'dashboard'}
     ] },
 
+    { path: 'admin/index', component: IndexComponent },
+    { path: 'admin/exam', component: UsersComponent},
     { path: 'dashboard', component: AdminDashboardComponent },
-
+    {path: 'admin/dashboard/edit/path/:id', component:EditPathComponent},
 
     { path: 'admin/questions', component: QuestionsComponent },
+    { path: 'admin/add-path', component: AddPathComponent },
+    { path: 'admin/add-track', component: AddTrackComponent },
+    { path: 'admin/view-path', component: ViewPathComponent },
+    { path: 'admin/add-course', component: AddCoursesComponent },
+    { path: 'admin/view-course', component: ViewCoursesComponent},
+    { path: 'admin/add-question', component: AddQuestionsComponent},
+    { path: 'admin/view-question', component: QuestionsComponent },
+    /****************************************************************** */
+    { path:'admin/dashboard/edit/course/:id', component:EditCourseComponent},
 
     { path: 'courses-list', component: CoursesListComponent },
     { path: 'courses-modal', component: CourseModalComponent },
@@ -122,7 +140,7 @@ const routes: Routes =
     { path: 'web', component: WebDevelopmentComponent },
     { path: 'login', component: LoginComponent },
     { path: 'course', component: CourseComponent },
-    // {  path:'**',  component : HomeComponent }
+    {  path:'**',  component : HomeComponent }
   ]
 @NgModule({
   declarations: [
@@ -146,7 +164,7 @@ const routes: Routes =
     AdminNavComponent,
     AdminDashboardComponent,
     QuestionsComponent,
-    QuestionComponent,
+   
     AddPathComponent,
     UsersComponent,
     ViewPathComponent,
@@ -159,7 +177,12 @@ const routes: Routes =
     LineChartComponent,
     AddTrackComponent,
     SpinnerComponent,
-
+    ViewTrackComponent,
+    EditQuestionComponent,
+    EditCourseComponent,
+    EditPathComponent,
+    IndexComponent,
+   
 
   ],
   imports: [

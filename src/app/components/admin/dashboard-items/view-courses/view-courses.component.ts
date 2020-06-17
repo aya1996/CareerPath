@@ -2,7 +2,9 @@ import { Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatDialog} from '@angular/material/dialog';
 import {FormControl} from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SubCareerService } from '../../../../shared/services/sub-career.service';
 import { CourseService } from '../../../../shared/services/course.service';
 import { subCareer } from '../../../../shared/Models/subCareer.model';
@@ -28,6 +30,7 @@ export class ViewCoursesComponent implements OnInit {
 
   constructor(private subCareerService:SubCareerService, 
     private coursesService:CourseService,
+    private modalService: NgbModal,
     private router:Router) {
 
     // Assign the data to the data source for the table to render
@@ -55,53 +58,47 @@ export class ViewCoursesComponent implements OnInit {
         });
       }
     );
+
+    //to get the corresponding subcareer with course
+    // this.coursesService.getAll().subscribe(res => {
+    //   for(let i in res){
+    //     for(const j in res[i].subCareerCourses)
+    //       console.log(res[i].subCareerCourses[j].subCareer.subCareerName);
+    //   }
+    // })
   }
 
-  getSelected(data){
-    this.isLoaded = false;
-   // this.selectedItem = data;
-    this.courses = []
-    this.coursesService.getSubCareerCourses().subscribe(res => {
-      this.coursesService.getCourse().subscribe(cour => {
-        for(let n=0; n<res.length; n++){
-          if(res[n].SubCareerId==data){
-            for(let i=0; i<cour.length; i++){
-              console.log(cour)
-              if(res[n].CourseId == cour[i].courseId){
-                console.log(cour)
-                this.courses.push(
-                  {courseContent:cour[i].courseContent,
-                    courseId:cour[i].courseId,
-                    courseName:cour[i].courseName,
-                    description:cour[i].description,
-                    duration:cour[i].duration
-                  })
-              }
-            }
-          }
-        } 
-      //console.log(this.courses)
+  // getSelected(data){
+  //   this.isLoaded = false;
+  //  // this.selectedItem = data;
+  //   this.courses = []
+  //   this.coursesService.getSubCareerCourses().subscribe(res => {
+  //     this.coursesService.getCourse().subscribe(cour => {
+  //       for(let n=0; n<res.length; n++){
+  //         if(res[n].SubCareerId==data){
+  //           for(let i=0; i<cour.length; i++){
+  //             console.log(cour)
+  //             if(res[n].CourseId == cour[i].courseId){
+  //               console.log(cour)
+  //               this.courses.push(
+  //                 {courseContent:cour[i].courseContent,
+  //                   courseId:cour[i].courseId,
+  //                   courseName:cour[i].courseName,
+  //                   description:cour[i].description,
+  //                   duration:cour[i].duration
+  //                 })
+  //             }
+  //           }
+  //         }
+  //       } 
+  //     //console.log(this.courses)
 
-        this.isLoaded = true;
-      });
-    }
-  );
+  //       this.isLoaded = true;
+  //     });
+  //   }
+  // );
 
-  }
-
-  deleteItem(id){
-    this.isLoaded = false;
-
-    this.coursesService.deleteCourse(id).subscribe(result => {
-      console.log(result)
-      this.ngOnDestroy()
-      this.ngOnInit()
-
-    })
-    // this.router.navigateByUrl('/admin/dashboard', { skipLocationChange: true }).then(() => {
-    //   this.router.navigate(['view/courses']);
-    // });
-  }
+  // }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -117,7 +114,24 @@ export class ViewCoursesComponent implements OnInit {
       this.courses = [];
     }
   }
+  getDeletedId = 0;
+
+  openModal(content,id) {
+    this.getDeletedId = id;
+    this.modalService.open(content);
+  }
+  deleteCourse(){
+    // this.isLoaded = false;
+    this.coursesService.deleteCourse(this.getDeletedId).subscribe(res => console.log(res));
+    this.modalService.dismissAll();
+    // this.router.navigateByUrl('/admin/dashboard', { skipLocationChange: true }).then(() => {
+    //   this.router.navigate(['view/courses']);
+    // });
+  }
+
 }
+
+
 
 
 

@@ -1,7 +1,5 @@
-
-
 export class question{
-    questionID? :number;
+    questID :number;
     questName :string;
     a :string;
     b :string;
