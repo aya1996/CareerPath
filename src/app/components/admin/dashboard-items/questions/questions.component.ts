@@ -35,8 +35,7 @@ export class QuestionsComponent implements OnInit {
   course=[]
   showSpinner = true;
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+   
 
     this.questionService.getQuestion().subscribe(res => {
     this.CourseService.getCourse().subscribe(courses => {
@@ -49,14 +48,20 @@ export class QuestionsComponent implements OnInit {
             }
           }
         }
-        this.showSpinner = false
-        console.log(this.questionData);
-        console.log(this.course);
+      
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        // console.log(this.careerData);
       });
+      this.showSpinner = false
     })
     
   }
-
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    
+  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

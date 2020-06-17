@@ -74,7 +74,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { AdminNavComponent } from './components/admin/admin-nav/admin-nav.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { QuestionsComponent } from './components/admin/dashboard-items/questions/questions.component';
-import { QuestionComponent } from './components/admin/dashboard-items/question/question.component';
+
 import { AddPathComponent } from './components/admin/dashboard-items/add-path/add-path.component';
 import { UsersComponent } from './components/admin/dashboard-items/users/users.component';
 import { ViewPathComponent } from './components/admin/dashboard-items/view-path/view-path.component';
@@ -95,7 +95,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 const routes: Routes =
   [
 
-    { path: '', component: HomeComponent },
+    { path: 'home', component: HomeComponent },
 
     { path: 'profile', component: ProfileHeaderComponent },
     { path: 'about', component: AboutComponent },
@@ -115,7 +115,15 @@ const routes: Routes =
 
 
     { path: 'admin/questions', component: QuestionsComponent },
-
+    { path: 'admin/add-path', component: AddPathComponent },
+    { path: 'admin/add-path', component: AddPathComponent },
+    { path: 'admin/add-track', component: AddTrackComponent },
+    { path: 'admin/view-path', component: ViewPathComponent },
+    { path: 'admin/add-course', component: AddCoursesComponent },
+    { path: 'admin/view-course', component: ViewCoursesComponent},
+    { path: 'admin/add-question', component: AddQuestionsComponent},
+    { path: 'admin/view-question', component: QuestionsComponent },
+    /****************************************************************** */
     { path: 'courses-list', component: CoursesListComponent },
     { path: 'courses-modal', component: CourseModalComponent },
     { path: 'register', component: RegisterComponent },
@@ -146,7 +154,7 @@ const routes: Routes =
     AdminNavComponent,
     AdminDashboardComponent,
     QuestionsComponent,
-    QuestionComponent,
+   
     AddPathComponent,
     UsersComponent,
     ViewPathComponent,

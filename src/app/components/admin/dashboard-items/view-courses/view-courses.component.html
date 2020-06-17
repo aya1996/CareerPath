@@ -1,72 +1,75 @@
-<app-spinner *ngIf="!isLoaded"></app-spinner>
-<div [hidden]="!isLoaded" style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
+<div style=" background-color: white !important;
+height: 150vh;
+padding-left: 50px;
+margin-left: 250px;">
+  <app-admin-nav></app-admin-nav>
+  <app-spinner *ngIf="!isLoaded"></app-spinner>
+  <div [hidden]="!isLoaded" style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
+    <mat-card-content>
     <h6>Select Path</h6>
     <mat-form-field>
-        <mat-label>Path</mat-label>
-        <mat-select>
-          <mat-option>All</mat-option> 
-          <mat-option *ngFor="let p of paths" 
-          [value]="p.subCareerId"
-          (click)="getSelected(p.subCareerId)">
-            {{p.subCareerName}}
-          </mat-option>
-        </mat-select>
+      <mat-label>Path</mat-label>
+      <mat-select>
+        <mat-option>All</mat-option>
+        <mat-option *ngFor="let p of paths" [value]="p.subCareerId" (click)="getSelected(p.subCareerId)">
+          {{p.subCareerName}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
-    
+
     <mat-form-field>
       <mat-label>Filter Courses</mat-label>
-      <input matInput (keyup)="applyFilter($event)" >
+      <input matInput (keyup)="applyFilter($event)">
     </mat-form-field>
-    
+
     <div class="mat-elevation-z8" style="overflow: hidden;">
       <div class="table-container">
-        <table mat-table [dataSource]="dataSource" matSort > 
-      
+        <table mat-table [dataSource]="dataSource" matSort>
+
           <ng-container matColumnDef="courseName">
-            <th mat-header-cell *matHeaderCellDef > Course Title </th>
+            <th mat-header-cell *matHeaderCellDef> Course Title </th>
             <td mat-cell *matCellDef="let row"> {{row.courseName}} </td>
           </ng-container>
-      
+
           <ng-container matColumnDef="courseContent">
             <th mat-header-cell *matHeaderCellDef> Course Link </th>
             <td mat-cell *matCellDef="let row"> {{row.courseContent}} </td>
           </ng-container>
-      
+
           <ng-container matColumnDef="description">
             <th mat-header-cell *matHeaderCellDef class="main"> Description </th>
-            <td mat-cell *matCellDef="let row" class="main" 
-            style="padding-top: 10px; padding-bottom: 10px;"> {{row.description}} </td>
+            <td mat-cell *matCellDef="let row" class="main" style="padding-top: 10px; padding-bottom: 10px;">
+              {{row.description}} </td>
           </ng-container>
-  
+
           <ng-container matColumnDef="duration">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> duration </th>
             <td mat-cell *matCellDef="let row"> {{row.duration}} Hours</td>
           </ng-container>
 
           <ng-container matColumnDef="numOfUsers">
-            <th mat-header-cell *matHeaderCellDef 
-            mat-sort-header
-            matTooltip="Numer of users taking course"
-            matTooltipPosition="above" style="padding-left: 15px;" > Users </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Numer of users taking course"
+              matTooltipPosition="above" style="padding-left: 15px;"> Users </th>
             <td mat-cell *matCellDef="let row" style="padding-left: 15px;"> 5 </td>
           </ng-container>
-      
+
           <ng-container matColumnDef="edit">
-            <th mat-header-cell *matHeaderCellDef class="main">  </th>
-            <td mat-cell *matCellDef="let row" class="main"> 
-              <button mat-stroked-button color="primary" >Edit</button> |
+            <th mat-header-cell *matHeaderCellDef class="main"> </th>
+            <td mat-cell *matCellDef="let row" class="main">
+              <button mat-stroked-button color="primary">Edit</button> |
               <button mat-stroked-button color="warn" (click)="deleteItem(row.courseId)">Delete</button>
             </td>
           </ng-container>
-    
-  
+
+
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;">
           </tr>
         </table>
       </div>
-    
+
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" fixed></mat-paginator>
     </div>
-    
+</mat-card-content>
+  </div>
 </div>

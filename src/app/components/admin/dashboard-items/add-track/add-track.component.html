@@ -1,4 +1,7 @@
-<mat-card-content>
+<div class="main">
+<app-admin-nav></app-admin-nav>
+
+<mat-card-content  class="w-100 h-50">
     <div class="my-form mat-elevation-z8" style="margin-top: 30px;">
      <h3 class="title-style">Add A Track</h3>
       <form #f="ngForm" (ngSubmit)="saveData(f.value)">
@@ -20,4 +23,4 @@
       </form>
     </div>
   </mat-card-content>
-  
+</div>

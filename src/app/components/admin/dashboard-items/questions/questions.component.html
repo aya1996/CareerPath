@@ -1,5 +1,10 @@
-<app-spinner *ngIf="showSpinner"></app-spinner>
-<div *ngIf="!showSpinner" style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
+<div style=" background-color: white !important;
+padding-left: 50px;
+height: 150vh;
+margin-left: 250px;">
+  <app-admin-nav></app-admin-nav>
+ <app-spinner *ngIf="showSpinner"></app-spinner>
+  <div [hidden]="showSpinner" style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
   <h6>Select Course</h6>
 <mat-form-field>
   <mat-label>Courses</mat-label>
@@ -72,4 +77,5 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" fixed></mat-paginator>
   </div>
   
+</div>
 </div>

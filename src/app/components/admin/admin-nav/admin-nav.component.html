@@ -1,145 +1,185 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item">
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
-        <a class="nav-link" routerLink="/">
-          <mat-icon>home</mat-icon>Visit Site
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " (click)="isMenuCollapsed = true" mat-button [matMenuTriggerFor]="careers">
-          <mat-icon class="nav-link m-2" matBadge="15" matBadgeColor="warn">notifications</mat-icon>
-        </a>
-
-        <!-- Include text description of the icon's meaning for screen-readers -->
-        <mat-menu #careers="matMenu">
-          <ul>
-            <li class="dropdown-item">someone has exam</li>
-            <li class="dropdown-item">someone has exam</li>
-            <li class="dropdown-item">someone has exam</li>
-          </ul>
-        </mat-menu>
-      </li>
-    </ul>
-    <div class="dropdown dropdown-nav">
-      <a href="#" class="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-        <span class="dropdown-toggle">Admin name <img src="../../../../assets/images/user.png"></span> </a>
-      <ul class="dropdown-menu">
-        <li>
-          <a class="dropdown-item" routerLink="/profile">Profile</a>
-        </li>
-        <li class="dropdown-submenu">
-          <a class="dropdown-item" routerLink="/">Settings</a>
-        </li>
-        <hr />
-        <li class="dropdown-submenu">
-          <a class="dropdown-item" routerLink="/">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
-<mat-sidenav-container class="container-nav">
-  <mat-sidenav #sidenav mode="side" opened="opened" class="temp">
-    <div class="side-items">
-      <h4>
-        <mat-icon>control_camera</mat-icon>Career Path<mat-icon>control_camera</mat-icon> Admin Panel
-      </h4>
-      <hr>
-      <a class="bgCol-custom " [ngClass]="{'active-link': activeLink === ''}"  (click)="getClicked('')">
-        <mat-icon>dashboard</mat-icon> Dashboard
-      </a>
+<div class="page-wrapper chiller-theme toggled main">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <a href="#">pro sidebar</a>
+        <div id="close-sidebar">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="sidebar-header">
+        <div class="user-pic">
+          <img class="img-responsive img-rounded"
+            src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+            alt="User picture">
+        </div>
+        <div class="user-info">
+          <span class="user-name">Aya
+            <strong>Megahed</strong>
+          </span>
+          <span class="user-role">Administrator</span>
+          <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span>Online</span>
+          </span>
+        </div>
+      </div>
      
-      <ngb-accordion [closeOthers]="true">
+      <!-- sidebar-header  -->
+      <div class="sidebar-search">
+        <div class="sidebar-footer">
         
-        <ngb-panel id="static-1">
-          <ng-template ngbPanelTitle>
-            <span class="bgCol-custom dropdown-toggle">
-              <mat-icon>notes</mat-icon>Paths
-            </span>
-          </ng-template>
-          <ng-template ngbPanelContent>
-            <div><a [ngClass]="{'active-link': activeLink === 'PView'}" (click)="getClicked('PView')">
-                <mat-icon>pageview</mat-icon> View
-              </a></div>
-              <div><a [ngClass]="{'active-link': activeLink === 'TAdd'}" (click)="getClicked('TAdd')">
-                <mat-icon>note_add</mat-icon> Add Track
-              </a></div>
-              <div><a [ngClass]="{'active-link': activeLink === 'PAdd'}" (click)="getClicked('PAdd')">
-                <mat-icon>note_add</mat-icon> Add Path
-              </a></div>
-          </ng-template>
-        </ngb-panel>
-        <ngb-panel id="static-2">
-          <ng-template ngbPanelTitle>
-            <span class="bgCol-custom dropdown-toggle">
-              <mat-icon>description</mat-icon>Courses
-            </span>
-          </ng-template>
-          <ng-template ngbPanelContent>
-            <div>
-              <a [ngClass]="{'active-link': activeLink === 'CView'}" (click)="getClicked('CView')">
-                <mat-icon>pageview</mat-icon> View
+          <a  [matMenuTriggerFor]="notfy">
+            <i class="fa fa-bell"></i>
+            <span class="badge badge-pill badge-warning notification">3</span>
+              <!-- Include text description of the icon's meaning for screen-readers -->
+          <mat-menu #notfy="matMenu">
+            <ul>
+              <li class="dropdown-item">someone has exam</li>
+              <li class="dropdown-item">someone has exam</li>
+              <li class="dropdown-item">someone has exam</li>
+            </ul>
+          </mat-menu>
+          </a>
+         
+          <a href="#">
+            <i class="fa fa-envelope"></i>
+            <span class="badge badge-pill badge-success notification">7</span>
+          </a>
+          <a href="/home">
+            <i class="fa fa-home"></i>
+            <span class="badge-sonar"></span>
+          </a>
+          <a href="#">
+            <i class="fa fa-power-off"></i>
+          </a>
+        </div>
+      </div>
+      <!-- sidebar-search  -->
+      <div class="sidebar-menu">
+        <ul>
+          <li class="header-menu">
+            <span>General</span>
+          </li>
+          <li class="">
+            <a routerLink="">
+              <i class="fa fa-tachometer-alt"></i>
+              <span>Dashboard</span>
+            </a>
+            <li class="">
+              <a routerLink="">
+                <i class="fa fa-edit"></i>
+                <span>Exams</span>
               </a>
-           
-            </div>
-            <div>
-              <a [ngClass]="{'active-link': activeLink === 'CAdd'}" (click)="getClicked('CAdd')">
-                <mat-icon>note_add</mat-icon> Add
-              </a>
-             
-            </div>
-          </ng-template>
-        </ngb-panel>
-        <ngb-panel id="static-3">
-          <ng-template ngbPanelTitle>
-            <span class="bgCol-custom dropdown-toggle">
-              <mat-icon>assessment</mat-icon>Exams
-            </span>
-          </ng-template>
-          <ng-template ngbPanelContent>
-            <div><a [ngClass]="{'active-link': activeLink === 'UView'}" (click)="getClicked('UView')">
-                <mat-icon>pageview</mat-icon> View
-              </a></div>
-            <!-- <div><a>
-                <mat-icon>note_add</mat-icon> Add
-              </a></div> -->
-          </ng-template>
-        </ngb-panel>
-        <ngb-panel id="static-4">
-          <ng-template ngbPanelTitle>
-            <span class="bgCol-custom dropdown-toggle">
-              <mat-icon>question_answer</mat-icon>Questions
-            </span>
-          </ng-template>
-          <ng-template ngbPanelContent>
-            <div><a [ngClass]="{'active-link': activeLink === 'QView'}" (click)="getClicked('QView')">
-                <mat-icon>pageview</mat-icon> View
-              </a></div>
-            <div><a [ngClass]="{'active-link': activeLink === 'QAdd'}" (click)="getClicked('QAdd')">
-                <mat-icon>note_add</mat-icon> Add
-              </a></div>
-          </ng-template>
-        </ngb-panel>
-      </ngb-accordion>
-    </div>
-  </mat-sidenav>
+  
 
-  <mat-sidenav-content>
-    <div class="main-board">
-      
-      <app-admin-dashboard *ngIf="clickedTab===''"></app-admin-dashboard>
-      <app-view-path *ngIf="clickedTab==='PView'"></app-view-path>
-      <app-add-path *ngIf="clickedTab==='PAdd'"></app-add-path>
-      <app-add-track *ngIf="clickedTab==='TAdd'"></app-add-track>
-      <app-view-courses *ngIf="clickedTab==='CView'"></app-view-courses>
-      <app-add-courses *ngIf="clickedTab==='CAdd'"></app-add-courses>
-      <app-users *ngIf="clickedTab==='UView'"></app-users>
-      <app-add-questions *ngIf="clickedTab==='QAdd'"></app-add-questions>
-      <app-questions *ngIf="clickedTab==='QView'"></app-questions>
+          </li>
+         
+          <li class="nav-item">
+            <a class="nav-link collapsed text-truncate" href="#path" data-toggle="collapse"
+            data-target="#path">
+              <i class="fa fa-chart-line"></i>
+              <span>Paths</span>
+
+            </a>
+            <div class="collapse" id="path" aria-expanded="false">
+              <ul class=" sidebar-submenu " >
+                <li>
+                 
+                  <a routerLink="/admin/add-path">Add Path
+
+                  </a>
+                </li>
+                <li>
+                  
+                  <a routerLink="/admin/add-track">Add Track </a>
+                </li>
+                <li>
+                  
+                  <a routerLink="/admin/view-path">View Paths </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link collapsed text-truncate" href="#course" data-toggle="collapse"
+            data-target="#course">
+              <i class="fa fa-file"></i>
+              <span>Courses</span>
+
+            </a>
+            <div class="collapse" id="course" aria-expanded="false">
+              <ul class=" sidebar-submenu " >
+                <li>
+                  <a routerLink="/admin/add-course">Add Course
+
+                  </a>
+                </li>
+               
+                <li>
+                  <a routerLink="/admin/view-course">View Course</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link collapsed text-truncate" href="#question" data-toggle="collapse"
+            data-target="#question">
+              <i class="fa fa-question-circle"></i>
+              <span>Questions</span>
+
+            </a>
+            <div class="collapse" id="question" aria-expanded="false">
+              <ul class=" sidebar-submenu " >
+                <li>
+                  <a routerLink="/admin/add-question">Add Question
+
+                  </a>
+                </li>
+             
+                <li>
+                  <a routerLink="/admin/view-question">View Questions</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        
+          <li class="header-menu">
+            <span>Extra</span>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-book"></i>
+              <span>Documentation</span>
+              <span class="badge badge-pill badge-primary">Beta</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-calendar"></i>
+              <span>Calendar</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-folder"></i>
+              <span>Examples</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- sidebar-menu  -->
     </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    <!-- sidebar-content  -->
+  
+  </nav>
+  <!-- sidebar-wrapper  -->
+ 
+  <!-- page-content" -->
+</div>
+
