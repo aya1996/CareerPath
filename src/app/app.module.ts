@@ -96,6 +96,7 @@ import { EditPathComponent } from './components/admin/dashboard-items/add-path/e
 import { IndexComponent } from './components/admin/index/index.component';
 import { EditTrackComponent } from './components/admin/dashboard-items/add-track/edit-track/edit-track.component';
 import { RoadmapComponent } from './components/roadmap/roadmap.component';
+import { WebJobsComponent } from './components/jobs/web-jobs/web-jobs.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -120,6 +121,7 @@ const routes: Routes =
     {path: 'admin/path/edit/:id', component:EditPathComponent},
     {path: 'admin/track/edit/:id', component:EditTrackComponent},
     {path: 'roadmap', component:RoadmapComponent},
+    { path: 'careers', component:WebJobsComponent},
 
     // { path: 'admin/questions', component: QuestionsComponent },
     { path: 'admin/add-path', component: AddPathComponent },
@@ -184,6 +186,7 @@ const routes: Routes =
     IndexComponent,
     EditTrackComponent,
     RoadmapComponent,
+    WebJobsComponent,
    
 
   ],
