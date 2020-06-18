@@ -21,7 +21,7 @@ export class ViewPathComponent implements OnInit {
   QControl = new FormControl();
 
 
-  displayedColumns: string[] = ['Track', 'Path', 'Description', 'NumOfUsers','edit'];
+  displayedColumns: string[] = ['Track', 'Path', 'Description', 'NumOfUsers','edit','delete'];
   dataSource: MatTableDataSource<subCareer>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

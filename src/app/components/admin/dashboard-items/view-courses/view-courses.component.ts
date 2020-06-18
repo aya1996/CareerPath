@@ -20,7 +20,7 @@ export class ViewCoursesComponent implements OnInit {
 
   QControl = new FormControl();
 
-  displayedColumns: string[] = ['courseName', 'courseContent', 'description', 'duration','edit'];
+  displayedColumns: string[] = ['courseName', 'courseContent', 'description', 'duration','edit','delete'];
   // displayedColumns: string[] = ['courseName', 'courseContent', 'description', 'duration', 'numOfUsers','edit'];
   dataSource: MatTableDataSource<course>;
 
