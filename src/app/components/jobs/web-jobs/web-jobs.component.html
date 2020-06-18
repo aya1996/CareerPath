@@ -16,7 +16,7 @@
                         </p>
                     </a>
                 </div>
-                <div class="timeline" [ngClass]="{'even-div': i%2==0}">
+                <div class="timeline" [ngClass]="{'display-hidden': i%2!=0}">
                     <span class="icon fa fa-rocket"></span>
                     <a class="timeline-content">
                         <h3 class="title"> {{item.title}} </h3>

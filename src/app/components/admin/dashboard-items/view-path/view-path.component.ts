@@ -75,6 +75,7 @@ export class ViewPathComponent implements OnInit {
     this.getDeletedId = id;
     this.modalService.open(content);
   }
+  
   delete(){
 
     this.subCareerService.deleteSubCareer(this.getDeletedId).subscribe(res => console.log(res));
