@@ -297,8 +297,8 @@ export class RegisterComponent implements OnInit {
         phonenumber: ['', Validators.required],
         userLevel: [''],
         description: ['', Validators.required],
-        image: [''],
-        passwordHash: ['', [Validators.required, Validators.minLength(4)]],
+        image: [null],
+        password: ['', [Validators.required, Validators.minLength(8)]],
         confirmPassword: ['', Validators.required]
 
 
@@ -307,19 +307,35 @@ export class RegisterComponent implements OnInit {
     );
   }
   passwordMatchValidator(form: FormGroup) {
-    return form.get('passwordHash').value === form.get('confirmPassword').value
+    return form.get('password').value === form.get('confirmPassword').value
       ? null
       : { mismatch: true };
   }
   register() {
 
+   
     if (this.registerForm.value.id === 0) {
-      this.service.register(this.registerForm.value).subscribe(
-        () => {
-          alert('Subscription successful');
+      const model = {
+        
+          "Fname" : this.registerForm.value.fname,
+          "UserName" : this.registerForm.value.username,
+          "PasswordHash":this.registerForm.value.password,
+          "Email" :this.registerForm.value.email,
+          "Lname":this.registerForm.value.lname,
+          "PhoneNumber":this.registerForm.value.phonenumber,
+          "UserLevel":this.registerForm.value.userLevel,
+          "Country":this.registerForm.value.country,
+          "Description":this.registerForm.value.description
+      
+      }
+      console.log('model', model)
+      this.service.register(model).subscribe(
+        (res:any) => {
+          console.log("res", res)
+          localStorage.setItem("Token", res.token)
         },
         error => {
-          alert(error);
+          console.log("error", error)
         }
       );
     }

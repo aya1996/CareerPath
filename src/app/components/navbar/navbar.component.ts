@@ -11,12 +11,15 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   public isMenuCollapsed = true;
+  token: string;
   constructor(
     private modalService: NgbModal,
     private router: Router
     ) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.token = localStorage.getItem("Token")
+  }
 
   open() {
     const modelRef = this.modalService.open(LoginComponent);

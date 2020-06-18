@@ -19,10 +19,12 @@ export class LoginComponent {
     console.log("Login Form", this.loginForm.value)
     const model = {
       UserName: this.loginForm.value.username,
-      PasswordHash: this.loginForm.value.password
+      Password: this.loginForm.value.password
     }
     this.loginService.login(model).subscribe( (res: any) => {
       console.log("res", res)
+      localStorage.setItem("Token", res.token)
+      this.activeModal.close();
     }, error => {
       console.error("error", error)
     })

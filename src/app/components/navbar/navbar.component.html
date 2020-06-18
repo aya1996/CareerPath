@@ -81,9 +81,9 @@
         <button class="btn custom-search" type="submit"> <i class="fa fa-fw fa-search"></i></button>
       </form>
   </div>
-  <button class="btn btnlogin my-2 my-sm-0 m-1 custom-register" (click)="register()" type="button">Register</button>
-  <button class="btn btnlogin my-2 my-sm-0 m-1 custom-login" (click)="open()"> Login</button>
-
+  <button *ngIf="!token" class="btn btnlogin my-2 my-sm-0 m-1 custom-register" (click)="register()" type="button">Register</button>
+  <button *ngIf="!token" class="btn btnlogin my-2 my-sm-0 m-1 custom-login" (click)="open()"> Login</button>
+  <img  *ngIf="token" src="" alt="">
 
   </div>
 </nav>

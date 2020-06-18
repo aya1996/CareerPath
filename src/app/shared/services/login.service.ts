@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class LoginService {
   modelName: String;
   constructor(private http: HttpClient) { 
-    this.modelName = '/user/Login'
+    this.modelName = 'user/Login'
   }
 
   
