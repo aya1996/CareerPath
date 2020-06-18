@@ -95,6 +95,7 @@ import { EditCourseComponent } from './components/admin/dashboard-items/add-cour
 import { EditPathComponent } from './components/admin/dashboard-items/add-path/edit-path/edit-path.component';
 import { IndexComponent } from './components/admin/index/index.component';
 import { EditTrackComponent } from './components/admin/dashboard-items/add-track/edit-track/edit-track.component';
+import { RoadmapComponent } from './components/roadmap/roadmap.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -118,6 +119,7 @@ const routes: Routes =
     { path: 'dashboard', component: AdminDashboardComponent },
     {path: 'admin/path/edit/:id', component:EditPathComponent},
     {path: 'admin/track/edit/:id', component:EditTrackComponent},
+    {path: 'roadmap', component:RoadmapComponent},
 
     // { path: 'admin/questions', component: QuestionsComponent },
     { path: 'admin/add-path', component: AddPathComponent },
@@ -181,6 +183,7 @@ const routes: Routes =
     EditPathComponent,
     IndexComponent,
     EditTrackComponent,
+    RoadmapComponent,
    
 
   ],
