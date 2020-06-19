@@ -2,27 +2,36 @@
 
 
 table {
-    width: 100%;
-    height: auto;
-  }
-  
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-  
-  td, th {
-    width: 15%;
-    padding: 15px;
-    margin: 15px;
-  }
+  width: 100%;
+  border-collapse: collapse;
+
+ 
+}
+th,td{
+border: 1px solid #ddd;
+padding: 20px;
+text-align: center;
+width: 11%;
+}
+tr:nth-child(even){background-color: #f2f2f2;}
+tr:hover {background-color: #ddd;}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+th{
+  background-color: #31353D;
+  color: white;
+ 
+
+}
   .table-container {
     max-height: calc(100vh - 200px); 
     overflow: auto;
 }
-.main{
+/* .main{
   width: 25%;
 }
 .main2{
   width: 30%;
-}
+} */
