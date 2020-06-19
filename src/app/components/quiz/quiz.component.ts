@@ -1,19 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl,FormGroup, Validators,FormArray} from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-interface Q{
-  id:number,
-  head:string,
-  choice1: string,
-  choice2: string,
-  choice3: string,
-}
-
-interface A{
-  qNum: number,
-  choice: string
-}
+import { ExamService } from '../../shared/services/exam.service';
+import { questionService } from '../../shared/services/question.service';
+import { CreateExam } from '../../shared/Models/questionExam.model';
+import { A } from '../..//shared/Models/answers.model';
 
 
 @Component({
@@ -23,92 +14,51 @@ interface A{
 })
 export class QuizComponent implements OnInit {
 
-
-   Qs: Q[] = [
-    {
-      id:1,
-      head:'HTML stands for?',
-      choice1:'Hyper Text Markup Language',
-      choice2:'High Text Markup Languag',
-      choice3:'Hyper Tabular Markup Language'
-    },
-    {
-      id:2,
-      head:'Who is making the Web standards?',
-      choice1:'Microsoft',
-      choice2:'Mozilla',
-      choice3:'W3Consortium'
-    },
-    {
-      id:10,
-      head:'Choose the correct HTML element for the largest heading:',
-      choice1:'<h6>',
-      choice2:'<h1>',
-      choice3:'<head>'
-    },
-    {
-      id:20,
-      head:'What is the correct HTML element for inserting a line break?',
-      choice1:'<br>',
-      choice2:'<break>',
-      choice3:'<lb>'
-    },
-    {
-      id:11,
-      head:'HTML stands for?',
-      choice1:'Hyper Text Markup Language',
-      choice2:'High Text Markup Languag',
-      choice3:'Hyper Tabular Markup Language'
-    },
-    {
-      id:22,
-      head:'HTML stands for?',
-      choice1:'Hyper Text Markup Language',
-      choice2:'High Text Markup Languag',
-      choice3:'Hyper Tabular Markup Language'
-    },
-    {
-      id:13,
-      head:'HTML stands for?',
-      choice1:'Hyper Text Markup Language',
-      choice2:'High Text Markup Languag',
-      choice3:'Hyper Tabular Markup Language'
-    },
-    {
-      id:14,
-      head:'HTML stands for?',
-      choice1:'Hyper Text Markup Language',
-      choice2:'High Text Markup Languag',
-      choice3:'Hyper Tabular Markup Language'
-    },
-    {
-      id:21,
-      head:'HTML stands for?',
-      choice1:'Hyper Text Markup Language',
-      choice2:'High Text Markup Languag',
-      choice3:'Hyper Tabular Markup Language'
-    },
-    {
-      id:31,
-      head:'HTML stands for?',
-      choice1:'Hyper Text Markup Language',
-      choice2:'High Text Markup Languag',
-      choice3:'Hyper Tabular Markup Language'
-    }
-  ]
+  UserID = localStorage.getItem("userId");
+  CourseName = "HTML";
+  QsExam: CreateExam[] = [];
 
   Answers: A[] = [];
 
   finished = false;
+  showSpinner = true;
 
   isLinear = false;
   createdForms=0;
   formGroup : FormGroup;
   form: FormArray;
-  constructor(private _formBuilder: FormBuilder, private modalService: NgbModal) {  
+  
+  constructor(private _formBuilder: FormBuilder, private modalService: NgbModal,
+    private examService:ExamService, private questionService:questionService) {  
   }
 
   ngOnInit() {
+    this.examService.createExam({UserID:this.UserID, CourseName:this.CourseName})
+    .subscribe(res => {
+      this.questionService.getQuestion().subscribe(Qs => {
+        for(let i=0; i<res.length; i++){
+          this.QsExam.push({
+            questId : res[i].questId,
+            questName: res[i].questName,
+            examId: res[i].examId,
+            rightAns: res[i].rightAns
+          })
+        }
+        for(let i=0; i<Qs.length; i++){
+          for(let j=0; j<this.QsExam.length; j++){
+            if(this.QsExam[j].questId == Qs[i].questId){
+              this.QsExam[j].a = Qs[i].a;
+              this.QsExam[j].b = Qs[i].b;
+              this.QsExam[j].c = Qs[i].c;
+              break;
+            }
+          }
+        }
+        console.log(this.QsExam);
+        this.showSpinner = false
+      })
+    });
+
     this.formGroup = this._formBuilder.group({
       form : this._formBuilder.array([this.init()])
     }) 
@@ -130,20 +80,21 @@ export class QuizComponent implements OnInit {
     this.createdForms++;
   }
 
-  getAnswer(choice, id){
-    for(let i of this.Answers){
-      if(i.qNum == id){
-        i.choice = choice;
-        return;
-      }
-    }
-    this.Answers.push({qNum: id, choice: choice});
-  }
-  showAnswers(){
-    this.finished = true;
-    console.log(this.Answers);
-    this.modalService.dismissAll();
-  }
+  // getAnswer(choice, id){
+  //   for(let i of this.Answers){
+  //     if(i.qNum == id){
+  //       i.choice = choice;
+  //       return;
+  //     }
+  //   }
+  //   this.Answers.push({qNum: id, choice: choice});
+  // }
+
+  // showAnswers(){
+  //   this.finished = true;
+  //   console.log(this.Answers);
+  //   this.modalService.dismissAll();
+  // }
   openModal(content) {
     this.modalService.open(content, {centered: true, backdropClass: 'dark-modal'});
   }

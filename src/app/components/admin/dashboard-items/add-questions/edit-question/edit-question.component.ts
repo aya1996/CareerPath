@@ -68,7 +68,7 @@ export class EditQuestionComponent implements OnInit {
 
   saveData(data){
     const q = new question;
-    q.questID = this.qId;
+    q.questId = this.qId;
     q.questName=data.title;
     q.grade=data.grade;
     q.a =data.ch1;
@@ -77,7 +77,7 @@ export class EditQuestionComponent implements OnInit {
     q.rightAns=this.selectedChoice;
     q.courseIdRef = this.qs.courseIdRef;
 
-    this.questionService.updateQuestion(q.questID,q).subscribe(res => {
+    this.questionService.updateQuestion(q.questId,q).subscribe(res => {
       this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
         this.router.navigate(['/admin/question']);
       });

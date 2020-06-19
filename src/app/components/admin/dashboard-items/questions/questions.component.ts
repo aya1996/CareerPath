@@ -45,6 +45,7 @@ export class QuestionsComponent implements OnInit {
 
     this.questionService.getQuestion().subscribe(res => {
     this.CourseService.getCourse().subscribe(courses => {
+      console.log(courses)
         for(let i=0; i<res.length; i++){
           this.questionData[i]=res[i];
           for(let j=0; j<courses.length; j++){
@@ -60,7 +61,7 @@ export class QuestionsComponent implements OnInit {
         this.dataSource.sort = this.sort;
         // console.log(this.questionData);
         // console.log(this.course);
-      });
+    },err => console.log(err));
       this.showSpinner = false
     })
     
