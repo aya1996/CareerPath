@@ -23,7 +23,19 @@ export class LoginComponent {
       Password: this.loginForm.value.password
     }
     this.loginService.login(model).subscribe( (res: any) => {
-      console.log("res", res)
+     // console.log("res", res)
+
+      this.loginService.getAllUsers().subscribe(user => {
+        console.log(user);
+        for(let i=0; i<user.length; i++){
+          if(model.UserName == user[i].userName){
+            localStorage.setItem("userId", user[i].id);
+            console.log(user[i].id)
+            break;
+          }
+        }
+      })
+
       localStorage.setItem("Token", res.token)
       this.activeModal.close();
       this.loginService.showToaster()

@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class RegisterService {
+
   modelName = 'user/Register';
   public registerToaster = new Subject<boolean>();
   
@@ -55,6 +56,7 @@ export class RegisterService {
       .delete<void>(`${environment.url}/${this.modelName}/${id}`)
       .pipe(catchError(this.handleError));
   }
+  
   // isExist(name: string, model: any[]): boolean {
   //   return model.some(a => a.name === name);
   // }
@@ -70,3 +72,4 @@ export class RegisterService {
     this.registerToaster.next(false);
   }
 }
+

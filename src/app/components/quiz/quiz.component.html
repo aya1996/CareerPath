@@ -5,56 +5,59 @@
 
 <div class="col-md-12 text-center title"><h4>Test Your Knowledge !</h4></div>
 
-<div class="container-md main" *ngIf="!finished">
-  <form [formGroup]="formGroup">
-    <mat-horizontal-stepper formArrayName="form">
-      <mat-step
-        [formGroupName]="i"
-        *ngFor="
-          let customerGroup of formGroup.controls.form.controls;
-          let i = index;
-        "
-      >
-        <div *ngIf="i < 9">
-          <ng-template matStepLabel>Q{{ i + 1 }}</ng-template>
-          <h2>{{ Qs[i].head }}</h2>
-          <mat-radio-group aria-label="Select an option" required>
-            <mat-radio-button value="1" (click)="getAnswer(Qs[i].choice1, Qs[i].id)"> {{ Qs[i].choice1 }} </mat-radio-button>
-            <mat-radio-button value="2" (click)="getAnswer(Qs[i].choice2, Qs[i].id)"> {{ Qs[i].choice2 }} </mat-radio-button>
-            <mat-radio-button value="3" (click)="getAnswer(Qs[i].choice3, Qs[i].id)"> {{ Qs[i].choice3 }} </mat-radio-button>
-          </mat-radio-group>
-          <div style="float: right;">
-            <button mat-stroked-button color="primary" matStepperPrevious *ngIf="i != 0">Back</button>
-            <button mat-raised-button color="primary" matStepperNext (click)="addItem()" style="margin-left: 10px;">Next</button>
+<app-spinner *ngIf="showSpinner"></app-spinner>
+
+<div *ngIf="!showSpinner">
+  <div class="container-md main" *ngIf="!finished">
+    <form [formGroup]="formGroup">
+      <mat-horizontal-stepper formArrayName="form">
+        <mat-step
+          [formGroupName]="i"
+          *ngFor="
+            let customerGroup of formGroup.controls.form.controls;
+            let i = index;
+          "
+        >
+          <div *ngIf="i < 9">
+            <ng-template matStepLabel>Q{{ i + 1 }}</ng-template>
+            <h2>{{ QsExam[i].questName }}</h2>
+            <mat-radio-group aria-label="Select an option" required>
+              <mat-radio-button value="1" (click)="getAnswer(QsExam[i].a, QsExam[i].questId)"> {{ QsExam[i].a }} </mat-radio-button>
+              <mat-radio-button value="2" (click)="getAnswer(QsExam[i].b, QsExam[i].questId)"> {{ QsExam[i].b }} </mat-radio-button>
+              <mat-radio-button value="3" (click)="getAnswer(QsExam[i].c, QsExam[i].questId)"> {{ QsExam[i].c }} </mat-radio-button>
+            </mat-radio-group>
+            <div style="float: right;">
+              <button mat-stroked-button color="primary" matStepperPrevious *ngIf="i != 0">Back</button>
+              <button mat-raised-button color="primary" matStepperNext (click)="addItem()" style="margin-left: 10px;">Next</button>
+            </div>
           </div>
-        </div>
-        <div *ngIf="i == 9">
-          <ng-template matStepLabel>Done</ng-template>
-          <h2>{{ Qs[i].head }}</h2>
-          <mat-radio-group aria-label="Select an option" required>
-            <mat-radio-button value="1" (click)="getAnswer(Qs[i].choice1, Qs[i].id)"> {{ Qs[i].choice1 }} </mat-radio-button>
-            <mat-radio-button value="2" (click)="getAnswer(Qs[i].choice2, Qs[i].id)"> {{ Qs[i].choice2 }} </mat-radio-button>
-            <mat-radio-button value="3" (click)="getAnswer(Qs[i].choice3, Qs[i].id)"> {{ Qs[i].choice3 }} </mat-radio-button>
-          </mat-radio-group>
-          <div style="float: right;">
-            <button mat-stroked-button color="primary" matStepperPrevious>Back</button>
-            <button mat-raised-button color="primary" 
-            matTooltip="Answer All Questions to finish the exam"
-            matTooltipPosition="above"
-            style="margin-left: 10px;" 
-            (click)="openModal(finish)"
-            [disabled]='Answers.length!=10'
-            >Finish</button>
+          <div *ngIf="i == 9">
+            <ng-template matStepLabel>Done</ng-template>
+            <h2>{{ QsExam[i].questName }}</h2>
+            <mat-radio-group aria-label="Select an option" required>
+              <mat-radio-button value="1" (click)="getAnswer(QsExam[i].a, QsExam[i].questId)"> {{ QsExam[i].a }} </mat-radio-button>
+              <mat-radio-button value="2" (click)="getAnswer(QsExam[i].b, QsExam[i].questId)"> {{ QsExam[i].b }} </mat-radio-button>
+              <mat-radio-button value="3" (click)="getAnswer(QsExam[i].c, QsExam[i].questId)"> {{ QsExam[i].c }} </mat-radio-button>
+            </mat-radio-group>
+            <div style="float: right;">
+              <button mat-stroked-button color="primary" matStepperPrevious>Back</button>
+              <button mat-raised-button color="primary" 
+              matTooltip="Answer All Questions to finish the exam"
+              matTooltipPosition="above"
+              style="margin-left: 10px;" 
+              (click)="openModal(finish, c1)"
+              [disabled]='Arr.length!=10'
+              >Finish</button>
+            </div>
           </div>
-        </div>
-      </mat-step>
-    </mat-horizontal-stepper>
-  </form>
-  <div style="color: #fff;">
-    Time: <countdown [config]="{ leftTime: 900, format: 'm:s' }"></countdown>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </form>
+    <div style="color: #fff;">
+      Time: <countdown #c1 [config]="{ leftTime: 900, format: 'm:s' }"></countdown>
+    </div>
   </div>
 </div>
-
 
 <ng-template #finish let-modal>
   <div class="dark-modal">
@@ -68,6 +71,7 @@
           <p> Are you sure you want to submit your answers? </p>
         </div>
         <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-light" (click)="cancel(c1)">cancel</button> -->
           <button type="button" class="btn btn-light" (click)="modal.close('Close click')">cancel</button>
           <button mat-stroked-button color="primary" (click)="showAnswers()">Submit</button>
         </div>
@@ -75,9 +79,14 @@
 </ng-template>
 
 <div class="container-md main" style="color: #fff;" *ngIf="finished">
-  <h2>You have finished the quiz.</h2>
-  <h3>Grade: </h3>
-  <h3>Time: </h3>
+  <div *ngIf="userGrade">
+    <div *ngIf="userGrade >= 70">
+      <h2>Congratulations. You have successfully passed the Exam.</h2>
+    </div>
+    <h2 *ngIf="userGrade < 70">Sorry. You have failed.</h2>
+    <h3>Grade: {{userGrade}} </h3>
+    <h3>Time: {{remainTime}} </h3>
+  </div>
 </div>
 
 <app-footer></app-footer>

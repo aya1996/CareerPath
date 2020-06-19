@@ -26,6 +26,7 @@ export class RoadmapComponent implements OnInit {
   openModal(content, _courseTitle) {
     this.courseTitle = _courseTitle;
     this.modalService.open(content, {centered: true, backdropClass: 'dark-modal'});
+    // this.modalService.dismissAll();
   }
 
 }

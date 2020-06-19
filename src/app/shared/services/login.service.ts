@@ -3,6 +3,10 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
+interface User{
+  id: string;
+  userName: string;
+}
 
 
 @Injectable({
@@ -18,7 +22,10 @@ export class LoginService {
     this.modelName = 'user/Login'
   }
 
-  
+  getAllUsers(){
+    return this.http.get<User[]>("http://localhost:4000/api/user/GetAllUsers");
+  }
+
   public login(model: any): Observable<void> {
     return this.http
       .post<void>(`${environment.url}/${this.modelName}`, model);
