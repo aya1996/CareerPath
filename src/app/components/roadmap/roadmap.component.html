@@ -95,6 +95,8 @@
 </div>
 </div>
 </div>
+
+
 <ng-template #completed let-modal>
   <div class="dark-modal">
       <div class="modal-header">
@@ -114,7 +116,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-custom" (click)="modal.close('Close click')">Close</button>
-          <button type="button" class="btn btn-custom" routerLink="/web">Leran More</button>
+          <button type="button" class="btn btn-custom" (click)="modal.close('Close click')" routerLink="/web">Leran More</button>
         </div>
 
   </div>

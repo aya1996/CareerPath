@@ -14,18 +14,20 @@ p{
     color: white;
 }
 h1{
-    background-color: #EE3550;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
+    /* background-color: #EE3550; */
+    border-bottom: 4px solid cornflowerblue;
+    margin-bottom: 10px;
+    /* border-radius: 10px; */
+    /* -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+    -o-border-radius: 10px; */
    
 }
 
 .mandatory{
     text-align: center;
-    background-color:rgb(235, 75, 75);
+    background-color:#92D050;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -34,7 +36,7 @@ h1{
 }
 .good-to-know{
     text-align: center;
-    background-color: rgb(7, 206, 7);
+    background-color: #FFC000;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -43,7 +45,7 @@ h1{
 }
 .optional{
     text-align: center;
-    background-color: rgb(119, 116, 116);
+    background-color: #C00000;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -57,7 +59,9 @@ h1{
 }
 
 .courses-list{
-    background-color: cornflowerblue;
+    border: 4px solid cornflowerblue;
+    font-size: 1.25rem;
+    /* background-color: cornflowerblue; */
     margin-left: -85px;
    margin-top: 100px;
    text-align: center;
@@ -82,8 +86,8 @@ h1{
 .mandatory-courses div{
     padding: 10px;
     margin: 10px 0;
-    border-left: 3px solid rgb(235, 75, 75);
-    border-right: 3px solid rgb(235, 75, 75);
+    border-left: 3px solid #92D050;
+    border-right: 3px solid #92D050;
     background-color: rgb(247, 245, 245);
     color: black;
     border-radius: 20px;
@@ -95,14 +99,14 @@ h1{
     cursor: pointer;
 }
 .mandatory-courses div:hover{
-    background-color: rgb(235, 75, 75);
+    background-color: #92D050;
     color: white;
 }
 .good-courses div{
     padding: 10px;
     margin-top: 10px;
-    border-left: 3px solid rgb(7, 206, 7);
-    border-right: 3px solid rgb(7, 206, 7);
+    border-left: 3px solid #FFC000;
+    border-right: 3px solid #FFC000;
     background-color: rgb(247, 245, 245);
     color: black;
     text-align: center;
@@ -114,14 +118,14 @@ h1{
     cursor: pointer;
 }
 .good-courses div:hover{
-    background-color:rgb(7, 206, 7) ;
+    background-color:#FFC000 ;
     color: white;
 }
 .optional-courses div{
     padding: 10px;
     margin-top: 10px;
-    border-left: 3px solid rgb(119, 116, 116);
-    border-right: 3px solid rgb(119, 116, 116);
+    border-left: 3px solid #C00000;
+    border-right: 3px solid #C00000;
     background-color: rgb(247, 245, 245);
     color: black;
     text-align: center;
@@ -133,7 +137,7 @@ h1{
     cursor: pointer;
 }
 .optional-courses div:hover{
-    background-color: rgb(119, 116, 116); 
+    background-color: #C00000; 
     color: white;
 }
 
