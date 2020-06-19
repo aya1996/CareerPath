@@ -54,7 +54,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" routerLink="/admin/index" (click)="isMenuCollapsed = true">Admin</a>
+        <a class="nav-link"  *ngIf="!token" routerLink="/admin/index" (click)="isMenuCollapsed = true">Admin</a>
       </li>
 
       <li class="nav-item">
@@ -95,3 +95,4 @@
 
   </div>
 </nav>
+<app-toaster-modal></app-toaster-modal>

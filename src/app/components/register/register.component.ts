@@ -297,7 +297,7 @@ export class RegisterComponent implements OnInit {
         phonenumber: ['', Validators.required],
         userLevel: [''],
         description: ['', Validators.required],
-        image: [null],
+        image: [''],
         password: ['', [Validators.required, Validators.minLength(8)]],
         confirmPassword: ['', Validators.required]
 
@@ -333,6 +333,11 @@ export class RegisterComponent implements OnInit {
         (res:any) => {
           console.log("res", res)
           localStorage.setItem("Token", res.token)
+          this.service.showToaster()
+          // this.router.navigate(['/Login'])
+        
+         
+
         },
         error => {
           console.log("error", error)

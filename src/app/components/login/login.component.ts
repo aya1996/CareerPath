@@ -14,7 +14,8 @@ export class LoginComponent {
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   });
-  constructor(public activeModal: NgbActiveModal, private loginService: LoginService) { }
+  constructor(public activeModal: NgbActiveModal, private loginService: LoginService
+ ) { }
   login() {
     console.log("Login Form", this.loginForm.value)
     const model = {
@@ -25,6 +26,7 @@ export class LoginComponent {
       console.log("res", res)
       localStorage.setItem("Token", res.token)
       this.activeModal.close();
+      this.loginService.showToaster()
     }, error => {
       console.error("error", error)
     })
