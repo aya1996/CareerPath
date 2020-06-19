@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NestedTreeControl} from '@angular/cdk/tree';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-roadmap',
@@ -9,55 +10,25 @@ import {MatTreeNestedDataSource} from '@angular/material/tree';
 })
 export class RoadmapComponent implements OnInit {
 
-  treeControl = new NestedTreeControl<FoodNode>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<FoodNode>();
+ 
+  courseTitle:String = '';
+  courseInfo = {courseLink: 'www.youtube.com/fsjfkasg', courseDuration: 30}
 
-  constructor() {
-    this.dataSource.data = TREE_DATA;
+  constructor(private modalService: NgbModal) {
+  
   }
 
-  hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
+  
 
   ngOnInit() {
+  
+  }
+  openModal(content, _courseTitle) {
+    this.courseTitle = _courseTitle;
+    this.modalService.open(content, {centered: true, backdropClass: 'dark-modal'});
   }
 
 }
 
 
-
-interface FoodNode {
-  name: string;
-  desc?: string;
-  children?: FoodNode[];
-}
-
-const TREE_DATA: FoodNode[] = [
-  {
-    name: 'Mobile',
-    children: [
-      {name: 'IOS', 
-      desc:'dajpppposajdajpppposajopajOJSpofjopsaopo dajpppposajdajpppposajopajOJSpofjopsaopodajpppposajdajpppposajopajOJSpofjopsaopodajpppposajdajpppposajopajOJSpofjopsaopodajpppposajdajpppposajopajOJSpofjopsaopojsapogJSOjgpsodajpppposajopajOJSpofjopsaopo jsapogJSOjgpsoopajOJSpofjopsaopo jsapogJSOjgpso'},
-      {name: 'Android', desc:'dajpppposajopajOJSpofjopsaopo jsapogJSOjgpso'},
-      {name: 'Cross-Platform', desc:'dajpppposajopajOJSpofjopsaopo jsapogJSOjgpso'},
-    ]
-  }, {
-    name: 'Web Dev',
-    children: [
-      {
-        name: 'Frontend',
-        children: [
-          {name: 'UI Designer'},
-          {name: 'UI/UX'},
-        ]
-      }, {
-        name: 'Backend',
-        children: [
-          {name: 'Nodejs'},
-          {name: '.Net'},
-          {name: 'Python'},
-        ]
-      },
-    ]
-  },
-];
 

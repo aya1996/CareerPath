@@ -23,7 +23,7 @@ export class QuestionsComponent implements OnInit {
  
 
 
-  displayedColumns: string[] = ['questionName', 'choiceOne', 'choiceTwo', 'choiceThree','grade','rightAnswer','courseName', 'edit'];
+  displayedColumns: string[] = ['questionName', 'choiceOne', 'choiceTwo', 'choiceThree','grade','rightAnswer','courseName', 'edit','delete'];
   dataSource: MatTableDataSource<question>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

@@ -1,7 +1,7 @@
 import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError ,Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 
@@ -11,6 +11,8 @@ import { environment } from 'src/environments/environment';
 export class RegisterService {
 
   modelName = 'user/Register';
+  public registerToaster = new Subject<boolean>();
+  
   constructor(
     private http: HttpClient,
   ) { }
@@ -58,5 +60,16 @@ export class RegisterService {
   // isExist(name: string, model: any[]): boolean {
   //   return model.some(a => a.name === name);
   // }
+  
+  public showToaster() {
+    this.registerToaster.next(true);
+    setInterval(() => {
+      this.hideToaster();
+    }, 5000);
+  }
+  //hide modal product Added to cart .. ... ... ... ... ...
+  public hideToaster() {
+    this.registerToaster.next(false);
+  }
 }
 
