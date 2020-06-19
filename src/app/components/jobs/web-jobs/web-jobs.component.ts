@@ -39,11 +39,11 @@ export class WebJobsComponent implements OnInit {
   ngOnInit() {
   }
 
-  checkIndex(i:number){
-    if(i%2 == 0)
-      return true;
-    else if(i%2 != 0)
-      return false;
-  }
+  // checkIndex(i:number){
+  //   if(i%2 == 0)
+  //     return true;
+  //   else if(i%2 != 0)
+  //     return false;
+  // }
 
 }

@@ -7,7 +7,7 @@
                 <!-- <div [ngStyle]="{'background-color': style1 ? 'red' : (style2 ? 'blue' : null) }"></div> -->
                 <!-- <div class="timeline" [ngClass]="{'display-hidden': i%2!=0}"> -->
 
-                <div class="timeline" [ngClass]="{'display-hidden': i%2==0}">
+                <div class="timeline" >
                     <span class="icon fa fa-globe"></span>
                     <a class="timeline-content">
                         <h3 class="title"> {{item.title}} </h3>
@@ -16,16 +16,15 @@
                         </p>
                     </a>
                 </div>
-                <div class="timeline" [ngClass]="{'display-hidden': i%2!=0}">
+                <div class="timeline">
                     <span class="icon fa fa-rocket"></span>
-                    <a class="timeline-content">
-                        <h3 class="title"> {{item.title}} </h3>
+                    <a href="#" class="timeline-content">
+                        <h3 class="title">Web Developer</h3>
                         <p class="description">
-                            {{item.desc}}
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada tellus lorem, et condimentum neque commodo quis.
                         </p>
                     </a>
                 </div>
-
 
                 <!-- <div class="timeline">
                     <span class="icon fa fa-rocket"></span>
@@ -81,6 +80,52 @@
                         </p>
                     </a>
                 </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h4>Timeline Style : Demo-2</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-timeline2">
+                <div class="timeline">
+                    <span class="icon fa fa-globe"></span>
+                    <a href="#" class="timeline-content">
+                        <h3 class="title">Web Designer</h3>
+                        <p class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada tellus lorem, et condimentum neque commodo quis.
+                        </p>
+                    </a>
+                </div>
+                <div class="timeline">
+                    <span class="icon fa fa-rocket"></span>
+                    <a href="#" class="timeline-content">
+                        <h3 class="title">Web Developer</h3>
+                        <p class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada tellus lorem, et condimentum neque commodo quis.
+                        </p>
+                    </a>
+                </div>
+                <div class="timeline">
+                    <span class="icon fa fa-briefcase"></span>
+                    <a href="#" class="timeline-content">
+                        <h3 class="title">Web Designer</h3>
+                        <p class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada tellus lorem, et condimentum neque commodo quis.
+                        </p>
+                    </a>
+                </div>
+                <div class="timeline">
+                    <span class="icon fa fa-mobile"></span>
+                    <a href="#" class="timeline-content">
+                        <h3 class="title">Web Developer</h3>
+                        <p class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada tellus lorem, et condimentum neque commodo quis.
+                        </p>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
