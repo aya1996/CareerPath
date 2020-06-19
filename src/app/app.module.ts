@@ -97,6 +97,7 @@ import { IndexComponent } from './components/admin/index/index.component';
 import { EditTrackComponent } from './components/admin/dashboard-items/add-track/edit-track/edit-track.component';
 import { RoadmapComponent } from './components/roadmap/roadmap.component';
 import { WebJobsComponent } from './components/jobs/web-jobs/web-jobs.component';
+import { ToasterModalComponent } from './toaster-modal/toaster-modal.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -187,6 +188,7 @@ const routes: Routes =
     EditTrackComponent,
     RoadmapComponent,
     WebJobsComponent,
+    ToasterModalComponent,
    
 
   ],
