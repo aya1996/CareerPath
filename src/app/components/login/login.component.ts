@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from 'src/app/shared/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,9 @@ export class LoginComponent {
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   });
-  constructor(public activeModal: NgbActiveModal, private loginService: LoginService
+  constructor(public activeModal: NgbActiveModal, 
+    private loginService: LoginService,
+    private router:Router
  ) { }
   login() {
     console.log("Login Form", this.loginForm.value)
@@ -26,9 +29,12 @@ export class LoginComponent {
      // console.log("res", res)
 
       this.loginService.getAllUsers().subscribe(user => {
-        console.log(user);
+        
         for(let i=0; i<user.length; i++){
           if(model.UserName == user[i].userName){
+            console.log(user);
+            const fullname = `${user[i].fname} ${user[i].lname}`;
+            localStorage.setItem("username",fullname)
             localStorage.setItem("userId", user[i].id);
             console.log(user[i].id)
             break;
@@ -39,6 +45,10 @@ export class LoginComponent {
       localStorage.setItem("Token", res.token)
       this.activeModal.close();
       this.loginService.showToaster()
+
+      this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/']);
+      });
     }, error => {
       console.error("error", error)
     })

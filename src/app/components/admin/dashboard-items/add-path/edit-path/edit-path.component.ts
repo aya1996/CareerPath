@@ -77,7 +77,7 @@ export class EditPathComponent implements OnInit {
     // console.log(this.subcareer.subCareerId);
     this.subCareerService.editSubCareer(this.subcareer.subCareerId,c)
     .subscribe(res => console.log(res));
-    this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/admin/path']);
     });
   }

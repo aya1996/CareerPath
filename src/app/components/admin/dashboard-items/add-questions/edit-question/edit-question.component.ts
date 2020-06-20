@@ -78,7 +78,7 @@ export class EditQuestionComponent implements OnInit {
     q.courseIdRef = this.qs.courseIdRef;
 
     this.questionService.updateQuestion(q.questId,q).subscribe(res => {
-      this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
         this.router.navigate(['/admin/question']);
       });
     });

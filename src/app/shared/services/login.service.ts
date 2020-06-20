@@ -6,6 +6,8 @@ import { environment } from 'src/environments/environment';
 interface User{
   id: string;
   userName: string;
+  fname: string,
+  lname: string
 }
 
 

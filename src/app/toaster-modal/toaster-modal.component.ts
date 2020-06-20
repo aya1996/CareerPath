@@ -15,7 +15,6 @@ export class ToasterModalComponent implements OnInit {
   constructor( private loginService: LoginService, private registerService: RegisterService) { }
 
   ngOnInit() {
-    console.log("shoukry")
     this.loginService.loginToaster.subscribe( data => {
     
       this.showAdd = data;

@@ -81,7 +81,7 @@ export class ViewPathComponent implements OnInit {
     this.subCareerService.deleteSubCareer(this.getDeletedId).subscribe(res => console.log(res));
 
     this.modalService.dismissAll();
-    this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/admin/path']);
     });
   }

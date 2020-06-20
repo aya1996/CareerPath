@@ -325,7 +325,8 @@ export class RegisterComponent implements OnInit {
           "PhoneNumber":this.registerForm.value.phonenumber,
           "UserLevel":this.registerForm.value.userLevel,
           "Country":this.registerForm.value.country,
-          "Description":this.registerForm.value.description
+          "Description":this.registerForm.value.description,
+          "files": this.imagePath
       
       }
       console.log('model', model)

@@ -40,7 +40,7 @@ export class EditCourseComponent implements OnInit {
     c.courseId = this.courseItem.courseId;
 
     this.courseService.updateCourse(c.courseId,c).subscribe(res => console.log(res));
-    this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/admin/course']);
     });
     

@@ -56,7 +56,7 @@ export class AddQuestionsComponent implements OnInit {
     console.log(q);
     this.questionService.postQuestion(q)
     .subscribe(res => {
-      this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
         this.router.navigate(['/admin/question']);
       });
     });

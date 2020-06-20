@@ -26,7 +26,7 @@ export class AddTrackComponent implements OnInit {
 
     this.careerService.postCareer(c)
       .subscribe(res => console.log(res));
-    this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/admin/track']);
     });
   }

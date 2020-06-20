@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   public isMenuCollapsed = true;
   token: string;
+  username: string;
   constructor(
     private modalService: NgbModal,
     private router: Router
@@ -19,6 +20,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() { 
     this.token = localStorage.getItem("Token")
+    this.username = localStorage.getItem("username")
   }
 
   open() {
@@ -27,5 +29,14 @@ export class NavbarComponent implements OnInit {
   }
   register() {
     this.router.navigate(['/register']);
+  }
+
+  logout(){
+    localStorage.removeItem("Token");
+    localStorage.removeItem("username");
+    localStorage.removeItem("id");
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/']);
+    });
   }
 }

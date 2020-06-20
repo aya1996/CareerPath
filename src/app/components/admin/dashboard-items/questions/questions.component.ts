@@ -89,7 +89,7 @@ export class QuestionsComponent implements OnInit {
   deleteQuest(){
     this.questionService.deleteQuestion(this.getDeletedId).subscribe(res => console.log(res));
     this.modalService.dismissAll();
-    this.router.navigateByUrl('/admin/index', { skipLocationChange: true }).then(() => {
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/admin/question']);
     });
   }

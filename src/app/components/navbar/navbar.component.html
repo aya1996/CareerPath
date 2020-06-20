@@ -15,42 +15,25 @@
         <a class="nav-link" routerLink="/home" (click)="isMenuCollapsed = true">Home</a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about" (click)="isMenuCollapsed = true">About</a>
+      </li>
+
       <li class="nav-item dropdown m-1">
         <a class="nav-link dropdown-toggle" (click)="isMenuCollapsed = true" mat-button
-          [matMenuTriggerFor]="careers">Career Path</a>
+          [matMenuTriggerFor]="careers">Career Roadmap</a>
 
         <mat-menu #careers="matMenu">
-          <button routerLink="/" mat-menu-item [matMenuTriggerFor]="web">
+          <button routerLink="/roadmap" mat-menu-item>
             Web Development
           </button>
-          <button routerLink="/" mat-menu-item [matMenuTriggerFor]="mobile">
+          <button routerLink="/roadmap" mat-menu-item>
             Mobile Development
           </button>
-          <button routerLink="/" mat-menu-item [matMenuTriggerFor]="data">
+          <button routerLink="/roadmap" mat-menu-item>
             Data Science
           </button>
         </mat-menu>
-
-        <mat-menu #web="matMenu">
-          <a class="nav-link" routerLink="/web" mat-menu-item>Front End</a>
-          <a class="nav-link" routerLink="/web" mat-menu-item>Back End</a>
-          <a class="nav-link" routerLink="/web" mat-menu-item>Full Stack</a>
-        </mat-menu>
-
-        <mat-menu #mobile="matMenu">
-          <a class="nav-link" routerLink="/web" mat-menu-item>Android Developer</a>
-          <a class="nav-link" routerLink="/web" mat-menu-item>IOS developer</a>
-          <a class="nav-link" routerLink="/web" mat-menu-item>Cross Platform Devloper</a>
-        </mat-menu>
-
-        <mat-menu #data="matMenu">
-          <a class="nav-link" routerLink="/web" mat-menu-item>Data Analytics</a>
-          <a class="nav-link" routerLink="/web" mat-menu-item>Data Scientist</a>
-          <a class="nav-link" routerLink="/web" mat-menu-item>Bussiness Intelligance</a>
-        </mat-menu>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/about" (click)="isMenuCollapsed = true">About</a>
       </li>
 
       <li class="nav-item">
@@ -58,34 +41,31 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" routerLink="/roadmap" (click)="isMenuCollapsed = true">Roadmap</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/careers" (click)="isMenuCollapsed = true">Careers</a>
+        <a class="nav-link" routerLink="/careers" (click)="isMenuCollapsed = true">Job Profiles</a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" routerLink="/course" (click)="isMenuCollapsed = true">Take Exam</a>
       </li>
 
-      <li class="dropdown">
-        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-          aria-expanded="true">
-          <span class="nav-label">Username</span> <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li>
-            <a class="dropdown-item" routerLink="/profile">Profile</a>
-          </li>
-          <li class="dropdown-submenu">
-            <a class="dropdown-item" routerLink="/">Settings</a>
-          </li>
-          <hr />
-          <li class="dropdown-submenu">
-            <a class="dropdown-item" routerLink="/">Logout</a>
-          </li>
-        </ul>
+      <li *ngIf="token" class="nav-item dropdown m-1">
+        <a class="nav-link dropdown-toggle" (click)="isMenuCollapsed = true"
+         mat-button [matMenuTriggerFor]="user"> {{username}} </a>
+
+        <mat-menu #user>
+          <button routerLink="/profile" mat-menu-item>
+            Progress
+          </button>
+          <button routerLink="/" mat-menu-item>
+            Profile
+          </button>
+          <hr/>
+          <button routerLink="/" mat-menu-item (click)="logout()" >
+            Logout
+          </button>
+        </mat-menu>
       </li>
+
     </ul>
   <div class="search-container">
       <form class="form-inline my-2 my-lg-0 ">

@@ -98,6 +98,7 @@ import { EditTrackComponent } from './components/admin/dashboard-items/add-track
 import { RoadmapComponent } from './components/roadmap/roadmap.component';
 import { WebJobsComponent } from './components/jobs/web-jobs/web-jobs.component';
 import { ToasterModalComponent } from './toaster-modal/toaster-modal.component';
+import { DummyComponent } from './shared/dummy/dummy.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -134,6 +135,8 @@ const routes: Routes =
     { path: 'admin/course', component: ViewCoursesComponent},
     { path: 'admin/add-question', component: AddQuestionsComponent},
     { path: 'admin/question', component: QuestionsComponent },
+
+    { path: 'dummy', component:DummyComponent},
     /****************************************************************** */
     { path:'admin/course/edit/:id', component:EditCourseComponent},
 
@@ -189,6 +192,7 @@ const routes: Routes =
     RoadmapComponent,
     WebJobsComponent,
     ToasterModalComponent,
+    DummyComponent,
    
 
   ],
