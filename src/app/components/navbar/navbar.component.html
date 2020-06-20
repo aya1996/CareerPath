@@ -24,9 +24,12 @@
           [matMenuTriggerFor]="careers">Career Roadmap</a>
 
         <mat-menu #careers="matMenu">
-          <button [routerLink]="['roadmap/',career.careerId]" mat-menu-item *ngFor="let career of careerData">
-            {{career.careerName}}
-          </button>
+          <div *ngFor="let career of careerData">
+            <button (click)="goToRoadMap(career.careerId)" mat-menu-item >
+              <!-- <button [routerLink]="['roadmap/',career.careerId]" mat-menu-item > -->
+              {{career.careerName}}
+            </button>
+          </div>
         </mat-menu>
       </li>
 

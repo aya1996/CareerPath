@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import {NestedTreeControl} from '@angular/cdk/tree';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -12,6 +12,7 @@ import { CareerService } from '../../shared/services/career.service'
   styleUrls: ['./roadmap.component.css']
 })
 export class RoadmapComponent implements OnInit, OnDestroy {
+
 
   private routeSub: Subscription;
   courseTitle:String = '';
@@ -27,13 +28,14 @@ export class RoadmapComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {
-      this.careerService.getCareerById(params['id'])
+      console.log(params.id)
+      this.careerService.getCareerById(params.id)
       .subscribe(res => this.careerName = res.careerName);
     });
-  
+    
   }
 
-  
+
   openModal(content, _courseTitle) {
     this.courseTitle = _courseTitle;
     this.modalService.open(content, {centered: true, backdropClass: 'dark-modal'});
