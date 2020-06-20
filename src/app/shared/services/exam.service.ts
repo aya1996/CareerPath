@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CreateExam } from '../Models/questionExam.model';
 import { A } from '../Models/answers.model';
-import { object } from '@amcharts/amcharts4/core';
 
 
 @Injectable({
