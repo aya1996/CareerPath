@@ -6,9 +6,9 @@
             {{item.course}}
         </div>
         <div class="col-9 bar-horzontal">
-            <div [ngClass]="{'complete': item.remain===100}"> {{item.remain}} </div>
-            <div [ngClass]="{'progress': item.remain===40}"> 
-                <div [ngStyle]="{'width': item.remain}"></div>
+            <div [ngClass]="{'complete': item.remain===100}"> </div>
+            <div [ngClass]="{'progress': item.remain===40}">
+                <div class="partial"></div>
             </div>
             <div [ngClass]="{'undone': item.remain===0}">  </div>
         </div>

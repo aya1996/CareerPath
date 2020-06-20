@@ -4,6 +4,10 @@
     background: #f2f2f2;
   } */
 
+  *{
+      text-align: left;
+  }
+
   .bar-horzontal div{
     display: none;
 }
@@ -26,13 +30,28 @@
     display: block;
     border-radius: 5px;
     margin: 15px 0;
-
     color: #fff;
     padding: 10px 0 10px 5px;
-    box-sizing: border-box;
-    width: 100%;
     background-color: rgb(190, 190, 190);
 
+    box-sizing: border-box;
+    width: 100%;
+    z-index: 1;
+
+}
+
+div .partial{
+    display: block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+    margin: 15px 0;
+    color: #fff;
+    padding: 10px 0 10px 5px;
+    border-radius: 5px;
+    background-color: rgb(240, 240, 48);
+    z-index: 5;
 }
 div .undone{
     display: block;
