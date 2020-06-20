@@ -101,14 +101,13 @@ import { ToasterModalComponent } from './toaster-modal/toaster-modal.component';
 import { DummyComponent } from './shared/dummy/dummy.component';
 import { GlassComponent } from './components/profile/charts/glass/glass.component';
 import { TimelineComponent } from './components/profile/charts/timeline/timeline.component';
+import { AddCourseLinksComponent } from './components/admin/dashboard-items/add-courses/add-course-links/add-course-links.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
 
 const routes: Routes =
   [
-
-    { path: 'home', component: HomeComponent },
 
     // { path: 'profile', component: ProfileHeaderComponent },
     { path: 'about', component: AboutComponent },
@@ -124,7 +123,7 @@ const routes: Routes =
     { path: 'dashboard', component: AdminDashboardComponent },
     {path: 'admin/path/edit/:id', component:EditPathComponent},
     {path: 'admin/track/edit/:id', component:EditTrackComponent},
-    {path: 'roadmap', component:RoadmapComponent},
+    {path: 'roadmap/:id', component:RoadmapComponent},
     { path: 'careers', component:WebJobsComponent},
 
     // { path: 'admin/questions', component: QuestionsComponent },
@@ -137,6 +136,8 @@ const routes: Routes =
     { path: 'admin/course', component: ViewCoursesComponent},
     { path: 'admin/add-question', component: AddQuestionsComponent},
     { path: 'admin/question', component: QuestionsComponent },
+
+    {path:'admin/add-course/links', component:AddCourseLinksComponent},
 
     {path: 'profile/courses', component:CoursesComponent},
     {path: 'profile/exams', component:ExamsComponent},
@@ -151,7 +152,8 @@ const routes: Routes =
     { path: 'web', component: WebDevelopmentComponent },
     { path: 'login', component: LoginComponent },
     { path: 'course', component: CourseComponent },
-    {  path:'**',  component : HomeComponent }
+    { path: '', component: HomeComponent },
+    {  path:'**',  component : DummyComponent }
   ]
 @NgModule({
   declarations: [
@@ -200,6 +202,7 @@ const routes: Routes =
     DummyComponent,
     GlassComponent,
     TimelineComponent,
+    AddCourseLinksComponent,
    
 
   ],

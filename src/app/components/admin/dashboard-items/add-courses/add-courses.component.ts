@@ -20,6 +20,21 @@ export class AddCoursesComponent implements OnInit {
 
   subCareer: subCareer[] = [];
   selectedItem=0;
+  selectedLvl='';
+  level = [
+    {
+    value:1,
+    viewValue:'Beginner'
+    },
+    {
+      value:2,
+      viewValue:'Intermediate'
+    },
+    {
+      value:3,
+      viewValue:'Advanced'
+    }
+  ];
   
   ngOnInit() {
     this.subCareerService.getSubCareer()
@@ -37,14 +52,17 @@ export class AddCoursesComponent implements OnInit {
   getSelected(c_id){
     this.selectedItem = c_id;
   }
-
+  selectedLevel(lvl:string){
+    this.selectedLvl = lvl;
+  }
 
   saveData(data){
     const c = new course;
     c.courseName = data.cou;
-    c.courseContent = data.coun;
     c.description =data.des;
     c.duration = data.dur;
+    c.OrderNumber = data.order;
+    c.Level = this.selectedLvl
 
     this.courseService.postCourse(c)
     .subscribe(courseObj => {

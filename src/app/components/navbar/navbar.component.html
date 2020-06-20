@@ -12,7 +12,7 @@
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <!-- Step 4: Close the menu when a link is clicked. -->
-        <a class="nav-link" routerLink="/home" (click)="isMenuCollapsed = true">Home</a>
+        <a class="nav-link" routerLink="/" (click)="isMenuCollapsed = true">Home</a>
       </li>
 
       <li class="nav-item">
@@ -24,14 +24,8 @@
           [matMenuTriggerFor]="careers">Career Roadmap</a>
 
         <mat-menu #careers="matMenu">
-          <button routerLink="/roadmap" mat-menu-item>
-            Web Development
-          </button>
-          <button routerLink="/roadmap" mat-menu-item>
-            Mobile Development
-          </button>
-          <button routerLink="/roadmap" mat-menu-item>
-            Data Science
+          <button [routerLink]="['roadmap/',career.careerId]" mat-menu-item *ngFor="let career of careerData">
+            {{career.careerName}}
           </button>
         </mat-menu>
       </li>
