@@ -1,0 +1,16 @@
+<h3>Courses Progress</h3>
+
+<div *ngFor="let item of data">
+    <div class="row">
+        <div class="col-3 text-style">
+            {{item.course}}
+        </div>
+        <div class="col-9 bar-horzontal">
+            <div [ngClass]="{'complete': item.remain===100}"> {{item.remain}} </div>
+            <div [ngClass]="{'progress': item.remain===40}"> 
+                <div [ngStyle]="{'width': item.remain}"></div>
+            </div>
+            <div [ngClass]="{'undone': item.remain===0}">  </div>
+        </div>
+    </div>
+</div>

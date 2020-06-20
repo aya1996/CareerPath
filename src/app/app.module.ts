@@ -99,6 +99,8 @@ import { RoadmapComponent } from './components/roadmap/roadmap.component';
 import { WebJobsComponent } from './components/jobs/web-jobs/web-jobs.component';
 import { ToasterModalComponent } from './toaster-modal/toaster-modal.component';
 import { DummyComponent } from './shared/dummy/dummy.component';
+import { GlassComponent } from './components/profile/charts/glass/glass.component';
+import { TimelineComponent } from './components/profile/charts/timeline/timeline.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -196,6 +198,8 @@ const routes: Routes =
     WebJobsComponent,
     ToasterModalComponent,
     DummyComponent,
+    GlassComponent,
+    TimelineComponent,
    
 
   ],
