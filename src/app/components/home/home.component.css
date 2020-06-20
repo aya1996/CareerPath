@@ -1,13 +1,29 @@
 .main{
-    margin-top: 30px;
-    margin-bottom: 30px;
-    background-color: #363636;
-    color: #fff;
+   margin-top: 30px;
+   margin-bottom: 30px;
+   padding: 25px;
+   /*background-color: #363636;
+   */color: #fff;
+  
 }
 mat-card{
     background-color: #222222;
     color: #fff;
+    border-radius: 20px;
+    -webkit-border-radius: 20p;
+    -moz-border-radius: 20p;
+    -ms-border-radius: 20p;
+    -o-border-radius: 20p;
 }
+mat-card-title{
+    padding: 20px;
+}
+
+#chartdiv {
+    width: 100%;
+    height: 600px;
+   
+  }
 
 .slider-img img{
     width: 100%;
