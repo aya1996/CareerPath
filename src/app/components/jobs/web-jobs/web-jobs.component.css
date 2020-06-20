@@ -24,6 +24,10 @@
   border-radius: 0 30px 0 0;
   position: relative;
   right: -3.5px;
+  -webkit-border-radius: 0 30px 0 0;
+  -moz-border-radius: 0 30px 0 0;
+  -ms-border-radius: 0 30px 0 0;
+  -o-border-radius: 0 30px 0 0;
 }
 .main-timeline2 .icon {
   display: block;
@@ -160,3 +164,11 @@
 .display-hidden {
   display: none;
 }
+
+/* .main-timeline2:nth-child(2) {
+  transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
+} */
