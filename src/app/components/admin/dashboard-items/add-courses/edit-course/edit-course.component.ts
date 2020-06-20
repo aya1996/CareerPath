@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
@@ -10,7 +10,7 @@ import { course } from '../../../../../shared/Models/course.model';
   templateUrl: './edit-course.component.html',
   styleUrls: ['./edit-course.component.css']
 })
-export class EditCourseComponent implements OnInit {
+export class EditCourseComponent implements OnInit, OnDestroy {
   private routeSub: Subscription;
 
   constructor(private courseService:CourseService,

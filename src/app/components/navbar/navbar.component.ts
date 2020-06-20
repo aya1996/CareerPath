@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit {
   logout(){
     localStorage.removeItem("Token");
     localStorage.removeItem("username");
-    localStorage.removeItem("id");
+    localStorage.removeItem("userId");
     this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/']);
     });

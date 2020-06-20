@@ -98,8 +98,10 @@ export class QuizComponent implements OnInit {
 
   getAnswer(choice, id){
     for(let i=0; i<this.Arr.length; i++){
-      if(this.Arr[i].qnum == id)
+      if(this.Arr[i].qnum == id){
         this.Arr[i].qAns = choice;
+        return;
+      }
     }
     this.Arr.push({qnum:id, qAns:choice});
   }
