@@ -8,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class ProfileHeaderComponent implements OnInit {
 
  
-  clickedTab = '';
+  // clickedTab = '';
   activeLink = '';
   constructor() {
 } 
 
 getValue(x) {
-  this.clickedTab = x;
+  // this.clickedTab = x;
   this.activeLink = x;
 }
   ngOnInit() {

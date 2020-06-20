@@ -4,20 +4,23 @@
     <div class="profile-items">
         <ul>
             <li>
-                <a [ngClass]="{'active-link': activeLink === 'courses'}" (click)="getValue('courses')">Courses</a>
+                <a 
+                 [ngClass]="{'active-link': activeLink === 'courses'}" 
+                 (click)="getValue('courses')"
+                 routerLink="/profile/courses">Courses</a>
             </li>
             <li>
-                <a [ngClass]="{'active-link': activeLink === 'exams'}" (click)="getValue('exams')">Exams</a>
-                <!-- <a [routerLink]="[ '/' ,{ outlet: { 'profileItems': ['dashboard'] } }]">Exams</a> -->
+                <a routerLink="/profile/exams"
+                [ngClass]="{'active-link': activeLink === 'exams'}" 
+                 (click)="getValue('exams')">Exams</a>
             </li>
             <li>
-                <a [ngClass]="{'active-link': activeLink === '' || activeLink === 'dashboard'}" routerLink="/profile" (click)="getValue('dashboard')">Dashboard</a>
+                <a routerLink="/profile" 
+                [ngClass]="{'active-link': activeLink === ''}" 
+                 (click)="getValue('')">Dashboard</a>
             </li>
         </ul>
     </div>
 </div>
 
-<app-dashboard *ngIf="clickedTab==='dashboard' || clickedTab===''"></app-dashboard>
-<app-courses *ngIf="clickedTab==='courses'"></app-courses>
-<app-exams *ngIf="clickedTab==='exams'"></app-exams>
 

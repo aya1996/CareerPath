@@ -108,11 +108,11 @@ const routes: Routes =
 
     { path: 'home', component: HomeComponent },
 
-    { path: 'profile', component: ProfileHeaderComponent },
+    // { path: 'profile', component: ProfileHeaderComponent },
     { path: 'about', component: AboutComponent },
     { path: 'quiz', component: QuizComponent },
 
-    { path: 'profile/dashboard', component: DashboardComponent },
+    { path: 'profile', component: DashboardComponent },
 
     { path: 'profile/courses', component: CoursesComponent },
     {path:'admin/question/edit/:questId', component:EditQuestionComponent},
@@ -135,6 +135,9 @@ const routes: Routes =
     { path: 'admin/course', component: ViewCoursesComponent},
     { path: 'admin/add-question', component: AddQuestionsComponent},
     { path: 'admin/question', component: QuestionsComponent },
+
+    {path: 'profile/courses', component:CoursesComponent},
+    {path: 'profile/exams', component:ExamsComponent},
 
     { path: 'dummy', component:DummyComponent},
     /****************************************************************** */
