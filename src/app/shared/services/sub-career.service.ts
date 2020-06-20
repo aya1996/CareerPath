@@ -19,6 +19,10 @@ export class SubCareerService {
     return this._http.get<subCareer>(`${this.apiUrl}/${id}`);
   }
 
+  getAllSubCareersByCareerID(id){
+    return this._http.get<subCareer[]>(`${this.apiUrl}/getByCareerID/${id}`);
+  }
+
   postSubCareer(data:subCareer){
     return this._http.post(this.apiUrl,data);
   }
