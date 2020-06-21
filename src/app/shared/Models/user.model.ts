@@ -1,4 +1,4 @@
-export class user{
+export class userData{
     fname: string;
     lname: string;
     userLevel: string;
@@ -9,4 +9,9 @@ export class user{
     userName: string;
     email: string;
     phoneNumber: string;
+   
+}
+export class user{
+    info:string;
+    userData:userData;
 }
