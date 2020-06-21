@@ -9,7 +9,7 @@ export class userData{
     userName: string;
     email: string;
     phoneNumber: string;
-   
+    subCareerId?: number;
 }
 export class user{
     info:string;

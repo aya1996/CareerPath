@@ -47,7 +47,8 @@ export class TimelineComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUserProfile().subscribe(res => {
-      console.log(res);
+      console.log(res.userData.subCareerId);
+      console.log(res.userData.userLevel);
     })
   }
 
