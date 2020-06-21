@@ -36,7 +36,7 @@ export class RegisterService {
       .get<any>(`${environment.url}/${this.modelName}/${id}`)
       .pipe(catchError(this.handleError));
   }
-  register(model: any, file:File): Observable<void> {
+  register(model: any): Observable<void> {
     return this.http
       .post<void>(`${environment.url}/${this.modelName}`,model);
     // .pipe(catchError(this.handleError));

@@ -344,7 +344,7 @@ export class RegisterComponent implements OnInit {
       // const formData = new FormData();
       // formData.append('file', this.registerForm.get('file').value);
 
-      this.service.register(model,this.imagePath).subscribe(
+      this.service.register(model).subscribe(
         (res:any) => {
           console.log("res", res)
           localStorage.setItem("Token", res.token)
