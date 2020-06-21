@@ -33,6 +33,13 @@ export class NavbarComponent implements OnInit {
     })
   }
 
+  goToRoadMap(id){
+    //this.router.navigateByUrl(`/roadmap/${id}`);
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+      this.router.navigate([`/roadmap/${id}`]);
+  }); 
+  }
+
   open() {
     const modelRef = this.modalService.open(LoginComponent);
     modelRef.componentInstance.name = 'Maher';
