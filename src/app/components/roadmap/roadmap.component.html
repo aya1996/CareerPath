@@ -1,12 +1,11 @@
 <app-navbar></app-navbar>
 
-
 <div class="container main">
   <div class="row">
     <div class="col-md-12">
       <h1 class="text-center alert"> {{careerName}} Career Path</h1>
     
-    <table class="table  table-borderless table-responsive-md ">
+    <table class="table  table-borderless table-responsive-md " >
       
         <thead >
           <tr>
@@ -20,12 +19,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="courses-row">
+          <tr class="courses-row" *ngFor="let item of subcareers"  >
             
-            <th scope="row" class="courses-list">Frontend</th>
+            <th scope="row" class="courses-list">{{item.subCareerName}}</th>
           
             <td class="mandatory-courses">
-                <div (click)="openModal(completed, 'HTML')">HTML</div>
+                <div (click)="openModal(completed, 'HTML')">HTML  {{i}}</div>
                 <div (click)="openModal(completed, 'HTML')">CSS</div>
                 <div (click)="openModal(completed, 'HTML')">JS</div>
                 <div (click)="openModal(completed, 'HTML')">JQuery</div>
@@ -44,52 +43,7 @@
             </td>
           </tr>
           <hr />
-          <tr class="courses-row">
 
-            <th scope="row" class="courses-list">Frontend</th>
-           
-            <td class="mandatory-courses">
-              
-              <div (click)="openModal(completed, 'HTML')">HTML</div>
-              <div (click)="openModal(completed, 'HTML')">CSS</div>
-              <div (click)="openModal(completed, 'HTML')">JS</div>
-              <div (click)="openModal(completed, 'HTML')">JQuery</div>
-            </td>
-            <td class="good-courses">
-              <div (click)="openModal(completed, 'HTML')">HTML</div>
-                <div (click)="openModal(completed, 'HTML')">CSS</div>
-                <div (click)="openModal(completed, 'HTML')">JS</div>
-                <div (click)="openModal(completed, 'HTML')">JQuery</div>
-            </td>
-            <td class="optional-courses">
-              <div (click)="openModal(completed, 'HTML')">HTML</div>
-              <div (click)="openModal(completed, 'HTML')">CSS</div>
-              <div (click)="openModal(completed, 'HTML')">JS</div>
-              <div (click)="openModal(completed, 'HTML')">JQuery</div>
-            </td>
-          </tr>
-          <hr />
-          <tr class="courses-row">
-            <th scope="row" class="courses-list">Frontend</th>
-            <td class="mandatory-courses">
-                <div>HTML</div>
-                <div>CSS</div>
-                <div>JS</div>
-                <div>JQuery</div>
-            </td>
-            <td class="good-courses">
-                <div>HTML</div>
-                <div>CSS</div>
-                <div>JS</div>
-                <div>JQuery</div>
-            </td>
-            <td class="optional-courses">
-                <div>HTML</div>
-                <div>CSS</div>
-                <div>JS</div>
-                <div>JQuery</div>
-            </td>
-          </tr>
         </tbody>
       </table>
 </div>

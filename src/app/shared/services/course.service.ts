@@ -23,6 +23,9 @@ export class CourseService {
   getById(id){
     return this._http.get<course>(`${this.apiUrl}/${id}`)
   }
+  getCoursesBySubCareerID(id){
+    return this._http.get<course[]>(`${this.apiUrl}/getBySubCareerID/${id}}`)
+  }
 
   getSubCareerCourses(){
     return this._http.get<SubCareerCourses[]>(this.apiSubCareerCourses);
