@@ -13,20 +13,29 @@ export class LoginComponent {
   @Input() name;
   loginForm: FormGroup = new FormGroup({
     username: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)
+    password: new FormControl('',[Validators.required, Validators.minLength(8)])
   });
+  messageError: boolean = false;
   constructor(public activeModal: NgbActiveModal, 
     private loginService: LoginService,
     private router:Router
  ) { }
+
+ get username () {
+   return this.loginForm.get('username');
+ }
+ get password () {
+  return this.loginForm.get('password');
+}
   login() {
+    this.messageError = false;
     console.log("Login Form", this.loginForm.value)
     const model = {
       UserName: this.loginForm.value.username,
       Password: this.loginForm.value.password
     }
     this.loginService.login(model).subscribe( (res: any) => {
-     // console.log("res", res)
+      console.log("res", res)
 
       this.loginService.getAllUsers().subscribe(user => {
         
@@ -44,13 +53,14 @@ export class LoginComponent {
 
       localStorage.setItem("Token", res.token)
       this.activeModal.close();
-      this.loginService.showToaster()
+      this.loginService.showToaster();
 
       this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
         this.router.navigate(['/']);
       });
     }, error => {
       console.error("error", error)
+      this.messageError = true;
     })
   }
 }

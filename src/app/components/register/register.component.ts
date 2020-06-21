@@ -6,6 +6,7 @@ import { course } from 'src/app/shared/Models/course.model';
 import { CourseService } from 'src/app/shared/services/course.service';
 import { CareerService } from 'src/app/shared/services/career.service';
 import { SubCareerService } from 'src/app/shared/services/sub-career.service';
+import { MustMatch } from 'src/app/shared/validator/must-match-validator';
 
 @Component({
   selector: 'app-register',
@@ -23,6 +24,7 @@ export class RegisterComponent implements OnInit {
   Courses:course[]=[];
   levels: any[];
   paths: any[]= [];
+  submitted: boolean = false;
   constructor(
     private service: RegisterService,
     private courseService: CourseService,
@@ -288,48 +290,60 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group(
       {
         id: [0],
-        subCareerId: [''],
+        subCareerId: ['',Validators.required],
         username: ['', Validators.required],
         fname: ['', Validators.required],
-        lname: [''],
-        country: [''],
-        email: ['', Validators.required],
+        lname: ['',Validators.required],
+        country: ['',Validators.required],
+        email: ['', [Validators.required,Validators.email]],
         phonenumber: ['', Validators.required],
-        userLevel: [''],
+        userLevel: ['',Validators.required],
         description: ['', Validators.required],
         image: [''],
         password: ['', [Validators.required, Validators.minLength(8)]],
         confirmPassword: ['', Validators.required]
 
 
-      },
-      { validator: this.passwordMatchValidator }
+
+      },{
+        validator: MustMatch('password', 'confirmPassword')
+    }
     );
   }
+  get f() {
+     return this.registerForm.controls;
+  }
+
   passwordMatchValidator(form: FormGroup) {
     return form.get('password').value === form.get('confirmPassword').value
       ? null
       : { mismatch: true };
   }
   register() {
-
-   
+    this.submitted = true;
+    console.log("subm",this.submitted)
+    if (this.registerForm.invalid) {
+      return;
+  }
     if (this.registerForm.value.id === 0) {
-      const model = {
-        
-          "Fname" : this.registerForm.value.fname,
-          "UserName" : this.registerForm.value.username,
-          "PasswordHash":this.registerForm.value.password,
-          "Email" :this.registerForm.value.email,
-          "Lname":this.registerForm.value.lname,
-          "PhoneNumber":this.registerForm.value.phonenumber,
-          "UserLevel":this.registerForm.value.userLevel,
-          "Country":this.registerForm.value.country,
-          "Description":this.registerForm.value.description,
-          "files": this.imagePath
-      
-      }
+      const model =   new FormData();
+      model.append("Fname",this.registerForm.value.fname);
+      model.append("UserName",this.registerForm.value.username);
+      model.append("PasswordHash",this.registerForm.value.password);
+      model.append("Email",this.registerForm.value.email);
+      model.append("Lname",this.registerForm.value.lname);
+      model.append("PhoneNumber",this.registerForm.value.phonenumber);
+      model.append("UserLevel",this.registerForm.value.userLevel);
+      model.append(  "Country",this.registerForm.value.country);
+      model.append("Description",this.registerForm.value.description);
+      model.append( "image",this.imagePath);
+
+  
       console.log('model', model)
+
+      // const formData = new FormData();
+      // formData.append('file', this.registerForm.get('file').value);
+
       this.service.register(model).subscribe(
         (res:any) => {
           console.log("res", res)
