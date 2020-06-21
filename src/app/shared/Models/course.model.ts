@@ -4,10 +4,12 @@ export class SubCareerCourses {
 }
 
 export class course{
-    courseId: number;
-    courseName : string;
-    courseContent : string;
-    description : string;
-    duration : string;
+    courseId?: number;
+    courseName?: string;
+    courseContent?: string;
+    description?: string;
+    duration?: string;
     subCareerName?: string;
+    Level?: string;
+    OrderNumber?: number;
 }

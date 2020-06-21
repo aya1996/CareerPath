@@ -19,23 +19,33 @@
         <input matInput ngModel #cou="ngModel" placeholder="Course Title" name="cou" required />
       </mat-form-field>
       <mat-form-field class="full-width">
-        <mat-label>Link</mat-label>
-        <input matInput ngModel #coun="ngModel" placeholder="Course Link" name="coun" required />
-      </mat-form-field>
-      <mat-form-field class="full-width">
          <mat-label>Duration</mat-label>
-         <input matInput ngModel #dur="ngModel"  placeholder="Course Duration In Hours" name="dur" required />
+         <input type="number" matInput ngModel #dur="ngModel"  placeholder="Course Duration In Hours" name="dur" required />
        </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Description</mat-label>
         <textarea matInput required ngModel  #des="ngModel" name="des" placeholder="Ex. Free Course from Udemy that ..."></textarea>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Select Course Level</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let level of level" 
+          [value]="level.value"
+          (click)="selectedLevel(level.viewValue)">
+            {{level.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Learn Order</mat-label>
+        <input type="number" matInput ngModel #order="ngModel"  placeholder="1,2..." name="order" required/>
       </mat-form-field>
       <br />
       <mat-card-actions>
         <button type="submit" 
         mat-raised-button color="primary"
         (click)="openSnackBar()"
-        [disabled]="c.invalid || selectedItem==0">ADD</button>
+        [disabled]="c.invalid || selectedItem==0 || selectedLvl==''">ADD</button>
       </mat-card-actions>
     </form>
   </div>

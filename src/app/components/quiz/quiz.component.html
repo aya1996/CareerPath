@@ -22,9 +22,9 @@
             <ng-template matStepLabel>Q{{ i + 1 }}</ng-template>
             <h2>{{ QsExam[i].questName }}</h2>
             <mat-radio-group aria-label="Select an option" required>
-              <mat-radio-button value="1" (click)="getAnswer(QsExam[i].a, QsExam[i].questId)"> {{ QsExam[i].a }} </mat-radio-button>
-              <mat-radio-button value="2" (click)="getAnswer(QsExam[i].b, QsExam[i].questId)"> {{ QsExam[i].b }} </mat-radio-button>
-              <mat-radio-button value="3" (click)="getAnswer(QsExam[i].c, QsExam[i].questId)"> {{ QsExam[i].c }} </mat-radio-button>
+              <mat-radio-button value="1" (click)="getAnswer('a', QsExam[i].questId)"> {{ QsExam[i].a }} </mat-radio-button>
+              <mat-radio-button value="2" (click)="getAnswer('b', QsExam[i].questId)"> {{ QsExam[i].b }} </mat-radio-button>
+              <mat-radio-button value="3" (click)="getAnswer('c', QsExam[i].questId)"> {{ QsExam[i].c }} </mat-radio-button>
             </mat-radio-group>
             <div style="float: right;">
               <button mat-stroked-button color="primary" matStepperPrevious *ngIf="i != 0">Back</button>
@@ -35,9 +35,9 @@
             <ng-template matStepLabel>Done</ng-template>
             <h2>{{ QsExam[i].questName }}</h2>
             <mat-radio-group aria-label="Select an option" required>
-              <mat-radio-button value="1" (click)="getAnswer(QsExam[i].a, QsExam[i].questId)"> {{ QsExam[i].a }} </mat-radio-button>
-              <mat-radio-button value="2" (click)="getAnswer(QsExam[i].b, QsExam[i].questId)"> {{ QsExam[i].b }} </mat-radio-button>
-              <mat-radio-button value="3" (click)="getAnswer(QsExam[i].c, QsExam[i].questId)"> {{ QsExam[i].c }} </mat-radio-button>
+              <mat-radio-button value="1" (click)="getAnswer('a', QsExam[i].questId)"> {{ QsExam[i].a }} </mat-radio-button>
+              <mat-radio-button value="2" (click)="getAnswer('b', QsExam[i].questId)"> {{ QsExam[i].b }} </mat-radio-button>
+              <mat-radio-button value="3" (click)="getAnswer('c', QsExam[i].questId)"> {{ QsExam[i].c }} </mat-radio-button>
             </mat-radio-group>
             <div style="float: right;">
               <button mat-stroked-button color="primary" matStepperPrevious>Back</button>
@@ -79,7 +79,7 @@
 </ng-template>
 
 <div class="container-md main" style="color: #fff;" *ngIf="finished">
-  <div *ngIf="userGrade">
+  <div *ngIf="userGrade>=0">
     <div *ngIf="userGrade >= 70">
       <h2>Congratulations. You have successfully passed the Exam.</h2>
     </div>

@@ -16,6 +16,7 @@ export class QuizComponent implements OnInit {
 
   UserID = localStorage.getItem("userId");
   CourseName = "HTML";
+  ExamID = 0; 
   QsExam: CreateExam[] = [];
 
   Answers: A = {};
@@ -36,18 +37,19 @@ export class QuizComponent implements OnInit {
     this.examService.createExam({UserID:this.UserID, CourseName:this.CourseName})
     .subscribe(res => {
 
-      // this.Answers.Q1 = res[0].questId.toString();
-      // this.Answers.Q2 = res[1].questId.toString();
-      // this.Answers.Q3 = res[2].questId.toString();
-      // this.Answers.Q4 = res[3].questId.toString();
-      // this.Answers.Q5 = res[4].questId.toString();
-      // this.Answers.Q6 = res[5].questId.toString();
-      // this.Answers.Q7 = res[6].questId.toString();
-      // this.Answers.Q8 = res[7].questId.toString();
-      // this.Answers.Q9 = res[8].questId.toString();
-      // this.Answers.Q10 = res[9].questId.toString();
+      this.Answers.Q1 = res[0].questId.toString();
+      this.Answers.Q2 = res[1].questId.toString();
+      this.Answers.Q3 = res[2].questId.toString();
+      this.Answers.Q4 = res[3].questId.toString();
+      this.Answers.Q5 = res[4].questId.toString();
+      this.Answers.Q6 = res[5].questId.toString();
+      this.Answers.Q7 = res[6].questId.toString();
+      this.Answers.Q8 = res[7].questId.toString();
+      this.Answers.Q9 = res[8].questId.toString();
+      this.Answers.Q10 = res[9].questId.toString();
       this.Answers.ExamID = res[0].examId;
       this.Answers.UserID = this.UserID;
+      this.ExamID = res[0].examId;
 
       this.questionService.getQuestion().subscribe(Qs => {
         for(let i=0; i<res.length; i++){
@@ -107,8 +109,13 @@ export class QuizComponent implements OnInit {
   }
 
   assingAnswers(){
+    console.log(this.QsExam);
+    console.log(this.Arr);
+    this.Answers.Ans1 = this.Arr[0].qAns;
     this.Answers.Q1 = this.Arr[0].qnum;
+    this.Answers.Ans2 = this.Arr[1].qAns;
     this.Answers.Q2 = this.Arr[1].qnum;
+
     this.Answers.Q3 = this.Arr[2].qnum;
     this.Answers.Q4 = this.Arr[3].qnum;
     this.Answers.Q5 = this.Arr[4].qnum;
@@ -118,8 +125,6 @@ export class QuizComponent implements OnInit {
     this.Answers.Q9 = this.Arr[8].qnum;
     this.Answers.Q10 = this.Arr[9].qnum;
 
-    this.Answers.Ans1 = this.Arr[0].qAns;
-    this.Answers.Ans2 = this.Arr[1].qAns;
     this.Answers.Ans3 = this.Arr[2].qAns;
     this.Answers.Ans4 = this.Arr[3].qAns;
     this.Answers.Ans5 = this.Arr[4].qAns;
@@ -128,6 +133,8 @@ export class QuizComponent implements OnInit {
     this.Answers.Ans8 = this.Arr[7].qAns;
     this.Answers.Ans9 = this.Arr[8].qAns;
     this.Answers.Ans10 = this.Arr[9].qAns;
+
+    console.log(this.Answers);
   }
 
   userGrade;

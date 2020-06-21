@@ -1,0 +1,39 @@
+<div class="main">
+    <app-admin-nav></app-admin-nav>
+    
+    <mat-card-content>
+      <div class="my-form mat-elevation-z8" style="margin-top: 30px;">
+        <h3 class="title-style">Add Course Links</h3>
+        <form #c="ngForm" (ngSubmit)="saveData(c.value)">
+          <mat-form-field class="full-width">
+            <mat-label>Select Course</mat-label>
+            <mat-select>
+              <mat-option
+              *ngFor="let item of courses"
+              [value]="item.courseId" 
+              (click)="getSelected(item.courseId)"> {{item.courseName}} </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Link</mat-label>
+            <input matInput ngModel #coun="ngModel" placeholder="Course Link" name="coun" required />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+             <mat-label>Price</mat-label>
+             <input type="number" matInput ngModel #price="ngModel"  placeholder="0 or more $$ " name="price" required />
+           </mat-form-field>
+          <br />
+          <mat-card-actions>
+            <button routerLink='/admin/course' 
+            mat-stroked-button color="primary"
+            style="margin-right: 20px;">Back</button>
+            
+            <button type="submit" 
+            mat-raised-button color="primary"
+            (click)="openSnackBar()"
+            [disabled]="c.invalid || selectedItem==0">ADD</button>
+          </mat-card-actions>
+        </form>
+      </div>
+    </mat-card-content>
+    </div>

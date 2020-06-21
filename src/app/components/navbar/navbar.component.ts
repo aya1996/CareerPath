@@ -2,6 +2,8 @@ import { LoginComponent } from './../../components/login/login.component';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { CareerService } from '../../shared/services/career.service';
+import { career } from '../../shared/Models/career.model'
 
 
 @Component({
@@ -13,14 +15,22 @@ export class NavbarComponent implements OnInit {
   public isMenuCollapsed = true;
   token: string;
   username: string;
+  careerData: career[];
+
   constructor(
     private modalService: NgbModal,
-    private router: Router
+    private router: Router,
+    private careerService: CareerService
     ) { }
 
+  
   ngOnInit() { 
-    this.token = localStorage.getItem("Token")
-    this.username = localStorage.getItem("username")
+    this.token = localStorage.getItem("Token");
+    this.username = localStorage.getItem("username");
+
+    this.careerService.getCareer().subscribe(res => {
+      this.careerData = res;
+    })
   }
 
   open() {

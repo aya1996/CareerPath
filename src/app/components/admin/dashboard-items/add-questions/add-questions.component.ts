@@ -40,7 +40,7 @@ export class AddQuestionsComponent implements OnInit {
   }
 
   getChoice(data){
-    this.selectedChoice = data.viewModel;
+    this.selectedChoice = data;
     // console.log(data.viewModel);
   }
 
