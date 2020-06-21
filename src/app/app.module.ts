@@ -102,6 +102,8 @@ import { DummyComponent } from './shared/dummy/dummy.component';
 import { GlassComponent } from './components/profile/charts/glass/glass.component';
 import { TimelineComponent } from './components/profile/charts/timeline/timeline.component';
 import { AddCourseLinksComponent } from './components/admin/dashboard-items/add-courses/add-course-links/add-course-links.component';
+import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
+import { EditUserProfileComponent } from './components/profile/edit-user-profile/edit-user-profile.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -141,6 +143,8 @@ const routes: Routes =
 
     {path: 'profile/courses', component:CoursesComponent},
     {path: 'profile/exams', component:ExamsComponent},
+    {path: 'user-profile', component:UserProfileComponent},
+    {path: 'profile/edit-user-profile', component:EditUserProfileComponent},
 
     { path: 'dummy', component:DummyComponent},
     /****************************************************************** */
@@ -203,6 +207,8 @@ const routes: Routes =
     GlassComponent,
     TimelineComponent,
     AddCourseLinksComponent,
+    UserProfileComponent,
+    EditUserProfileComponent,
    
 
   ],

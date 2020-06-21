@@ -4,8 +4,8 @@
     background: #f2f2f2;
   } */
 
-  *{
-      text-align: left;
+  /* *{
+      text-align: right;
   }
 
   .bar-horzontal div{
@@ -25,22 +25,22 @@
     box-sizing: border-box;
       width: 100%;
       background-color: rgb(1, 114, 1);
-  }
-  div .progress{
+  } */
+  /* div .progress{
     display: block;
     border-radius: 5px;
     margin: 15px 0;
     color: #fff;
     padding: 10px 0 10px 5px;
     background-color: rgb(190, 190, 190);
-
+    position: relative;
     box-sizing: border-box;
     width: 100%;
     z-index: 1;
 
-}
+} */
 
-div .partial{
+/* div .partial{
     display: block;
     position: relative;
     width: 50px;
@@ -64,5 +64,27 @@ div .undone{
     width: 100%;
     background-color: rgb(190, 190, 190);
 
-}
+} */
 
+
+.progress {
+    position: relative;
+    height: 25px;
+    margin: 20px;
+}
+.progress > .progress-type {
+	position: absolute;
+	left: 0px;
+    font-weight: 800;
+
+	padding: 10px 50px 15px 10px;
+	color: rgb(255, 255, 255);
+	background-color: rgba(25, 25, 25, 0.2);
+}
+.progress > .progress-completed {
+	position: absolute;
+	right: 0px;
+    font-weight: 800;
+    color: black;
+	padding: 10px 10px 2px;
+}

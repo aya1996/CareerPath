@@ -22,10 +22,10 @@ export class HomeComponent implements OnInit, OnDestroy {
    chart;
 
   ngAfterViewInit(): void {
-    this.chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
-    this.chart.fontFamily = "Courier New";
-    let series = this.chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
-    series.randomness = 0.1;
+    let chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
+    chart.fontFamily = "Courier New";
+    let series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
+    series.randomness = 0.4;
     series.rotationThreshold = 0.5;
 
     series.data = [
