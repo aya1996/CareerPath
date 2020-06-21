@@ -9,17 +9,34 @@
         <div class="row content-page">
           <!-- First Name -->
           <div class="form-group col-md-6 col-xm-12">
-            <input formControlName="fname" type="text" class=" form-control" placeholder="First Name">
+            <input formControlName="fname" type="text" class=" form-control" placeholder="First Name" required>
+            <div class="invalid-feedback" *ngIf="submitted && f.fname.errors">
+              <div *ngIf="f.fname.errors.required">
+                Please enter first name.
+              </div>
+            </div>
           </div>
-
+          <!-- {{ submitted }}
+          {{ f.fname.errors }} -->
           <!-- Last Name -->
           <div class="form-group col-md-6 col-xm-12">
             <input formControlName="lname" type="text" class=" form-control" placeholder="Last Name">
+            <div class="invalid-feedback" *ngIf="submitted && f.lname.errors">
+              <div *ngIf="f.lname.errors.required">
+                Please enter last name.
+              </div>
+            </div>
           </div>
 
           <!-- phonenumber -->
           <div class="form-group col-md-6 col-xm-12">
             <input formControlName="phonenumber" type="text" class=" form-control" placeholder="Phone Number">
+            <div class="invalid-feedback" *ngIf="submitted && f.phonenumber.errors">
+              <div *ngIf="f.phonenumber.errors.required">
+                Please enter phone number.
+              </div>
+            </div>
+  
           </div>
 
 
@@ -35,23 +52,77 @@
                 {{ item.name }}
               </option> -->
             </select>
+            <div class="invalid-feedback" *ngIf="submitted && f.country.errors">
+              <div *ngIf="f.country.errors.required">
+                Please enter your country.
+              </div>
+            </div>
           </div>
           <!-- Username -->
           <div class="form-group col-md-6 col-xm-12">
             <input  formControlName="username"  class="form-control" type="text" placeholder="Username">
+            <div class="invalid-feedback" *ngIf="submitted && f.username.errors">
+              <div *ngIf="f.username.errors.required">
+                Please enter Username.
+              </div>
+            </div>
+
           </div>
           <!-- Email-->
+          <!-- <input    type="email" > -->
           <div class="form-group col-md-6 col-xm-12">
-            <input formControlName="email"  class="form-control" type="email" placeholder="Email">
+            <input formControlName="email" type="email" class="form-control" name="email"  placeholder="Email">
+            <div class="invalid-feedback" *ngIf="submitted && f.email.errors">
+              <div *ngIf="f.email.errors.required">
+                Please enter email.
+              </div>
+              <div *ngIf=f.email.errors.email>
+                Please valide email.
+              </div>
+            </div>
+            <!-- <div class="invalid-feedback" *ngIf=" f.email.errors.required && (f.email.dirty || f.email.touched)">
+              Please enter email.
+            </div>
+            <div class="invalid-feedback" *ngIf=" (!f.email.errors.required) && (f.email.errors.email)  && (f.email.dirty || f.email.touched)">
+      
+            </div> -->
           </div>
           <!-- Password -->
           <div class="form-group col-md-6 col-xm-12">
             <input formControlName="password"  class="form-control" type="password" placeholder="Password">
+            <div class="invalid-feedback" *ngIf="submitted && f.password.errors">
+              <div *ngIf="f.password.errors.required">
+                Please enter password.
+              </div>
+              <div *ngIf=f.password.errors.minlength>
+                Password minilength 8 characters.
+              </div>
+            </div>
+            <!-- <div class="invalid-feedback" *ngIf=" f.password.errors.required && (f.password.dirty || f.password.touched)">
+              Please enter password.
+            </div>
+            <div class="invalid-feedback" *ngIf=" (!f.password.errors.required) && (f.password.errors.minlength)  && (f.password.dirty || f.password.touched)">
+              
+            </div> -->
           </div>
 
           <!-- Confirm password -->
           <div class="form-group col-md-6 col-xm-12">
             <input formControlName="confirmPassword"  class="form-control" type="password" placeholder="Confirm password">
+            <div class="invalid-feedback" *ngIf="submitted && f.confirmPassword.errors">
+              <div *ngIf="f.confirmPassword.errors.required">
+                Please confirm password.
+              </div>
+              <div *ngIf=f.confirmPassword.errors.mustMatch>
+                Confirm password must matched.
+              </div>
+            </div>
+            <!-- <div class="invalid-feedback" *ngIf=" f.confirmPassword.errors.required && (f.confirmPassword.dirty || f.confirmPassword.touched)">
+              Please enter password.
+            </div>
+            <div class="invalid-feedback" *ngIf=" (!f.confirmPassword.errors.required) && (f.confirmPassword.errors.mustMatch)  && (f.confirmPassword.dirty || f.confirmPassword.touched)">
+              Confirm password must matched.
+            </div> -->
           </div>
           
           <!-- Choose Your Path -->
@@ -62,6 +133,11 @@
                 {{ item.subCareerName }}
               </option>
             </select>
+            <div class="invalid-feedback" *ngIf="submitted && f.subCareerId.errors">
+              <div *ngIf="f.subCareerId.errors.required">
+                Please enter your Path.
+              </div>
+            </div>
           </div>
 
           <!-- Choose Your Leval -->
@@ -72,11 +148,24 @@
                 {{ item }}
               </option>
             </select>
+            <div class="invalid-feedback" *ngIf="submitted && f.userLevel.errors">
+              <div *ngIf="f.userLevel.errors.required">
+                Please enter your level.
+              </div>
+            </div>
           </div>
 
           <!-- description -->
           <div class="form-group col-md-12">
             <textarea class="form-control" formControlName="description" type="text" placeholder="Why would you choose this Path?"></textarea>
+            <div class="invalid-feedback" *ngIf="submitted && f.description.errors">
+              <div *ngIf="f.description.errors.required">
+                Please enter description.
+              </div>
+            </div>
+            <!-- <div class="invalid-feedback" *ngIf=" f.description.errors.required && (f.description.dirty || f.description.touched)">
+              Please enter Description.
+            </div> -->
           </div>
 
 
@@ -102,7 +191,7 @@
 
 
           <div class="form-group col-md-12" id="registerId">
-              <button type="submit" [disabled]="registerForm.invalid"
+              <button type="submit" 
                 class="btn btn-danger">Register</button>
 
           </div>

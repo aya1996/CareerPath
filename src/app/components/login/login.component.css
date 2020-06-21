@@ -99,3 +99,6 @@
   justify-content: center;
   align-items: flex-end;
 }
+.invalid-feedback {
+  display: unset;
+}
