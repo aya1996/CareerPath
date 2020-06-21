@@ -210,7 +210,6 @@ const routes: Routes =
     AddCourseLinksComponent,
     UserProfileComponent,
     EditUserProfileComponent,
-   
 
   ],
   imports: [
