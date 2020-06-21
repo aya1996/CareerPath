@@ -7,6 +7,7 @@ import {FormControl} from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SubCareerService } from '../../../../shared/services/sub-career.service';
 import { CourseService } from '../../../../shared/services/course.service';
+import { ExamService } from '../../../../shared/services/exam.service';
 import { subCareer } from '../../../../shared/Models/subCareer.model';
 import { course } from '../../../../shared/Models/course.model';
 import { Router } from '@angular/router';
@@ -20,7 +21,7 @@ export class ViewCoursesComponent implements OnInit {
 
   QControl = new FormControl();
 
-  displayedColumns: string[] = ['courseName', 'courseContent', 'description', 'duration','edit','delete'];
+  displayedColumns: string[] = ['courseName', 'courseContent', 'description', 'duration','courseLevel','edit','delete'];
   // displayedColumns: string[] = ['courseName', 'courseContent', 'description', 'duration', 'numOfUsers','edit'];
   dataSource: MatTableDataSource<course>;
 
@@ -32,7 +33,8 @@ export class ViewCoursesComponent implements OnInit {
   constructor(private subCareerService:SubCareerService, 
     private coursesService:CourseService,
     private modalService: NgbModal,
-    private router:Router) {
+    private router:Router,
+    private examService:ExamService) {
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.courses);
@@ -110,20 +112,44 @@ export class ViewCoursesComponent implements OnInit {
     }
   }
 
+  // goToUrl(link): void {
+  //   // window.open(`"${link}"`,'_target');
+  //   window.location.assign(`"${link}"`)
+  //   // this.router.navigate(["/dummy"]).then(result=>{window.location.href = `"${link}"`})
+  // }
+
   ngOnDestroy() {
     if (this.courses) {
       this.courses = [];
     }
   }
   getDeletedId = 0;
+  courseName = ''
 
-  openModal(content,id) {
+  openModal(content,id,cname) {
     this.getDeletedId = id;
+    this.courseName = cname;
     this.modalService.open(content);
   }
+
+  ok = 1;
   deleteCourse(){
     // this.isLoaded = false;
-    this.coursesService.deleteCourse(this.getDeletedId).subscribe(res => console.log(res));
+    this.examService.getExams().subscribe(e => {
+      for(let i=0; i<e.length; i++){
+        // to get the first word of the examName which is the same name of the course
+        const x = e[i].examName.split(" ")[0].toLowerCase()
+        if(this.courseName.toLowerCase() == x){
+          this.ok = 0;
+          alert("Sorry you can't delete this course. It's assigned to user...")
+          break;
+        }
+      }
+      if(this.ok == 1){
+        this.coursesService.deleteCourse(this.getDeletedId).subscribe(res => { console.log(res)});
+      }
+    })
+
     this.modalService.dismissAll();
     this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
       this.router.navigate(['admin/course']);

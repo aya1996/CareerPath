@@ -29,7 +29,7 @@ margin-left: 250px;">
 
           <ng-container matColumnDef="courseName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center;"> Course Title </th>
-            <td mat-cell *matCellDef="let row"> {{row.courseName}} </td>
+            <td mat-cell *matCellDef="let row" > {{row.courseName}} </td>
           </ng-container>
 
           <ng-container matColumnDef="courseContent">
@@ -50,11 +50,11 @@ margin-left: 250px;">
             <td mat-cell *matCellDef="let row"> {{row.duration}} Hours</td>
           </ng-container>
 
-          <!-- <ng-container matColumnDef="numOfUsers">
+          <ng-container matColumnDef="courseLevel">
             <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Numer of users taking course"
-              matTooltipPosition="above" style="padding-left: 15px;"> Users </th>
-            <td mat-cell *matCellDef="let row" style="padding-left: 15px;"> 5 </td>
-          </ng-container> -->
+              matTooltipPosition="above" style="padding-left: 15px;"> Course Level </th>
+            <td mat-cell *matCellDef="let row" style="padding-left: 15px;"> {{row.level}} </td>
+          </ng-container>
 
           <ng-container matColumnDef="edit">
             <th mat-header-cell *matHeaderCellDef class="main">  </th>
@@ -69,7 +69,7 @@ margin-left: 250px;">
             <td mat-cell *matCellDef="let row" class="main"> 
            
               <button mat-stroked-button color="warn" 
-              (click)="openModal(content,row.courseId)"><i class="fa fa-trash"></i></button>
+              (click)="openModal(content,row.courseId,row.courseName)"><i class="fa fa-trash"></i></button>
             </td>
           </ng-container>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_moonrisekingdom from "@amcharts/amcharts4/themes/moonrisekingdom";
@@ -15,14 +15,16 @@ am4core.useTheme(am4themes_animated);
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.css"],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   careerData: career[];
   constructor( private careerService: CareerService) {}
 
+   chart;
+
   ngAfterViewInit(): void {
-    let chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
-    chart.fontFamily = "Courier New";
-    let series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
+    this.chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
+    this.chart.fontFamily = "Courier New";
+    let series = this.chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
     series.randomness = 0.1;
     series.rotationThreshold = 0.5;
 
@@ -489,5 +491,10 @@ export class HomeComponent implements OnInit {
     this.careerService.getCareer().subscribe(res => {
       this.careerData = res;
     })
+  }
+
+  ngOnDestroy(){
+    this.chart.dispose();
+
   }
 }

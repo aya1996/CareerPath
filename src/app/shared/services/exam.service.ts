@@ -20,6 +20,10 @@ export class ExamService {
   }
 
   getExams(){
-    return this._http.get<object[]>("http://localhost:4000/api/exam");
+    return this._http.get<exam[]>("http://localhost:4000/api/exam");
   }
+}
+
+interface exam{
+  examName: string
 }

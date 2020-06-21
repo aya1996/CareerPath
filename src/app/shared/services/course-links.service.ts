@@ -10,10 +10,14 @@ export class CourseLinksService {
 
   apiUrl = "http://localhost:4000/api/coursepath";
 
+  postCourseLinks(data:courseLink){
+    return this._http.post(this.apiUrl, data);
+  }
+
 }
 
-export interface courseLink {
-  paths:string,
-  payment: number,
-  courseId: number
+export class courseLink {
+  path:string;
+  payment: string;
+  courseId: number;
 }

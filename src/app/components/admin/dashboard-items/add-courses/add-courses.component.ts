@@ -62,7 +62,7 @@ export class AddCoursesComponent implements OnInit {
     c.description =data.des;
     c.duration = data.dur;
     c.OrderNumber = data.order;
-    c.Level = this.selectedLvl
+    c.level = this.selectedLvl
 
     this.courseService.postCourse(c)
     .subscribe(courseObj => {

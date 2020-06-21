@@ -10,6 +10,6 @@ export class course{
     description?: string;
     duration?: string;
     subCareerName?: string;
-    Level?: string;
+    level?: string;
     OrderNumber?: number;
 }

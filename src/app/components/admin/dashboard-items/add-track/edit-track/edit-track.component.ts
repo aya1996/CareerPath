@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CareerService } from '../../../../../shared/services/career.service';
 import { career } from '../../../../../shared/Models/career.model';
 import { MatSnackBar } from '@angular/material';
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './edit-track.component.html',
   styleUrls: ['./edit-track.component.css']
 })
-export class EditTrackComponent implements OnInit {
+export class EditTrackComponent implements OnInit, OnDestroy {
 
   constructor(private careerService:CareerService,
     private _snackBar: MatSnackBar,

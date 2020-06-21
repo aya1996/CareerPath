@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../../../../../shared/services/course.service';
+import { CourseLinksService } from '../../../../../shared/services/course-links.service';
+import { courseLink } from '../../../../../shared/services/course-links.service';
 import { course } from '../../../../../shared/Models/course.model';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
@@ -16,7 +18,8 @@ export class AddCourseLinksComponent implements OnInit {
 
   constructor(private courseService:CourseService,
     private _snackBar: MatSnackBar,
-    private router:Router) { }
+    private router:Router,
+    private courseLinksService: CourseLinksService) { }
 
   ngOnInit() {
     this.courseService.getCourse().subscribe(res => {
@@ -33,12 +36,22 @@ export class AddCourseLinksComponent implements OnInit {
 
   getSelected(c_id){
     this.selectedItem = c_id;
+    console.log(c_id);
   }
 
   saveData(data){
-    console.log(data)
-  }
+    const c = new courseLink;
+    c.courseId = this.selectedItem;
+    c.path = data.link;
+    c.payment = data.price;
 
+    this.courseLinksService.postCourseLinks(c)
+    .subscribe(res => console.log(res));
+
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/admin/add-course/links']);
+    });
+  }
 
   openSnackBar() {
     this._snackBar.open('Added..', 'X', {
