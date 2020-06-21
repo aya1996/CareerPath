@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     let chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
     chart.fontFamily = "Courier New";
     let series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
-    series.randomness = 0.1;
+    series.randomness = 0.4;
     series.rotationThreshold = 0.5;
 
     series.data = [
