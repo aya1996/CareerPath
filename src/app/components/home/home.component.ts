@@ -494,7 +494,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.chart.dispose();
+    // this.chart.dispose();
 
   }
 }

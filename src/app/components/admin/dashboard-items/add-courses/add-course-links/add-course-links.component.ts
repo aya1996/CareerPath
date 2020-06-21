@@ -15,6 +15,10 @@ export class AddCourseLinksComponent implements OnInit {
 
   courses: course[] = [];
   selectedItem=0;
+  courseCost = [
+    {viewValue:'Free', value:1},
+    {viewValue:'Paid', value:2}
+  ]
 
   constructor(private courseService:CourseService,
     private _snackBar: MatSnackBar,
@@ -38,12 +42,16 @@ export class AddCourseLinksComponent implements OnInit {
     this.selectedItem = c_id;
     console.log(c_id);
   }
+  cCost='';
+  getSelectedCost(cost){
+    this.cCost = cost;
+  }
 
   saveData(data){
     const c = new courseLink;
     c.courseId = this.selectedItem;
     c.path = data.link;
-    c.payment = data.price;
+    c.payment = this.cCost;
 
     this.courseLinksService.postCourseLinks(c)
     .subscribe(res => console.log(res));

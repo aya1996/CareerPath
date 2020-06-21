@@ -1,4 +1,5 @@
-<div class="main">
+
+<div class="main" >
     <app-admin-nav></app-admin-nav>
     
     <mat-card-content>
@@ -19,9 +20,14 @@
             <input matInput ngModel #link="ngModel" placeholder="Course Link" name="link" required />
           </mat-form-field>
           <mat-form-field class="full-width">
-             <mat-label>Course Cost</mat-label>
-             <input matInput ngModel #price="ngModel"  placeholder="Free/Paid " name="price" required />
-           </mat-form-field>
+            <mat-label>Select Course Cost</mat-label>
+            <mat-select>
+              <mat-option
+              *ngFor="let item of courseCost"
+              [value]="item.value" 
+              (click)="getSelectedCost(item.viewValue)"> {{item.viewValue}} </mat-option>
+            </mat-select>
+          </mat-form-field>
           <br />
           <mat-card-actions>
             <button routerLink='/admin/course' 
@@ -31,7 +37,7 @@
             <button type="submit" 
             mat-raised-button color="primary"
             (click)="openSnackBar()"
-            [disabled]="c.invalid || selectedItem==0">ADD</button>
+            [disabled]="c.invalid || selectedItem==0 || cCost=='' ">ADD</button>
           </mat-card-actions>
         </form>
       </div>

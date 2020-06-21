@@ -1,6 +1,7 @@
 export class SubCareerCourses {
-    SubCareerId:number;
-    CourseId:number;
+    SubCareerId?:number;
+    subCareerId?:number;
+    CourseId?:number;
 }
 
 export class course{
