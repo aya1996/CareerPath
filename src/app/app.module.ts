@@ -20,7 +20,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material';
 import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { WebDevelopmentComponent } from './components/web-development/web-development.component';
 import { CourseComponent } from './components/course/course.component';
 import { LoginComponent } from './components/login/login.component';
@@ -104,6 +104,7 @@ import { TimelineComponent } from './components/profile/charts/timeline/timeline
 import { AddCourseLinksComponent } from './components/admin/dashboard-items/add-courses/add-course-links/add-course-links.component';
 import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
 import { EditUserProfileComponent } from './components/profile/edit-user-profile/edit-user-profile.component';
+import { AuthInterceptor } from './shared/services/auth-interceptor';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -271,7 +272,7 @@ const routes: Routes =
     CountdownModule
 
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

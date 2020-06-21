@@ -9,9 +9,9 @@ import { MultiDataSet, Label } from 'ng2-charts';
 })
 export class DoughnuComponent{
 
-  public doughnutChartLabels: Label[] = ['Ongoing','Completed', 'UnCompleted'];
+  public doughnutChartLabels: Label[] = ['Completed', 'UnCompleted'];
   public doughnutChartData: MultiDataSet = [
-    [2, 15, 20],
+    [5, 20],
   ];
   public doughnutChartType: ChartType = 'doughnut';
 
