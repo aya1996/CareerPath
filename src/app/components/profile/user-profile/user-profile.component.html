@@ -1,10 +1,11 @@
 <app-navbar></app-navbar>
-<div class="container">
+<app-spinner *ngIf="spinner"></app-spinner>
+<div class="container" *ngIf="!spinner">
   <div class="row">
       <div class="col-12">
           <div class="card">
 
-              <div class="card-body">
+              <div class="card-body" >
                   <div class="card-title mb-4">
                       <div class="d-flex justify-content-start">
                           <div class="image-container">
@@ -32,7 +33,7 @@
                                   <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Basic Info</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab" aria-controls="connectedServices" aria-selected="false">Connected Services</a>
+                                  <a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab" aria-controls="connectedServices" aria-selected="false">User Courses</a>
                               </li>
                           </ul>
                           <div class="tab-content ml-1" id="myTabContent">
@@ -44,7 +45,7 @@
                                           <label style="font-weight:bold;">Full Name</label>
                                       </div>
                                       <div class="col-md-8 col-6">
-                                          Jamshaid Kamran
+                                        {{this.users.userData.fname +' '+this.users.userData.lname }}
                                       </div>
                                   </div>
                                   <hr />
