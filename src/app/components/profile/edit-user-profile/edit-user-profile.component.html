@@ -1,91 +1,107 @@
-<div class="container" style="padding-top: 60px;">
-    <h1 class="page-header">Edit Profile</h1>
-    <div class="row">
-      <!-- left column -->
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <div class="text-center">
-          <img src="http://lorempixel.com/200/200/people/9/" class="avatar img-circle img-thumbnail" alt="avatar">
-          <h6>Upload a different photo...</h6>
-          <input type="file" class="text-center center-block well well-sm">
-        </div>
-      </div>
+<app-navbar></app-navbar>
+<app-spinner *ngIf="showSpinner"></app-spinner>
+<div class="container py-2"  *ngIf="!showSpinner">
+  <div class="row my-2 d-flex justify-content-center align-items-center main" >
       <!-- edit form column -->
-      <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-        <div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a> 
-          <i class="fa fa-coffee"></i>
-          This is an <strong>.alert</strong>. Use this to show important messages to the user.
+   
+      <div class="col-lg-4 text-center  ">
+        <h2 class=" font-weight-light">User Profile</h2>
+        <img src="//api.adorable.io/avatars/120/trickst3r.png" class="mx-auto img-fluid rounded-circle" alt="avatar" />
+        <h6 class="my-4">Upload a new photo</h6>
+        <div class="input-group ">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile02">
+                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+            </div>
+            <div class="input-group-append">
+                <button class="btn btn-secondary"><i class="fa fa-upload"></i></button>
+            </div>
         </div>
-        <h3>Personal info</h3>
-        <form class="form-horizontal" role="form">
-          <div class="form-group">
-            <label class="col-lg-3 control-label">First name:</label>
-            <div class="col-lg-8">
-              <input class="form-control" value="Jane" type="text">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Last name:</label>
-            <div class="col-lg-8">
-              <input class="form-control" value="Bishop" type="text">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Company:</label>
-            <div class="col-lg-8">
-              <input class="form-control" value="" type="text">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Email:</label>
-            <div class="col-lg-8">
-              <input class="form-control" value="janesemail@gmail.com" type="text">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Time Zone:</label>
-            <div class="col-lg-8">
-              <div class="ui-select">
-                <select id="user_time_zone" class="form-control">
-                  <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                  <option value="Alaska">(GMT-09:00) Alaska</option>
-                  <option value="Pacific Time (US & Canada)">(GMT-08:00) Pacific Time (US & Canada)</option>
-                  <option value="Arizona">(GMT-07:00) Arizona</option>
-                  <option value="Mountain Time (US & Canada)">(GMT-07:00) Mountain Time (US & Canada)</option>
-                  <option value="Central Time (US & Canada)" selected="selected">(GMT-06:00) Central Time (US & Canada)</option>
-                  <option value="Eastern Time (US & Canada)">(GMT-05:00) Eastern Time (US & Canada)</option>
-                  <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">Username:</label>
-            <div class="col-md-8">
-              <input class="form-control" value="janeuser" type="text">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">Password:</label>
-            <div class="col-md-8">
-              <input class="form-control" value="11111122333" type="password">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">Confirm password:</label>
-            <div class="col-md-8">
-              <input class="form-control" value="11111122333" type="password">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label"></label>
-            <div class="col-md-8">
-              <input class="btn btn-primary" value="Save Changes" type="button">
-              <span></span>
-              <input class="btn btn-default" value="Cancel" type="reset">
-            </div>
-          </div>
-        </form>
-      </div>
     </div>
+      <div class="col-lg-8 m-3  ">
+          <div class="alert alert-info alert-dismissable"> <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user. </div>
+      </div>
+      <div class="col-lg-8 order-lg-1 personal-info " >
+          <form role="form" #f="ngForm" (ngSubmit)="saveData(f.value)">
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">First name</label>
+                  <div class="col-lg-9">
+                      <input class="form-control" type="text"[(ngModel)]="userData.userData.fname" #fname="ngModel" name="fname" />
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+                  <div class="col-lg-9">
+                      <input class="form-control" type="text" value="Bishop" name=fname />
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                  <div class="col-lg-9">
+                      <input class="form-control" type="email" value="email@gmail.com" name="email" />
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Phone Number</label>
+                  <div class="col-lg-9">
+                      <input class="form-control" type="number" value="" name="phone" />
+                  </div>
+              </div>
+             
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">UserName</label>
+                  <div class="col-lg-9">
+                      <input class="form-control" type="text" value="" name="username" />
+                  </div>
+              </div>
+            
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Country</label>
+                  <div class="col-lg-9">
+                      <select id="user_time_zone" class="form-control" size="0">
+                        <option *ngFor="let item of countries" [value]="item.name">
+                            {{ item.name }}
+                          </option>
+                      </select>
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Career Path</label>
+                  <div class="col-lg-9">
+                    <select id="user_time_zone" class="form-control" size="0">
+                        <option *ngFor="let item of Path" [value]="item.subCareerName">
+                            {{ item.subCareerName}}
+                          </option>
+                      </select>
+                  </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Career Level</label>
+                <div class="col-lg-9">
+                    <input class="form-control" type="text" value="janeuser" name="level" />
+                </div>
+            </div>
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Password</label>
+                  <div class="col-lg-9">
+                      <input class="form-control" type="password" value="11111122333" />
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
+                  <div class="col-lg-9">
+                      <input class="form-control" type="password" value="11111122333" />
+                  </div>
+              </div>
+              <div class="form-group row ">
+                  <div class="col-lg-9 ml-auto text-right ">
+                      <input type="reset" class="btn btn-outline-secondary m-3" value="Cancel" />
+                      <input type="button" class="btn btn-primary" value="Save Changes" />
+                  </div>
+              </div>
+          </form>
+      </div>
+     
   </div>
+</div>
+<app-footer></app-footer>

@@ -8,6 +8,7 @@ export class userData{
     id?: string;
     userName: string;
     email: string;
+    subCareer:string;
     phoneNumber: string;
     subCareerId?: number;
 }

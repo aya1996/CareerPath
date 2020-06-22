@@ -31,10 +31,11 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private subCareerService:SubCareerService
+    
   ) { }
 
   ngOnInit() {
-    this.levels = [ 1,2,3]
+    this.levels = [ "Beginner", "Intermediate", "Advanced"]
     this.countries = [ 
       {"name": "Afghanistan", "code": "AF"}, 
       {"name": "land Islands", "code": "AX"}, 
@@ -349,12 +350,11 @@ export class RegisterComponent implements OnInit {
       this.service.register(model).subscribe(
         (res:any) => {
           console.log("res", res)
-          localStorage.setItem("Token", res.token)
+          localStorage.setItem("Token", res.token);
           this.service.showToaster()
-          // this.router.navigate(['/Login'])
-        
-         
-
+           // this.router.navigate(['/']);
+    
+      
         },
         error => {
           console.log("error", error)
@@ -362,6 +362,19 @@ export class RegisterComponent implements OnInit {
       );
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   preview(files) {
     if (files.length === 0) {

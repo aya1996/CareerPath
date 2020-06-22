@@ -65,7 +65,7 @@ export class RegisterService {
     this.registerToaster.next(true);
     setInterval(() => {
       this.hideToaster();
-    }, 5000);
+    }, 1000);
   }
   //hide modal product Added to cart .. ... ... ... ... ...
   public hideToaster() {
