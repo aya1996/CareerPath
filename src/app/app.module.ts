@@ -156,7 +156,7 @@ const routes: Routes =
     { path: 'register', component: RegisterComponent },
     { path: 'web', component: WebDevelopmentComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'course', component: CourseComponent },
+    { path: 'course/:id', component: CourseComponent },
     { path: '', component: HomeComponent },
     {  path:'**',  component : DummyComponent }
   ]

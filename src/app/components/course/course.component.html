@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="title">
-  <h2>HTML Quiz</h2>
+  <h2> {{ courseName | uppercase }} Quiz</h2>
 </div>
 <div class="container">
 
@@ -9,15 +9,15 @@
     <div class="form-group">
       <h3>Quiz Instuction:-</h3>
 
-      <p>-10questions in 15 minutes</p>
-      <p>-Measures the basics of HTML</p>
-      <p>-Once you started the quiz you can not quit or you will lose your progress</p>
+      <p>- 10 questions in 15 minutes</p>
+      <p>- Measures Your Knowledge </p>
+      <p>-Once you started the quiz you can not go back or you will lose your progress.</p>
 
  <div style="margin-top: 50px;">
   <h4 style="color: white;">Are you ready for the quiz?</h4>
   <div style="padding: 20px;" class="row">
     <div style="text-align: center;" class="col-6">
-      <a class="link" routerLink='/web'> No , Go back</a>
+      <a class="link" routerLink='/profile'> No , Go back</a>
     </div>
     <div class="col-6">
 
