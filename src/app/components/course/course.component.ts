@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CourseService } from '../../shared/services/course.service';
 
@@ -13,7 +13,8 @@ export class CourseComponent implements OnInit, OnDestroy {
   private routeSub: Subscription;
 
   constructor(private route: ActivatedRoute,
-    private courseService: CourseService) { }
+    private courseService: CourseService,
+    private router:Router) { }
 
   courseName: string;
   courseId: number;
@@ -26,6 +27,12 @@ export class CourseComponent implements OnInit, OnDestroy {
         this.courseId = res.courseId;
       })
     });
+  }
+
+  goToQuiz(){
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+      this.router.navigate([`/quiz/${this.courseId}`]);
+  }); 
   }
 
   ngOnDestroy() {

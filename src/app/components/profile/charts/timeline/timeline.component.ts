@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../../shared/services/user.service';
 import { SubCareerService } from '../../../../shared/services/sub-career.service';
 import { CourseService } from '../../../../shared/services/course.service';
+import { ExamService } from '../../../../shared/services/exam.service';
 import { user } from '../../../../shared/Models/user.model';
 import { Router } from '@angular/router';
 
@@ -50,6 +51,7 @@ export class TimelineComponent implements OnInit {
   constructor(private userService: UserService,
     private courseService: CourseService,
     private subCareerService: SubCareerService,
+    private examService: ExamService,
     private router:Router) { }
 
   course: ICourse[] = [];
@@ -60,8 +62,12 @@ export class TimelineComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUserProfile().subscribe(res => {
-      console.log(res.userData.subCareerId);
-      console.log(res.userData.userLevel);
+      let coursesExam = [];
+      this.examService.getExamByUsername(res.userData.userName).subscribe(e => {
+        for(let i=0; i< e.length; i++){
+          coursesExam.push(e[i].courseID);
+        }
+      })
       let courses = [];
       this.courseService.getSubCareerCourses().subscribe(sc => {
         for (let i = 0; i < sc.length; i++) {
@@ -80,6 +86,21 @@ export class TimelineComponent implements OnInit {
                 });
               }
             }
+          }
+          for(let k=0; k<coursesExam.length; k++){
+            for(let m=0; m<this.course.length; m++){
+              if(coursesExam[k] == this.course[m].courseId){
+                this.course[m].progress = 100;
+              } else{
+                this.course[m].progress = 0;
+              }
+            }
+          }
+          for(let n=0; n<this.course.length; n++){
+            if(this.course[n].progress == 0 && this.course[n-1].progress == 100){
+              this.course[n].progress = 40;
+              break;
+            } 
           }
         })
       })

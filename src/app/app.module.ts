@@ -114,7 +114,7 @@ const routes: Routes =
 
     // { path: 'profile', component: ProfileHeaderComponent },
     { path: 'about', component: AboutComponent },
-    { path: 'quiz', component: QuizComponent },
+    { path: 'quiz/:id', component: QuizComponent },
 
     { path: 'profile', component: DashboardComponent },
 

@@ -1,11 +1,11 @@
-<h3 style="text-align: left;">Courses Progress</h3>
+<h4 style="text-align: left;">Courses Progress</h4>
 
 <app-spinner *ngIf="showSpinner"></app-spinner>
 
 <div *ngIf="!showSpinner">
 <div class="row" *ngFor="let c of course" >
     <div class="col-9">
-        <div class="progress" *ngIf="remain == 100">
+        <div class="progress" *ngIf="c.progress == 100">
             <div class="progress-bar bg-success" 
             role="progressbar" aria-valuenow="100" 
             aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
@@ -15,7 +15,7 @@
             <span class="progress-completed">100%</span>
         </div>
     
-        <div class="progress" *ngIf="remain == 40">
+        <div class="progress" *ngIf="c.progress == 40">
             <div class="progress-bar progress-bar-striped bg-success" 
             role="progressbar" aria-valuenow="30" 
             aria-valuemin="0" aria-valuemax="30" style="width: 50%;">
@@ -25,7 +25,7 @@
             <span class="progress-completed">In Progress</span>
         </div>
     
-        <div class="progress" *ngIf="remain == 0">
+        <div class="progress" *ngIf="c.progress == 0">
             <div class="progress-bar" style="background-color: gray !important;" 
             role="progressbar" aria-valuenow="100" 
             aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
@@ -36,13 +36,13 @@
         </div>
     </div>
     <div class="col-3">
-        <div *ngIf="remain == 100">
-            <button class="btn btn-success" disabled>Done</button>
+        <div *ngIf="c.progress == 100">
+            <button class="btn btn-success" disabled>Passed</button>
         </div>
-        <div *ngIf="inProgress == 40">
+        <div *ngIf="c.progress == 40">
             <button class="btn btn-success" (click)="goToCourse(c.courseId)">Take Exam</button>
         </div>
-        <div *ngIf="remain == 0">
+        <div *ngIf="c.progress == 0">
             <button disabled class="btn btn-light"
             matTooltip="Complete all previous courses and their exams">Take Exam</button>
         </div>
