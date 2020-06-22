@@ -38,7 +38,7 @@ export class RegisterService {
   }
   register(model: any): Observable<void> {
     return this.http
-      .post<void>(`${environment.url}/${this.modelName}`, model);
+      .post<void>(`${environment.url}/${this.modelName}`,model);
     // .pipe(catchError(this.handleError));
   }
 

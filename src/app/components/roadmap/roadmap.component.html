@@ -1,10 +1,19 @@
 <app-navbar></app-navbar>
 
+<app-spinner *ngIf="showSpinner"></app-spinner>
 
-<div class="container main">
+<div *ngIf="!showSpinner" class="container main">
   <h1 class="text-center alert"> {{careerName}} Career Path</h1>
   <div class="row">
     <div class="col-12">
+      <!-- <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+        <li class="nav-item w-25 text-center" *ngFor="let item of subCareers">
+            <a class="nav-link active" 
+              id="front-tab" data-toggle="tab" role="tab" aria-controls="fron"
+              [href]="hash.concat(item.subCareerName)"
+              > {{item.subCareerName}} </a>
+        </li>
+    </ul> -->
         <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
             <li class="nav-item w-25 text-center">
                 <a class="nav-link active" id="front-tab" data-toggle="tab" href="#front" role="tab" aria-controls="fron" aria-selected="true">Front End</a>
@@ -16,151 +25,52 @@
               <a class="nav-link" id="full-tab" data-toggle="tab" href="#full" role="tab" aria-controls="full" aria-selected="false">Full Stack</a>
           </li>
         </ul>
-        <div class="tab-content ml-1" id="myTabContent">
-            <div class="tab-pane fade show active" id="front" role="tabpanel" aria-labelledby="front-tab">
-                
-
-              <table class="table  table-borderless table-responsive-md ">
-      
-                <thead >
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col" class="mandatory" style="margin-left: 50px;"><h4>Beginner </h4>  <i class="fa fa-arrow-down"></i></th>
-                    <th scope="col" class="good-to-know"><h4>Intermediate</h4>  <i class="fa fa-arrow-down"></i></th>
-                    <th scope="col" class="optional">
-                        <h4>Advanced</h4>
-                        <i class="fa fa-arrow-down"></i>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="courses-row">
-                    
-                    <th scope="row" ></th>
-                  
-                    <td class="mandatory-courses">
-                        <div (click)="openModal(completed, 'HTML')">HTML</div>
-                        <div (click)="openModal(completed, 'HTML')">CSS</div>
-                        <div (click)="openModal(completed, 'HTML')">JS</div>
-                        <div (click)="openModal(completed, 'HTML')">JQuery</div>
-                    </td>
-                    <td class="good-courses">
-                      <div (click)="openModal(completed, 'HTML')">HTML</div>
-                      <div (click)="openModal(completed, 'HTML')">CSS</div>
-                      <div (click)="openModal(completed, 'HTML')">JS</div>
-                      <div (click)="openModal(completed, 'HTML')">JQuery</div>
-                    </td>
-                    <td class="optional-courses">
-                      <div (click)="openModal(completed, 'HTML')">HTML</div>
-                      <div (click)="openModal(completed, 'HTML')">CSS</div>
-                      <div (click)="openModal(completed, 'HTML')">JS</div>
-                      <div (click)="openModal(completed, 'HTML')">JQuery</div>
-                    </td>
-                  </tr>
-                 
-              
-                </tbody>
-              </table>
-
-            </div>
-            <div class="tab-pane fade" id="back" role="tabpanel" aria-labelledby="back-tab">
-              <table class="table  table-borderless table-responsive-md ">
-      
-                <thead >
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col" class="mandatory" style="margin-left: 50px;"><h4>Beginner </h4>  <i class="fa fa-arrow-down"></i></th>
-                    <th scope="col" class="good-to-know"><h4>Intermediate</h4>  <i class="fa fa-arrow-down"></i></th>
-                    <th scope="col" class="optional">
-                        <h4>Advanced</h4>
-                        <i class="fa fa-arrow-down"></i>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="courses-row">
-                    
-                    <th scope="row" ></th>
-                  
-                    <td class="mandatory-courses">
-                        <div (click)="openModal(completed, 'HTML')">PHP</div>
-                        <div (click)="openModal(completed, 'HTML')">CSS</div>
-                        <div (click)="openModal(completed, 'HTML')">JS</div>
-                        <div (click)="openModal(completed, 'HTML')">JQuery</div>
-                    </td>
-                    <td class="good-courses">
-                      <div (click)="openModal(completed, 'HTML')">HTML</div>
-                      <div (click)="openModal(completed, 'HTML')">CSS</div>
-                      <div (click)="openModal(completed, 'HTML')">JS</div>
-                      <div (click)="openModal(completed, 'HTML')">JQuery</div>
-                    </td>
-                    <td class="optional-courses">
-                      <div (click)="openModal(completed, 'HTML')">HTML</div>
-                      <div (click)="openModal(completed, 'HTML')">CSS</div>
-                      <div (click)="openModal(completed, 'HTML')">JS</div>
-                      <div (click)="openModal(completed, 'HTML')">JQuery</div>
-                    </td>
-                  </tr>
-                 
-                </tbody>
-              </table>
-            </div>
-            <div class="tab-pane fade" id="full" role="tabpanel" aria-labelledby="full-tab">
-              <table class="table  table-borderless table-responsive-md ">
-      
-                <thead >
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col" class="mandatory" style="margin-left: 50px;"><h4>Beginner </h4>  <i class="fa fa-arrow-down"></i></th>
-                    <th scope="col" class="good-to-know"><h4>Intermediate</h4>  <i class="fa fa-arrow-down"></i></th>
-                    <th scope="col" class="optional">
-                        <h4>Advanced</h4>
-                        <i class="fa fa-arrow-down"></i>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="courses-row">
-                    
-                    <th scope="row" ></th>
-                  
-                    <td class="mandatory-courses">
-                        <div (click)="openModal(completed, 'HTML')">HTML</div>
-                        <div (click)="openModal(completed, 'HTML')">CSS</div>
-                        <div (click)="openModal(completed, 'HTML')">JS</div>
-                        <div (click)="openModal(completed, 'HTML')">PHP</div>
-                    </td>
-                    <td class="good-courses">
-                      <div (click)="openModal(completed, 'HTML')">HTML</div>
-                      <div (click)="openModal(completed, 'HTML')">CSS</div>
-                      <div (click)="openModal(completed, 'HTML')">JS</div>
-                      <div (click)="openModal(completed, 'HTML')">JQuery</div>
-                    </td>
-                    <td class="optional-courses">
-                      <div (click)="openModal(completed, 'HTML')">HTML</div>
-                      <div (click)="openModal(completed, 'HTML')">CSS</div>
-                      <div (click)="openModal(completed, 'HTML')">JS</div>
-                      <div (click)="openModal(completed, 'HTML')">JQuery</div>
-                    </td>
-                  </tr>
-                 
-                </tbody>
-              </table>
-            </div>
-        </div>
+  
     </div>
 </div>
-
-
-
-
-
-
-
-  
-
 </div>
 
+<div class="tab-content ml-1" id="myTabContent">
+  <div class="tab-pane fade show active" id="front" role="tabpanel" aria-labelledby="front-tab">
+    <table class="table  table-borderless table-responsive-md ">
+      <thead >
+        <tr>
+          <th scope="col"></th>
+          <th scope="col" class="mandatory" style="margin-left: 50px;"><h4>Beginner </h4>  <i class="fa fa-arrow-down"></i></th>
+          <th scope="col" class="good-to-know"><h4>Intermediate</h4>  <i class="fa fa-arrow-down"></i></th>
+          <th scope="col" class="optional">
+              <h4>Advanced</h4>
+              <i class="fa fa-arrow-down"></i>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="courses-row">   
+          <th scope="row" ></th>
+          <td class="mandatory-courses">
+              <div (click)="openModal(completed, 'HTML')">HTML</div>
+              <div (click)="openModal(completed, 'HTML')">CSS</div>
+              <div (click)="openModal(completed, 'HTML')">JS</div>
+              <div (click)="openModal(completed, 'HTML')">JQuery</div>
+          </td>
+          <td class="good-courses">
+            <div (click)="openModal(completed, 'HTML')">HTML</div>
+            <div (click)="openModal(completed, 'HTML')">CSS</div>
+            <div (click)="openModal(completed, 'HTML')">JS</div>
+            <div (click)="openModal(completed, 'HTML')">JQuery</div>
+          </td>
+          <td class="optional-courses">
+            <div (click)="openModal(completed, 'HTML')">HTML</div>
+            <div (click)="openModal(completed, 'HTML')">CSS</div>
+            <div (click)="openModal(completed, 'HTML')">JS</div>
+            <div (click)="openModal(completed, 'HTML')">JQuery</div>
+          </td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <ng-template #completed let-modal>
   <div class="dark-modal">
@@ -186,5 +96,3 @@
 
   </div>
 </ng-template>
-
-<app-footer ></app-footer>

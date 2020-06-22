@@ -78,3 +78,7 @@ img {
   }
 
 }
+
+.invalid-feedback {
+  display: unset;
+}

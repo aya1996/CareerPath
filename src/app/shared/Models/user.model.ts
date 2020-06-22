@@ -10,7 +10,7 @@ export class userData{
     email: string;
     subCareer:string;
     phoneNumber: string;
-    subCareerId:number;
+    subCareerId?: number;
 }
 export class user{
     info:string;

@@ -114,7 +114,7 @@ const routes: Routes =
 
     // { path: 'profile', component: ProfileHeaderComponent },
     { path: 'about', component: AboutComponent },
-    { path: 'quiz', component: QuizComponent },
+    { path: 'quiz/:id', component: QuizComponent },
 
     { path: 'profile', component: DashboardComponent },
 
@@ -156,7 +156,7 @@ const routes: Routes =
     { path: 'register', component: RegisterComponent },
     { path: 'web', component: WebDevelopmentComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'course', component: CourseComponent },
+    { path: 'course/:id', component: CourseComponent },
     { path: '', component: HomeComponent },
     {  path:'**',  component : DummyComponent }
   ]
@@ -210,7 +210,6 @@ const routes: Routes =
     AddCourseLinksComponent,
     UserProfileComponent,
     EditUserProfileComponent,
-   
 
   ],
   imports: [
