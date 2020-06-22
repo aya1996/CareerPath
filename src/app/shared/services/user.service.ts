@@ -14,4 +14,10 @@ export class UserService {
   getUserProfile(){
     return this._http.get<user>(this.apiUrl);
   }
+  updateUser(id, data:user){
+    return this._http.put(`${this.apiUrl}/${id}`,data);
+  }
+  getUserById(id){
+    return this._http.get<user>(`${this.apiUrl}/${id}`);
+  }
 }

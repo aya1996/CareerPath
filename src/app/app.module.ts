@@ -145,7 +145,7 @@ const routes: Routes =
     {path: 'profile/courses', component:CoursesComponent},
     {path: 'profile/exams', component:ExamsComponent},
     {path: 'user-profile', component:UserProfileComponent},
-    {path: 'profile/edit-user-profile', component:EditUserProfileComponent},
+    {path: 'edit-user-profile/:id', component:EditUserProfileComponent},
 
     { path: 'dummy', component:DummyComponent},
     /****************************************************************** */
