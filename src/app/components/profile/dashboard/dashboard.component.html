@@ -1,6 +1,8 @@
 <app-profile-header></app-profile-header>
 
-<div class="container">
+<app-spinner *ngIf="showSpinner"></app-spinner>
+
+<div class="container" *ngIf="!showSpinner">
   <div class="row main">
 
     <div class="col-md-6 data">

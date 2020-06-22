@@ -16,8 +16,9 @@ export class GlassComponent implements OnInit {
   constructor() {}
 
   chart;
-  forward = 55;
-  backward = 45;
+  remain = 0;
+  completed = 0;
+  showSpinner = true;
 
   ngAfterViewInit(): void {
     let iconPath =
@@ -30,12 +31,12 @@ export class GlassComponent implements OnInit {
     this.chart.data = [
       {
         name: "Undone",
-        value: this.backward,
+        value: this.remain,
         disabled: true,
       },
       {
         name: "Progress",
-        value: this.forward,
+        value: this.completed,
       },
     ];
 
@@ -63,7 +64,15 @@ export class GlassComponent implements OnInit {
     // marker.cornerRadius(20, 20, 20, 20);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    let count = parseInt(localStorage.getItem("countOfCourses"));
+    let finished = parseInt(localStorage.getItem("completedCourses"))
+
+    this.completed = finished;
+    this.remain = count - finished;
+
+    this.showSpinner = false;
+  }
 
   ngOnDestroy(): void {
     this.chart.dispose();

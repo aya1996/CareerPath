@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ExamService } from '../../../shared/services/exam.service';
+import { UserService } from '../../../shared/services/user.service';
+import { exams } from '../../../shared/services/exam.service';
+
 
 @Component({
   selector: 'app-exams',
@@ -7,16 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExamsComponent implements OnInit {
 
-  items = [1, 2, 3, 4];
+  exam: exams[] = [];
+  showSpinner = true;
   
-  courseName:String = 'Typescript';
-  testDuration:Number = 15;
-  testDate:String = '15/5/2020';
-  grade:Number = 17;
-  
-  constructor() { }
+  constructor(private examService:ExamService,
+    private userService:UserService) { }
 
   ngOnInit() {
+    this.userService.getUserProfile().subscribe(u => {
+      this.examService.getExamByUsername(u.userData.userName).subscribe(res => {
+        for(let i=0; i<res.length; i++){
+          this.exam.push({
+            examID:res[i].examID,
+            examName: res[i].examName,
+            userName: res[i].userName,
+            courseName: res[i].courseName,
+            courseID: res[i].courseID,
+            dateTime: res[i].dateTime.slice(0,10)
+          })
+        }
+      })
+      this.showSpinner = false;
+      console.log(this.exam)
+    })
+    
   }
 
 }

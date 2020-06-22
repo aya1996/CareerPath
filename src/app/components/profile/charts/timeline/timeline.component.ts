@@ -56,9 +56,11 @@ export class TimelineComponent implements OnInit {
 
   course: ICourse[] = [];
   showSpinner = true;
-  remain = 0;
-  inProgress = 40;
-  completed = 100;
+  // remain = 0;
+  // inProgress = 40;
+  // completed = 100;
+  countOfCourses = 0;
+  completedCourses = 0;
 
   ngOnInit() {
     this.userService.getUserProfile().subscribe(res => {
@@ -102,6 +104,13 @@ export class TimelineComponent implements OnInit {
               break;
             } 
           }
+          this.countOfCourses = this.course.length ;
+          for(let i=0; i<this.course.length; i++){
+            if(this.course[i].progress == 100)
+              this.completedCourses++;
+          }
+          localStorage.setItem("completedCourses",this.completedCourses.toString());
+          localStorage.setItem("countOfCourses",this.countOfCourses.toString());
         })
       })
       this.showSpinner = false;

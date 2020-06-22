@@ -33,11 +33,11 @@ export class ExamService {
 interface exam{
   examName: string
 }
-interface exams{
-  examID: number,
-  examName: string,
-  userName: string,
-  courseID: number,
-  courseName: string,
-  dateTime: string
+export interface exams{
+  examID?: number,
+  examName?: string,
+  userName?: string,
+  courseID?: number,
+  courseName?: string,
+  dateTime?: string
 }
