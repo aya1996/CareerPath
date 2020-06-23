@@ -355,7 +355,7 @@ export class RegisterComponent implements OnInit {
         (res:any) => {
           console.log("res", res)
           localStorage.setItem("Token", res.token);
-          localStorage.setItem("username", this.registerForm.value.fname+" "+this.registerForm.value.lname);
+         localStorage.setItem("username", this.registerForm.value.fname+" "+this.registerForm.value.lname);
           this.service.showToaster()
          
     
@@ -403,7 +403,6 @@ export class RegisterComponent implements OnInit {
 
 
   onFileChange(event, field,files) {
-    console.log("shokry am here");
     console.log("Event", event);
     console.log("field",field);
     this.preview(files);
@@ -418,11 +417,9 @@ export class RegisterComponent implements OnInit {
         });
       } else {
         // unlike most tutorials, i am using the actual Blob/file object instead of the data-url
-        console.log(" am in register please shoukry")
         this.registerForm.patchValue({
           [field]: file
         });
-        console.log(" am in register please shoukry", this.registerForm.value)
         // need to run CD since file load runs outside of zone
        // this.cd.markForCheck();
       }
