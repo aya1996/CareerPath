@@ -35,6 +35,15 @@
               <div *ngIf="f.phonenumber.errors.required">
                 Please enter phone number.
               </div>
+              <div *ngIf="f.phonenumber.errors.minilength">
+                 Phone number must be atleast 11 digits.
+              </div>
+              <div *ngIf="f.phonenumber.errors.maxlength">
+                Phone number must be atmost 11 digits.
+              </div>
+              <div *ngIf="f.phonenumber.errors.pattern">
+                Phone number must only numbers.
+              </div>
             </div>
   
           </div>
@@ -175,7 +184,7 @@
             <span style="color:red;" *ngIf="message">{{message}}</span>
             <input
             style="display: none"
-            #file type="file" accept='image/*' class="btn btn-danger" (change)="preview(file.files)">
+            #file type="file" accept='image/*' class="btn btn-danger" (change)="onFileChange($event, 'files',file.files)">
           <button type="button"  class="btn btn-danger" (click)="file.click()">UPLOAD IMAGE</button>
           </div>
           <div class="form-group col-md-5">
