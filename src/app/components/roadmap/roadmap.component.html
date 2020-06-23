@@ -1,36 +1,69 @@
+<app-spinner *ngIf="spinner"></app-spinner>
 <app-navbar></app-navbar>
-
-<app-spinner *ngIf="showSpinner"></app-spinner>
-
-<div *ngIf="!showSpinner" class="container main">
-  <h1 class="text-center alert"> {{careerName}} Career Path</h1>
+<div class="container main" *ngIf="!spinner">
   <div class="row">
-    <div class="col-12">
-      <!-- <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-        <li class="nav-item w-25 text-center" *ngFor="let item of subCareers">
-            <a class="nav-link active" 
-              id="front-tab" data-toggle="tab" role="tab" aria-controls="fron"
-              [href]="hash.concat(item.subCareerName)"
-              > {{item.subCareerName}} </a>
-        </li>
-    </ul> -->
-        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-            <li class="nav-item w-25 text-center">
-                <a class="nav-link active" id="front-tab" data-toggle="tab" href="#front" role="tab" aria-controls="fron" aria-selected="true">Front End</a>
-            </li>
-            <li class="nav-item w-25 text-center">
-                <a class="nav-link" id="back-tab" data-toggle="tab" href="#back" role="tab" aria-controls="back" aria-selected="false">Back End</a>
-            </li>
-            <li class="nav-item w-25 text-center">
-              <a class="nav-link" id="full-tab" data-toggle="tab" href="#full" role="tab" aria-controls="full" aria-selected="false">Full Stack</a>
-          </li>
-        </ul>
-  
-    </div>
+    <div class="col-md-12">
+      <h1 class="text-center alert"> {{careerName}} Career Path</h1>
+    
+    <table class="table  table-borderless table-responsive-md " >
+      
+        <thead >
+          <tr>
+            <th scope="col"></th>
+            <th scope="col" class="mandatory" style="margin-left: 50px;"><h4>Beginner </h4>  <i class="fa fa-arrow-down"></i></th>
+            <th scope="col" class="good-to-know"><h4>Intermediate</h4>  <i class="fa fa-arrow-down"></i></th>
+            <th scope="col" class="optional">
+                <h4>Advanced</h4>
+                <i class="fa fa-arrow-down"></i>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="courses-row" *ngFor="let item of subcareers"   >
+            
+            <th scope="row" class="courses-list">{{item.subCareerName}}</th>
+            <td>
+                <!-- <div (click)="openModal(completed, 'HTML')">HTML  </div>
+                <div (click)="openModal(completed, 'HTML')">CSS</div>
+                <div (click)="openModal(completed, 'HTML')">JS</div>-->
+                <!-- <div (click)="openModal(completed, 'HTML')">JQuery</div>  -->
+                <div class="mandatory-courses" *ngFor="let subcareerCourses of CoursesWithSubCareers; " [ngClass]="{'display':subcareerCourses.level !='Beginner' }">
+                <div (click)="openModal(completed, 'HTML')" *ngIf="subcareerCourses.subCareerName == item.subCareerName && subcareerCourses.level =='Beginner' ">
+                  {{subcareerCourses.courseName}} 
+                </div>
+              </div>
+
+            </td>
+            <td>
+              <!-- <div (click)="openModal(completed, 'HTML')">HTML</div>
+              <div (click)="openModal(completed, 'HTML')">CSS</div> -->
+                <div class="good-courses" *ngFor="let subcareerCourses of CoursesWithSubCareers" [ngClass]="{'display':subcareerCourses.level !='Intermediate'}">
+              <div (click)="openModal(completed, 'HTML')"   *ngIf="subcareerCourses.subCareerName == item.subCareerName && subcareerCourses.level =='Intermediate' ">
+                {{subcareerCourses.courseName}}
+              </div>
+            </div>
+            </td>
+            <td>
+              <!-- <div (click)="openModal(completed, 'HTML')">HTML</div>
+              <div (click)="openModal(completed, 'HTML')">CSS</div>
+              <div (click)="openModal(completed, 'HTML')">JS</div> -->
+              <!-- <div *ngFor="let subcareerCourses of CoursesWithSubCareers"> -->
+                <div class="optional-courses" *ngFor="let subcareerCourses of CoursesWithSubCareers" [ngClass]="{'display':subcareerCourses.level !='Advanced'}">
+                  <div (click)="openModal(completed, 'HTML')"   *ngIf="subcareerCourses.subCareerName == item.subCareerName && subcareerCourses.level =='Advanced' ">
+                    {{subcareerCourses.courseName}}
+                  </div>
+                </div>
+            </td>
+          </tr>
+          <hr />
+
+        </tbody>
+      </table>
+</div>
 </div>
 </div>
 
-<div class="tab-content ml-1" id="myTabContent">
+<!-- <div class="tab-content ml-1" id="myTabContent">
   <div class="tab-pane fade show active" id="front" role="tabpanel" aria-labelledby="front-tab">
     <table class="table  table-borderless table-responsive-md ">
       <thead >
@@ -70,7 +103,7 @@
       </tbody>
     </table>
   </div>
-</div>
+</div> -->
 
 <ng-template #completed let-modal>
   <div class="dark-modal">
@@ -96,4 +129,3 @@
 
   </div>
 </ng-template>
-<app-footer></app-footer>
