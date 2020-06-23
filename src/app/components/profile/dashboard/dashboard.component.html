@@ -1,38 +1,10 @@
 <app-profile-header></app-profile-header>
 
-<div class="container">
-  <div class="row main">
+<app-spinner *ngIf="showSpinner"></app-spinner>
 
-    <div class="col-md-6 data">
-      <!-- <div>
-        <img src="../../../../assets/images/user.png" alt="Profile Picture">
-      <div class="username">
-        <p>{{ username }}</p>
-      </div>
-      <label> <span> 4 </span> days of continuous learning</label>
-      <div class="contactInfo">
-        <h4>Contact Information</h4>
-        <h5>Email: test@test.com</h5>
-      </div>
-      <div class="careerInfo">
-        <h4>Career Information</h4>
-        <h5>Career Path: Frontend</h5>
-        <h5>Current Level: Intermediate</h5>
-        <h5>Current Courses: Angular2</h5>
-      </div>
-      </div> -->
-      <app-timeline></app-timeline>
-    </div>
+<div class="container" *ngIf="!showSpinner">
 
-    <div class="col-md-6 board">
-      <div class="careerProgress"  style="margin-top: 70px;">
-        <h4>Career Progress</h4>
-        <app-doughnu></app-doughnu>
-      </div>
-      <div style="margin-top: 30px;">
-        <app-glass></app-glass>
-      </div>
-    </div>
-  </div>
+  <app-timeline></app-timeline>
+
 </div>
 <app-footer></app-footer>

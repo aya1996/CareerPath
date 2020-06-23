@@ -3,6 +3,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {FormControl} from '@angular/forms';
+import { ExamService , exams} from '../../../../shared/services/exam.service';
+import { UserService } from '../../../../shared/services/user.service';
 
 @Component({
   selector: 'app-users',
@@ -11,24 +13,36 @@ import {FormControl} from '@angular/forms';
 })
 export class UsersComponent implements OnInit {
 
-  users: User[] = [
-    {value: '0', viewValue: 'Gin'},
-    {value: '1', viewValue: 'Rem'},
-    {value: '2', viewValue: 'Akai'}
-  ];
-
-  displayedColumns: string[] = ['Course', 'Score', 'Time', 'Examdate','examQs'];
+  displayedColumns: string[] = ['Username', 'Course', 'Examdate','examQs'];
   dataSource: MatTableDataSource<Exam>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor() {
+  constructor(private userService:UserService,
+    private examService: ExamService) {
 
     this.dataSource = new MatTableDataSource(EXAMS);
   }
+  usersExam : exams[] = [];
 
   ngOnInit() {
+    this.userService.getAllUsers().subscribe(res => {
+      for(let i=0; i<res.length; i++){
+        this.examService.getExamByUsername(res[i].userName).subscribe(ex => {
+          for(let j=0; j<ex.length; j++){
+            this.usersExam.push({
+              userName:res[i].userName,
+              courseName: ex[j].courseName,
+              dateTime: ex[i].dateTime.slice(0,10)
+            });
+          }
+        })
+      }
+      console.log(this.usersExam);
+    })
+
+
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -133,10 +147,6 @@ const EXAMS: Exam[] = [
   
 ];
 
-interface User {
-  value: string;
-  viewValue: string;
-}
 
 
 

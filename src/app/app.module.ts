@@ -105,6 +105,7 @@ import { AddCourseLinksComponent } from './components/admin/dashboard-items/add-
 import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
 import { EditUserProfileComponent } from './components/profile/edit-user-profile/edit-user-profile.component';
 import { AuthInterceptor } from './shared/services/auth-interceptor';
+import { CourseDetailsComponent } from './components/admin/dashboard-items/view-courses/course-details/course-details.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -114,7 +115,7 @@ const routes: Routes =
 
     // { path: 'profile', component: ProfileHeaderComponent },
     { path: 'about', component: AboutComponent },
-    { path: 'quiz', component: QuizComponent },
+    { path: 'quiz/:id', component: QuizComponent },
 
     { path: 'profile', component: DashboardComponent },
 
@@ -137,6 +138,7 @@ const routes: Routes =
 
     { path: 'admin/add-course', component: AddCoursesComponent },
     { path: 'admin/course', component: ViewCoursesComponent},
+    { path:'admin/courses/details', component:CourseDetailsComponent},
     { path: 'admin/add-question', component: AddQuestionsComponent},
     { path: 'admin/question', component: QuestionsComponent },
 
@@ -145,7 +147,7 @@ const routes: Routes =
     {path: 'profile/courses', component:CoursesComponent},
     {path: 'profile/exams', component:ExamsComponent},
     {path: 'user-profile', component:UserProfileComponent},
-    {path: 'profile/edit-user-profile', component:EditUserProfileComponent},
+    {path: 'edit-user-profile/:id', component:EditUserProfileComponent},
 
     { path: 'dummy', component:DummyComponent},
     /****************************************************************** */
@@ -156,7 +158,7 @@ const routes: Routes =
     { path: 'register', component: RegisterComponent },
     { path: 'web', component: WebDevelopmentComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'course', component: CourseComponent },
+    { path: 'course/:id', component: CourseComponent },
     { path: '', component: HomeComponent },
     {  path:'**',  component : DummyComponent }
   ]
@@ -210,7 +212,7 @@ const routes: Routes =
     AddCourseLinksComponent,
     UserProfileComponent,
     EditUserProfileComponent,
-   
+    CourseDetailsComponent,
 
   ],
   imports: [

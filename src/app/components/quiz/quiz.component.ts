@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {FormBuilder, FormControl,FormGroup, Validators,FormArray} from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ExamService } from '../../shared/services/exam.service';
+import { CourseService } from '../../shared/services/course.service';
 import { questionService } from '../../shared/services/question.service';
 import { CreateExam } from '../../shared/Models/questionExam.model';
 import { A } from '../..//shared/Models/answers.model';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -12,10 +15,12 @@ import { A } from '../..//shared/Models/answers.model';
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.css']
 })
-export class QuizComponent implements OnInit {
+export class QuizComponent implements OnInit, OnDestroy {
 
+  private routeSub: Subscription;
+  
   UserID = localStorage.getItem("userId");
-  CourseName = "HTML";
+  CourseName = "";
   ExamID = 0; 
   QsExam: CreateExam[] = [];
 
@@ -30,12 +35,18 @@ export class QuizComponent implements OnInit {
   form: FormArray;
   
   constructor(private _formBuilder: FormBuilder, private modalService: NgbModal,
-    private examService:ExamService, private questionService:questionService) {  
+    private examService:ExamService, 
+    private questionService:questionService,
+    private courseService: CourseService,
+    private route: ActivatedRoute) {  
   }
 
   ngOnInit() {
-    this.examService.createExam({UserID:this.UserID, CourseName:this.CourseName})
-    .subscribe(res => {
+    this.routeSub = this.route.params.subscribe(params => {
+      this.courseService.getById(params.id).subscribe(cr => {
+        this.CourseName = cr.courseName;
+        this.examService.createExam({UserID:this.UserID, CourseName:this.CourseName})
+      .subscribe(res => {
 
       this.Answers.Q1 = res[0].questId.toString();
       this.Answers.Q2 = res[1].questId.toString();
@@ -72,6 +83,8 @@ export class QuizComponent implements OnInit {
         }
         //console.log(this.QsExam);
         this.showSpinner = false
+      })
+    });
       })
     });
 
@@ -161,6 +174,10 @@ export class QuizComponent implements OnInit {
     //c.pause();
     console.log(this.remainTime)
     this.modalService.open(content, {centered: true});
+  }
+
+  ngOnDestroy() {
+    this.routeSub.unsubscribe();
   }
 
   // cancel(c){

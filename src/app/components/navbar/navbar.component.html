@@ -41,10 +41,6 @@
         <a class="nav-link" routerLink="/careers" (click)="isMenuCollapsed = true">Job Profiles</a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/course" (click)="isMenuCollapsed = true">Take Exam</a>
-      </li>
-
       <li *ngIf="token" class="nav-item dropdown m-1">
         <a class="nav-link dropdown-toggle" (click)="isMenuCollapsed = true"
          mat-button [matMenuTriggerFor]="user"> {{username}} </a>

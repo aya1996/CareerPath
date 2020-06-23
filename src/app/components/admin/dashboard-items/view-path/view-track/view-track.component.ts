@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -14,7 +14,7 @@ import { career } from '../../../../../shared/Models/career.model';
   templateUrl: './view-track.component.html',
   styleUrls: ['./view-track.component.css']
 })
-export class ViewTrackComponent implements OnInit {
+export class ViewTrackComponent implements OnInit, OnDestroy {
 
   QControl = new FormControl();
 
@@ -73,6 +73,9 @@ export class ViewTrackComponent implements OnInit {
     
   }
 
+  ngOnDestroy(){
+    this.careerData = [];
+  }
 
 }
 

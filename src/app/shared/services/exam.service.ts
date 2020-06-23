@@ -11,19 +11,34 @@ export class ExamService {
 
   constructor(private _http:HttpClient) { }
 
+  apiUrl = "http://localhost:4000/api"
+
   createExam({UserID, CourseName}){
-    return this._http.post<CreateExam[]>("http://localhost:4000/api/questionExam/createExam",{UserID, CourseName});
+    return this._http.post<CreateExam[]>(`${this.apiUrl}/questionExam/createExam`,{UserID, CourseName});
   }
 
   correctExam(data: A){
-    return this._http.post("http://localhost:4000/api/questionexam/answerExam",data);
+    return this._http.post(`${this.apiUrl}/questionexam/answerExam`,data);
   }
 
   getExams(){
-    return this._http.get<exam[]>("http://localhost:4000/api/exam");
+    return this._http.get<exam[]>(`${this.apiUrl}/exam`);
+  }
+
+  getExamByUsername(username:string){
+    return this._http.get<exams[]>(`${this.apiUrl}/userexam/getExamsOfUser/${username}`);
   }
 }
 
 interface exam{
   examName: string
+}
+export interface exams{
+  examID?: number,
+  examName?: string,
+  userName?: string,
+  courseID?: number,
+  courseName?: string,
+  dateTime?: string,
+  userGrade?: number
 }

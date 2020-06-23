@@ -1,14 +1,16 @@
 <app-profile-header></app-profile-header>
 
-<div class="main">
-    <div class="exam-container" *ngFor="let item of items">
+<app-spinner *ngIf="showSpinner"></app-spinner>
+
+<div *ngIf="!showSpinner" class="main">
+    <div class="exam-container" *ngFor="let e of exam">
         <div class="header row">
-            <h4 class="col-7"><span><mat-icon>library_books</mat-icon></span>{{ courseName }} Quiz</h4>
-            <h5 class="col-4"><span><mat-icon>date_range</mat-icon></span> {{ testDate }} </h5>
+            <h4 class="col-7"><span><mat-icon>library_books</mat-icon></span>{{ e.examName }} </h4>
+            <h5 class="col-4"><span><mat-icon>date_range</mat-icon></span> {{ e.dateTime }} </h5>
         </div>
         <div class="body">
-            <p>Duration: {{ testDuration }} minutes <span><mat-icon>query_builder</mat-icon></span> </p>
-            <p>Score: {{ grade }} <span><mat-icon> score</mat-icon></span></p>
+            <!-- <p>Duration: {{ testDuration }} minutes <span><mat-icon>query_builder</mat-icon></span> </p> -->
+            <p>Grade :  <span><mat-icon> score</mat-icon></span></p>
         </div>
         <input type="hidden" name="" [value]= item>
     </div>

@@ -7,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  username = "Kholoud Essam";
   constructor() { }
 
+  showSpinner = true;
   ngOnInit() {
+    this.showSpinner = false
   }
 
 }

@@ -2,6 +2,7 @@ export class SubCareerCourses {
     SubCareerId?:number;
     subCareerId?:number;
     CourseId?:number;
+    courseId?:number;
 }
 
 export class course{

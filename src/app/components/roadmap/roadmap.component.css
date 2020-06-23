@@ -82,9 +82,8 @@ h1{
     margin-bottom: 20px;
 }
 
-.courses-list th{
-    padding: 10px;
-    text-align: justify;
+table{
+    width: 90%;
 }
 
 .mandatory-courses div{

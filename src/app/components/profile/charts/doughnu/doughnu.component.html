@@ -1,4 +1,6 @@
-<div>
+<app-spinner *ngIf="showSpinner"></app-spinner>
+
+<div *ngIf="!showSpinner">
   <div>
     <div style="display: block;">
       <canvas

@@ -6,6 +6,7 @@ import { course } from 'src/app/shared/Models/course.model';
 import { CourseService } from 'src/app/shared/services/course.service';
 import { CareerService } from 'src/app/shared/services/career.service';
 import { SubCareerService } from 'src/app/shared/services/sub-career.service';
+import { MustMatch } from 'src/app/shared/validator/must-match-validator';
 
 @Component({
   selector: 'app-register',
@@ -23,16 +24,18 @@ export class RegisterComponent implements OnInit {
   Courses:course[]=[];
   levels: any[];
   paths: any[]= [];
+  submitted: boolean = false;
   constructor(
     private service: RegisterService,
     private courseService: CourseService,
     private router: Router,
     private fb: FormBuilder,
     private subCareerService:SubCareerService
+    
   ) { }
 
   ngOnInit() {
-    this.levels = [ 1,2,3]
+    this.levels = [ "Beginner", "Intermediate", "Advanced"]
     this.countries = [ 
       {"name": "Afghanistan", "code": "AF"}, 
       {"name": "land Islands", "code": "AX"}, 
@@ -288,57 +291,75 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group(
       {
         id: [0],
-        subCareerId: [''],
+        subCareerId: ['',Validators.required],
         username: ['', Validators.required],
         fname: ['', Validators.required],
-        lname: [''],
-        country: [''],
-        email: ['', Validators.required],
-        phonenumber: ['', Validators.required],
-        userLevel: [''],
+        lname: ['',Validators.required],
+        country: ['',Validators.required],
+        email: ['', [Validators.required,Validators.email]],
+        phonenumber: ['', [Validators.required,Validators.minLength(11), Validators.maxLength(11),Validators.pattern('[0-9]+')]],
+        userLevel: ['',Validators.required],
         description: ['', Validators.required],
-        image: [''],
+        files: [''],
         password: ['', [Validators.required, Validators.minLength(8)]],
         confirmPassword: ['', Validators.required]
 
 
-      },
-      { validator: this.passwordMatchValidator }
+
+      },{
+        validator: MustMatch('password', 'confirmPassword')
+    }
     );
   }
+  get f() {
+     return this.registerForm.controls;
+  }
+
   passwordMatchValidator(form: FormGroup) {
     return form.get('password').value === form.get('confirmPassword').value
       ? null
       : { mismatch: true };
   }
   register() {
-
-   
+    this.submitted = true;
+    console.log("subm",this.submitted)
+    if (this.registerForm.invalid) {
+      return;
+  }
     if (this.registerForm.value.id === 0) {
-      const model = {
-        
-          "Fname" : this.registerForm.value.fname,
-          "UserName" : this.registerForm.value.username,
-          "PasswordHash":this.registerForm.value.password,
-          "Email" :this.registerForm.value.email,
-          "Lname":this.registerForm.value.lname,
-          "PhoneNumber":this.registerForm.value.phonenumber,
-          "UserLevel":this.registerForm.value.userLevel,
-          "Country":this.registerForm.value.country,
-          "Description":this.registerForm.value.description,
-          "files": this.imagePath
-      
-      }
-      console.log('model', model)
+      const model =   new FormData();
+
+      model.append("subCareerId",this.registerForm.value.subCareerId);
+      model.append("Fname",this.registerForm.value.fname);
+      model.append("UserName",this.registerForm.value.username);
+      model.append("PasswordHash",this.registerForm.value.password);
+      model.append("Email",this.registerForm.value.email);
+      model.append("Lname",this.registerForm.value.lname);
+      model.append("PhoneNumber",this.registerForm.value.phonenumber);
+      model.append("UserLevel",this.registerForm.value.userLevel);
+      model.append(  "Country",this.registerForm.value.country);
+      model.append("Description",this.registerForm.value.description);
+      model.append("files",this.registerForm.value.files);
+      console.log('model', this.registerForm.value.files);
+      // console.log('model', model.getAll())
+ 
+       // const formData = new FormData();
+       // formData.append('file', this.registerForm.get('file').value);
+  
+      console.log('model', this.registerForm.value.files)
+
+      // const formData = new FormData();
+      // formData.append('file', this.registerForm.get('file').value);
+
       this.service.register(model).subscribe(
         (res:any) => {
           console.log("res", res)
-          localStorage.setItem("Token", res.token)
+          localStorage.setItem("Token", res.token);
+         localStorage.setItem("username", this.registerForm.value.fname+" "+this.registerForm.value.lname);
           this.service.showToaster()
-          // this.router.navigate(['/Login'])
-        
          
-
+    
+      
         },
         error => {
           console.log("error", error)
@@ -346,6 +367,19 @@ export class RegisterComponent implements OnInit {
       );
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   preview(files) {
     if (files.length === 0) {
@@ -367,4 +401,30 @@ export class RegisterComponent implements OnInit {
     };
   }
 
+
+  onFileChange(event, field,files) {
+    console.log("Event", event);
+    console.log("field",field);
+    this.preview(files);
+    if (event.target.files && event.target.files.length) {
+      
+      const [file] = event.target.files;
+
+      // just checking if it is an image, ignore if you want
+      if (!file.type.startsWith('image')) {
+        this.registerForm.patchValue({
+          [field]: null
+        });
+      } else {
+        // unlike most tutorials, i am using the actual Blob/file object instead of the data-url
+        this.registerForm.patchValue({
+          [field]: file
+        });
+        // need to run CD since file load runs outside of zone
+       // this.cd.markForCheck();
+      }
+
+
+    }
+  }
 }
