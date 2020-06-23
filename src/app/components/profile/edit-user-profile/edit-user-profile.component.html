@@ -1,71 +1,78 @@
 <app-navbar></app-navbar>
 <app-spinner *ngIf="showSpinner"></app-spinner>
-<div class="container py-2"  *ngIf="!showSpinner">
-  <div class="row my-2 d-flex justify-content-center align-items-center main" >
-      <!-- edit form column -->
-   
-      <div class="col-lg-4 text-center  ">
-        <h2 class=" font-weight-light">User Profile</h2>
-        <img src="http://localhost:4000/upload/{{this.users.image}}" class="mx-auto img-fluid rounded-circle" alt="avatar" />
-        <h6 class="my-4">Upload a new photo</h6>
-        <div class="input-group ">
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile02" name="file" (change)="postMethod($event.target.files)" >
-                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
-            </div>
-            <div class="input-group-append">
-                <button class="btn btn-secondary" ><i class="fa fa-upload"></i></button>
-            </div>
+<div class="container py-2" *ngIf="!showSpinner">
+  <div class="row my-2 d-flex justify-content-center align-items-center main">
+    <!-- edit form column -->
+      <div class="col-lg-8 order-lg-1 personal-info ">
+        <form role="form"  #f="ngForm" (ngSubmit)="saveData(f.value)">
+            <div class="col-lg-6 text-center m-auto ">
+                <h2 class=" font-weight-light">User Profile</h2>
+                <img src="http://localhost:4000/upload/{{this.users.image}}" *ngIf="defaultImage"
+                  class="mx-auto img-fluid rounded-circle" alt="avatar" />
+                <img [src]="imgURL" width="200" *ngIf="!defaultImage" class="mx-auto img-fluid rounded-circle" alt="avatar">
+                <h6 class="my-4">Upload a new photo</h6>
+                <div class="input-group ">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" #file accept='image/*' name="file" 
+                      (change)="onFileChange($event, 'files',file.files)">
+                    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose
+                      file</label>
+                  </div>
+                  <div class="input-group-append">
+                    <button class="btn btn-secondary" (click)="file.click()"><i class="fa fa-upload"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class=" m-3  ">
+                <div class="alert alert-info alert-dismissable"> <a class="panel-close close" data-dismiss="alert">×</a> This is
+                  an <strong>.alert</strong>. Use this to show important messages to the user. </div>
+              </div>
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label form-control-label">First name</label>
+          <div class="col-lg-9">
+            <input formControlName="firstName" style="display:none;">
+            <input class="form-control" type="text" [(ngModel)]="this.users.fname" [ngModelOptions]="{standalone: true}" #fname="ngModel" name="fname" />
+          </div>
         </div>
-    </div>
-      <div class="col-lg-8 m-3  ">
-          <div class="alert alert-info alert-dismissable"> <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user. </div>
-      </div>
-      <div class="col-lg-8 order-lg-1 personal-info " >
-          <form role="form" #f="ngForm" (ngSubmit)="saveData(f.value)">
-              <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">First name</label>
-                  <div class="col-lg-9">
-                      <input class="form-control" type="text" [(ngModel)]="this.users.fname" #fname="ngModel" name="fname" />
-                  </div>
-              </div>
-              <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Last name</label>
-                  <div class="col-lg-9">
-                      <input class="form-control" type="text" [(ngModel)]="this.users.lname" #lname="ngModel" name=lname />
-                  </div>
-              </div>
-              <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Email</label>
-                  <div class="col-lg-9">
-                      <input class="form-control" type="email" [(ngModel)]="this.users.email" #email="ngModel" name="email" />
-                  </div>
-              </div>
-              <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Phone Number</label>
-                  <div class="col-lg-9">
-                      <input class="form-control" type="number" [(ngModel)]="this.users.phoneNumber" #phone="ngModel" name="phone" />
-                  </div>
-              </div>
-             
-              <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">UserName</label>
-                  <div class="col-lg-9">
-                      <input class="form-control" type="text" [(ngModel)]="this.users.userName" #username="ngModel" name="username" />
-                  </div>
-              </div>
-            
-              <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Country</label>
-                  <div class="col-lg-9">
-                      <select id="user_time_zone" class="form-control" size="0">
-                        <option *ngFor="let item of countries" [value]="item.name">
-                            {{ item.name }}
-                          </option>
-                      </select>
-                  </div>
-              </div>
-              <!-- <div class="form-group row">
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+          <div class="col-lg-9">
+            <input class="form-control" type="text" [(ngModel)]="this.users.lname" [ngModelOptions]="{standalone: true}" #lname="ngModel" name=lname />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label form-control-label">Email</label>
+          <div class="col-lg-9">
+            <input class="form-control" type="email" [(ngModel)]="this.users.email" [ngModelOptions]="{standalone: true}" #email="ngModel" name="email" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label form-control-label">Phone Number</label>
+          <div class="col-lg-9">
+            <input class="form-control" type="number" [(ngModel)]="this.users.phoneNumber" [ngModelOptions]="{standalone: true}" #phone="ngModel"
+              name="phone" />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label form-control-label">UserName</label>
+          <div class="col-lg-9">
+            <input class="form-control" type="text" [(ngModel)]="this.users.userName" [ngModelOptions]="{standalone: true}" #username="ngModel"
+              name="username" />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label form-control-label">Country</label>
+          <div class="col-lg-9">
+            <select id="user_time_zone" class="form-control" size="0" [(ngModel)]="this.users.country" [ngModelOptions]="{standalone: true}" #country="ngModel">
+              <option *ngFor="let item of countries" [value]="item.name">
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <!-- <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Career Path</label>
                   <div class="col-lg-9">
                     <select id="user_time_zone" class="form-control" size="0">
@@ -75,33 +82,41 @@
                       </select>
                   </div>
               </div> -->
-              <div class="form-group row">
-                <label class="col-lg-3 col-form-label form-control-label">Career Level</label>
-                <div class="col-lg-9">
-                    <input class="form-control" type="text" [(ngModel)]="this.users.userLevel" #level="ngModel" name="level" />
-                </div>
-            </div>
-              <!-- <div class="form-group row">
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label form-control-label">Career Level</label>
+          <div class="col-lg-9">
+            <input class="form-control" type="text" [(ngModel)]="this.users.userLevel" [ngModelOptions]="{standalone: true}" #level="ngModel" name="level" />
+          </div>
+        </div>
+        <!-- <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Password</label>
                   <div class="col-lg-9">
                       <input class="form-control" type="password" [(ngModel)]="this.users.passwordHash" #password="ngModel" />
                   </div>
               </div> -->
-              <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
-                  <div class="col-lg-9">
-                      <input class="form-control" type="password" value="" [(ngModel)]="this.users.passwordHash" #password="ngModel" name="password" />
-                  </div>
-              </div>
-              <div class="form-group row ">
-                  <div class="col-lg-9 ml-auto text-right ">
-                      <input type="reset" class="btn btn-outline-secondary m-3" value="Cancel" />
-                      <input type="button" class="btn btn-primary" value="Save Changes" />
-                  </div>
-              </div>
-          </form>
+        <!-- <div class="form-group row">
+          <label class="col-lg-3 col-form-label form-control-label">Enter your password</label>
+          <div class="col-lg-9">
+            <input class="form-control" type="password" value="" 
+            name="password" />
+          </div>
+        </div> -->
+        <!-- <div class="form-group row">
+            <label class="col-lg-3 col-form-label form-control-label">Enter your New password</label>
+            <div class="col-lg-9">
+              <input class="form-control" type="password" value="" 
+              name="npassword" />
+            </div>
+          </div> -->
+        <div class="form-group row ">
+          <div class="col-lg-9 ml-auto text-right ">
+            <input type="reset" class="btn btn-outline-secondary m-3" value="Cancel" />
+            <input type="submit" class="btn btn-primary" (click)="openSnackBar()" value="Save Changes" />
+          </div>
+        </div>
+    </form>
       </div>
-     
+   
   </div>
 </div>
 <app-footer></app-footer>

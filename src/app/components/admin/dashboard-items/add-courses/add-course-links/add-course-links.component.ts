@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../../../../../shared/services/course.service';
 import { CourseLinksService } from '../../../../../shared/services/course-links.service';
-import { courseLink } from '../../../../../shared/services/course-links.service';
+import { courseLink } from '../../../../../shared/Models/courseLinks.model';
 import { course } from '../../../../../shared/Models/course.model';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
