@@ -351,8 +351,9 @@ export class RegisterComponent implements OnInit {
         (res:any) => {
           console.log("res", res)
           localStorage.setItem("Token", res.token);
+          localStorage.setItem("username", this.registerForm.value.fname+" "+this.registerForm.value.lname);
           this.service.showToaster()
-           // this.router.navigate(['/']);
+         
     
       
         },

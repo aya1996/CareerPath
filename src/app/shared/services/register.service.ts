@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError ,Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -15,6 +16,8 @@ export class RegisterService {
   
   constructor(
     private http: HttpClient,
+
+    private router :Router
   ) { }
   private handleError(errorResponse: HttpErrorResponse) {
     if (errorResponse.error instanceof ErrorEvent) {
@@ -66,10 +69,13 @@ export class RegisterService {
     setInterval(() => {
       this.hideToaster();
     }, 1000);
+
+   
   }
   //hide modal product Added to cart .. ... ... ... ... ...
   public hideToaster() {
     this.registerToaster.next(false);
+this.router.navigate(['/']);
   }
 }
 
