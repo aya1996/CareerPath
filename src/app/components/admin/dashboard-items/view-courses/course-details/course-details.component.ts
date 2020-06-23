@@ -8,7 +8,6 @@ import { SubCareerService } from '../../../../../shared/services/sub-career.serv
 import { CourseService } from '../../../../../shared/services/course.service';
 import { ExamService } from '../../../../../shared/services/exam.service';
 import { CourseLinksService } from '../../../../../shared/services/course-links.service';
-// import { courseLink } from '../../../../../shared/services/course-links.service';
 import { courseLink } from '../../../../../shared/Models/courseLinks.model';
 import { Router } from '@angular/router';
 
@@ -33,7 +32,8 @@ export class CourseDetailsComponent implements OnInit {
     private coursesService:CourseService,
     private modalService: NgbModal,
     private router:Router,
-    private examService:ExamService) {
+    private examService:ExamService,
+    SubCareerService:SubCareerService) {
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.course);
@@ -45,7 +45,10 @@ export class CourseDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.coursesService.getCourse().subscribe(res => {
+
       this.courseLinkService.getCourseLinks().subscribe(cl => {
+       this.course=cl;
+       console.log(cl)
         for(let i=0; i<res.length; i++){
           for(let j=0; j<cl.length; j++){
             if(res[i].courseId == cl[j].courseId){
@@ -79,11 +82,11 @@ export class CourseDetailsComponent implements OnInit {
   }
 
   getDeletedId = 0;
-  courseName = ''
+  coursename = ''
 
   openModal(content,id,cname) {
     this.getDeletedId = id;
-    this.courseName = cname;
+    this.coursename = cname;
     this.modalService.open(content);
   }
 
@@ -94,7 +97,7 @@ export class CourseDetailsComponent implements OnInit {
       for(let i=0; i<e.length; i++){
         // to get the first word of the examName which is the same name of the course
         const x = e[i].examName.split(" ")[0].toLowerCase()
-        if(this.courseName.toLowerCase() == x){
+        if(this.coursename.toLowerCase() == x){
           this.ok = 0;
           alert("Sorry you can't delete this course. It's assigned to user...")
           break;

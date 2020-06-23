@@ -1,6 +1,6 @@
 
 export class courseLink {
-    courseName?: string;
+    courseName: string;
     path:string;
     payment: string;
     courseId?: number;

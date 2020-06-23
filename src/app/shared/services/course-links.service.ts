@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { courseLink } from '../Models/courseLinks.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,9 +20,9 @@ export class CourseLinksService {
 
 }
 
-export class courseLink {
-  courseName?: string;
-  path:string;
-  payment: string;
-  courseId?: number;
-}
+// export class courseLink {
+//   courseName?: string;
+//   path:string;
+//   payment: string;
+//   courseId?: number;
+// }
