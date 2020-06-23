@@ -52,69 +52,119 @@ export class TimelineComponent implements OnInit {
     private courseService: CourseService,
     private subCareerService: SubCareerService,
     private examService: ExamService,
-    private router:Router) { }
+    private router:Router) { 
+      // console.log(this.course);
+    }
 
   course: ICourse[] = [];
+  coursesExam: IUserExam[] = []
   showSpinner = true;
-  // remain = 0;
-  // inProgress = 40;
-  // completed = 100;
+
   countOfCourses = 0;
   completedCourses = 0;
 
-  ngOnInit() {
+  getUserProfile(){
+    // let course: ICourse[] = [];
+
     this.userService.getUserProfile().subscribe(res => {
-      let coursesExam = [];
+      // console.log(res)
       this.examService.getExamByUsername(res.userData.userName).subscribe(e => {
         for(let i=0; i< e.length; i++){
-          coursesExam.push(e[i].courseID);
+          this.coursesExam.push({
+            courseId:e[i].courseID,
+            userGrade:e[i].userGrade
+          });  //get user's exams
         }
       })
+      // console.log(this.coursesExam)
       let courses = [];
       this.courseService.getSubCareerCourses().subscribe(sc => {
         for (let i = 0; i < sc.length; i++) {
           if(sc[i].subCareerId == res.userData.subCareerId){
-            courses.push(sc[i].courseId);
+            courses.push(sc[i].courseId); //get user's courses from his subcareer .. get only ID
           }
         }
+        console.log(this.course);
         this.courseService.getCourse().subscribe(c => {
           for(let i=0; i<c.length; i++){
             for(let j=0; j<courses.length; j++){
+              //returns all courses from db and extract the courses of user by comparing .. to get Name
+              //the courses from his subcareer and level
               if(courses[j] == c[i].courseId && c[i].level==res.userData.userLevel){
                 this.course.push({
                   title:c[i].courseName,
-                  progress: 40,
-                  courseId:c[i].courseId
+                  courseId:c[i].courseId,
+                  progress:'untaken'
                 });
               }
+             
             }
           }
-          for(let k=0; k<coursesExam.length; k++){
+          console.log(this.course)
+          // console.log(this.coursesExam);
+          // console.log(this.course);
+
+          // change the status of his courses if he had taken the exam
+          // to keep track with courses
+          for(let k=0; k<this.coursesExam.length; k++){
             for(let m=0; m<this.course.length; m++){
-              if(coursesExam[k] == this.course[m].courseId){
-                this.course[m].progress = 100;
-              } else{
-                this.course[m].progress = 0;
+              if((this.coursesExam[k].courseId == this.course[m].courseId) && (this.coursesExam[k].userGrade >= 70 )){
+                this.course[m].progress = 'pass';
+                // console.log(this.coursesExam[k].courseId);
+                // console.log(this.course[m].courseId);
+                // console.log(this.coursesExam[k].userGrade);
               }
+               else if(this.coursesExam[k].courseId == this.course[m].courseId && this.coursesExam[k].userGrade < 70){
+                this.course[m].progress = 'fail';
+              } 
+              //else {
+              //   //this.course[m].progress = 'fail';
+              // }
             }
           }
-          for(let n=0; n<this.course.length; n++){
-            if(this.course[n].progress == 0 && this.course[n-1].progress == 100){
-              this.course[n].progress = 40;
-              break;
-            } 
-          }
-          this.countOfCourses = this.course.length ;
+          console.log(this.course);
+          // for(let k=0; k<this.coursesExam.length; k++){
+          //   for(let m=0; m<this.course.length; m++){
+          //     if(this.coursesExam[k].courseId == this.course[m].courseId && (this.coursesExam[0].userGrade >= 70 )){
+          //       this.course.pop()
+          //     }
+          //   }
+          // }
+          // console.log(this.course);
+          // this.course[0].progress = true;
+
+
+          // console.log((this.coursesExam[0].courseId == this.course[0].courseId) && (this.coursesExam[0].userGrade >= 70 ));
+          // console.log((this.coursesExam[0].courseId));
+          // console.log(this.course[0].courseId);
+
+          // for(let n=0; n<this.course.length; n++){
+          //   if(this.course[n].progress==0 && (n-1 < 0))
+          //     this.course[n].progress=40;
+          //   if(this.course[n].progress == 0 && this.course[n-1].progress == 100){
+          //     this.course[n].progress = 40;
+          //     break;
+          //   } 
+          // }
+         // console.log(this.course);
+          this.countOfCourses = this.course.length;
           for(let i=0; i<this.course.length; i++){
-            if(this.course[i].progress == 100)
+            if(this.course[i].progress == 'pass')
               this.completedCourses++;
           }
           localStorage.setItem("completedCourses",this.completedCourses.toString());
           localStorage.setItem("countOfCourses",this.countOfCourses.toString());
+
+          // console.log(this.course.indexOf());
+
         })
       })
       this.showSpinner = false;
     })
+  }
+
+  ngOnInit() {
+    this.getUserProfile();
   }
 
   goToCourse(id){
@@ -125,11 +175,14 @@ export class TimelineComponent implements OnInit {
 
 }
 
-
 interface ICourse {
   title: string,
-  progress: number,
+  progress?: string,
   courseId: number,
+}
+interface IUserExam{
+  courseId: number, 
+  userGrade:number
 }
 
 
