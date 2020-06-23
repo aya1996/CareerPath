@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -16,12 +16,12 @@ import { subCareer } from '../../../../shared/Models/subCareer.model';
   templateUrl: './view-path.component.html',
   styleUrls: ['./view-path.component.css']
 })
-export class ViewPathComponent implements OnInit {
+export class ViewPathComponent implements OnInit, OnDestroy {
 
   QControl = new FormControl();
 
 
-  displayedColumns: string[] = ['Track', 'Path', 'Description', 'NumOfUsers','edit','delete'];
+  displayedColumns: string[] = ['Track', 'Path', 'Description','edit','delete'];
   dataSource: MatTableDataSource<subCareer>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -84,6 +84,10 @@ export class ViewPathComponent implements OnInit {
     this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/admin/path']);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.careerData = [];
   }
 
 }

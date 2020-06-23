@@ -47,6 +47,9 @@
           
         <br />
         <mat-card-actions>
+          <button routerLink='/admin/question' 
+            mat-stroked-button color="primary"
+            style="margin-right: 20px;">Back</button>
           <button mat-raised-button color="primary" [disabled]="f.invalid || selectedItem==0 || selectedChoice==''"
           (click)="openSnackBar()">ADD</button>
         </mat-card-actions>

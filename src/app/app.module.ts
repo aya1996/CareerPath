@@ -105,6 +105,7 @@ import { AddCourseLinksComponent } from './components/admin/dashboard-items/add-
 import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
 import { EditUserProfileComponent } from './components/profile/edit-user-profile/edit-user-profile.component';
 import { AuthInterceptor } from './shared/services/auth-interceptor';
+import { CourseDetailsComponent } from './components/admin/dashboard-items/view-courses/course-details/course-details.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -137,6 +138,7 @@ const routes: Routes =
 
     { path: 'admin/add-course', component: AddCoursesComponent },
     { path: 'admin/course', component: ViewCoursesComponent},
+    { path:'admin/courses/details', component:CourseDetailsComponent},
     { path: 'admin/add-question', component: AddQuestionsComponent},
     { path: 'admin/question', component: QuestionsComponent },
 
@@ -210,6 +212,7 @@ const routes: Routes =
     AddCourseLinksComponent,
     UserProfileComponent,
     EditUserProfileComponent,
+    CourseDetailsComponent,
 
   ],
   imports: [

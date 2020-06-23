@@ -39,5 +39,6 @@ export interface exams{
   userName?: string,
   courseID?: number,
   courseName?: string,
-  dateTime?: string
+  dateTime?: string,
+  userGrade?: number
 }

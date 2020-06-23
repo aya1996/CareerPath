@@ -14,10 +14,15 @@ export class CourseLinksService {
     return this._http.post(this.apiUrl, data);
   }
 
+  getCourseLinks(){
+    return this._http.get<courseLink[]>(this.apiUrl);
+  }
+
 }
 
 export class courseLink {
+  courseName?: string;
   path:string;
   payment: string;
-  courseId: number;
+  courseId?: number;
 }

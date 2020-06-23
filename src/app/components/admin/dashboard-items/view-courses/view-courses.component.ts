@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -21,7 +21,7 @@ export class ViewCoursesComponent implements OnInit {
 
   QControl = new FormControl();
 
-  displayedColumns: string[] = ['courseName', 'courseContent', 'description', 'duration','courseLevel','edit','delete'];
+  displayedColumns: string[] = ['courseName', 'description', 'duration','courseLevel','edit','delete'];
   // displayedColumns: string[] = ['courseName', 'courseContent', 'description', 'duration', 'numOfUsers','edit'];
   dataSource: MatTableDataSource<course>;
 
@@ -118,11 +118,7 @@ export class ViewCoursesComponent implements OnInit {
   //   // this.router.navigate(["/dummy"]).then(result=>{window.location.href = `"${link}"`})
   // }
 
-  ngOnDestroy() {
-    if (this.courses) {
-      this.courses = [];
-    }
-  }
+
   getDeletedId = 0;
   courseName = ''
 
@@ -149,12 +145,21 @@ export class ViewCoursesComponent implements OnInit {
         this.coursesService.deleteCourse(this.getDeletedId).subscribe(res => { console.log(res)});
       }
     })
-
     this.modalService.dismissAll();
+
     this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
       this.router.navigate(['admin/course']);
     });
   }
+
+  // ngOnDestroy(){
+  //   this.paths = [];
+  //   this.courses = [];
+  //   if (this.courses) {
+  //     this.courses = [];
+  //   }
+  // }
+
 
 }
 

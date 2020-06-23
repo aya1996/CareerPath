@@ -5,19 +5,13 @@ margin-left: 250px;">
   <app-admin-nav></app-admin-nav>
   <app-spinner *ngIf="!isLoaded"></app-spinner>
   <div [hidden]="!isLoaded" style="background-color: #fff; margin: 15px; width: 95%; height: auto;">
-    <div class="alert alert-dark ">View Courses</div>
+    <div class="alert alert-dark ">
+      View Courses
+      <button mat-raised-button color="primary" 
+      style="float: right; margin-bottom: 7px;"
+      routerLink="/admin/courses/details">View Courses Details</button>
+    </div>
     <mat-card-content>
-    <!-- <h6>Select Path</h6>
-    <mat-form-field>
-      <mat-label>Path</mat-label>
-      <mat-select>
-        <mat-option>All</mat-option>
-        <mat-option *ngFor="let p of paths" [value]="p.subCareerId" (click)="getSelected(p.subCareerId)">
-          {{p.subCareerName}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field> -->
-
     <mat-form-field>
       <mat-label>Filter Courses</mat-label>
       <input matInput (keyup)="applyFilter($event)">
@@ -32,13 +26,6 @@ margin-left: 250px;">
             <td mat-cell *matCellDef="let row" > {{row.courseName}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="courseContent">
-            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Course Link </th>
-            <td mat-cell *matCellDef="let row"> 
-              <a [href]="row.courseContent">{{row.courseContent}}</a>
-            </td>
-          </ng-container>
-
           <ng-container matColumnDef="description">
             <th mat-header-cell *matHeaderCellDef class="main" style="text-align: center;"> Description </th>
             <td mat-cell *matCellDef="let row" class="main" >
@@ -51,8 +38,7 @@ margin-left: 250px;">
           </ng-container>
 
           <ng-container matColumnDef="courseLevel">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Numer of users taking course"
-              matTooltipPosition="above" style="padding-left: 15px;"> Course Level </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 15px;"> Course Level </th>
             <td mat-cell *matCellDef="let row" style="padding-left: 15px;"> {{row.level}} </td>
           </ng-container>
 
