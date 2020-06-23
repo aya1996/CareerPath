@@ -297,10 +297,10 @@ export class RegisterComponent implements OnInit {
         lname: ['',Validators.required],
         country: ['',Validators.required],
         email: ['', [Validators.required,Validators.email]],
-        phonenumber: ['', Validators.required],
+        phonenumber: ['', [Validators.required,Validators.minLength(11), Validators.maxLength(11),Validators.pattern('[0-9]+')]],
         userLevel: ['',Validators.required],
         description: ['', Validators.required],
-        image: [''],
+        files: [''],
         password: ['', [Validators.required, Validators.minLength(8)]],
         confirmPassword: ['', Validators.required]
 
@@ -339,10 +339,14 @@ export class RegisterComponent implements OnInit {
       model.append("UserLevel",this.registerForm.value.userLevel);
       model.append(  "Country",this.registerForm.value.country);
       model.append("Description",this.registerForm.value.description);
-      model.append( "image",this.imagePath);
-
+      model.append("files",this.registerForm.value.files);
+      console.log('model', this.registerForm.value.files);
+      // console.log('model', model.getAll())
+ 
+       // const formData = new FormData();
+       // formData.append('file', this.registerForm.get('file').value);
   
-      console.log('model', model)
+      console.log('model', this.registerForm.value.files)
 
       // const formData = new FormData();
       // formData.append('file', this.registerForm.get('file').value);
@@ -351,7 +355,7 @@ export class RegisterComponent implements OnInit {
         (res:any) => {
           console.log("res", res)
           localStorage.setItem("Token", res.token);
-          localStorage.setItem("username", this.registerForm.value.fname+" "+this.registerForm.value.lname);
+         localStorage.setItem("username", this.registerForm.value.fname+" "+this.registerForm.value.lname);
           this.service.showToaster()
          
     
@@ -397,4 +401,30 @@ export class RegisterComponent implements OnInit {
     };
   }
 
+
+  onFileChange(event, field,files) {
+    console.log("Event", event);
+    console.log("field",field);
+    this.preview(files);
+    if (event.target.files && event.target.files.length) {
+      
+      const [file] = event.target.files;
+
+      // just checking if it is an image, ignore if you want
+      if (!file.type.startsWith('image')) {
+        this.registerForm.patchValue({
+          [field]: null
+        });
+      } else {
+        // unlike most tutorials, i am using the actual Blob/file object instead of the data-url
+        this.registerForm.patchValue({
+          [field]: file
+        });
+        // need to run CD since file load runs outside of zone
+       // this.cd.markForCheck();
+      }
+
+
+    }
+  }
 }

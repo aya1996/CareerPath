@@ -25,3 +25,13 @@ export class UserService {
     return this._http.get<editUser>(`${this.Url}/${id}`);
   }
 }
+  // postMethod(files: FileList) {
+  // this.fileToUpload = files.item(0); 
+  // let formData = new FormData(); 
+  // formData.append('file', this.fileToUpload, this.fileToUpload.name); 
+  // this._http.post(`${this.edit}`, formData).subscribe((val) => {
+  
+  // console.log(val);
+  // });
+  // return false; 
+  // }
