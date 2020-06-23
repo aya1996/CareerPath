@@ -40,3 +40,26 @@ h3{
   hr{
       color: gray;
   }
+
+  
+.progress {
+    position: relative;
+    height: 25px;
+    margin: 20px;
+  }
+  .progress > .progress-type {
+  position: absolute;
+  left: 0px;
+    font-weight: 800;
+  
+  padding: 10px 50px 15px 10px;
+  color: rgb(255, 255, 255);
+  background-color: rgba(25, 25, 25, 0.2);
+  }
+  .progress > .progress-completed {
+  position: absolute;
+  right: 0px;
+    font-weight: 800;
+    color: black;
+  padding: 10px 10px 2px;
+  }

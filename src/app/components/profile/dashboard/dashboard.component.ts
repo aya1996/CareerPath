@@ -11,6 +11,7 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_dark from "@amcharts/amcharts4/themes/dark";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
@@ -31,7 +32,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private courseService: CourseService,
     private subCareerService: SubCareerService,
     private examService: ExamService,
-    private router:Router) { }
+    private router:Router,private modalService: NgbModal) { }
 
   chart;
   remainGlass = 0;
@@ -91,10 +92,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   countOfCourses = 0;
   completedCourses = 0;
   finishedd = false;
+  userCurrentLevel = '';
 
   getUserProfile(){
     this.userService.getUserProfile().subscribe(res => {
       // console.log(res)
+      this.userCurrentLevel = res.userData.userLevel;
       this.examService.getExamByUsername(res.userData.userName).subscribe(e => {
         for(let i=0; i< e.length; i++){
           this.coursesExam.push({
@@ -114,7 +117,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.courseService.getCourse().subscribe(c => {
           for(let i=0; i<c.length; i++){
             for(let j=0; j<courses.length; j++){
- 
               if(courses[j] == c[i].courseId && c[i].level==res.userData.userLevel){
                 this.course.push({
                   title:c[i].courseName,
@@ -144,8 +146,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
           
           this.completed = this.completedCourses;
           this.remain = this.countOfCourses - this.completed;
-          // this.completedGlass = this.completedCourses;
-          // this.remainGlass = this.countOfCourses - this.completedGlass;
 
           this.doughnutChartData = [this.completed, this.remain]
 
@@ -165,15 +165,40 @@ export class DashboardComponent implements OnInit, OnDestroy {
             this.finishedd=true;
           }
           
-
         })
       })
       this.showSpinner = false;
     })
   }
 
+
   ngOnInit() {
     this.getUserProfile();
+  }
+
+  openModal(content){
+    if(this.userCurrentLevel=='Beginner'){
+      this.userService.editUserLevel({UserID:localStorage.getItem("userId"),UserLevel:"Intermediate"}).subscribe(res =>{
+        this.userCurrentLevel = "Intermediate";
+        console.log(res);
+      });
+    }
+    else if(this.userCurrentLevel=='Intermediate'){
+      this.userService.editUserLevel({UserID:localStorage.getItem("userId"),UserLevel:"Advanced"}).subscribe(res =>{
+        this.userCurrentLevel = "Advanced";
+        console.log(res);
+      });
+    }
+    //     this.userCurrentLevel = "Intermediate";
+
+    // console.log(this.userCurrentLevel);
+    this.modalService.open(content);
+  }
+  goToNextLevel(){
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+      this.router.navigate(["/profile"]);
+  }); 
+  this.modalService.dismissAll();
   }
   
   goToCourse(id){

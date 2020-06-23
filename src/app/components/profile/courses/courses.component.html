@@ -1,13 +1,65 @@
 <app-profile-header></app-profile-header>
 
-<div class="container-fluid temp">
+<div class="row" *ngFor="let c of course">
+  <div class="col-9">
+    <div class="progress" *ngIf="c.progress === 'pass'">
+      <div
+        class="progress-bar bg-success"
+        role="progressbar"
+        aria-valuenow="100"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        style="width: 100%;"
+      >
+        <span class="sr-only">100% Complete</span>
+      </div>
+      <span class="progress-type"> {{ c.title }} </span>
+      <span class="progress-completed">100%</span>
+    </div>
+
+    <div class="progress" *ngIf="c.progress == 'fail'">
+      <div
+        class="progress-bar progress-bar-striped bg-success"
+        role="progressbar"
+        aria-valuenow="30"
+        aria-valuemin="0"
+        aria-valuemax="30"
+        style="width: 50%;"
+      >
+        <span class="sr-only">In Progress</span>
+      </div>
+      <span class="progress-type"> {{ c.title }} </span>
+      <span class="progress-completed">In Progress</span>
+    </div>
+
+    <div class="progress" *ngIf="c.progress === 'untaken'">
+      <div
+        class="progress-bar"
+        style="background-color: gray !important;"
+        role="progressbar"
+        aria-valuenow="100"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        style="width: 0%;"
+      >
+        <span class="sr-only">Not Started</span>
+      </div>
+      <span class="progress-type"> {{ c.title }} </span>
+      <span class="progress-completed">Not Started</span>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+
+
+<!-- <div class="container-fluid temp">
     <div class="row main">
         <div class="col-md-12">
             <h3>Wishlisted Courses</h3>
             <div class="col-md-4 " style="float:left">
               <div class="card mb-2 bg-danger">
-                 <!-- <img class="card-img-top"
-                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
                  <div class="card-body">
                    <h4 class="card-title">JQuery</h4>
                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -18,8 +70,7 @@
              </div>
              <div class="col-md-4" style="float:left">
               <div class="card mb-2 bg-danger">
-                 <!-- <img class="card-img-top"
-                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+                
                  <div class="card-body">
                    <h4 class="card-title">Javascript</h4>
                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -30,8 +81,7 @@
              </div>
              <div class="col-md-4" style="float:left">
               <div class="card mb-2 bg-danger">
-                 <!-- <img class="card-img-top"
-                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+                
                  <div class="card-body">
                    <h4 class="card-title">Javascript</h4>
                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -48,8 +98,7 @@
             <h3>Ongoing Courses</h3>
             <div class="col-md-4 " style="float:left">
               <div class="card mb-2 bg-danger">
-                 <!-- <img class="card-img-top"
-                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+               
                  <div class="card-body">
                    <h4 class="card-title">JQuery</h4>
                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -60,8 +109,7 @@
              </div>
              <div class="col-md-4" style="float:left">
               <div class="card mb-2 bg-danger">
-                 <!-- <img class="card-img-top"
-                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+                
                  <div class="card-body">
                    <h4 class="card-title">Javascript</h4>
                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -72,8 +120,7 @@
              </div>
              <div class="col-md-4" style="float:left">
               <div class="card mb-2 bg-danger">
-                 <!-- <img class="card-img-top"
-                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+                
                  <div class="card-body">
                    <h4 class="card-title">Javascript</h4>
                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -90,8 +137,7 @@
             <h3>Completed Courses</h3>
             <div class="col-md-4 " style="float:left">
               <div class="card mb-2 bg-danger">
-                 <!-- <img class="card-img-top"
-                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+               
                  <div class="card-body">
                    <h4 class="card-title">JQuery</h4>
                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -102,8 +148,7 @@
              </div>
              <div class="col-md-4" style="float:left">
               <div class="card mb-2 bg-danger">
-                 <!-- <img class="card-img-top"
-                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+                
                  <div class="card-body">
                    <h4 class="card-title">Javascript</h4>
                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -114,8 +159,7 @@
              </div>
              <div class="col-md-4" style="float:left">
               <div class="card mb-2 bg-danger">
-                 <!-- <img class="card-img-top"
-                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap"> -->
+                
                  <div class="card-body">
                    <h4 class="card-title">Javascript</h4>
                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -128,9 +172,9 @@
     </div>
     
 
-</div>
+</div> -->
 
-<ng-template #wishlist let-modal>
+<!-- <ng-template #wishlist let-modal>
     <div class="dark-modal">
         <div class="modal-header">
             <h4 class="modal-title"> {{ courseTitle}} </h4>
@@ -147,9 +191,9 @@
             <button type="button" class="btn btn-custom">Start Course</button>
           </div>
     </div>
-</ng-template>
+</ng-template> -->
 
-<ng-template #ongoing let-modal>
+<!-- <ng-template #ongoing let-modal>
     <div class="dark-modal">
         <div class="modal-header">
             <div class="head-right col-6">
@@ -174,9 +218,9 @@
           </div>
 
     </div>
-</ng-template>
+</ng-template> -->
 
-<ng-template #completed let-modal>
+<!-- <ng-template #completed let-modal>
   <div class="dark-modal">
       <div class="modal-header">
           <div class="head-right col-6">
@@ -198,5 +242,4 @@
         </div>
 
   </div>
-</ng-template>
-<app-footer></app-footer>
+</ng-template> -->

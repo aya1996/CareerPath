@@ -8,8 +8,9 @@ import { user, userData } from '../Models/user.model';
 })
 export class UserService {
 
-  apiUrl = "http://localhost:4000/api/user/getProfile"
-  apiUrl2 = "http://localhost:4000/api/user"
+  apiUrl = "http://localhost:4000/api/user/getProfile";
+  apiUrl2 = "http://localhost:4000/api/user";
+  apiEditLevel = "http://localhost:4000/api/user/editUserLevel"
   constructor(private _http:HttpClient) { }
 
   getUserProfile(){
@@ -23,5 +24,8 @@ export class UserService {
   }
   getAllUsers(){
     return this._http.get<userData[]>(`${this.apiUrl2}/GetAllUsers`)
+  }
+  editUserLevel(data){
+    return this._http.put(this.apiEditLevel,data);
   }
 }
