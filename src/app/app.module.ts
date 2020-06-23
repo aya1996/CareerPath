@@ -25,6 +25,7 @@ import { WebDevelopmentComponent } from './components/web-development/web-develo
 import { CourseComponent } from './components/course/course.component';
 import { LoginComponent } from './components/login/login.component';
 import {MdMenuModule} from 'md-menu/menu';
+import { FileUploadModule } from 'ng2-file-upload';
 
 ////////////////////////////////
 import {A11yModule} from '@angular/cdk/a11y';
@@ -226,7 +227,7 @@ const routes: Routes =
     AngularFontAwesomeModule,
     MdMenuModule,
     A11yModule,
- 
+    FileUploadModule,
     CdkStepperModule,
     CdkTableModule,
     CdkTreeModule,

@@ -6,15 +6,15 @@
    
       <div class="col-lg-4 text-center  ">
         <h2 class=" font-weight-light">User Profile</h2>
-        <img src="//api.adorable.io/avatars/120/trickst3r.png" class="mx-auto img-fluid rounded-circle" alt="avatar" />
+        <img src="http://localhost:4000/upload/{{this.users.image}}" class="mx-auto img-fluid rounded-circle" alt="avatar" />
         <h6 class="my-4">Upload a new photo</h6>
         <div class="input-group ">
             <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile02">
+                <input type="file" class="custom-file-input" id="inputGroupFile02" name="file" (change)="postMethod($event.target.files)" >
                 <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
             </div>
             <div class="input-group-append">
-                <button class="btn btn-secondary"><i class="fa fa-upload"></i></button>
+                <button class="btn btn-secondary" ><i class="fa fa-upload"></i></button>
             </div>
         </div>
     </div>
@@ -26,32 +26,32 @@
               <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">First name</label>
                   <div class="col-lg-9">
-                      <input class="form-control" type="text"[(ngModel)]="userData.userData.fname" #fname="ngModel" name="fname" />
+                      <input class="form-control" type="text" [(ngModel)]="this.users.fname" #fname="ngModel" name="fname" />
                   </div>
               </div>
               <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Last name</label>
                   <div class="col-lg-9">
-                      <input class="form-control" type="text" value="Bishop" name=fname />
+                      <input class="form-control" type="text" [(ngModel)]="this.users.lname" #lname="ngModel" name=lname />
                   </div>
               </div>
               <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Email</label>
                   <div class="col-lg-9">
-                      <input class="form-control" type="email" value="email@gmail.com" name="email" />
+                      <input class="form-control" type="email" [(ngModel)]="this.users.email" #email="ngModel" name="email" />
                   </div>
               </div>
               <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Phone Number</label>
                   <div class="col-lg-9">
-                      <input class="form-control" type="number" value="" name="phone" />
+                      <input class="form-control" type="number" [(ngModel)]="this.users.phoneNumber" #phone="ngModel" name="phone" />
                   </div>
               </div>
              
               <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">UserName</label>
                   <div class="col-lg-9">
-                      <input class="form-control" type="text" value="" name="username" />
+                      <input class="form-control" type="text" [(ngModel)]="this.users.userName" #username="ngModel" name="username" />
                   </div>
               </div>
             
@@ -65,7 +65,7 @@
                       </select>
                   </div>
               </div>
-              <div class="form-group row">
+              <!-- <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Career Path</label>
                   <div class="col-lg-9">
                     <select id="user_time_zone" class="form-control" size="0">
@@ -74,23 +74,23 @@
                           </option>
                       </select>
                   </div>
-              </div>
+              </div> -->
               <div class="form-group row">
                 <label class="col-lg-3 col-form-label form-control-label">Career Level</label>
                 <div class="col-lg-9">
-                    <input class="form-control" type="text" value="janeuser" name="level" />
+                    <input class="form-control" type="text" [(ngModel)]="this.users.userLevel" #level="ngModel" name="level" />
                 </div>
             </div>
-              <div class="form-group row">
+              <!-- <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Password</label>
                   <div class="col-lg-9">
-                      <input class="form-control" type="password" value="11111122333" />
+                      <input class="form-control" type="password" [(ngModel)]="this.users.passwordHash" #password="ngModel" />
                   </div>
-              </div>
+              </div> -->
               <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
                   <div class="col-lg-9">
-                      <input class="form-control" type="password" value="11111122333" />
+                      <input class="form-control" type="password" value="" [(ngModel)]="this.users.passwordHash" #password="ngModel" name="password" />
                   </div>
               </div>
               <div class="form-group row ">

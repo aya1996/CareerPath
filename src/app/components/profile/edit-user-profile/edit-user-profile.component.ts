@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../shared/services/user.service';
-import { user } from '../../../shared/Models/user.model'
+import { editUser} from '../../../shared/Models/editUser'
 import { SubCareerService } from '../../../shared/services/sub-career.service';
 import { subCareer } from '../../../shared/Models/subCareer.model';
 import { MatSnackBar } from '@angular/material';
+// import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
+
+const uploadAPI = 'http://localhost:4000/api/upload';
 @Component({
   selector: 'app-edit-user-profile',
   templateUrl: './edit-user-profile.component.html',
@@ -15,16 +18,16 @@ import { MatSnackBar } from '@angular/material';
 export class EditUserProfileComponent implements OnInit {
   countries: any = [];
   private routeSub: Subscription;
-
+ 
   constructor(private userService: UserService, private subCareerService:SubCareerService,private route: ActivatedRoute,
     private router:Router,private _snackBar: MatSnackBar,) { }
     Path:subCareer[] = [];
-    userData:user ;
+    users:editUser ;
     selectedChoice ;
     showSpinner = true;
     uId;
     subCareerName = '';
-
+    // public uploader: FileUploader = new FileUploader({ url: uploadAPI, itemAlias: 'file' });
      ngOnInit() {
     this.countries = [ 
     {"name": "Afghanistan", "code": "AF"}, 
@@ -272,26 +275,35 @@ export class EditUserProfileComponent implements OnInit {
     {"name": "Zambia", "code": "ZM"}, 
     {"name": "Zimbabwe", "code": "ZW"} 
     ]
+    // this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+    // this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+    //      console.log('FileUpload:uploaded successfully:', item, status, response);
+    //      alert('Your file has been uploaded successfully');
+    // };
     this.routeSub = this.route.params.subscribe(params => {
      
       this.userService.getUserById(params['id'])
       .subscribe(res => {
-        this.userData = res;
+        this.users = res;
+       console.log(this.users)
         this.uId= params['id'];
-         this.selectedChoice = this.userData.userData.subCareer;
-        this.subCareerService.getSubCareerById(this.userData.userData.subCareerId)
+        // this.selectedChoice = this.userData.userData.subCareer;
+        this.subCareerService.getSubCareerById(this.users.subCareerId)
         .subscribe(data => {
           this.subCareerName = data.subCareerName;
-          this.showSpinner = false;
+         
         })
       })
-
+      this.showSpinner = false;
     });
     this.subCareerService.getSubCareer()
     .subscribe(res => {
       this.Path = res;
     });
+  
   }
+
+  
   openSnackBar() {
     this._snackBar.open('Updated..', 'X', {
       duration: 2000,
@@ -306,19 +318,19 @@ export class EditUserProfileComponent implements OnInit {
   }
 
   saveData(data){
-    const u= new user;
-    u.userData.id= this.uId;
-    u.userData.fname=data.fname;
-    u.userData.lname=data.lname;
-   u.userData.email=data.email
-    u.userData.phoneNumber=data.phone;
-    u.userData.userLevel=data.userLevel
-   u.userData.userName=data.userName;
+    const u= new editUser;
+    u.id= this.uId;
+    u.fname=data.fname;
+    u.lname=data.lname;
+   u.email=data.email
+    u.phoneNumber=data.phone;
+    u.userLevel=data.userLevel
+   u.userName=data.userName;
    
     // q.rightAns=this.selectedChoice;
-    u.userData.subCareerId = this.userData.userData.subCareerId;
+    u.subCareerId = this.users.subCareerId;
 
-    this.userService.updateUser(u.userData.id,u).subscribe(res => {
+    this.userService.updateUser(u.id,u).subscribe(res => {
       this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
         this.router.navigate(['/user-profile']);
       });
