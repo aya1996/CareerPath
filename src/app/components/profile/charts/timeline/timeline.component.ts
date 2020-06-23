@@ -156,6 +156,19 @@ export class TimelineComponent implements OnInit {
           localStorage.setItem("countOfCourses",this.countOfCourses.toString());
 
           // console.log(this.course.indexOf());
+          let progrez = []
+          for (let p = 0; p < this.course.length; p++) {
+            progrez.push(this.course[p].progress);
+          }
+          if((progrez.includes('untaken') )&& !(progrez.includes('fail'))){
+            for(let u=0; u<this.course.length; u++){
+              if(this.course[u].progress == 'untaken'){
+                this.course[u].progress = 'fail'
+                break;
+              }
+            }
+          }
+          
 
         })
       })

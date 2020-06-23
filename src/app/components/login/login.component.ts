@@ -37,20 +37,21 @@ export class LoginComponent {
     this.loginService.login(model).subscribe( (res: any) => {
       console.log("res", res)
 
-      this.loginService.getAllUsers().subscribe(user => {
+      // this.loginService.getAllUsers().subscribe(user => {
         
-        for(let i=0; i<user.length; i++){
-          if(model.UserName == user[i].userName){
-            console.log(user);
-            const fullname = `${user[i].fname} ${user[i].lname}`;
-            localStorage.setItem("username",fullname)
-            localStorage.setItem("userId", user[i].id);
-            console.log(user[i].id)
-            break;
-          }
-        }
-      })
+      //   for(let i=0; i<user.length; i++){
+      //     if(model.UserName == user[i].userName){
+      //       console.log(user);
+      //       const fullname = `${user[i].fname} ${user[i].lname}`;
+      //       localStorage.setItem("username",fullname)
+      //       localStorage.setItem("userId", user[i].id);
+      //       console.log(user[i].id)
+      //       break;
+      //     }
+      //   }
+      // })
 
+      localStorage.setItem("userId",res.userId)
       localStorage.setItem("Token", res.token)
       this.activeModal.close();
       this.loginService.showToaster();
