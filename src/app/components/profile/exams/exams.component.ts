@@ -12,6 +12,7 @@ import { exams } from '../../../shared/services/exam.service';
 export class ExamsComponent implements OnInit {
 
   exam: exams[] = [];
+  // hadExam = false;
   showSpinner = true;
   
   constructor(private examService:ExamService,
@@ -27,9 +28,11 @@ export class ExamsComponent implements OnInit {
             userName: res[i].userName,
             courseName: res[i].courseName,
             courseID: res[i].courseID,
+            userGrade:res[i].userGrade,
             dateTime: res[i].dateTime.slice(0,10)
           })
         }
+        // this.hadExam = true;
       })
       this.showSpinner = false;
       console.log(this.exam)

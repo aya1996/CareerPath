@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { CareerService } from '../../shared/services/career.service';
-import { career } from '../../shared/Models/career.model'
+import { career } from '../../shared/Models/career.model';
+import { UserService } from '../../shared/services/user.service';
+import { user } from 'src/app/shared/Models/user.model';
 
 
 @Component({
@@ -20,7 +22,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private router: Router,
-    private careerService: CareerService
+    private careerService: CareerService,
+    private userService: UserService,
     ) { }
 
   
@@ -37,6 +40,14 @@ export class NavbarComponent implements OnInit {
     //this.router.navigateByUrl(`/roadmap/${id}`);
     this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
       this.router.navigate([`/roadmap/${id}`]);
+  }); 
+  }
+
+  goToProfile(){
+    this.userService.getUserProfile().subscribe(res => console.log(res));
+
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+      this.router.navigate(["/profile"]);
   }); 
   }
 

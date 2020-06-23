@@ -6,8 +6,9 @@ import { CourseService } from '../../shared/services/course.service';
 import { questionService } from '../../shared/services/question.service';
 import { CreateExam } from '../../shared/Models/questionExam.model';
 import { A } from '../..//shared/Models/answers.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { UserService } from '../../shared/services/user.service';
 
 
 @Component({
@@ -38,7 +39,9 @@ export class QuizComponent implements OnInit, OnDestroy {
     private examService:ExamService, 
     private questionService:questionService,
     private courseService: CourseService,
-    private route: ActivatedRoute) {  
+    private route: ActivatedRoute,
+    private router: Router,
+    private userService:UserService) {  
   }
 
   ngOnInit() {
@@ -174,6 +177,14 @@ export class QuizComponent implements OnInit, OnDestroy {
     //c.pause();
     console.log(this.remainTime)
     this.modalService.open(content, {centered: true});
+  }
+
+  goToProfile(){
+    this.userService.getUserProfile().subscribe(res => console.log(res));
+
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+      this.router.navigate(["/profile"]);
+  }); 
   }
 
   ngOnDestroy() {

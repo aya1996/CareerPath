@@ -2,6 +2,10 @@
 
 <app-spinner *ngIf="showSpinner"></app-spinner>
 
+<!-- <div *ngIf="!hadExam" style="color: #fff;">
+    <h3>You haven't had any exam yet.</h3>
+</div> -->
+
 <div *ngIf="!showSpinner" class="main">
     <div class="exam-container" *ngFor="let e of exam">
         <div class="header row">
@@ -10,7 +14,7 @@
         </div>
         <div class="body">
             <!-- <p>Duration: {{ testDuration }} minutes <span><mat-icon>query_builder</mat-icon></span> </p> -->
-            <p>Grade :  <span><mat-icon> score</mat-icon></span></p>
+            <p>Grade :  {{e.userGrade}} <span><mat-icon> score</mat-icon></span></p>
         </div>
         <input type="hidden" name="" [value]= item>
     </div>

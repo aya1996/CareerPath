@@ -19,9 +19,9 @@ getValue(x) {
   this.activeLink = x;
 }
   ngOnInit() {
-    this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/profile']);
-    });
+    // this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+    //   this.router.navigate(['/profile']);
+    // });
   }
 
 }

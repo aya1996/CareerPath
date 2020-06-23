@@ -35,7 +35,8 @@ export class LoginComponent {
       Password: this.loginForm.value.password
     }
     this.loginService.login(model).subscribe( (res: any) => {
-      console.log("res", res)
+      console.log("res", res);
+      localStorage.setItem("username",this.loginForm.value.username)
 
       // this.loginService.getAllUsers().subscribe(user => {
         
