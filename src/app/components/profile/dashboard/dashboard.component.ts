@@ -102,7 +102,12 @@ export class DashboardComponent implements OnInit {
     // })
 
     this.userService.getUserById(localStorage.getItem("userId")).subscribe(res =>{
-      //console.log(res)
+      if(res.userStatus == "Completed"){
+        this.wellDone = true;
+        this.showSpinner = false;
+        return
+      }
+      // console.log(res)
       this.userCurrentLevel = res.userLevel;
       this.examService.getExamByUsername(res.userName).subscribe(e => {
         for(let i=0; i< e.length; i++){
@@ -188,20 +193,23 @@ export class DashboardComponent implements OnInit {
         this.userCurrentLevel = "Intermediate";
         console.log(res);
       });
+      this.modalService.open(content);
     }
     else if(this.userCurrentLevel=='Intermediate'){
       this.userService.editUserLevel({UserID:localStorage.getItem("userId"),UserLevel:"Advanced"}).subscribe(res =>{
         this.userCurrentLevel = "Advanced";
         console.log(res);
       });
+      this.modalService.open(content);
     }
     else if(this.userCurrentLevel=='Advanced'){
-      alert('Congratulations');
-      return;
+      this.userService.editUserState({UserID:localStorage.getItem("userId"), UserStatus:"Completed"}).subscribe(res => {
+        this.wellDone=true;
+        return;
+      })
     }
 
     // console.log(this.userCurrentLevel);
-    this.modalService.open(content);
   }
   goToNextLevel(){
     this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {

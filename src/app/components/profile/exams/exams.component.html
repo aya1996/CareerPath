@@ -10,11 +10,12 @@
     <div class="exam-container" *ngFor="let e of exam">
         <div class="header row">
             <h4 class="col-7"><span><mat-icon>library_books</mat-icon></span>{{ e.examName }} </h4>
-            <h5 class="col-4"><span><mat-icon>date_range</mat-icon></span> {{ e.dateTime }} </h5>
+            <h5 class="col-4" style="color: #fff;"><span><mat-icon>date_range</mat-icon></span> {{ e.dateTime }} </h5>
         </div>
         <div class="body">
             <!-- <p>Duration: {{ testDuration }} minutes <span><mat-icon>query_builder</mat-icon></span> </p> -->
-            <p>Grade :  {{e.userGrade}} <span><mat-icon> score</mat-icon></span></p>
+            <p *ngIf="e.userGrade < 70">Grade :  {{e.userGrade}} <span><mat-icon>sentiment_very_dissatisfied</mat-icon></span></p>
+            <p *ngIf="e.userGrade >= 70">Grade :  {{e.userGrade}} <span><mat-icon>sentiment_very_satisfied</mat-icon></span></p>
         </div>
         <input type="hidden" name="" [value]= item>
     </div>

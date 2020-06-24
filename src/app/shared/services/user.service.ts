@@ -12,7 +12,8 @@ export class UserService {
 
   apiUrl = "http://localhost:4000/api/user/getProfile";
   apiUrl2 = "http://localhost:4000/api/user";
-  apiEditLevel = "http://localhost:4000/api/user/editUserLevel"
+  apiEditLevel = "http://localhost:4000/api/user/editUserLevel";
+  apiEditState = "http://localhost:4000/api/user/EditUserStatus";
  
   Url = "http://localhost:4000/api/user/GetUserByID"
   edit = "http://localhost:4000/api/user/EditProfile"
@@ -33,6 +34,9 @@ export class UserService {
   }
   editUserLevel(data){
     return this._http.put(this.apiEditLevel,data);
+  }
+  editUserState(data){
+    return this._http.put(this.apiEditState,data);
   }
 
 }

@@ -12,4 +12,5 @@ export class editUser{
     subCareer:string;
     phoneNumber: string;
     subCareerId?: number;
+    userStatus?: string;
 }
