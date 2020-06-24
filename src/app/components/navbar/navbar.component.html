@@ -37,9 +37,9 @@
         <a class="nav-link"  *ngIf="!token" routerLink="/admin/index" (click)="isMenuCollapsed = true">Admin</a>
       </li>
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" routerLink="/careers" (click)="isMenuCollapsed = true">Job Profiles</a>
-      </li>
+      </li> -->
 
       <li *ngIf="token" class="nav-item dropdown m-1">
         <a class="nav-link dropdown-toggle" (click)="isMenuCollapsed = true"
@@ -62,10 +62,6 @@
 
     </ul>
   <div class="search-container">
-      <form class="form-inline my-2 my-lg-0 ">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn custom-search" type="submit"> <i class="fa fa-fw fa-search"></i></button>
-      </form>
   </div>
   <button *ngIf="!token" class="btn btnlogin my-2 my-sm-0 m-1 custom-register" (click)="register()" type="button">Register</button>
   <button *ngIf="!token" class="btn btnlogin my-2 my-sm-0 m-1 custom-login" (click)="open()"> Login</button>
