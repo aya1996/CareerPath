@@ -107,6 +107,8 @@ import { UserProfileComponent } from './components/profile/user-profile/user-pro
 import { EditUserProfileComponent } from './components/profile/edit-user-profile/edit-user-profile.component';
 import { AuthInterceptor } from './shared/services/auth-interceptor';
 import { CourseDetailsComponent } from './components/admin/dashboard-items/view-courses/course-details/course-details.component';
+import { AddSilderComponent } from './components/admin/dashboard-items/add-silder/add-silder.component';
+import { ViewSilderComponent } from './components/admin/dashboard-items/view-silder/view-silder.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -134,6 +136,8 @@ const routes: Routes =
     // { path: 'admin/questions', component: QuestionsComponent },
     { path: 'admin/add-path', component: AddPathComponent },
     { path: 'admin/add-track', component: AddTrackComponent },
+    { path: 'admin/add-slider', component: AddSilderComponent },
+    { path: 'admin/view-slider', component: ViewSilderComponent },
     { path: 'admin/path', component: ViewPathComponent },
     { path:'admin/track', component:ViewTrackComponent},
 
@@ -214,6 +218,8 @@ const routes: Routes =
     UserProfileComponent,
     EditUserProfileComponent,
     CourseDetailsComponent,
+    AddSilderComponent,
+    ViewSilderComponent,
 
   ],
   imports: [

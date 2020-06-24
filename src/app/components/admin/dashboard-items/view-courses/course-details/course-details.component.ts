@@ -10,7 +10,7 @@ import { ExamService } from '../../../../../shared/services/exam.service';
 import { CourseLinksService } from '../../../../../shared/services/course-links.service';
 import { courseLink } from '../../../../../shared/Models/courseLinks.model';
 import { Router } from '@angular/router';
-
+import { course } from '../../../../../shared/Models/course.model';
 @Component({
   selector: 'app-course-details',
   templateUrl: './course-details.component.html',
@@ -36,34 +36,41 @@ export class CourseDetailsComponent implements OnInit {
     SubCareerService:SubCareerService) {
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(this.course);
+ 
     
   }
 
-  course: courseLink[] = [];
+  coursel: courseLink[] = [];
+courses:course[]
   showSpinner = true;
 
   ngOnInit() {
+    
     this.coursesService.getCourse().subscribe(res => {
 
       this.courseLinkService.getCourseLinks().subscribe(cl => {
-       this.course=cl;
-       console.log(cl)
-        for(let i=0; i<res.length; i++){
-          for(let j=0; j<cl.length; j++){
-            if(res[i].courseId == cl[j].courseId){
-              this.course.push({
-                courseId:cl[i].courseId,
-                path:cl[i].path,
-                payment:cl[i].payment,
-                courseName:res[i].courseName
-              });
+     
+        for(let i=0; i<cl.length; i++){
+          this.coursel[i]=cl[i]
+          for(let j=0; j<res.length; j++){
+            if(cl[i].courseId == res[j].courseId){
+              this.coursel[i].courseName = res[j].courseName;
             }
+       
+            // if(res[i].courseId == cl[j].courseId){
+            //   this.course.push({
+            //     courseId:cl[i].courseId,
+            //     path:cl[i].path,
+            //     payment:cl[i].payment,
+            //     courseName:res[i].courseName
+            //   });
+            // }
           }
         }
 
       })
-      console.log(this.course);
+      this.dataSource = new MatTableDataSource(this.coursel);
+      console.log(this.coursel);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.showSpinner = false;
