@@ -28,7 +28,7 @@
                 <div (click)="openModal(completed, 'HTML')">JS</div>-->
                 <!-- <div (click)="openModal(completed, 'HTML')">JQuery</div>  -->
                 <div class="mandatory-courses" *ngFor="let subcareerCourses of CoursesWithSubCareers; " [ngClass]="{'display':subcareerCourses.level !='Beginner' }">
-                <div (click)="openModal(completed, 'HTML')" *ngIf="subcareerCourses.subCareerName == item.subCareerName && subcareerCourses.level =='Beginner' ">
+                <div (click)="openModal(completed, subcareerCourses.courseID)" *ngIf="subcareerCourses.subCareerName == item.subCareerName && subcareerCourses.level =='Beginner' ">
                   {{subcareerCourses.courseName}} 
                 </div>
               </div>
@@ -38,7 +38,7 @@
               <!-- <div (click)="openModal(completed, 'HTML')">HTML</div>
               <div (click)="openModal(completed, 'HTML')">CSS</div> -->
                 <div class="good-courses" *ngFor="let subcareerCourses of CoursesWithSubCareers" [ngClass]="{'display':subcareerCourses.level !='Intermediate'}">
-              <div (click)="openModal(completed, 'HTML')"   *ngIf="subcareerCourses.subCareerName == item.subCareerName && subcareerCourses.level =='Intermediate' ">
+              <div (click)="openModal(completed, subcareerCourses.courseID)"   *ngIf="subcareerCourses.subCareerName == item.subCareerName && subcareerCourses.level =='Intermediate' ">
                 {{subcareerCourses.courseName}}
               </div>
             </div>
@@ -49,7 +49,7 @@
               <div (click)="openModal(completed, 'HTML')">JS</div> -->
               <!-- <div *ngFor="let subcareerCourses of CoursesWithSubCareers"> -->
                 <div class="optional-courses" *ngFor="let subcareerCourses of CoursesWithSubCareers" [ngClass]="{'display':subcareerCourses.level !='Advanced'}">
-                  <div (click)="openModal(completed, 'HTML')"   *ngIf="subcareerCourses.subCareerName == item.subCareerName && subcareerCourses.level =='Advanced' ">
+                  <div (click)="openModal(completed, subcareerCourses.courseID)"   *ngIf="subcareerCourses.subCareerName == item.subCareerName && subcareerCourses.level =='Advanced' ">
                     {{subcareerCourses.courseName}}
                   </div>
                 </div>
@@ -109,7 +109,7 @@
   <div class="dark-modal">
       <div class="modal-header">
           <div class="head-right col-6">
-              <h4 class="modal-title"> {{ courseTitle}} </h4>
+              <h4 class="modal-title"> {{ modalCourseData.courseName}} </h4>
           </div>
           <div class="head-left col-6">
               <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -118,13 +118,12 @@
           </div>
         </div>
         <div class="modal-body">
-          <p> You have successfully completed this coures. </p>
-          <p> Exam date : 15/5/2020 </p>
-          <p> Score : 25 </p>
+          <p> {{modalCourseData.description}} </p>
+          <p> {{modalCourseData.courseContent}} </p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-custom" (click)="modal.close('Close click')">Close</button>
-          <button type="button" class="btn btn-custom" (click)="modal.close('Close click')" routerLink="/web">Leran More</button>
+          <button type="button" class="btn btn-custom"  (click)="goToCoursePage(modalCourseData.courseId)">Leran More</button>
         </div>
 
   </div>

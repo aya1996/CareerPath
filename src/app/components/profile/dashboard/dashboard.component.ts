@@ -4,6 +4,7 @@ import { SubCareerService } from '../../../shared/services/sub-career.service';
 import { CourseService } from '../../../shared/services/course.service';
 import { ExamService } from '../../../shared/services/exam.service';
 import { user } from '../../../shared/Models/user.model';
+import { editUser } from '../../../shared/Models/editUser';
 import { Router } from '@angular/router';
 import { ChartType } from 'chart.js';
 import { Label, SingleDataSet } from 'ng2-charts';
@@ -21,7 +22,7 @@ am4core.useTheme(am4themes_animated);
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent implements OnInit {
   completed = 0;
   remain = 0;
   public doughnutChartLabels: Label[] = ['Completed', 'UnCompleted'];
@@ -37,53 +38,54 @@ export class DashboardComponent implements OnInit, OnDestroy {
   chart;
   remainGlass = 0;
   completedGlass = 0;
+  wellDone = false;
 
-  ngAfterViewInit(): void {
+  // ngAfterViewInit(): void {
    
-    let iconPath = "M421.976,136.204h-23.409l-0.012,0.008c-0.19-20.728-1.405-41.457-3.643-61.704l-1.476-13.352H5.159L3.682,74.507 C1.239,96.601,0,119.273,0,141.895c0,65.221,7.788,126.69,22.52,177.761c7.67,26.588,17.259,50.661,28.5,71.548  c11.793,21.915,25.534,40.556,40.839,55.406l4.364,4.234h206.148l4.364-4.234c15.306-14.85,29.046-33.491,40.839-55.406  c11.241-20.888,20.829-44.96,28.5-71.548c0.325-1.127,0.643-2.266,0.961-3.404h44.94c49.639,0,90.024-40.385,90.024-90.024  C512,176.588,471.615,136.204,421.976,136.204z M421.976,256.252h-32c3.061-19.239,5.329-39.333,6.766-60.048h25.234  c16.582,0,30.024,13.442,30.024,30.024C452,242.81,438.558,256.252,421.976,256.252z"
+  //   let iconPath = "M421.976,136.204h-23.409l-0.012,0.008c-0.19-20.728-1.405-41.457-3.643-61.704l-1.476-13.352H5.159L3.682,74.507 C1.239,96.601,0,119.273,0,141.895c0,65.221,7.788,126.69,22.52,177.761c7.67,26.588,17.259,50.661,28.5,71.548  c11.793,21.915,25.534,40.556,40.839,55.406l4.364,4.234h206.148l4.364-4.234c15.306-14.85,29.046-33.491,40.839-55.406  c11.241-20.888,20.829-44.96,28.5-71.548c0.325-1.127,0.643-2.266,0.961-3.404h44.94c49.639,0,90.024-40.385,90.024-90.024  C512,176.588,471.615,136.204,421.976,136.204z M421.976,256.252h-32c3.061-19.239,5.329-39.333,6.766-60.048h25.234  c16.582,0,30.024,13.442,30.024,30.024C452,242.81,438.558,256.252,421.976,256.252z"
 
-    this.chart = am4core.create("chartdiv", am4charts.SlicedChart);
-    this.chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
-    this.chart.paddingLeft = 150;
+  //   this.chart = am4core.create("chartdiv", am4charts.SlicedChart);
+  //   this.chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
+  //   this.chart.paddingLeft = 150;
 
-    this.chart.data = [
-      {
-        name: "Undone",
-        value: 40,
-        // value: this.remain,
-        disabled: true,
-      },
-      {
-        name: "Progress",
-        // value: this.completed,
-        value: 60,
-      },
-    ];
+  //   this.chart.data = [
+  //     {
+  //       name: "Undone",
+  //       value: 40,
+  //       // value: this.remain,
+  //       disabled: true,
+  //     },
+  //     {
+  //       name: "Progress",
+  //       // value: this.completed,
+  //       value: 60,
+  //     },
+  //   ];
 
-    let series = this.chart.series.push(new am4charts.PictorialStackedSeries());
-    series.dataFields.value = "value";
-    series.dataFields.category = "name";
-    series.alignLabels = true;
-    // this makes only A label to be visible
-    series.labels.template.propertyFields.disabled = "disabled";
-    series.ticks.template.propertyFields.disabled = "disabled";
+  //   let series = this.chart.series.push(new am4charts.PictorialStackedSeries());
+  //   series.dataFields.value = "value";
+  //   series.dataFields.category = "name";
+  //   series.alignLabels = true;
+  //   // this makes only A label to be visible
+  //   series.labels.template.propertyFields.disabled = "disabled";
+  //   series.ticks.template.propertyFields.disabled = "disabled";
 
-    series.maskSprite.path = iconPath;
-    series.ticks.template.locationX = 1;
-    series.ticks.template.locationY = 0;
+  //   series.maskSprite.path = iconPath;
+  //   series.ticks.template.locationX = 1;
+  //   series.ticks.template.locationY = 0;
 
-    series.labelsContainer.width = 100;
+  //   series.labelsContainer.width = 100;
 
 
-    // chart.legend = new am4charts.Legend();
-    // chart.legend.position = "top";
-    // chart.legend.paddingRight = 160;
-    // chart.legend.paddingBottom = 40;
-    // let marker = chart.legend.markers.template.children.getIndex(0);
-    // chart.legend.markers.template.width = 40;
-    // chart.legend.markers.template.height = 40;
-    // marker.cornerRadius(20, 20, 20, 20);
-  }
+  //   // chart.legend = new am4charts.Legend();
+  //   // chart.legend.position = "top";
+  //   // chart.legend.paddingRight = 160;
+  //   // chart.legend.paddingBottom = 40;
+  //   // let marker = chart.legend.markers.template.children.getIndex(0);
+  //   // chart.legend.markers.template.width = 40;
+  //   // chart.legend.markers.template.height = 40;
+  //   // marker.cornerRadius(20, 20, 20, 20);
+  // }
 
   showSpinner = true;
   course: ICourse[] = [];
@@ -95,10 +97,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
   userCurrentLevel = '';
 
   getUserProfile(){
-    this.userService.getUserProfile().subscribe(res => {
-      // console.log(res)
-      this.userCurrentLevel = res.userData.userLevel;
-      this.examService.getExamByUsername(res.userData.userName).subscribe(e => {
+    // this.userService.getUserById(localStorage.getItem("userId")).subscribe(res =>{
+    //   console.log(res);
+    // })
+
+    this.userService.getUserById(localStorage.getItem("userId")).subscribe(res =>{
+      //console.log(res)
+      this.userCurrentLevel = res.userLevel;
+      this.examService.getExamByUsername(res.userName).subscribe(e => {
         for(let i=0; i< e.length; i++){
           this.coursesExam.push({
             courseId:e[i].courseID,
@@ -109,15 +115,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
       let courses = [];
       this.courseService.getSubCareerCourses().subscribe(sc => {
         for (let i = 0; i < sc.length; i++) {
-          if(sc[i].subCareerId == res.userData.subCareerId){
+          if(sc[i].subCareerId == res.subCareerId){
             courses.push(sc[i].courseId); //get user's courses from his subcareer .. get only ID
           }
         }
-        console.log(this.course);
+       // console.log(this.course);
         this.courseService.getCourse().subscribe(c => {
           for(let i=0; i<c.length; i++){
             for(let j=0; j<courses.length; j++){
-              if(courses[j] == c[i].courseId && c[i].level==res.userData.userLevel){
+              if(courses[j] == c[i].courseId && c[i].level==res.userLevel){
                 this.course.push({
                   title:c[i].courseName,
                   courseId:c[i].courseId,
@@ -189,7 +195,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
         console.log(res);
       });
     }
-    //     this.userCurrentLevel = "Intermediate";
+    else if(this.userCurrentLevel=='Advanced'){
+      alert('Congratulations');
+      return;
+    }
 
     // console.log(this.userCurrentLevel);
     this.modalService.open(content);
@@ -197,7 +206,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   goToNextLevel(){
     this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
       this.router.navigate(["/profile"]);
-  }); 
+   }); 
   this.modalService.dismissAll();
   }
   
@@ -207,10 +216,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }); 
   }
 
-  ngOnDestroy(): void {
-    this.chart.dispose();
-  }
 }
+
+
 
 
 interface ICourse {

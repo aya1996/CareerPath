@@ -14,7 +14,7 @@ import { UserService } from '../../../../shared/services/user.service';
 export class UsersComponent implements OnInit {
 
   displayedColumns: string[] = ['Username', 'Course', 'Examdate','examQs'];
-  dataSource: MatTableDataSource<Exam>;
+  dataSource: MatTableDataSource<exams>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -22,7 +22,7 @@ export class UsersComponent implements OnInit {
   constructor(private userService:UserService,
     private examService: ExamService) {
 
-    this.dataSource = new MatTableDataSource(EXAMS);
+    this.dataSource = new MatTableDataSource(this.usersExam);
   }
   usersExam : exams[] = [];
 
