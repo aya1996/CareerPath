@@ -110,6 +110,7 @@ import { CourseDetailsComponent } from './components/admin/dashboard-items/view-
 import { AddSilderComponent } from './components/admin/dashboard-items/add-silder/add-silder.component';
 import { ViewSilderComponent } from './components/admin/dashboard-items/view-silder/view-silder.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { CertificateComponent } from './components/profile/certificate/certificate.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -167,6 +168,7 @@ const routes: Routes =
     { path: 'web', component: WebDevelopmentComponent },
     { path: 'login', component: LoginComponent },
     { path: 'course/:id', component: CourseComponent },
+    // { path: 'certificate', component: CertificateComponent },
     { path: '', component: HomeComponent },
     {  path:'**',  component : NotFoundComponent }
   ]
@@ -224,6 +226,7 @@ const routes: Routes =
     AddSilderComponent,
     ViewSilderComponent,
     NotFoundComponent,
+    CertificateComponent,
 
   ],
   imports: [

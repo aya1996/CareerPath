@@ -4,6 +4,7 @@ import { SubCareerService } from '../../../shared/services/sub-career.service';
 import { CourseService } from '../../../shared/services/course.service';
 import { ExamService } from '../../../shared/services/exam.service';
 import { user } from '../../../shared/Models/user.model';
+import { editUser } from '../../../shared/Models/editUser';
 import { Router } from '@angular/router';
 import { ChartType } from 'chart.js';
 import { Label, SingleDataSet } from 'ng2-charts';
@@ -37,6 +38,7 @@ export class DashboardComponent implements OnInit {
   chart;
   remainGlass = 0;
   completedGlass = 0;
+  wellDone = false;
 
   // ngAfterViewInit(): void {
    
@@ -95,10 +97,14 @@ export class DashboardComponent implements OnInit {
   userCurrentLevel = '';
 
   getUserProfile(){
-    this.userService.getUserProfile().subscribe(res => {
+    // this.userService.getUserById(localStorage.getItem("userId")).subscribe(res =>{
+    //   console.log(res);
+    // })
+
+    this.userService.getUserById(localStorage.getItem("userId")).subscribe(res =>{
       //console.log(res)
-      this.userCurrentLevel = res.userData.userLevel;
-      this.examService.getExamByUsername(res.userData.userName).subscribe(e => {
+      this.userCurrentLevel = res.userLevel;
+      this.examService.getExamByUsername(res.userName).subscribe(e => {
         for(let i=0; i< e.length; i++){
           this.coursesExam.push({
             courseId:e[i].courseID,
@@ -109,7 +115,7 @@ export class DashboardComponent implements OnInit {
       let courses = [];
       this.courseService.getSubCareerCourses().subscribe(sc => {
         for (let i = 0; i < sc.length; i++) {
-          if(sc[i].subCareerId == res.userData.subCareerId){
+          if(sc[i].subCareerId == res.subCareerId){
             courses.push(sc[i].courseId); //get user's courses from his subcareer .. get only ID
           }
         }
@@ -117,7 +123,7 @@ export class DashboardComponent implements OnInit {
         this.courseService.getCourse().subscribe(c => {
           for(let i=0; i<c.length; i++){
             for(let j=0; j<courses.length; j++){
-              if(courses[j] == c[i].courseId && c[i].level==res.userData.userLevel){
+              if(courses[j] == c[i].courseId && c[i].level==res.userLevel){
                 this.course.push({
                   title:c[i].courseName,
                   courseId:c[i].courseId,
@@ -200,7 +206,7 @@ export class DashboardComponent implements OnInit {
   goToNextLevel(){
     this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
       this.router.navigate(["/profile"]);
-  }); 
+   }); 
   this.modalService.dismissAll();
   }
   
@@ -211,6 +217,8 @@ export class DashboardComponent implements OnInit {
   }
 
 }
+
+
 
 
 interface ICourse {
