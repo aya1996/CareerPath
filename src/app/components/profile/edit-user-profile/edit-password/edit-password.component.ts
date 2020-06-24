@@ -41,10 +41,16 @@ users:editUser
  console.log(data.npassword)
 
     this.EditUserPassword.updateUser(this.uId, u).subscribe(res => {
+      
       console.log(res)
+      this.openSnackBar();
       this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
         this.router.navigate(['/user-profile']);
       });
+    }, error=> {
+      console.log("error", error);
+      window.alert("Enter right password")
+
     });
   }
 
