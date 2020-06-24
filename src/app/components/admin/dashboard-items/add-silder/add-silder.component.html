@@ -4,7 +4,7 @@
     <mat-card-content  class="w-100 h-50">
         <div class="my-form mat-elevation-z8" style="margin-top: 30px;">
          <h3 class="title-style">Add A slider Image</h3>
-          <form [formGroup]="registerForm" (ngSubmit)="register()" >
+          <form  #f="ngForm" [formGroup]="registerForm" (ngSubmit)="register()" >
             <!-- <mat-form-field class="full-width">
               <mat-label>Title</mat-label>
               <input matInput placeholder="Add Title" ngModel #title="ngModel" name="title" required />
@@ -34,7 +34,7 @@
               <div class="form-group">
                 <label for="exampleInputPassword1">Add Slider Image</label>
                 <div class="form-group">
-                    <input type="file" accept='image/*' #file (change)="onFileChange($event, 'files',file.files)" />
+                    <input type="file" accept='image/*' #files formControlName="files" name="files" (change)="onFileChange($event,files)"  />
                 </div>
                 <div *ngIf="fileUploadProgress">
                     Upload progress: {{ fileUploadProgress }}
@@ -47,9 +47,26 @@
                     {{uploadedFilePath}}
                 </div>
               </div>
+<!-- Images
+<div class="form-group col-md-12">
+  
+    <span style="color:red;" *ngIf="message">{{message}}</span>
+    <input
+    style="display: none"
+    #file type="file" accept='image/*' class="btn btn-danger" (change)="onFileChange($event, 'files',file.files)">
+  <button type="button"  class="btn btn-danger" (click)="file.click()">UPLOAD IMAGE</button>
+  </div>
+  <div class="form-group col-md-5">
+    <div class="img">
+      <img  [src]="imgURL" width="200" *ngIf="!defaultImage" alt="">
+      <img  src="../../../../../assets/images/notfound_0.png"  *ngIf="defaultImage" width="200" alt="">
+    </div>
+
+  </div> -->
+
               <div class="form-group">
-                <label for="exampleInputPassword1">Add Slider Link</label>
-                <textarea class="form-control" placeholder="Ex. how to make your cv ..." required formControlName="desc"  rows="3"></textarea>
+                <label for="exampleInputPassword1">Add Slider description</label>
+                <textarea class="form-control" placeholder="Ex. how to make your cv ..."  formControlName="description"  rows="3"></textarea>
               </div>
               
 
