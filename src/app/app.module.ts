@@ -109,6 +109,7 @@ import { AuthInterceptor } from './shared/services/auth-interceptor';
 import { CourseDetailsComponent } from './components/admin/dashboard-items/view-courses/course-details/course-details.component';
 import { AddSilderComponent } from './components/admin/dashboard-items/add-silder/add-silder.component';
 import { ViewSilderComponent } from './components/admin/dashboard-items/view-silder/view-silder.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -167,7 +168,7 @@ const routes: Routes =
     { path: 'login', component: LoginComponent },
     { path: 'course/:id', component: CourseComponent },
     { path: '', component: HomeComponent },
-    {  path:'**',  component : DummyComponent }
+    {  path:'**',  component : NotFoundComponent }
   ]
 @NgModule({
   declarations: [
@@ -222,6 +223,7 @@ const routes: Routes =
     CourseDetailsComponent,
     AddSilderComponent,
     ViewSilderComponent,
+    NotFoundComponent,
 
   ],
   imports: [

@@ -41,8 +41,32 @@
         <a class="nav-link" routerLink="/careers" (click)="isMenuCollapsed = true">Job Profiles</a>
       </li> -->
 
-      <li *ngIf="token" class="nav-item dropdown m-1">
+      <!-- <li *ngIf="token" class="nav-item dropdown m-1">
         <a class="nav-link dropdown-toggle" (click)="isMenuCollapsed = true"
+         mat-button [matMenuTriggerFor]="user"> {{username}} </a>
+
+        <mat-menu #user>
+          <button routerLink="/profile" mat-menu-item>
+            Progress
+          </button>
+          <button routerLink="/user-profile" mat-menu-item>
+            Profile
+          </button>
+          <hr/>
+          <button routerLink="/" mat-menu-item (click)="logout()" >
+            Logout
+          </button>
+        </mat-menu>
+      </li> -->
+
+    </ul>
+  <div class="search-container">
+  </div>
+  <button *ngIf="!token" class="btn btnlogin my-2 my-sm-0 m-1 custom-register" (click)="register()" type="button">Register</button>
+  <button *ngIf="!token" class="btn btnlogin my-2 my-sm-0 m-1 custom-login" (click)="open()"> Login</button>
+  <img  *ngIf="token" src="" alt="">
+  <div  *ngIf="token">
+    <a class="nav-link dropdown-toggle" style="color: #fff; font-size: 17px;" (click)="isMenuCollapsed = true"
          mat-button [matMenuTriggerFor]="user"> {{username}} </a>
 
         <mat-menu #user>
@@ -58,14 +82,7 @@
             Logout
           </button>
         </mat-menu>
-      </li>
-
-    </ul>
-  <div class="search-container">
   </div>
-  <button *ngIf="!token" class="btn btnlogin my-2 my-sm-0 m-1 custom-register" (click)="register()" type="button">Register</button>
-  <button *ngIf="!token" class="btn btnlogin my-2 my-sm-0 m-1 custom-login" (click)="open()"> Login</button>
-  <img  *ngIf="token" src="" alt="">
 
   </div>
 </nav>

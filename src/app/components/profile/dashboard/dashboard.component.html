@@ -6,7 +6,15 @@
 
   <div class="row main">
     <div class="col-md-6 data">
-      <h4 style="text-align: left;">Courses Progress</h4>
+      <h4 style="text-align: left;" *ngIf="userCurrentLevel=='Beginner'">
+        Courses Progress  <span class="badge" style="background-color: #92D050;"> {{userCurrentLevel}} </span>
+      </h4>
+      <h4 style="text-align: left;" *ngIf="userCurrentLevel=='Intermediate'">
+        Courses Progress  <span class="badge" style="background-color: #FFC000;"> {{userCurrentLevel}} </span>
+      </h4>
+      <h4 style="text-align: left;" *ngIf="userCurrentLevel=='Advanced'">
+        Courses Progress  <span class="badge" style="background-color: #C00000;"> {{userCurrentLevel}} </span>
+      </h4>
   
       <div>
         <div class="row" *ngFor="let c of course">
@@ -97,9 +105,9 @@
         </div>
       </div>
 
-      <div style="margin-top: 30px;">
+      <!-- <div style="margin-top: 30px;">
         <div id="chartdiv" style="width: 100%; height: 200px; margin-top: 30px;"></div>
-      </div>
+      </div> -->
 
     </div>
   </div>
