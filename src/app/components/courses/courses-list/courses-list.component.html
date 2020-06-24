@@ -1,96 +1,59 @@
 <app-navbar></app-navbar>
-<div class="container-fluid main">
-    <h2 class="title">{{ careerTitle }} Courses</h2>
-    <div class="container course-list">
-        <h5>FREE Courses to Start with:- </h5>
-        <div class="course-data">
+
+<app-spinner *ngIf="showSpinner"></app-spinner>
+
+<div *ngIf="!showSpinner" class="container-fluid main">
+    <h2 class="title">{{ courseName }} Courses</h2>
+    
+    <!-- <div class="container course-list">
+        <div  *ngFor="let item of courses">
+            <div class="course-data" *ngIf="item.coursePayment=='Free'||item.coursePayment=='free'">
+                <h5>FREE Courses </h5>
             <div class="row">
-                <div class="col-5">
-                    <p class="course-title" (click)="openModal(content,'HTML')">HTML</p>
-                    <p>W3Schools tuts</p>
-                </div>
-                <div class="col-3">
-                    <a routerLink='/course' class="test-link">Test yourself now!</a>
-                </div>
-                <div class="col-2">
-                    <i [ngClass]="{'star-class far fa-star': starName=='star-o'}" (click)="changeStarState()"></i>
-                    <i [ngClass]="{'star-class fas fa-star': starName=='star'}" (click)="changeStarState()"></i>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-5">
-                    <p class="course-title" (click)="openModal(content,'CSS')">CSS</p>
-                    <p>W3Schools tuts</p>
-                </div>
-                <div class="col-3">
-                    <a routerLink="/quiz" class="test-link">Test yourself now!</a>
-                </div>
-                <div class="col-2">
-                    <i [ngClass]="{'star-class far fa-star': starName=='star-o'}" (click)="changeStarState()"></i>
-                    <i [ngClass]="{'star-class fas fa-star': starName=='star'}" (click)="changeStarState()"></i>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-5">
-                    <p class="course-title" (click)="openModal(content,'JS')">JS</p>
-                    <p>W3Schools tuts</p>
-                </div>
-                <div class="col-3">
-                    <p class="test-link">Test yourself now!</p>
-                </div>
-                <div class="col-2">
-                    <i [ngClass]="{'star-class far fa-star': starName=='star-o'}" (click)="changeStarState()"></i>
-                    <i [ngClass]="{'star-class fas fa-star': starName=='star'}" (click)="changeStarState()"></i>
+                <div class="col-7">
+                    <p> {{item.courseLinks}} </p>
                 </div>
             </div>
         </div>
-        <h5 class="paid">PAID Courses to Start with:- </h5>
+
+        <h5 class="paid" *ngIf="item.coursePayment=='Paid'||item.coursePayment=='paid'">
+            PAID Courses </h5>
         <div class="course-data">
             <div class="row">
-                <div class="col-5">
-                    <p class="course-title" (click)="openModal(content,'HTML')">HTML</p>
-                    <p>W3Schools tuts</p>
-                </div>
-                <div class="col-3">
-                    <a  routerLink="/quiz" class="test-link">Test yourself now!</a>
-                </div>
-                <div class="col-2">
-                    <i [ngClass]="{'star-class far fa-star': starName=='star-o'}" (click)="changeStarState()"></i>
-                    <i [ngClass]="{'star-class fas fa-star': starName=='star'}" (click)="changeStarState()"></i>
+                <div class="col-7">
+                    <p> {{item.courseLinks}} </p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-5">
-                    <p class="course-title" (click)="openModal(content,'CSS')">CSS</p>
-                    <p>W3Schools tuts</p>
-                </div>
-                <div class="col-3">
-                    <a  routerLink="/quiz" class="test-link">Test yourself now!</a>
-                </div>
-                <div class="col-2">
-                    <i [ngClass]="{'star-class far fa-star': starName=='star-o'}" (click)="changeStarState()"></i>
-                    <i [ngClass]="{'star-class fas fa-star': starName=='star'}" (click)="changeStarState()"></i>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-5">
-                    <p class="course-title" (click)="openModal(content,'JS')">JS</p>
-                    <p>W3Schools tuts</p>
-                </div>
-                <div class="col-3">
-                    <a  routerLink="/quiz" class="test-link">Test yourself now!</a>
-                </div>
-                <div class="col-2">
-                    <i [ngClass]="{'star-class far fa-star': starName=='star-o'}" (click)="changeStarState()"></i>
-                    <i [ngClass]="{'star-class fas fa-star': starName=='star'}" (click)="changeStarState()"></i>
+        </div>
+        </div>
+    </div> -->
+
+    <h4 class="container" style="color: #EE3C48;">FREE Courses</h4>
+        <div *ngFor="let item of courses">
+            <div class="container course-list" *ngIf="item.coursePayment=='Free'||item.coursePayment=='free'">
+                <div class="row">
+                    <div class="col-7">
+                        <p> {{item.courseLinks}} </p>
                 </div>
             </div>
         </div>
     </div>
+
+    <h4 class="container" style="color: #EE3C48;">PAID Courses</h4>
+        <div *ngFor="let item of courses">
+            <div class="container course-list" *ngIf="item.coursePayment=='Paid'||item.coursePayment=='paid'">
+                <div class="row">
+                    <div class="col-7">
+                        <p> {{item.courseLinks}} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+  
 </div>
 
 
-<ng-template #content let-modal>
+<!-- <ng-template #content let-modal>
     <div class="dark-modal">
         <div class="modal-header">
             <div class="head-right col-6">
@@ -113,5 +76,5 @@
             <p>* You can challenge yourself and complete the course in less than 7 days</p>
           </div>
     </div>
-</ng-template>
+</ng-template> -->
 <app-footer></app-footer>

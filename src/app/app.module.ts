@@ -143,6 +143,8 @@ const routes: Routes =
     { path: 'admin/add-question', component: AddQuestionsComponent},
     { path: 'admin/question', component: QuestionsComponent },
 
+    {path:'course/links/:id', component:CoursesListComponent},
+
     {path:'admin/add-course/links', component:AddCourseLinksComponent},
 
     {path: 'profile/courses', component:CoursesComponent},

@@ -13,6 +13,7 @@ import { any } from "@amcharts/amcharts4/.internal/core/utils/Array";
 import { CoursesWithSubCareers } from "src/app/shared/Models/CoursesWithSubCareers";
 import { number } from "@amcharts/amcharts4/core";
 
+
 @Component({
   selector: "app-roadmap",
   templateUrl: "./roadmap.component.html",
@@ -26,7 +27,7 @@ export class RoadmapComponent implements OnInit, OnDestroy {
   careerName = "";
   CareerId;
 
-  dummy : number = 4;
+  
   public subcareers: subCareer[] = [];
 
   CoursesWithSubCareers: CoursesWithSubCareers[] = [];
@@ -38,7 +39,8 @@ export class RoadmapComponent implements OnInit, OnDestroy {
     private careerService: CareerService,
     private subCareerService: SubCareerService,
     private courseService: CourseService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   getAllSubCareersByCareerId(id) {
@@ -60,13 +62,13 @@ export class RoadmapComponent implements OnInit, OnDestroy {
           subCareerName: res[i].subCareerName,
           Description: res[i].Description,
         });
-        console.log(this.CoursesWithSubCareers[i].level);
+        // console.log(this.CoursesWithSubCareers[i].level);
       }
 
-      console.log(
-        "data from coiurse with subcareers" +
-         this.CoursesWithSubCareers[0].level
-      );
+      // console.log(
+      //   "data from coiurse with subcareers" +
+      //    this.CoursesWithSubCareers[0].level
+      // );
       return  this.CoursesWithSubCareers;
 
       // this.CoursesWithSubCareers = res;
@@ -81,7 +83,7 @@ export class RoadmapComponent implements OnInit, OnDestroy {
         .getCareerById(params["id"])
         .subscribe((res) => (this.careerName = res.careerName));
       this.CareerId = params["id"];
-      console.log("careerID=" + this.CareerId);
+      // console.log("careerID=" + this.CareerId);
 
       this.getAllSubCareersByCareerId(this.CareerId);
       this.GetAllCoursesWithSubCareers();
@@ -90,13 +92,35 @@ export class RoadmapComponent implements OnInit, OnDestroy {
     });
   }
 
-  openModal(content, _courseTitle) {
-    this.courseTitle = _courseTitle;
+  modalCourseData: course = {}
+  openModal(content, courseId) {
+    this.courseService.getById(courseId).subscribe(res => {
+      this.modalCourseData.courseName = res.courseName;
+      this.modalCourseData.courseContent = res.courseContent;
+      this.modalCourseData.description = res.description;
+      this.modalCourseData.courseId = res.courseId;
+
+    })
+    console.log(this.modalCourseData);
     this.modalService.open(content, {
       centered: true,
       backdropClass: "dark-modal",
     });
     // this.modalService.dismissAll();
+  }
+
+  goToCoursePage(id){
+    if(localStorage.getItem("Token")){
+      this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+        this.router.navigate([`/course/links/${id}`]);
+      });
+    }
+    else{
+      this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+        this.router.navigate(["/register"]);
+      });
+    }
+    this.modalService.dismissAll();
   }
 
   ngOnDestroy() {
