@@ -96,7 +96,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   getUserProfile(){
     this.userService.getUserProfile().subscribe(res => {
-      // console.log(res)
+      console.log(res)
       this.userCurrentLevel = res.userData.userLevel;
       this.examService.getExamByUsername(res.userData.userName).subscribe(e => {
         for(let i=0; i< e.length; i++){
@@ -189,7 +189,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
         console.log(res);
       });
     }
-    //     this.userCurrentLevel = "Intermediate";
+    else if(this.userCurrentLevel=='Advanced'){
+      alert('Congratulations');
+      return;
+    }
 
     // console.log(this.userCurrentLevel);
     this.modalService.open(content);
