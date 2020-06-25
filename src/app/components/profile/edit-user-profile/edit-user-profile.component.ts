@@ -330,14 +330,16 @@ export class EditUserProfileComponent implements OnInit {
     console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
     this.userService.updateUser(this.uId, u).subscribe(res => {
       console.log(res)
-      // this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
-      //   this.router.navigate(['/user-profile']);
+      this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/user-profile']);
       });
-    // });
+    });
   }
+
   ngOnDestroy() {
     this.routeSub.unsubscribe();
   }
+  
   preview(files) {
     if (files.length === 0) {
       return;

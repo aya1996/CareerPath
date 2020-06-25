@@ -1,12 +1,14 @@
 <!-- <section id="page">
   <section class="public"> -->
-    <div class="register">
-      <h2> Register</h2>
+   <div class="container d-flex main justify-content-center align-items-center ">
+    <div class="register  ">
+      <h2> Make your Account</h2>
         <form [formGroup]="registerForm" (ngSubmit)="register()">
   
           <div class="row content-page">
             <!-- First Name -->
             <div class="form-group col-md-6 col-xm-12">
+              <label class="col-lg-6 col-form-label form-control-label">Enter your First Name</label>
               <input formControlName="fname" type="text" class=" form-control" placeholder="First Name" required>
               <div class="invalid-feedback" *ngIf="submitted && f.fname.errors">
                 <div *ngIf="f.fname.errors.required">
@@ -18,6 +20,7 @@
             {{ f.fname.errors }} -->
             <!-- Last Name -->
             <div class="form-group col-md-6 col-xm-12">
+              <label class="col-lg-6 col-form-label form-control-label">Enter your Last Name</label>
               <input formControlName="lname" type="text" class=" form-control" placeholder="Last Name">
               <div class="invalid-feedback" *ngIf="submitted && f.lname.errors">
                 <div *ngIf="f.lname.errors.required">
@@ -28,6 +31,7 @@
   
             <!-- phonenumber -->
             <div class="form-group col-md-6 col-xm-12">
+              <label class="col-lg-6 col-form-label form-control-label">Enter your phone Number</label>
               <input formControlName="phonenumber" type="text" class=" form-control" placeholder="Phone Number">
               <div class="invalid-feedback" *ngIf="submitted && f.phonenumber.errors">
                 <div *ngIf="f.phonenumber.errors.required">
@@ -50,6 +54,7 @@
   
             <!-- Contry -->
             <div class="form-group col-md-6 col-xm-12">
+              <label class="col-lg-6 col-form-label form-control-label">Select your Country</label>
               <select class="form-control" formControlName="country"> 
                 <option style="color: rgb(143, 143, 143);" value="" disabled>Country</option>
                 <option *ngFor="let item of countries" [value]="item.name">
@@ -67,6 +72,7 @@
             </div>
             <!-- Username -->
             <div class="form-group col-md-6 col-xm-12">
+              <label class="col-lg-6 col-form-label form-control-label">Enter your Username</label>
               <input  formControlName="username"  class="form-control" type="text" placeholder="Username">
               <div class="invalid-feedback" *ngIf="submitted && f.username.errors">
                 <div *ngIf="f.username.errors.required">
@@ -78,6 +84,7 @@
             <!-- Email-->
             <!-- <input    type="email" > -->
             <div class="form-group col-md-6 col-xm-12">
+              <label class="col-lg-6 col-form-label form-control-label">Enter your Email</label>
               <input formControlName="email" type="email" class="form-control" name="email"  placeholder="Email">
               <div class="invalid-feedback" *ngIf="submitted && f.email.errors">
                 <div *ngIf="f.email.errors.required">
@@ -96,6 +103,7 @@
             </div>
             <!-- Password -->
             <div class="form-group col-md-6 col-xm-12">
+              <label class="col-lg-6 col-form-label form-control-label">Enter your Password</label>
               <input formControlName="password"  class="form-control" type="password" placeholder="Password">
               <div class="invalid-feedback" *ngIf="submitted && f.password.errors">
                 <div *ngIf="f.password.errors.required">
@@ -115,6 +123,7 @@
   
             <!-- Confirm password -->
             <div class="form-group col-md-6 col-xm-12">
+              <label class="col-lg-6 col-form-label form-control-label">Confirm your password</label>
               <input formControlName="confirmPassword"  class="form-control" type="password" placeholder="Confirm password">
               <div class="invalid-feedback" *ngIf="submitted && f.confirmPassword.errors">
                 <div *ngIf="f.confirmPassword.errors.required">
@@ -134,7 +143,9 @@
             
             <!-- Choose Your Path -->
             <div class="form-group col-md-6 col-xm-12">
+              <label class="col-lg-6 col-form-label form-control-label">Choose Your Path</label>
               <select class="form-control"  formControlName="subCareerId">
+            
                 <option style="color: rgb(143, 143, 143);"  value="" disabled>Choose Your Path</option>
                 <option *ngFor="let item of paths" [value]="item.subCareerId">
                   {{ item.subCareerName }}
@@ -149,6 +160,7 @@
   
             <!-- Choose Your Leval -->
             <div class="form-group col-md-6 col-xm-12">
+              <label class="col-lg-6 col-form-label form-control-label">Choose Your Level</label>
               <select class="form-control" formControlName="userLevel">
                 <option  value="" disabled style="color: rgb(221, 171, 171);">Choose Your Level</option>
                 <option *ngFor="let item of levels" [value]="item">
@@ -164,6 +176,7 @@
   
             <!-- description -->
             <div class="form-group col-md-12">
+              <label class="col-lg-6 col-form-label form-control-label">Enter description.</label>
               <textarea class="form-control" formControlName="description" type="text" placeholder="Why would you choose this Path?"></textarea>
               <div class="invalid-feedback" *ngIf="submitted && f.description.errors">
                 <div *ngIf="f.description.errors.required">
@@ -207,7 +220,7 @@
         </form>
   
      </div>
-    
+    </div>
   
      <!-- </section>
   </section> -->

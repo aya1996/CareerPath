@@ -10,22 +10,23 @@
       <br><br>
 
       <h1>Welcome to Career Path!</h1>
-      <h5>With Career Path, you can build and apply skills in top technologies. You have free access to Skill IQ, Role
-        IQ, a limited library of courses and a weekly rotation of new courses.
+      <h5>With Career Path, you can build and apply skills in top technologies. You have free access to
+         a map to many paths and a library of free and paid courses and also you can track your progress.
 
-      </h5><br><br><hr/>
-
+      </h5><br><br>
+      <hr/>
     </div>
 
     
     <div class="col-md-12 text-center m-1">
       <br><br>
-      <h1>Software development</h1>
-      <h5>Explore courses on popular programming languages, developer tools, software practices and app development
+      <h1>Career Tracks</h1>
+      <h5>Explore courses of popular tracks of development, developer tools, software practices and app development
         platforms.
       </h5>
       <hr/>
     </div>
+    <div class="row">
     <div class="col-md-4 col-sm-4 h-auto " *ngFor="let career of careerData">
       <mat-card >
 
@@ -34,10 +35,13 @@
             [routerLink]="['roadmap/',career.careerId]">{{career.careerName}}</button>
             <p>{{career.description}}</p>
           </mat-card-title>
+         
 
-
-      </mat-card><hr/>
+      </mat-card>
+   
     </div>
+ 
+  </div>
 
 
     <!-- *********************************************************************** -->
@@ -45,6 +49,7 @@
     
     <!--Carousel Wrapper-->
     <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+      <hr/>
          <h1 class="text-center">Keep in Touch with the Technology World</h1>
       <!--Controls-->
       <div class="controls-top text-center">
