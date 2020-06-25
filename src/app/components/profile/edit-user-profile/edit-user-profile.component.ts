@@ -286,7 +286,7 @@ export class EditUserProfileComponent implements OnInit {
       this.userService.getUserById(params['id'])
         .subscribe(res => {
           this.users = res;
-          console.log(this.users)
+          // console.log(this.users.country)
           this.uId = params['id'];
           // this.selectedChoice = this.userData.userData.subCareer;
           this.subCareerService.getSubCareerById(this.users.subCareerId)
@@ -319,25 +319,37 @@ export class EditUserProfileComponent implements OnInit {
   }
 
   saveData(data) {
+    console.log("Data is " + data.fname);
+    console.log("Data is " + data.lname);
+    console.log("Data is " + data.email);
+    console.log("Data is " + data.phone);
+    console.log("Data is " + data.userLevel);
+    console.log("Data is " + data.userName);
     const u = new editUser;
     u.id = this.uId;
     u.fname = data.fname;
     u.lname = data.lname;
     u.email = data.email;
-    u.country=data.country;
     u.phoneNumber = data.phone;
     u.userLevel = data.userLevel
     u.userName = data.userName;
+   
+    
+
+    console.log("Data is " + u.fname);
+    console.log("Data is " + u.id);
+    console.log("Data is " + u.userName);
     // u.image = this.editForm.value.files
     // q.rightAns=this.selectedChoice;
     // u.subCareerId = this.users.subCareerId;
 
+    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
     this.userService.updateUser(this.uId, u).subscribe(res => {
       console.log(res)
-      this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
-        this.router.navigate(['/user-profile']);
+      // this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+      //   this.router.navigate(['/user-profile']);
       });
-    });
+    // });
 
 
   }
