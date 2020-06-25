@@ -112,6 +112,7 @@ import { ViewSilderComponent } from './components/admin/dashboard-items/view-sil
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { CertificateComponent } from './components/profile/certificate/certificate.component';
 import { UserExamsComponent } from './components/admin/dashboard-items/users/user-exams/user-exams.component';
+import { EditPasswordComponent } from './components/profile/edit-user-profile/edit-password/edit-password.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -158,6 +159,7 @@ const routes: Routes =
     {path: 'profile/exams', component:ExamsComponent},
     {path: 'user-profile', component:UserProfileComponent},
     {path: 'edit-user-profile/:id', component:EditUserProfileComponent},
+    {path: 'edit-user-password/:id', component:EditPasswordComponent},
 
     { path: 'dummy', component:DummyComponent},
     /****************************************************************** */
@@ -229,6 +231,7 @@ const routes: Routes =
     NotFoundComponent,
     CertificateComponent,
     UserExamsComponent,
+    EditPasswordComponent,
 
   ],
   imports: [

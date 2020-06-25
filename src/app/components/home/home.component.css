@@ -77,3 +77,6 @@ mat-card-title{
     margin-bottom: -2.75rem;
     background-color: #EE3550;
 }
+.card-img-top{
+height: 300px;
+}
