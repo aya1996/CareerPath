@@ -33,7 +33,7 @@
             <div class="container course-list" *ngIf="item.coursePayment=='Free'||item.coursePayment=='free'">
                 <div class="row">
                     <div class="col-7">
-                        <p> {{item.courseLinks}} </p>
+                        <p> <a style="word-wrap: break-word; width: 100%;" [href]="item.courseLinks" target="_blank">{{item.courseLinks}}</a> </p>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
             <div class="container course-list" *ngIf="item.coursePayment=='Paid'||item.coursePayment=='paid'">
                 <div class="row">
                     <div class="col-7">
-                        <p> {{item.courseLinks}} </p>
+                        <p> <a style="word-wrap: break-word; width: 100%;" [href]="item.courseLinks" target="_blank">{{item.courseLinks}}</a> </p>
                 </div>
             </div>
         </div>
