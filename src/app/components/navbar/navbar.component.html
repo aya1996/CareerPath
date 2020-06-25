@@ -34,7 +34,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link"  *ngIf="!token" routerLink="/admin/index" (click)="isMenuCollapsed = true">Admin</a>
+        <a class="nav-link"  *ngIf="isAdmin" routerLink="/admin/index" (click)="isMenuCollapsed = true">Admin</a>
       </li>
 
       <!-- <li class="nav-item">
@@ -62,8 +62,8 @@
     </ul>
   <div class="search-container">
   </div>
-  <button *ngIf="!token" class="btn btnlogin my-2 my-sm-0 m-1 custom-register" (click)="register()" type="button">Register</button>
-  <button *ngIf="!token" class="btn btnlogin my-2 my-sm-0 m-1 custom-login" (click)="open()"> Login</button>
+  <button *ngIf="!token && !isAdmin" class="btn btnlogin my-2 my-sm-0 m-1 custom-register" (click)="register()" type="button">Register</button>
+  <button *ngIf="!token && !isAdmin" class="btn btnlogin my-2 my-sm-0 m-1 custom-login" (click)="open()"> Login</button>
   <img  *ngIf="token" src="" alt="">
   <div  *ngIf="token">
     <a class="nav-link dropdown-toggle" style="color: #fff; font-size: 17px;right:10px" (click)="isMenuCollapsed = true"

@@ -50,7 +50,7 @@ export class AddPathComponent implements OnInit {
     this.subCareerService.postSubCareer(c)
     .subscribe(res => console.log(res));
     this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/admin/path']);
+      this.router.navigate(['/admin/add-path']);
     });
   }
 }

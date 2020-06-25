@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
   public isMenuCollapsed = true;
   token: string;
   username: string;
+  isAdmin: string;
   careerData: career[];
 
   constructor(
@@ -30,6 +31,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit() { 
     this.token = localStorage.getItem("Token");
     this.username = localStorage.getItem("username");
+
+    this.isAdmin = localStorage.getItem("adminId")
 
     this.careerService.getCareer().subscribe(res => {
       this.careerData = res;

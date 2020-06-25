@@ -14,13 +14,13 @@
           <input matInput [(ngModel)]="courseItem.courseName" #cou="ngModel" placeholder="Course Title" name="cou" required />
         </mat-form-field>
         <mat-form-field class="full-width">
-          <mat-label>Link</mat-label>
-          <input matInput [(ngModel)]="courseItem.courseContent" #coun="ngModel" placeholder="Course Link" name="coun" required />
-        </mat-form-field>
-        <mat-form-field class="full-width">
            <mat-label>Duration</mat-label>
            <input matInput [(ngModel)]="courseItem.duration" #dur="ngModel"  placeholder="Course Duration In Hours" name="dur" required />
          </mat-form-field>
+         <mat-form-field class="full-width">
+          <mat-label>CourseLevel</mat-label>
+          <input matInput [value]="courseItem.CourseLevel" disabled />
+        </mat-form-field>
         <mat-form-field class="full-width">
           <mat-label>Description</mat-label>
           <textarea matInput required [(ngModel)]="courseItem.description"  #des="ngModel" name="des" placeholder="Ex. Free Course from Udemy that ..."></textarea>

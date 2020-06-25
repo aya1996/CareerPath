@@ -36,7 +36,27 @@ export class LoginComponent {
     }
     this.loginService.login(model).subscribe( (res: any) => {
       console.log("res", res);
-      localStorage.setItem("username",this.loginForm.value.username)
+      if(res.roleOfUser[0]=="admin"){
+        localStorage.setItem("adminId", res.userId)
+        localStorage.setItem("admin","admin")
+        this.activeModal.close();
+        this.loginService.showToaster();
+
+        this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/admin/index']);
+      });
+      }
+      else{
+        localStorage.setItem("userId",res.userId)
+        localStorage.setItem("Token", res.token)
+        localStorage.setItem("username",this.loginForm.value.username)
+        this.activeModal.close();
+        this.loginService.showToaster();
+
+        this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/']);
+      });
+      }
 
       // this.loginService.getAllUsers().subscribe(user => {
         
@@ -52,14 +72,6 @@ export class LoginComponent {
       //   }
       // })
 
-      localStorage.setItem("userId",res.userId)
-      localStorage.setItem("Token", res.token)
-      this.activeModal.close();
-      this.loginService.showToaster();
-
-      this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
-        this.router.navigate(['/']);
-      });
     }, error => {
       console.error("error", error)
       this.messageError = true;

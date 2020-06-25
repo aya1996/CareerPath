@@ -24,6 +24,7 @@ export class EditCourseComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {
      this.courseService.getById(params['id']).subscribe(res => {
+      //  console.log('object :>> ', res);
       this.courseItem = res;
       this.showSpinner = false;
      })
@@ -34,9 +35,9 @@ export class EditCourseComponent implements OnInit, OnDestroy {
   saveData(data){
     const c = new course;
     c.courseName = data.cou;
-    c.courseContent = data.coun;
     c.description =data.des;
     c.duration = data.dur;
+    c.level = data.lvl;
     c.courseId = this.courseItem.courseId;
 
     this.courseService.updateCourse(c.courseId,c).subscribe(res => console.log(res));

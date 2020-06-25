@@ -13,7 +13,7 @@ import { UserService } from '../../../../shared/services/user.service';
 })
 export class UsersComponent implements OnInit {
 
-  displayedColumns: string[] = ['Username', 'Course', 'Examdate','examQs'];
+  displayedColumns: string[] = ['Username', 'Course'];
   dataSource: MatTableDataSource<exams>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -21,10 +21,11 @@ export class UsersComponent implements OnInit {
 
   constructor(private userService:UserService,
     private examService: ExamService) {
+      this.dataSource = new MatTableDataSource(this.usersExam);
 
-    this.dataSource = new MatTableDataSource(this.usersExam);
   }
   usersExam : exams[] = [];
+  showSpinner = false;
 
   ngOnInit() {
     this.userService.getAllUsers().subscribe(res => {
@@ -34,17 +35,20 @@ export class UsersComponent implements OnInit {
             this.usersExam.push({
               userName:res[i].userName,
               courseName: ex[j].courseName,
-              dateTime: ex[i].dateTime.slice(0,10)
+              dateTime: ex[j].dateTime.slice(0,10),
+              userGrade: ex[j].userGrade
             });
           }
         })
       }
-      console.log(this.usersExam);
+      this.showSpinner = true;
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+      // console.log(this.usersExam);
     })
 
 
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    
   }
 
   applyFilter(event: Event) {
@@ -59,93 +63,93 @@ export class UsersComponent implements OnInit {
 }
 
 
-interface Exam {
-  course: string,
-  score: number,
-  time: number,
-  examDate: string,
-}
-const EXAMS: Exam[] = [
-  {
-    course: 'HTML',
-    score: 17,
-    time: 20,
-    examDate: '15/5/2020'
-  },
-  {
-    course: 'CSS',
-    score: 19,
-    time: 20,
-    examDate: '15/5/2020'
-  },
-  {
-    course: 'Javascript',
-    score: 15,
-    time: 20,
-    examDate: '15/5/2020'
-  },
-  {
-    course: 'Javascript',
-    score: 15,
-    time: 20,
-    examDate: '15/5/2020'
-  },
-  {
-    course: 'Javascript',
-    score: 15,
-    time: 20,
-    examDate: '15/5/2020'
-  },
-  {
-    course: 'Javascript',
-    score: 15,
-    time: 20,
-    examDate: '15/5/2020'
-  },
-  {
-    course: 'Javascript',
-    score: 15,
-    time: 20,
-    examDate: '15/5/2020'
-  },
-  {
-    course: 'Javascript',
-    score: 15,
-    time: 20,
-    examDate: '15/5/2020'
-  },
-  {
-    course: 'Javascript',
-    score: 15,
-    time: 20,
-    examDate: '15/5/2020'
-  },
-  {
-    course: 'Javascript',
-    score: 15,
-    time: 20,
-    examDate: '15/5/2020'
-  },
-  {
-    course: 'Javascript',
-    score: 15,
-    time: 20,
-    examDate: '15/5/2020'
-  },
-  {
-    course: 'Javascript',
-    score: 15,
-    time: 20,
-    examDate: '15/5/2020'
-  },
-  {
-    course: 'Javascript',
-    score: 15,
-    time: 20,
-    examDate: '15/5/2020'
-  }
+// interface Exam {
+//   course: string,
+//   score: number,
+//   time: number,
+//   examDate: string,
+// }
+// const EXAMS: Exam[] = [
+//   {
+//     course: 'HTML',
+//     score: 17,
+//     time: 20,
+//     examDate: '15/5/2020'
+//   },
+//   {
+//     course: 'CSS',
+//     score: 19,
+//     time: 20,
+//     examDate: '15/5/2020'
+//   },
+//   {
+//     course: 'Javascript',
+//     score: 15,
+//     time: 20,
+//     examDate: '15/5/2020'
+//   },
+//   {
+//     course: 'Javascript',
+//     score: 15,
+//     time: 20,
+//     examDate: '15/5/2020'
+//   },
+//   {
+//     course: 'Javascript',
+//     score: 15,
+//     time: 20,
+//     examDate: '15/5/2020'
+//   },
+//   {
+//     course: 'Javascript',
+//     score: 15,
+//     time: 20,
+//     examDate: '15/5/2020'
+//   },
+//   {
+//     course: 'Javascript',
+//     score: 15,
+//     time: 20,
+//     examDate: '15/5/2020'
+//   },
+//   {
+//     course: 'Javascript',
+//     score: 15,
+//     time: 20,
+//     examDate: '15/5/2020'
+//   },
+//   {
+//     course: 'Javascript',
+//     score: 15,
+//     time: 20,
+//     examDate: '15/5/2020'
+//   },
+//   {
+//     course: 'Javascript',
+//     score: 15,
+//     time: 20,
+//     examDate: '15/5/2020'
+//   },
+//   {
+//     course: 'Javascript',
+//     score: 15,
+//     time: 20,
+//     examDate: '15/5/2020'
+//   },
+//   {
+//     course: 'Javascript',
+//     score: 15,
+//     time: 20,
+//     examDate: '15/5/2020'
+//   },
+//   {
+//     course: 'Javascript',
+//     score: 15,
+//     time: 20,
+//     examDate: '15/5/2020'
+//   }
   
-];
+// ];
 
 
 

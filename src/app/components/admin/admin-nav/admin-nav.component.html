@@ -1,25 +1,31 @@
-<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<link
+  href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
+  rel="stylesheet"
+/>
 
 <div class="page-wrapper chiller-theme toggled main">
-  <a id="show-sidebar" class="btn btn-sm btn-dark" >
+  <a id="show-sidebar" class="btn btn-sm btn-dark">
     <i class="fas fa-bars"></i>
   </a>
   <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
       <div class="sidebar-brand">
-        <a >Career Path</a>
+        <a>Career Path</a>
         <div id="close-sidebar">
           <i class="fa fa-chart-line"></i>
         </div>
       </div>
       <div class="sidebar-header">
         <div class="user-pic">
-          <img class="img-responsive img-rounded"
+          <img
+            class="img-responsive img-rounded"
             src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
-            alt="User picture">
+            alt="User picture"
+          />
         </div>
         <div class="user-info">
-          <span class="user-name">Aya
+          <span class="user-name"
+            >Aya
             <strong>Megahed</strong>
           </span>
           <span class="user-role">Administrator</span>
@@ -29,33 +35,32 @@
           </span>
         </div>
       </div>
-     
+
       <!-- sidebar-header  -->
       <div class="sidebar-search">
         <div class="sidebar-footer">
-        
-          <a  [matMenuTriggerFor]="notfy">
+          <a [matMenuTriggerFor]="notfy">
             <i class="fa fa-bell"></i>
             <span class="badge badge-pill badge-warning notification">3</span>
-              <!-- Include text description of the icon's meaning for screen-readers -->
-          <mat-menu #notfy="matMenu">
-            <ul>
-              <li class="dropdown-item">someone has exam</li>
-              <li class="dropdown-item">someone has exam</li>
-              <li class="dropdown-item">someone has exam</li>
-            </ul>
-          </mat-menu>
+            <!-- Include text description of the icon's meaning for screen-readers -->
+            <mat-menu #notfy="matMenu">
+              <ul>
+                <li class="dropdown-item">someone has exam</li>
+                <li class="dropdown-item">someone has exam</li>
+                <li class="dropdown-item">someone has exam</li>
+              </ul>
+            </mat-menu>
           </a>
-         
-          <a >
+
+          <a>
             <i class="fa fa-envelope"></i>
             <span class="badge badge-pill badge-success notification">7</span>
           </a>
-          <a routerLink="/" >
+          <a routerLink="/">
             <i class="fa fa-home"></i>
             <span class="badge-sonar"></span>
           </a>
-          <a >
+          <a (click)="logOut()" style="cursor: pointer;">
             <i class="fa fa-power-off"></i>
           </a>
         </div>
@@ -71,61 +76,52 @@
               <i class="fa fa-tachometer-alt"></i>
               <span>Dashboard</span>
             </a>
-            <li class="">
-              <a routerLink="/admin/exam">
-                <i class="fa fa-edit"></i>
-                <span>Exams</span>
-              </a>
-  
-
           </li>
-         
+
           <li class="nav-item">
-            <a class="nav-link collapsed text-truncate" href="#path" data-toggle="collapse"
-            data-target="#path">
+            <a
+              class="nav-link collapsed text-truncate"
+              href="#path"
+              data-toggle="collapse"
+              data-target="#path"
+            >
               <i class="fa fa-chart-line"></i>
               <span>Paths</span>
-
             </a>
             <div class="collapse" id="path" aria-expanded="false">
-              <ul class=" sidebar-submenu " >
+              <ul class="sidebar-submenu">
                 <li>
-                 
-                  <a routerLink="/admin/add-path">Add Path
-
-                  </a>
+                  <a routerLink="/admin/add-path">Add Path </a>
                 </li>
                 <li>
-                  
                   <a routerLink="/admin/add-track">Add Track </a>
                 </li>
                 <li>
-                  
                   <a routerLink="/admin/track">View Tracks </a>
                 </li>
                 <li>
-                  
                   <a routerLink="/admin/path">View Paths </a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link collapsed text-truncate" href="#course" data-toggle="collapse"
-            data-target="#course">
+            <a
+              class="nav-link collapsed text-truncate"
+              href="#course"
+              data-toggle="collapse"
+              data-target="#course"
+            >
               <i class="fa fa-file"></i>
               <span>Courses</span>
-
             </a>
             <div class="collapse" id="course" aria-expanded="false">
-              <ul class=" sidebar-submenu " >
+              <ul class="sidebar-submenu">
                 <li>
-                  <a routerLink="/admin/add-course">Add Course
-                  </a>
+                  <a routerLink="/admin/add-course">Add Course </a>
                 </li>
                 <li>
-                  <a routerLink="/admin/add-course/links">Add Course Links
-                  </a>
+                  <a routerLink="/admin/add-course/links">Add Course Links </a>
                 </li>
                 <li>
                   <a routerLink="/admin/course">View Course</a>
@@ -134,68 +130,75 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link collapsed text-truncate" href="#question" data-toggle="collapse"
-            data-target="#question">
+            <a
+              class="nav-link collapsed text-truncate"
+              href="#question"
+              data-toggle="collapse"
+              data-target="#question"
+            >
               <i class="fa fa-question-circle"></i>
               <span>Questions</span>
-
             </a>
             <div class="collapse" id="question" aria-expanded="false">
-              <ul class=" sidebar-submenu " >
+              <ul class="sidebar-submenu">
                 <li>
-                  <a routerLink="/admin/add-question">Add Question
-
-                  </a>
+                  <a routerLink="/admin/add-question">Add Question </a>
                 </li>
-             
+
                 <li>
                   <a routerLink="/admin/question">View Questions</a>
                 </li>
               </ul>
             </div>
           </li>
+
+          <li class="">
+            <a routerLink="/admin/exam">
+              <i class="fa fa-edit"></i>
+              <span>Exams</span>
+            </a>
+          </li>
+
           <li class="nav-item">
-            <a class="nav-link collapsed text-truncate" href="#image" data-toggle="collapse"
-            data-target="#imaged">
+            <a
+              class="nav-link collapsed text-truncate"
+              href="#image"
+              data-toggle="collapse"
+              data-target="#imaged"
+            >
               <i class="fa fa-images"></i>
               <span>Slider Images</span>
-
             </a>
             <div class="collapse" id="imaged" aria-expanded="false">
-              <ul class=" sidebar-submenu " >
+              <ul class="sidebar-submenu">
                 <li>
-                  <a routerLink="/admin/add-slider">Add Slider
-
-                  </a>
+                  <a routerLink="/admin/add-slider">Add Slider </a>
                 </li>
                 <li>
-                  <a routerLink="/admin/add-slider">View Slider
-
-                  </a>
+                  <a routerLink="/admin/add-slider">View Slider </a>
                 </li>
-               
               </ul>
             </div>
           </li>
-        
+
           <li class="header-menu">
             <span>Extra</span>
           </li>
           <li>
-            <a >
+            <a>
               <i class="fa fa-book"></i>
               <span>Documentation</span>
               <span class="badge badge-pill badge-primary">Beta</span>
             </a>
           </li>
           <li>
-            <a >
+            <a>
               <i class="fa fa-calendar"></i>
               <span>Calendar</span>
             </a>
           </li>
           <li>
-            <a >
+            <a>
               <i class="fa fa-folder"></i>
               <span>Examples</span>
             </a>
@@ -205,10 +208,8 @@
       <!-- sidebar-menu  -->
     </div>
     <!-- sidebar-content  -->
-  
   </nav>
   <!-- sidebar-wrapper  -->
- 
+
   <!-- page-content" -->
 </div>
-

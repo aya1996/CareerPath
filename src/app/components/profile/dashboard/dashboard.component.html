@@ -86,7 +86,7 @@
               </div>
             </div>
           </div>
-          <button *ngIf="finishedd" (click)="openModal(content)">Go to Next Level</button>
+          <button class="btn btn-primary" style="width: 50%;" *ngIf="finishedd" (click)="openModal(content)">Go to Next Level</button>
   
         </div>
       </div>
@@ -141,6 +141,8 @@
 
 <app-footer></app-footer>
 
+
+
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Congratulations</h4>
@@ -149,7 +151,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <p>Congratulations. You have completed this level successfully. Good luck.</p>
+    <p>Congratulations. You have completed this level successfully.</p>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-success" (click)="goToNextLevel()">Go Now</button>
