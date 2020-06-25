@@ -7,14 +7,11 @@ import { SubCareerService } from '../../../shared/services/sub-career.service';
 import { subCareer } from '../../../shared/Models/subCareer.model';
 import { MatSnackBar } from '@angular/material';
 import { FormGroup } from '@angular/forms';
-
-
 @Component({
   selector: 'app-edit-user-profile',
   templateUrl: './edit-user-profile.component.html',
   styleUrls: ['./edit-user-profile.component.css']
 })
-
 export class EditUserProfileComponent implements OnInit {
   countries: any = [];
   imgURL: any;
@@ -23,7 +20,6 @@ export class EditUserProfileComponent implements OnInit {
   editForm: FormGroup;
   public message: string;
   private routeSub: Subscription;
-
   constructor(private userService: UserService, private subCareerService: SubCareerService, private route: ActivatedRoute,
     private router: Router, private _snackBar: MatSnackBar,) { }
   Path: subCareer[] = [];
@@ -32,7 +28,6 @@ export class EditUserProfileComponent implements OnInit {
   showSpinner = true;
   uId;
   subCareerName = '';
-
   ngOnInit() {
     this.countries = [
       { "name": "Afghanistan", "code": "AF" },
@@ -282,17 +277,15 @@ export class EditUserProfileComponent implements OnInit {
     ]
       ;
     this.routeSub = this.route.params.subscribe(params => {
-
       this.userService.getUserById(params['id'])
         .subscribe(res => {
           this.users = res;
-          console.log(this.users)
+          // console.log(this.users.country)
           this.uId = params['id'];
           // this.selectedChoice = this.userData.userData.subCareer;
           this.subCareerService.getSubCareerById(this.users.subCareerId)
             .subscribe(data => {
               this.subCareerName = data.subCareerName;
-
             })
         })
       this.showSpinner = false;
@@ -301,10 +294,7 @@ export class EditUserProfileComponent implements OnInit {
       .subscribe(res => {
         this.Path = res;
       });
-
   }
-
-
   openSnackBar() {
     this._snackBar.open('Updated..', 'X', {
       duration: 2000,
@@ -312,42 +302,44 @@ export class EditUserProfileComponent implements OnInit {
       verticalPosition: "bottom",
     });
   }
-
   getChoice(data) {
     this.selectedChoice = data;
     console.log(data);
   }
-
   saveData(data) {
+    console.log("Data is " + data.fname);
+    console.log("Data is " + data.lname);
+    console.log("Data is " + data.email);
+    console.log("Data is " + data.phone);
+    console.log("Data is " + data.userLevel);
+    console.log("Data is " + data.userName);
     const u = new editUser;
     u.id = this.uId;
     u.fname = data.fname;
     u.lname = data.lname;
     u.email = data.email;
-    u.country=data.country;
     u.phoneNumber = data.phone;
     u.userLevel = data.userLevel
     u.userName = data.userName;
+    console.log("Data is " + u.fname);
+    console.log("Data is " + u.id);
+    console.log("Data is " + u.userName);
     // u.image = this.editForm.value.files
     // q.rightAns=this.selectedChoice;
     // u.subCareerId = this.users.subCareerId;
-
+    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
     this.userService.updateUser(this.uId, u).subscribe(res => {
       console.log(res)
-      this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
-        this.router.navigate(['/user-profile']);
+      // this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+      //   this.router.navigate(['/user-profile']);
       });
-    });
-
-
+    // });
   }
-
   ngOnDestroy() {
     this.routeSub.unsubscribe();
   }
   preview(files) {
     if (files.length === 0) {
-
       return;
     }
     const mimeType = files[0].type;
@@ -355,7 +347,6 @@ export class EditUserProfileComponent implements OnInit {
       this.message = 'Only images are supported.';
       return;
     }
-
     const reader = new FileReader();
     this.imagePath = files;
     reader.readAsDataURL(files[0]);
@@ -364,29 +355,21 @@ export class EditUserProfileComponent implements OnInit {
       this.defaultImage = false;
     };
   }
-
-
   onFileChange(event, field, files) {
     console.log("Event", event);
     console.log("field", field);
     this.preview(files);
     if (event.target.files && event.target.files.length) {
-
       const [file] = event.target.files;
       if (!file.type.startsWith('image')) {
         this.editForm.patchValue({
           [field]: null
         });
       } else {
-
         this.editForm.patchValue({
           [field]: file
         });
-
       }
-
-
     }
   }
-
 }
