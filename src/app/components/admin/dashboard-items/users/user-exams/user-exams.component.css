@@ -1,0 +1,42 @@
+.main-div {
+    background-color: white !important;
+    padding-left: 50px;
+    height: 100vh;
+    margin-left: 250px;
+  }
+  
+  
+  
+  table {
+      width: 100%;
+      border-collapse: collapse;
+   
+     
+    }
+   th,td{
+    border: 1px solid #ddd;
+    padding: 8px;
+   text-align: center;
+    width: 15%;
+    }
+    tr:nth-child(even){background-color: #f2f2f2;}
+    tr:hover {background-color: #ddd;}
+    .mat-form-field {
+      font-size: 14px;
+      width: 100%;
+    }
+    th{
+      background-color: #31353D;
+      color: white;
+     
+   
+    }
+    
+    .table-container {
+      max-height: calc(100vh - 200px); 
+      overflow: auto;
+  }
+  .main{
+    width: 25%;
+    padding: 15px 0;
+  }

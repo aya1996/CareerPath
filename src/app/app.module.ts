@@ -111,6 +111,7 @@ import { AddSilderComponent } from './components/admin/dashboard-items/add-silde
 import { ViewSilderComponent } from './components/admin/dashboard-items/view-silder/view-silder.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { CertificateComponent } from './components/profile/certificate/certificate.component';
+import { UserExamsComponent } from './components/admin/dashboard-items/users/user-exams/user-exams.component';
 
 // import {NgbdCollapseNavbar} from './collapse-navbar';
 
@@ -128,7 +129,7 @@ const routes: Routes =
     {path:'admin/question/edit/:questId', component:EditQuestionComponent},
 
     { path: 'admin/index', component: IndexComponent },
-    { path: 'admin/exam', component: UsersComponent},
+    { path: 'admin/exam', component: UserExamsComponent},
     { path: 'dashboard', component: AdminDashboardComponent },
     {path: 'admin/path/edit/:id', component:EditPathComponent},
     {path: 'admin/track/edit/:id', component:EditTrackComponent},
@@ -227,6 +228,7 @@ const routes: Routes =
     ViewSilderComponent,
     NotFoundComponent,
     CertificateComponent,
+    UserExamsComponent,
 
   ],
   imports: [

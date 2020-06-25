@@ -67,10 +67,10 @@ courses:course[]
             // }
           }
         }
+        console.log(this.coursel);
 
       })
       this.dataSource = new MatTableDataSource(this.coursel);
-      console.log(this.coursel);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.showSpinner = false;

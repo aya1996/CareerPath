@@ -1,7 +1,11 @@
 <app-profile-header></app-profile-header>
 
-<div class="row" *ngFor="let c of coursesExam">
-  <div class="col-6">
+<h2 style="color: #fff; margin-top: 30px; text-align: center;">Courses you have completed</h2>
+
+<div class="row" style="height: auto; margin: 40px 40px 40px 0;">
+  <div class="col-2"></div>
+  <div class="col-8" >
+    <div *ngFor="let c of coursesExam">
     <div class="progress" *ngIf="c.userGrade >= 70">
       <div
         class="progress-bar bg-success"
@@ -16,8 +20,19 @@
       <span class="progress-type"> {{ c.courseName }} </span>
       <span class="progress-completed">100%</span>
     </div>
-
   </div>
+  </div>
+  <!-- <div class="col-6">
+    <div style="display: block;">
+      <canvas
+        baseChart
+        [data]="doughnutChartData"
+        [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType"
+      >
+      </canvas>
+    </div>
+  </div> -->
 </div>
 
 <app-footer></app-footer>

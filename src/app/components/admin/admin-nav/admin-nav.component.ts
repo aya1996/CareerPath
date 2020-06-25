@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-nav',
@@ -11,7 +12,7 @@ export class AdminNavComponent implements OnInit {
   clickedTab = '';
   activeLink = '';
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
@@ -32,5 +33,13 @@ dropdownClick(){
   }
 }
  
+logOut(){
+
+  localStorage.removeItem("admin");
+  localStorage.removeItem("adminId");
+  this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() => {
+    this.router.navigate(["/"]);
+}); 
+}
 
 }

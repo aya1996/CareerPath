@@ -27,6 +27,10 @@
       </mat-form-field>
       <br />
       <mat-card-actions>
+        <button routerLink='/admin/path' 
+            mat-stroked-button color="primary"
+            style="margin-right: 20px;">Back</button>
+
         <button type="submit" mat-raised-button 
         color="primary" 
         [disabled]="f.invalid || selectedItem==0"
